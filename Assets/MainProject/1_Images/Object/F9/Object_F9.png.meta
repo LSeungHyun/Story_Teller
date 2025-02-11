@@ -1,16 +1,31 @@
 fileFormatVersion: 2
-guid: db38bc4b489157b448985c34df97fc17
+guid: 010a94a765716cd45b318f9108505877
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7682564003640669032
-    second: Object1_0
+      213: -69044120543574047
+    second: Object_F9_0
   - first:
-      213: -1295972170675785750
-    second: Object1_1
+      213: 8119577627812766988
+    second: Object_F9_1
   - first:
-      213: -1703154299268310475
-    second: Object1_2
+      213: -664121134855408215
+    second: Object_F9_2
+  - first:
+      213: -3401216395652390619
+    second: Object_F9_3
+  - first:
+      213: 2637735779457616329
+    second: Object_F9_4
+  - first:
+      213: -34926294148182456
+    second: Object_F9_5
+  - first:
+      213: -6041687008188059283
+    second: Object_F9_6
+  - first:
+      213: -3279113040003786015
+    second: Object_F9_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -78,12 +93,25 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 2
-    compressionQuality: 100
-    crunchedCompression: 1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Win64
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     ignorePlatformSupport: 0
@@ -104,12 +132,12 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: WebGL
-    maxTextureSize: 512
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: 48
-    textureCompression: 2
+    textureCompression: 1
     compressionQuality: 100
-    crunchedCompression: 1
+    crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 1
     ignorePlatformSupport: 0
@@ -119,67 +147,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Object1_0
+      name: Object_F9_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 80
-        height: 152
+        x: 9
+        y: 179
+        width: 60
+        height: 60
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 67f43d347d4d5544795ea591b2f63d26
-      internalID: 1722196785
+      spriteID: 1e7cb29fcb4ba0ff0800000000000000
+      internalID: -69044120543574047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object1_1
+      name: Object_F9_2
       rect:
         serializedVersion: 2
-        x: 111
-        y: 33
-        width: 77
-        height: 85
+        x: 86
+        y: 161
+        width: 106
+        height: 78
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0c3bf22337a10ed43a414b05cb73b97b
-      internalID: -963620840
+      spriteID: 9a53d15b85198c6f0800000000000000
+      internalID: -664121134855408215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object1_2
+      name: Object_F9_5
       rect:
         serializedVersion: 2
-        x: 237
-        y: 44
-        width: 31
-        height: 58
+        x: 27
+        y: 130
+        width: 42
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b42b90a7c16763044bb580e8dda9b91c
-      internalID: 1031471482
+      spriteID: 84e0af378bae38ff0800000000000000
+      internalID: -34926294148182456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_F9_6
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 53
+        width: 116
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d61bbd02dad972ca0800000000000000
+      internalID: -6041687008188059283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Object_F9_7
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 90
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ea193840104e72d0800000000000000
+      internalID: -3279113040003786015
       vertices: []
       indices: 
       edges: []
@@ -188,7 +260,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: e57e89514c7d9484496431a07ee65e33
+    spriteID: 401f8b6b43af87e46af3255e9a90cbdd
     internalID: 0
     vertices: []
     indices: 
@@ -198,9 +270,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Object1_0: 1722196785
-      Object1_1: -963620840
-      Object1_2: 1031471482
+      Object_F9_0: -69044120543574047
+      Object_F9_2: -664121134855408215
+      Object_F9_5: -34926294148182456
+      Object_F9_6: -6041687008188059283
+      Object_F9_7: -3279113040003786015
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
