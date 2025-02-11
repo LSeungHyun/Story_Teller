@@ -287,33 +287,37 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Object_F4 1_15
-      rect:
-        serializedVersion: 2
-        x: 535
-        y: 2197
-        width: 6
-        height: 23
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b476df82e57248670800000000000000
-      internalID: 8539994078769407819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4 1_53
+      name: Under_Box_1
       rect:
         serializedVersion: 2
         x: 626
@@ -335,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4 1_54
+      name: Under_Box_2
       rect:
         serializedVersion: 2
         x: 751
@@ -419,13 +423,13 @@ TextureImporter:
       Object_F4 1_50: -8194305938021270629
       Object_F4 1_51: 7495319451040330563
       Object_F4 1_52: 8827739479259213586
-      Object_F4 1_53: -5365280546580561741
-      Object_F4 1_54: -8889222193244360652
       Object_F4 1_55: 4174952109774130979
       Object_F4 1_6: -2460291262460198743
       Object_F4 1_7: 3388645173231707284
       Object_F4 1_8: 7357632363142447025
       Object_F4 1_9: 8234652960136057827
+      Under_Box_1: -5365280546580561741
+      Under_Box_2: -8889222193244360652
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

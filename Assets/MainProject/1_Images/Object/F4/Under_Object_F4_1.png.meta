@@ -268,11 +268,37 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Object_F4_0
+      name: Under_Roof_1
       rect:
         serializedVersion: 2
         x: 0
@@ -294,7 +320,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_1
+      name: Under_House_1
       rect:
         serializedVersion: 2
         x: 342
@@ -316,7 +342,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_2
+      name: Under_JungCafe
       rect:
         serializedVersion: 2
         x: 720
@@ -338,7 +364,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_3
+      name: Under_Ghost_Bright
       rect:
         serializedVersion: 2
         x: 1116
@@ -360,7 +386,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_4
+      name: Under_Fog_1
       rect:
         serializedVersion: 2
         x: 1287
@@ -382,7 +408,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_5
+      name: Under_Ghost_Dark
       rect:
         serializedVersion: 2
         x: 1120
@@ -404,95 +430,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_6
-      rect:
-        serializedVersion: 2
-        x: 1085
-        y: 2252
-        width: 30
-        height: 40
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b9a7e3a866228c4699fe8600ff2068e
-      internalID: 93030097
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_7
-      rect:
-        serializedVersion: 2
-        x: 1116
-        y: 2250
-        width: 67
-        height: 34
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a6e71e0586f88c540bc651a598dbc428
-      internalID: 650634243
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_8
-      rect:
-        serializedVersion: 2
-        x: 408
-        y: 2197
-        width: 102
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ae6beb05b7fcf846875a318b8f477d8
-      internalID: 745363594
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_9
-      rect:
-        serializedVersion: 2
-        x: 515
-        y: 2197
-        width: 76
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dbff31d5ddeecb04aa4e283e3e29b066
-      internalID: -1392061403
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_10
+      name: Under_Arrow_One
       rect:
         serializedVersion: 2
         x: 646
@@ -514,7 +452,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_11
+      name: Under_DeadMan
       rect:
         serializedVersion: 2
         x: 924
@@ -536,7 +474,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_12
+      name: Under_Bakery
       rect:
         serializedVersion: 2
         x: 30
@@ -558,56 +496,12 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_13
+      name: Under_Arrow_Three
       rect:
         serializedVersion: 2
-        x: 1071
-        y: 2177
-        width: 30
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1616a326fd12566498d7af5d9b4a7914
-      internalID: -1519204706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_14
-      rect:
-        serializedVersion: 2
-        x: 1071
+        x: 1070
         y: 2163
-        width: 30
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 940a6218791ddb7468e714011a57220c
-      internalID: 761549101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_15
-      rect:
-        serializedVersion: 2
-        x: 1102
-        y: 2163
-        width: 63
+        width: 96
         height: 33
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -624,51 +518,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_16
-      rect:
-        serializedVersion: 2
-        x: 1167
-        y: 2177
-        width: 31
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e84445f43b703ad41a24a07d632d8712
-      internalID: 830490710
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_17
-      rect:
-        serializedVersion: 2
-        x: 1167
-        y: 2163
-        width: 31
-        height: 19
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1214e4ea9d6c5a94283b360f473f61b9
-      internalID: -904458022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Object_F4_18
+      name: Under_Roof_2
       rect:
         serializedVersion: 2
         x: 384
@@ -690,7 +540,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_19
+      name: Under_Truck
       rect:
         serializedVersion: 2
         x: 723
@@ -712,7 +562,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_20
+      name: Under_HappyHair
       rect:
         serializedVersion: 2
         x: 1017
@@ -734,7 +584,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_22
+      name: Under_AMB
       rect:
         serializedVersion: 2
         x: 991
@@ -756,7 +606,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_24
+      name: Under_Tree
       rect:
         serializedVersion: 2
         x: 749
@@ -778,7 +628,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_25
+      name: Under_Fog_2
       rect:
         serializedVersion: 2
         x: 1287
@@ -800,7 +650,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_27
+      name: Under_Roof_3
       rect:
         serializedVersion: 2
         x: 370
@@ -822,7 +672,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_28
+      name: Under_TrafficLight_2
       rect:
         serializedVersion: 2
         x: 914
@@ -844,7 +694,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_29
+      name: Under_HappyHair_SignBall
       rect:
         serializedVersion: 2
         x: 46
@@ -866,7 +716,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_30
+      name: Under_TrafficLight_1
       rect:
         serializedVersion: 2
         x: 125
@@ -888,7 +738,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_31
+      name: Under_TrafficLight_
       rect:
         serializedVersion: 2
         x: 194
@@ -910,7 +760,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_32
+      name: Under_Car_Right
       rect:
         serializedVersion: 2
         x: 772
@@ -932,7 +782,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_33
+      name: Under_Car_Left
       rect:
         serializedVersion: 2
         x: 1008
@@ -954,7 +804,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_34
+      name: Under_CarSmog
       rect:
         serializedVersion: 2
         x: 242
@@ -976,7 +826,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Object_F4_36
+      name: Under_Fog_Cross
       rect:
         serializedVersion: 2
         x: 0
@@ -997,6 +847,116 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Under_Signboard_JungCafe
+      rect:
+        serializedVersion: 2
+        x: 1084
+        y: 2249
+        width: 98
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef9ae42e6c7dde044a3be685ebca48d5
+      internalID: 1336540042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Under_Signboard_Bakery
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 2194
+        width: 184
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3e6164f821e90428f53c35614d5be7
+      internalID: 1807153229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Under_Arrow_Thre
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2163
+        width: 96
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd42885accc6294abaaa8cfdc09442b
+      internalID: 106592612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Under_Arrow_Two
+      rect:
+        serializedVersion: 2
+        x: 1102
+        y: 2163
+        width: 64
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a411cb8e7c5b544ab7b5e93f84a6040
+      internalID: -1576367749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Under_Arrow_Four
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 2163
+        width: 128
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5db140d5ee82e3a48842019a2c054e8e
+      internalID: 1932570173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -1011,43 +971,49 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Object_F4_0: -1713191306
-      Object_F4_1: 1325433971
-      Object_F4_10: -620858459
-      Object_F4_11: 2127237791
-      Object_F4_12: 541055359
+      Object_F4_0: -1656987648
       Object_F4_13: -1519204706
       Object_F4_14: 761549101
-      Object_F4_15: 969898491
       Object_F4_16: 830490710
       Object_F4_17: -904458022
-      Object_F4_18: -1383269630
-      Object_F4_19: 900622793
-      Object_F4_2: 1448228621
-      Object_F4_20: 1473779923
       Object_F4_21: 935798848
-      Object_F4_22: -1550821515
       Object_F4_23: 1240934071
-      Object_F4_24: 423349818
-      Object_F4_25: -205969718
       Object_F4_26: 2112942136
-      Object_F4_27: 741774538
-      Object_F4_28: 1635134865
-      Object_F4_29: -365090774
-      Object_F4_3: -498906366
-      Object_F4_30: 1632755089
-      Object_F4_31: -1773403916
-      Object_F4_32: 131158474
-      Object_F4_33: -1162143372
-      Object_F4_34: -1252761611
       Object_F4_35: -248281876
-      Object_F4_36: 1741075291
-      Object_F4_4: -177571329
-      Object_F4_5: 863721709
-      Object_F4_6: 93030097
-      Object_F4_7: 650634243
       Object_F4_8: 745363594
       Object_F4_9: -1392061403
+      Under_AMB: -1550821515
+      Under_Arrow_Four: 1932570173
+      Under_Arrow_One: -620858459
+      Under_Arrow_Thre: 106592612
+      Under_Arrow_Three: 969898491
+      Under_Arrow_Two: -1576367749
+      Under_Arrow_Under_OneArrow: -620858459
+      Under_Bakery: 541055359
+      Under_CarSmog: -1252761611
+      Under_Car_Left: -1162143372
+      Under_Car_Right: 131158474
+      Under_DeadMan: 2127237791
+      Under_Fog_1: -177571329
+      Under_Fog_2: -205969718
+      Under_Fog_Cross: 1741075291
+      Under_Ghost_Bright: -498906366
+      Under_Ghost_Dark: 863721709
+      Under_HappyHair: 1473779923
+      Under_HappyHair_SignBall: -365090774
+      Under_House_1: 1325433971
+      Under_JungCafe: 1448228621
+      Under_Roof_1: -1713191306
+      Under_Roof_2: -1383269630
+      Under_Roof_3: 741774538
+      Under_Signboard_Bakery: 1807153229
+      Under_Signboard_DaBang: 650634243
+      Under_Signboard_JungCafe: 1336540042
+      Under_TrafficLight_: -1773403916
+      Under_TrafficLight_1: 1632755089
+      Under_TrafficLight_2: 1635134865
+      Under_Tree: 423349818
+      Under_Truck: 900622793
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
