@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Text.RegularExpressions;
+using UnityEngine.Windows;
 
 public class ValidationManager : MonoBehaviour
 {
@@ -63,14 +65,20 @@ public class ValidationManager : MonoBehaviour
     public void OnSendEmail()
     {
         if (!IsValidInput(emailInputField.text, "이메일을 입력해주세요.")) return;
-        StartCoroutine(SendEmailValidationRequest("sendEmail", emailInputField.text));
-        loggedInEmail = emailInputField.text;
+        string emailInput = emailInputField.text;
+
+        string noWhitespaceEmail = Regex.Replace(emailInput, @"\s+", "");
+        StartCoroutine(SendEmailValidationRequest("sendEmail", noWhitespaceEmail));
+        loggedInEmail = noWhitespaceEmail;
     }
 
     public void OnValidateCode()
     {
         if (!IsValidInput(codeInputField.text, "코드를 입력해주세요.")) return;
-        StartCoroutine(SendCodeValidationRequest(codeInputField.text, loggedInEmail));
+        string codeInput = codeInputField.text;
+
+        string noWhitespaceCode = Regex.Replace(codeInput, @"\s+", "");
+        StartCoroutine(SendCodeValidationRequest(noWhitespaceCode, loggedInEmail));
     }
     #endregion
 
