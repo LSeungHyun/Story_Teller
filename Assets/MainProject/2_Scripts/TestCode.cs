@@ -1,108 +1,93 @@
-//PopUpManager Test Code
-//using UnityEngine;
-//using System.Collections.Generic;
 
-//public class DataList
-//{
-//    public string objCode;
-//    public string objType;
-//    public string name;
-//    public bool isMine;
-//    public int closeTime;
-//    public string textData;
-//}
-
-//public class TestCode : MonoBehaviour
-//{
-//    public Dictionary<string, DataList> dataDictionary = new Dictionary<string, DataList>();
-
-//    private void Awake()
-//    {
-//        DataList dialogData = new DataList();
-//        dialogData.objCode = "Dialog1";
-//        dialogData.objType = "Dialog";
-//        dialogData.name = "Hero";
-//        dialogData.isMine = true;
-//        dialogData.textData = "안녕하세요! 이것은 대화 예제입니다.";
-//        dialogData.closeTime = 0;
-//        dataDictionary.Add(dialogData.objCode, dialogData);
-
-//        DataList popupData = new DataList();
-//        popupData.objCode = "Popup1";
-//        popupData.objType = "Popup";
-//        popupData.name = "경고";
-//        popupData.textData = "이것은 팝업 예제입니다.";
-//        popupData.closeTime = 5;
-//        dataDictionary.Add(popupData.objCode, popupData);
-
-//        DataList sampleData = new DataList();
-//        sampleData.objCode = "objCode";
-//        sampleData.objType = "Dialog";
-//        sampleData.name = "NPC";
-//        sampleData.isMine = false;
-//        sampleData.textData = "이 데이터는 'objCode' 키로 불러옵니다.";
-//        sampleData.closeTime = 0;
-//        if (!dataDictionary.ContainsKey("objCode"))
-//        {
-//            dataDictionary.Add("objCode", sampleData);
-//        }
-//    }
-
-//    public void DivideType()
-//    {
-//        if (!dataDictionary.ContainsKey("objCode"))
-//        {
-//            Debug.LogError("키 'objCode'에 해당하는 DataList 데이터가 없습니다.");
-//            return;
-//        }
-
-//        string typeData = dataDictionary["objCode"].objType;
-//        Debug.Log("Retrieved objType: " + typeData);
-
-//        switch (typeData)
-//        {
-//            case "Dialog":
-//                ProcessDialog(dataDictionary["objCode"]);
-//                break;
-//            case "Popup":
-//                ProcessPopup(dataDictionary["objCode"]);
-//                break;
-//            default:
-//                Debug.LogWarning("알 수 없는 objType: " + typeData);
-//                break;
-//        }
-//    }
-
-//    private void ProcessDialog(DataList data)
-//    {
-//        Debug.Log("대화(Dialog) 처리 시작");
-//        Debug.Log("캐릭터 이름: " + data.name);
-//        Debug.Log("대화 내용: " + data.textData);
-//        Debug.Log("내가 말하는지 여부(isMine): " + data.isMine);
-//    }
-
-//    private void ProcessPopup(DataList data)
-//    {
-//        Debug.Log("팝업(Popup) 처리 시작");
-//        Debug.Log("팝업 제목: " + data.name);
-//        Debug.Log("팝업 메시지: " + data.textData);
-//        if (data.closeTime > 0)
-//        {
-//            Debug.Log("팝업은 " + data.closeTime + "초 후 자동으로 닫힙니다.");
-//        }
-//        else
-//        {
-//            Debug.Log("팝업은 수동으로 닫혀야 합니다.");
-//        }
-//    }
-//}
-
-
-/*HintManager Test Code
 using UnityEngine;
 using System.Collections.Generic;
+using static Data_Dictionary;
+using System.IO;
+using System;
+using System.ComponentModel;
+using System.Linq;
 
+public class DataList
+{
+    public string objCode;
+    public string name;
+    public bool isMine;
+    public int closeTime;
+    public List<String> textData;
+}
 
+public class TestCode : MonoBehaviour
+{
+    public Dictionary<string, DataList> dicData = new Dictionary<string, DataList>();
+
+    private void Awake()
+    {
+        ReadTSV();
+    }
+
+    private void ReadTSV()
+    {
+        string filePath = Path.Combine(Application.dataPath, "MainProject/8_Excel/Data_Story.tsv");
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError("TSV 파일을 찾을 수 없습니다: " + filePath);
+            return;
+        }
+
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            while (!reader.EndOfStream)
+            {
+                string line = reader.ReadLine();
+                if (string.IsNullOrWhiteSpace(line)) continue; // 빈 줄 방지
+
+                var splitData = line.Split('\t'); // TSV는 탭('\t')으로 구분
+                if (splitData.Length < 5) continue; // 데이터가 부족한 경우 무시
+
+                bool parsedIsMine;
+                Boolean.TryParse(splitData[2], out parsedIsMine);
+                int parsedCloseTime;
+                if (!int.TryParse(splitData[3].Trim(), out parsedCloseTime))
+                {
+                    Debug.LogWarning("정수가 아님");
+                }
+
+                DataList textdata = new DataList
+                {
+                    objCode = splitData[0],
+                    name = splitData[1],
+                    isMine = parsedIsMine,
+                    closeTime = parsedCloseTime,
+                    textData = splitData[4].Split(';').ToList()
+                };
+
+                if (!dicData.ContainsKey(textdata.objCode))
+                {
+                    dicData.Add(textdata.objCode, textdata);
+                }
+                else
+                {
+                    Debug.LogWarning($"중복된 키가 감지되었습니다: {textdata.objCode}");
+                }
+            }
+        }
+
+        if (dicData.ContainsKey("Bakery_In"))
+        {
+            DataList data = dicData["Bakery_In"];
+            for (int i = 0; i < data.textData.Count; i++)
+            {
+                Debug.Log($"Line {i + 1}: {data.textData[i]}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Bakery_In 키를 찾을 수 없습니다.");
+        }
+    }
+}
+
+/*
 public class HintData
 {
     public string hintName;
