@@ -1,3 +1,4 @@
+//PopUpManager Test Code
 //using UnityEngine;
 //using System.Collections.Generic;
 
@@ -96,6 +97,8 @@
 //    }
 //}
 
+
+/*HintManager Test Code
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -189,3 +192,4 @@ public class HintManager : MonoBehaviour
         return null;
     }
 }
+*/
