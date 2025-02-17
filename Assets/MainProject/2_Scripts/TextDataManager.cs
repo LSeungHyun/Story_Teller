@@ -26,7 +26,11 @@ public class RowData
 public class TextDataManager : MonoBehaviour
 {
     [SerializeField]
-    private string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbxEiT8dlM_jo-QM3q_4NnwJ3WhlCC4Hf88SsWnNqcDVnmqIlmsaHYmHz1AmegE6lvIR/exec";
+    private string REDIRECT_URI;
+
+    // SO 레퍼런스
+    [SerializeField]
+    private RowDataContainer rowDataContainer;
 
     private void Start()
     {
@@ -41,17 +45,28 @@ public class TextDataManager : MonoBehaviour
         {
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result == UnityWebRequest.Result.ConnectionError
+                || request.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error: " + request.error);
             }
             else
             {
                 string json = request.downloadHandler.text;
-
+                // ';' 구분 파싱 로직
                 json = SplitTextData(json);
 
+                // JsonUtility로 파싱
                 SheetResponse sheetResponse = JsonUtility.FromJson<SheetResponse>(json);
+
+                // ScriptableObject에 반영
+                if (sheetResponse != null && sheetResponse.email != null && rowDataContainer != null)
+                {
+                    rowDataContainer.rowDatas = sheetResponse.email;
+                    Debug.Log("RowDataContainer updated with new data!");
+                }
+
+                // 예시: 특정 RowData 확인
                 CheckDataLog(sheetResponse);
             }
         }
@@ -78,9 +93,12 @@ public class TextDataManager : MonoBehaviour
         if (sheetResponse != null && sheetResponse.email != null)
         {
             RowData targetRow = sheetResponse.email.FirstOrDefault(r => r.objCode == "Bakery_In");
-            for (int i = 0; i < targetRow.textData.Length; i++)
+            if (targetRow != null && targetRow.textData != null)
             {
-                Debug.Log($"Line {i + 1}: {targetRow.textData[i]}");
+                for (int i = 0; i < targetRow.textData.Length; i++)
+                {
+                    Debug.Log($"Line {i + 1}: {targetRow.textData[i]}");
+                }
             }
         }
         else
