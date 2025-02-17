@@ -2,13 +2,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 [Serializable]
 public class SheetResponse
 {
     public string status;
     public string message;
-    public RowData[] data;
+    public RowData[] email;
 }
 
 [Serializable]
@@ -18,7 +20,7 @@ public class RowData
     public string name;      // 새로 추가
     public bool isMine;
     public int closeTime;
-    public string textData;
+    public string[] textData;
 }
 
 public class TextDataManager : MonoBehaviour
@@ -39,36 +41,51 @@ public class TextDataManager : MonoBehaviour
         {
             yield return request.SendWebRequest();
 
-            if (request.result == UnityWebRequest.Result.ConnectionError
-                || request.result == UnityWebRequest.Result.ProtocolError)
+            if (request.result == UnityWebRequest.Result.ConnectionError || request.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Error: " + request.error);
             }
             else
             {
                 string json = request.downloadHandler.text;
-                Debug.Log("Raw JSON: " + json);
+
+                json = SplitTextData(json);
 
                 SheetResponse sheetResponse = JsonUtility.FromJson<SheetResponse>(json);
-
-                if (sheetResponse != null && sheetResponse.status == "Gotcha" && sheetResponse.data != null)
-                {
-                    foreach (RowData row in sheetResponse.data)
-                    {
-                        Debug.Log(
-                            $"objCode: {row.objCode}, " +
-                            $"name: {row.name}, " +
-                            $"isMine: {row.isMine}, " +
-                            $"closeTime: {row.closeTime}, " +
-                            $"textData: {row.textData}\n"
-                        );
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning("No data or status != SUCCESS");
-                }
+                CheckDataLog(sheetResponse);
             }
+        }
+    }
+
+    private string SplitTextData(string json)
+    {
+        string pattern = "\"textData\"\\s*:\\s*\"([^\"]*)\"";
+        return Regex.Replace(json, pattern, match =>
+        {
+            string text = match.Groups[1].Value;
+            string[] parts = text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+            for (int i = 0; i < parts.Length; i++)
+            {
+                parts[i] = parts[i].Trim();
+            }
+            string jsonArray = "[" + string.Join(",", parts.Select(p => "\"" + p.Replace("\"", "\\\"") + "\"")) + "]";
+            return "\"textData\": " + jsonArray;
+        });
+    }
+
+    private void CheckDataLog(SheetResponse sheetResponse)
+    {
+        if (sheetResponse != null && sheetResponse.email != null)
+        {
+            RowData targetRow = sheetResponse.email.FirstOrDefault(r => r.objCode == "Bakery_In");
+            for (int i = 0; i < targetRow.textData.Length; i++)
+            {
+                Debug.Log($"Line {i + 1}: {targetRow.textData[i]}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("데이터없음");
         }
     }
 }
