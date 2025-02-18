@@ -65,9 +65,6 @@ public class TextDataManager : MonoBehaviour
                     rowDataContainer.rowDatas = sheetResponse.email;
                     Debug.Log("RowDataContainer updated with new data!");
                 }
-
-                // 예시: 특정 RowData 확인
-                CheckDataLog(sheetResponse);
             }
         }
     }
@@ -86,24 +83,5 @@ public class TextDataManager : MonoBehaviour
             string jsonArray = "[" + string.Join(",", parts.Select(p => "\"" + p.Replace("\"", "\\\"") + "\"")) + "]";
             return "\"textData\": " + jsonArray;
         });
-    }
-
-    private void CheckDataLog(SheetResponse sheetResponse)
-    {
-        if (sheetResponse != null && sheetResponse.email != null)
-        {
-            RowData targetRow = sheetResponse.email.FirstOrDefault(r => r.objCode == "Bakery_In");
-            if (targetRow != null && targetRow.textData != null)
-            {
-                for (int i = 0; i < targetRow.textData.Length; i++)
-                {
-                    Debug.Log($"Line {i + 1}: {targetRow.textData[i]}");
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning("데이터없음");
-        }
     }
 }

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField]  private RowDataContainer rowDataContainer;
+
     [HideInInspector] public Rigidbody2D rigid;
     [HideInInspector] public Vector2 inputVec;
     public List<Collider2D> interactableStack = new List<Collider2D>();
     public Material originalMaterial;
     public Material outlineMaterial;
 
-    public string objCode;
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -52,7 +53,11 @@ public class PlayerManager : MonoBehaviour
     private void UpdateInteractObject()
     {
 
-        objCode = interactableStack.Count > 0 ? interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>().objCode : null;
+        if (rowDataContainer != null)
+        {
+            rowDataContainer.objCode = interactableStack.Count > 0 ? interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>().objCode : null;
+            Debug.Log("RowDataContainer updated with new data!");
+        }
 
         for (int i = 0; i < interactableStack.Count; i++)
         {
