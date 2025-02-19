@@ -10,13 +10,14 @@ public class SheetResponse
 {
     public string status;
     public string message;
-    public RowData[] email;
+    public RowData[] email; // 이름 꼭 고쳐볼 예정
 }
 
 [Serializable]
 public class RowData
 {
     public string objCode;
+    public string dataType;
     public string name;      // 새로 추가
     public bool isMine;
     public int closeTime;
