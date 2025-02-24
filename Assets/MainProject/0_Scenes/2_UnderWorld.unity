@@ -2313,7 +2313,7 @@ Transform:
   m_GameObject: {fileID: 178796362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.43, y: -1.16, z: 0}
+  m_LocalPosition: {x: -0.98, y: -1.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15632,6 +15632,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rowDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
+  currentObjCode: 
+  targetRow:
+    objCode: 
+    dataType: 
+    IsNextObj: 
+    name: 
+    isMine: 0
+    closeTime: 0
+    dataList: []
+  nextTargetRow:
+    objCode: 
+    dataType: 
+    IsNextObj: 
+    name: 
+    isMine: 0
+    closeTime: 0
+    dataList: []
 --- !u!114 &1871142907
 MonoBehaviour:
   m_ObjectHideFlags: 0

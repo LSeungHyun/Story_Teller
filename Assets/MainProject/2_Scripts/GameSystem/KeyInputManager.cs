@@ -7,6 +7,9 @@ public class KeyInputManager : MonoBehaviour
     [SerializeField] private RowDataContainer rowDataContainer;
     private UIPopUpManager uiPopUpManager;
 
+    public string currentObjCode;
+    public RowData targetRow;
+    public RowData nextTargetRow;
     private void Awake()
     {
         uiPopUpManager = GetComponent<UIPopUpManager>();
@@ -17,6 +20,11 @@ public class KeyInputManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             HandleActionInteraction();
+            if (targetRow.IsNextObj != null)
+            {
+                nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
+                uiPopUpManager.SetNextCode(nextTargetRow);
+            }
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -26,8 +34,8 @@ public class KeyInputManager : MonoBehaviour
 
     private void HandleActionInteraction()
     {
-        string currentObjCode = rowDataContainer.objCode;
-        RowData targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        currentObjCode = rowDataContainer.objCode;
+        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
 
         if (targetRow == null || targetRow.dataList == null)
             return;

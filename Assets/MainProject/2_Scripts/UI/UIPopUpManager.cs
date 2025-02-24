@@ -19,6 +19,8 @@ public class UIPopUpManager : MonoBehaviour
 
     public List<Sprite> spriteData;
 
+    public RowData nextObjCode;
+
     public void OpenPopUpWindow(RowData targetRow)
     {
         popUpGroup.SetActive(true);
@@ -28,10 +30,20 @@ public class UIPopUpManager : MonoBehaviour
         currentTextPage = 1;
         SetPage();
     }
+
+    public void SetNextCode(RowData targetRow)
+    {
+        nextObjCode = targetRow;
+    }
     public void ClosePopUpWindow()
     {
         popUpGroup.SetActive(false);
         dialoguePopUpGroup.SetActive(false);
+        if(nextObjCode.IsNextObj != null)
+        {
+            OpenPopUpWindow(nextObjCode);
+            nextObjCode = null;
+        }
     }
 
 

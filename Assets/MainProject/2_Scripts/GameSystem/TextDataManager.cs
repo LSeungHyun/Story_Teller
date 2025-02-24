@@ -18,6 +18,7 @@ public class RowData
 {
     public string objCode;
     public string dataType;
+    public string IsNextObj;
     public string name;      // 새로 추가
     public bool isMine;
     public int closeTime;
