@@ -1,39 +1,61 @@
+using NUnit.Framework;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class UIPopUpManager : MonoBehaviour
 {
     public string objCode;
     public GameObject popUpGroup;
+    public GameObject dialoguePopUpGroup;
     public Text text;
+    public Button backBtn;
+    public Button nextBtn;
 
     public string[] textData;
     public int totalTextDataPage;
-    public int currentTextPage;
+    public int currentTextPage = 1;
 
+    public List<Sprite> spriteData;
 
     public void OpenPopUpWindow(RowData targetRow)
     {
         popUpGroup.SetActive(true);
-        textData = targetRow.textData;
-        totalTextDataPage = targetRow.textData.Length;
-        currentTextPage = 0;
+        dialoguePopUpGroup.SetActive(true);
+        textData = targetRow.dataList;
+        totalTextDataPage = targetRow.dataList.Length;
+        currentTextPage = 1;
         SetPage();
     }
+    public void ClosePopUpWindow()
+    {
+        popUpGroup.SetActive(false);
+        dialoguePopUpGroup.SetActive(false);
+    }
+
+
+    public void OpenImage(List<Sprite> spriteList)
+    {
+        spriteData = spriteList;
+    }
+
     public void NextPage()
     {
-        if(currentTextPage < totalTextDataPage - 1) { currentTextPage++; }
+        if(currentTextPage < totalTextDataPage) { currentTextPage++; }
         SetPage();
     }
 
     public void BackPage()
     {
-        if(currentTextPage > 0) { currentTextPage--; }
+        if(currentTextPage > 1) { currentTextPage--; }
         SetPage();
     }
 
     public void SetPage()
     {
-        text.text = textData[currentTextPage];
+        text.text = textData[currentTextPage-1];
+        backBtn.gameObject.SetActive(currentTextPage > 1);
+        nextBtn.gameObject.SetActive(currentTextPage < totalTextDataPage);
     }
 }

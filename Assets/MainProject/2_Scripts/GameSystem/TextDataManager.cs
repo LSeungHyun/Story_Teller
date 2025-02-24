@@ -21,7 +21,13 @@ public class RowData
     public string name;      // 새로 추가
     public bool isMine;
     public int closeTime;
-    public string[] textData;
+    public string[] dataList;
+}
+
+public class Category
+{
+    public string categoryName;
+    public RowData[] rowDatas;
 }
 
 public class TextDataManager : MonoBehaviour
@@ -72,7 +78,7 @@ public class TextDataManager : MonoBehaviour
 
     private string SplitTextData(string json)
     {
-        string pattern = "\"textData\"\\s*:\\s*\"([^\"]*)\"";
+        string pattern = "\"dataList\"\\s*:\\s*\"([^\"]*)\"";
         return Regex.Replace(json, pattern, match =>
         {
             string text = match.Groups[1].Value;
@@ -82,7 +88,7 @@ public class TextDataManager : MonoBehaviour
                 parts[i] = parts[i].Trim();
             }
             string jsonArray = "[" + string.Join(",", parts.Select(p => "\"" + p.Replace("\"", "\\\"") + "\"")) + "]";
-            return "\"textData\": " + jsonArray;
+            return "\"dataList\": " + jsonArray;
         });
     }
 }
