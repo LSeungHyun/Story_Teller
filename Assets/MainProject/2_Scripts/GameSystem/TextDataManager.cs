@@ -10,7 +10,7 @@ public class SheetResponse
 {
     public string status;
     public string message;
-    public RowData[] email; // 이름 꼭 고쳐볼 예정
+    public RowData[] data; // 이름 꼭 고쳐볼 예정
 }
 
 [Serializable]
@@ -67,11 +67,12 @@ public class TextDataManager : MonoBehaviour
                 // JsonUtility로 파싱
                 SheetResponse sheetResponse = JsonUtility.FromJson<SheetResponse>(json);
 
+                Debug.Log("유니티로 가져온 gs : " + sheetResponse.status + sheetResponse.message);
                 // ScriptableObject에 반영
-                if (sheetResponse != null && sheetResponse.email != null && rowDataContainer != null)
+                if (sheetResponse != null && sheetResponse.data != null && rowDataContainer != null)
                 {
-                    rowDataContainer.rowDatas = sheetResponse.email;
-                    Debug.Log("RowDataContainer updated with new data!");
+                    rowDataContainer.rowDatas = sheetResponse.data;
+                    Debug.Log(sheetResponse.message);
                 }
             }
         }
