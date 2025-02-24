@@ -37,14 +37,21 @@ public class UIPopUpManager : MonoBehaviour
     }
     public void ClosePopUpWindow()
     {
-        popUpGroup.SetActive(false);
-        dialoguePopUpGroup.SetActive(false);
-        if(nextObjCode.IsNextObj != null)
-        {
-            OpenPopUpWindow(nextObjCode);
-            nextObjCode = null;
-        }
+        // 1) GameManager에서 현재 세션(IGameSession) 객체를 가져옴
+        var session = GameManager.Instance.Session;
+        // 2) 세션에게 팝업 닫기 로직 위임
+        session.ClosePopUp(this);
     }
+    //public void ClosePopUpWindow()
+    //{
+    //    popUpGroup.SetActive(false);
+    //    dialoguePopUpGroup.SetActive(false);
+    //    if(nextObjCode.IsNextObj != null)
+    //    {
+    //        OpenPopUpWindow(nextObjCode);
+    //        nextObjCode = null;
+    //    }
+    //}
 
 
     public void OpenImage(List<Sprite> spriteList)
