@@ -5,13 +5,9 @@ using System.Collections.Generic;
 public class KeyInputManager : MonoBehaviour
 {
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
-    [SerializeField] private CenterLabelContainer centerLabelContainer;
-    [SerializeField] private DialogueContainer dialogueContainer;
-    [SerializeField] private BubbleContainer bubbleContainer;
-    [SerializeField] private ImageContainer imageContainer;
-    [SerializeField] private QuestContainer questContainer;
-    [SerializeField] private HintContainer hintContainer;
     public UIPopUpManager uiPopUpManager;
+    public UITextSetter uiTextSetter;
+    public UIImageSetter uiImageSetter;
 
     public string currentObjCode;
     public string currentObjType;
@@ -31,60 +27,61 @@ public class KeyInputManager : MonoBehaviour
 
     private void HandleActionInteraction(string currentObjCode)
     {
-        currentObjType = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode).dataType;
+        currentObjType = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode).dataType.ToLower();
 
         if (currentObjType == null)
             return;
 
-        switch (currentObjType)
+        if (currentObjType.Contains("hint"))
         {
-            case "centerLabel":
-                Debug.Log("이건 센터라벨입니다ㅣ");
-                break;
-            case "dialogue":
-                SetDialogue(currentObjCode);
-                break;
-            case "image":
-                SetImagePopUp(currentObjCode);
-                break;
-            default:
-                Debug.LogWarning("데이터타입 없음");
-                break;
+            Debug.Log("이건 힌트입니다");
+            return;
+        }
+        if (currentObjType.Contains("bubble"))
+        {
+            Debug.Log("이건 말풍선입니다");
+            return;
+        }
+        if (currentObjType.Contains("centerlabel"))
+        {
+            Debug.Log("이건 센터라벨입니다");
+            return;
         }
 
-/*        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
 
-        if (targetRow.IsNextObj != null)
+        if (currentObjType.Contains("dialogue"))
         {
-            nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
-            uiPopUpManager.SetNextCode(nextTargetRow);
-        }*/
+            uiTextSetter.SetTextData(currentObjCode);
 
-    }
+            if (currentObjType.Contains("quest"))
+                uiPopUpManager.OpenQuestWindow();
+            else 
+                uiPopUpManager.OpenDefaultWindow();
 
-    private void SetDialogue(string currentObjCode)
-    {
-        DialogueData targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        uiPopUpManager.OpenPopUpWindow(targetRow);
-    }
-    private void SetImagePopUp(string currentObjCode)
-    {
-        ImageData targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        var sprites = new List<Sprite>();
-
-        foreach (string resource in targetRow.dataList)
-        {
-            string resourceName = resource.Trim(); 
-            string resourcePath = "ImagePopup/" + (resourceName.Contains("_") ? resourceName.Replace('_', '/') : resourceName);
-
-            Sprite sprite = Resources.Load<Sprite>(resourcePath);
-            if (sprite == null)
-            {
-                Debug.LogWarning("Failed to load sprite: " + resourceName);
-            }
-            sprites.Add(sprite);
+            return;
         }
 
-        uiPopUpManager.OpenImage(sprites);
+        if (currentObjType.Contains("image"))
+        {
+            uiImageSetter.SetImageData(currentObjCode);
+
+            if (currentObjType.Contains("quest"))
+                uiPopUpManager.OpenQuestWindow();
+            else
+                uiPopUpManager.OpenDefaultWindow();
+
+            return;
+        }
+
+
+
+        /*        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+
+                if (targetRow.IsNextObj != null)
+                {
+                    nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
+                    uiPopUpManager.SetNextCode(nextTargetRow);
+                }*/
+
     }
 }
