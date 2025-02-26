@@ -4,27 +4,26 @@ using System.Collections.Generic;
 
 public class KeyInputManager : MonoBehaviour
 {
-    [SerializeField] private RowDataContainer rowDataContainer;
-    private UIPopUpManager uiPopUpManager;
+    [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
+    [SerializeField] private CenterLabelContainer centerLabelContainer;
+    [SerializeField] private DialogueContainer dialogueContainer;
+    [SerializeField] private BubbleContainer bubbleContainer;
+    [SerializeField] private ImageContainer imageContainer;
+    [SerializeField] private QuestContainer questContainer;
+    [SerializeField] private HintContainer hintContainer;
+    public UIPopUpManager uiPopUpManager;
 
     public string currentObjCode;
+    public string currentObjType;
     public RowData targetRow;
     public RowData nextTargetRow;
-    private void Awake()
-    {
-        uiPopUpManager = GetComponent<UIPopUpManager>();
-    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            HandleActionInteraction();
-            if (targetRow.IsNextObj != null)
-            {
-                nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
-                uiPopUpManager.SetNextCode(nextTargetRow);
-            }
+            currentObjCode = objDataTypeContainer.objCode;
+            HandleActionInteraction(currentObjCode);
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -32,36 +31,50 @@ public class KeyInputManager : MonoBehaviour
         }
     }
 
-    private void HandleActionInteraction()
+    private void HandleActionInteraction(string currentObjCode)
     {
-        currentObjCode = rowDataContainer.objCode;
-        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        currentObjType = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode).dataType;
 
-        if (targetRow == null || targetRow.dataList == null)
+        if (currentObjType == null)
             return;
 
-        switch (targetRow.dataType)
+        switch (currentObjType)
         {
             case "centerLabel":
                 Debug.Log("이건 센터라벨입니다ㅣ");
                 break;
             case "dialogue":
-                uiPopUpManager.OpenPopUpWindow(targetRow);
+                SetDialogue(currentObjCode);
                 break;
             case "image":
-                TrimImageList(targetRow.dataList);
+                SetImagePopUp(currentObjCode);
                 break;
             default:
                 Debug.LogWarning("데이터타입 없음");
                 break;
         }
+
+/*        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+
+        if (targetRow.IsNextObj != null)
+        {
+            nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
+            uiPopUpManager.SetNextCode(nextTargetRow);
+        }*/
+
     }
 
-    private void TrimImageList(string[] imageResources)
+    private void SetDialogue(string currentObjCode)
     {
+        DialogueData targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        uiPopUpManager.OpenPopUpWindow(targetRow);
+    }
+    private void SetImagePopUp(string currentObjCode)
+    {
+        ImageData targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
         var sprites = new List<Sprite>();
 
-        foreach (string resource in imageResources)
+        foreach (string resource in targetRow.dataList)
         {
             string resourceName = resource.Trim(); 
             string resourcePath = "ImagePopup/" + (resourceName.Contains("_") ? resourceName.Replace('_', '/') : resourceName);

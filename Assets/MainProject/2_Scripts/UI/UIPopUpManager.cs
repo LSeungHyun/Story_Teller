@@ -10,26 +10,37 @@ public class UIPopUpManager : MonoBehaviour
     public GameObject popUpGroup;
     public GameObject dialoguePopUpGroup;
     public Text text;
+    public SpriteRenderer sprite;
     public Button backBtn;
     public Button nextBtn;
 
     public string[] textData;
-    public int totalTextDataPage;
-    public int currentTextPage = 1;
-
     public List<Sprite> spriteData;
+    public int totalDataPage;
+    public int currentDataPage = 1;
 
     public RowData nextObjCode;
 
-    public void OpenPopUpWindow(RowData targetRow)
+    public void OpenPopUpWindow(DialogueData targetRow)
     {
         popUpGroup.SetActive(true);
         dialoguePopUpGroup.SetActive(true);
         textData = targetRow.dataList;
-        totalTextDataPage = targetRow.dataList.Length;
-        currentTextPage = 1;
+        totalDataPage = targetRow.dataList.Length;
+        currentDataPage = 1;
         SetPage();
     }
+
+    public void OpenImage(List<Sprite> spriteList)
+    {
+        popUpGroup.SetActive(true);
+        dialoguePopUpGroup.SetActive(true);
+        spriteData = spriteList;
+        totalDataPage = spriteList.Count;
+        currentDataPage = 1;
+        SetPage();
+    }
+
 
     public void SetNextCode(RowData targetRow)
     {
@@ -54,27 +65,23 @@ public class UIPopUpManager : MonoBehaviour
     //}
 
 
-    public void OpenImage(List<Sprite> spriteList)
-    {
-        spriteData = spriteList;
-    }
-
     public void NextPage()
     {
-        if(currentTextPage < totalTextDataPage) { currentTextPage++; }
+        if(currentDataPage < totalDataPage) { currentDataPage++; }
         SetPage();
     }
 
     public void BackPage()
     {
-        if(currentTextPage > 1) { currentTextPage--; }
+        if(currentDataPage > 1) { currentDataPage--; }
         SetPage();
     }
 
     public void SetPage()
     {
-        text.text = textData[currentTextPage-1];
-        backBtn.gameObject.SetActive(currentTextPage > 1);
-        nextBtn.gameObject.SetActive(currentTextPage < totalTextDataPage);
+        text.text = textData[currentDataPage-1];
+        sprite.sprite = spriteData[currentDataPage - 1];
+        backBtn.gameObject.SetActive(currentDataPage > 1);
+        nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
     }
 }

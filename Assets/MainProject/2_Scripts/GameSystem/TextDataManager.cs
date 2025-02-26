@@ -42,53 +42,51 @@ public class RowData
 [Serializable]
 public class ObjDataType
 {
-    public string objName;
-    public string objType;
+    public string objCode;
+    public string dataType;
 }
 
 [Serializable]
 public class CenterLabelData
 {
-    public string hintCode;
-    public string answer;
-    public string isUsed;
-    public string hintTextData;
+    public string objCode;
+    public int closeTime;
+    public string[] dataList;
 }
 
 [Serializable]
 public class DialogueData
 {
-    public string hintCode;
-    public string answer;
-    public string isUsed;
-    public string hintTextData;
+    public string objCode;
+    public string IsNextObj;
+    public bool isMine;
+    public string[] dataList;
 }
 
 [Serializable]
 public class BubbleData
 {
-    public string hintCode;
-    public string answer;
-    public string isUsed;
-    public string hintTextData;
+    public string objCode;
+    public int closeTime;
+    public string[] dataList;
 }
 
 [Serializable]
 public class ImageData
 {
-    public string hintCode;
-    public string answer;
-    public string isUsed;
-    public string hintTextData;
+    public string objCode;
+    public string IsNextObj;
+    public bool isMine;
+    public string[] dataList;
 }
 
 [Serializable]
 public class QuestData
 {
-    public string hintCode;
-    public string answer;
-    public string isUsed;
-    public string hintTextData;
+    public string objCode;
+    public string IsNextObj;
+    public bool isMine;
+    public string[] dataList;
 }
 
 [Serializable]
@@ -155,7 +153,7 @@ public class TextDataManager : MonoBehaviour
                 string json = request.downloadHandler.text;
 
                 // 필요 시 ';' 파싱 등 추가 처리
-                // json = SplitTextData(json);
+                json = SplitTextData(json);
 
                 // 파싱
                 AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
@@ -243,4 +241,5 @@ public class TextDataManager : MonoBehaviour
             return "\"dataList\": " + jsonArray;
         });
     }
+
 }
