@@ -4,5 +4,5 @@ using UnityEngine;
 public class RowDataContainer : ScriptableObject
 {
     public string objCode;
-    public RowData[] rowData;
+    public RowData[] rowDatas;
 }

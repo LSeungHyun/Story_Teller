@@ -170,7 +170,7 @@ public class TextDataManager : MonoBehaviour
                     // 1) RowData
                     if (rowDataContainer != null && resp.data.textData != null)
                     {
-                        rowDataContainer.rowData = resp.data.textData;
+                        rowDataContainer.rowDatas = resp.data.textData;
                         Debug.Log("RowData loaded: " + resp.data.textData.Length);
                     }
 
