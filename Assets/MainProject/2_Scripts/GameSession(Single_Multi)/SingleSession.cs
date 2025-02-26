@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class SingleSession : IGameSession
+public class SingleSession : AbstractGameSession
 {
-    public void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
     {
         // ½Ì±Û ¸ðµå¿ë ÆË¾÷ ´Ý±â ·ÎÁ÷
         uiPopUpManager.popUpGroup.SetActive(false);

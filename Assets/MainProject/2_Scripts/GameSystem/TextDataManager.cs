@@ -14,10 +14,13 @@ public class AllSheetsResponse
     public AllData data;
 }
 
+
+//Apps script에서 반환해주는 var allData 내부의 변수명과
+//Unity에서 선언한 배열의 변수 명이 일치해야 받아와짐
 [Serializable]
-public class AllData
+public class AllData 
 {
-    public RowData[] rowData;       // 기존 TextDataSheet
+    public RowData[] textData;       // 기존 TextDataSheet
     public ObjDataType[] objDataType;    // ObjDataTypeSheet
     public CenterLabelData[] centerLabelData;
     public DialogueData[] dialogueData;
@@ -155,7 +158,7 @@ public class TextDataManager : MonoBehaviour
                 string json = request.downloadHandler.text;
 
                 // 필요 시 ';' 파싱 등 추가 처리
-                // json = SplitTextData(json);
+                json = SplitTextData(json);
 
                 // 파싱
                 AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
@@ -165,10 +168,10 @@ public class TextDataManager : MonoBehaviour
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
 
                     // 1) RowData
-                    if (rowDataContainer != null && resp.data.rowData != null)
+                    if (rowDataContainer != null && resp.data.textData != null)
                     {
-                        rowDataContainer.rowDatas = resp.data.rowData;
-                        Debug.Log("RowData loaded: " + resp.data.rowData.Length);
+                        rowDataContainer.rowData = resp.data.textData;
+                        Debug.Log("RowData loaded: " + resp.data.textData.Length);
                     }
 
                     // 2) CenterLabelData
