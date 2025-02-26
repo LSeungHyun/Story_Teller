@@ -15,8 +15,6 @@ public class KeyInputManager : MonoBehaviour
 
     public string currentObjCode;
     public string currentObjType;
-    public RowData targetRow;
-    public RowData nextTargetRow;
 
     private void Update()
     {

@@ -6,7 +6,6 @@ using System.Collections.Generic;
 
 public class UIPopUpManager : MonoBehaviour
 {
-    public string objCode;
     public GameObject popUpGroup;
     public GameObject dialoguePopUpGroup;
     public Text text;
@@ -79,8 +78,15 @@ public class UIPopUpManager : MonoBehaviour
 
     public void SetPage()
     {
-        text.text = textData[currentDataPage-1];
-        sprite.sprite = spriteData[currentDataPage - 1];
+        if(textData.Length > 0)
+        {
+            text.text = textData[currentDataPage - 1];
+        
+        }
+        if(spriteData.Count > 0)
+        {
+            sprite.sprite = spriteData[currentDataPage - 1];
+        }
         backBtn.gameObject.SetActive(currentDataPage > 1);
         nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
     }
