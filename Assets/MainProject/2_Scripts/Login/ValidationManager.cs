@@ -11,7 +11,7 @@ public class ValidationManager : MonoBehaviour
     #region Constants
     private static class AuthConstants
     {
-        public const string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbwSNHws0ZE-0n0pe0SSopL9boDOQ4wqLwmpxrzYaotcoQC4s6ddj0xY8aTXO43_59sr/exec";
+        public const string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec";
     }
     #endregion
 

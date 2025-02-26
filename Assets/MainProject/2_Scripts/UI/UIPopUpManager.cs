@@ -10,14 +10,14 @@ public class UIPopUpManager : MonoBehaviour
     public GameObject popUpGroup;
     public GameObject dialoguePopUpGroup;
     public Text text;
-    public SpriteRenderer sprite;
     public Button backBtn;
     public Button nextBtn;
 
     public string[] textData;
+    public int totalTextDataPage;
+    public int currentTextPage = 1;
+
     public List<Sprite> spriteData;
-    public int totalDataPage;
-    public int currentPage = 1;
 
     public RowData nextObjCode;
 
@@ -26,8 +26,8 @@ public class UIPopUpManager : MonoBehaviour
         popUpGroup.SetActive(true);
         dialoguePopUpGroup.SetActive(true);
         textData = targetRow.dataList;
-        totalDataPage = targetRow.dataList.Length;
-        currentPage = 1;
+        totalTextDataPage = targetRow.dataList.Length;
+        currentTextPage = 1;
         SetPage();
     }
 
@@ -37,47 +37,44 @@ public class UIPopUpManager : MonoBehaviour
     }
     public void ClosePopUpWindow()
     {
-        popUpGroup.SetActive(false);
-        dialoguePopUpGroup.SetActive(false);
-        text.text = "";
-        sprite.sprite = null;
-        if (nextObjCode.IsNextObj != null)
-        {
-            OpenPopUpWindow(nextObjCode);
-            nextObjCode = null;
-        }
+        // 1) GameManager에서 현재 세션(IGameSession) 객체를 가져옴
+        var session = GameManager.Instance.Session;
+        // 2) 세션에게 팝업 닫기 로직 위임
+        session.ClosePopUp(this);
     }
+    //public void ClosePopUpWindow()
+    //{
+    //    popUpGroup.SetActive(false);
+    //    dialoguePopUpGroup.SetActive(false);
+    //    if(nextObjCode.IsNextObj != null)
+    //    {
+    //        OpenPopUpWindow(nextObjCode);
+    //        nextObjCode = null;
+    //    }
+    //}
 
 
     public void OpenImage(List<Sprite> spriteList)
     {
-        popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
         spriteData = spriteList;
-        totalDataPage = spriteList.Count;
-        currentPage = 1;
-        SetPage();
     }
 
     public void NextPage()
     {
-        if (currentPage < totalDataPage) { currentPage++; }
+        if(currentTextPage < totalTextDataPage) { currentTextPage++; }
         SetPage();
     }
 
     public void BackPage()
     {
-        if (currentPage > 1) { currentPage--; }
+        if(currentTextPage > 1) { currentTextPage--; }
         SetPage();
     }
 
     public void SetPage()
     {
-        if (textData.Length > 0)
-            text.text = textData[currentPage - 1];
-        if (spriteData.Count > 0)
-            sprite.sprite = spriteData[currentPage - 1];
-        backBtn.gameObject.SetActive(currentPage > 1);
-        nextBtn.gameObject.SetActive(currentPage < totalDataPage);
+        text.text = textData[currentTextPage-1];
+        backBtn.gameObject.SetActive(currentTextPage > 1);
+        nextBtn.gameObject.SetActive(currentTextPage < totalTextDataPage);
     }
 }
