@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MultiSession : IGameSession
+public class MultiSession : AbstractGameSession
 {
-    public void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
     {
         // 멀티(Photon) 모드용 팝업 닫기 로직
         uiPopUpManager.popUpGroup.SetActive(false);
