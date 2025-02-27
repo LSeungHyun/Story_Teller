@@ -2,20 +2,21 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Android.Gradle.Manifest;
+using NUnit.Framework.Interfaces;
 
 public class UIImageSetter : UIContentsManager
 {
     [SerializeField] private ImageContainer imageContainer;
-
+    public ImageData targetRow;
     public SpriteRenderer spriteDisplay;
     public List<Sprite> spriteData;
 
     public void SetImageData(string currentObjCode)
     {
-        ImageData targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
 
         spriteData = SetImage(targetRow);
-        totalDataPage = (spriteData != null) ? spriteData.Count : 0;
+        totalDataPage = spriteData != null ? spriteData.Count : 0;
         currentDataPage = 1;
         DisplayPage();
     }
@@ -37,7 +38,7 @@ public class UIImageSetter : UIContentsManager
         return sprites;
     }
 
-    public void ClearImageData()
+    public override void ClearData()
     {
         spriteData = new List<Sprite>();
         if (spriteDisplay != null)

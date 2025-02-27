@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class UIPopUpManager : MonoBehaviour
 {
+    public KeyInputManager keyInputManager;
+    
     public GameObject popUpGroup;
     public GameObject defaultPopUpGroup;
     public GameObject questPopUpGroup;

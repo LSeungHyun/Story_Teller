@@ -47,6 +47,7 @@ public class ObjDataType
 {
     public string objCode;
     public string dataType;
+    public bool isMine;
 }
 
 [Serializable]
@@ -62,7 +63,6 @@ public class DialogueData
 {
     public string objCode;
     public string IsNextObj;
-    public bool isMine;
     public string[] dataList;
 }
 
@@ -79,7 +79,6 @@ public class ImageData
 {
     public string objCode;
     public string IsNextObj;
-    public bool isMine;
     public string[] dataList;
 }
 
@@ -88,7 +87,6 @@ public class QuestData
 {
     public string objCode;
     public string IsNextObj;
-    public bool isMine;
     public string[] dataList;
 }
 
@@ -157,20 +155,20 @@ public class TextDataManager : MonoBehaviour
 
                 // 필요 시 ';' 파싱 등 추가 처리
                 json = SplitTextData(json);
-
+                json = checkBooleanValue(json);
                 // 파싱
                 AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
 
                 if (resp != null && resp.data != null)
                 {
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
-
+/*
                     // 1) RowData
                     if (rowDataContainer != null && resp.data.textData != null)
                     {
                         rowDataContainer.rowDatas = resp.data.textData;
                         Debug.Log("RowData loaded: " + resp.data.textData.Length);
-                    }
+                    }*/
 
                     // 2) CenterLabelData
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
@@ -243,6 +241,21 @@ public class TextDataManager : MonoBehaviour
             string jsonArray = "[" + string.Join(",", parts.Select(p => "\"" + p.Replace("\"", "\\\"") + "\"")) + "]";
             return "\"dataList\": " + jsonArray;
         });
+    }
+
+    private string checkBooleanValue(string json)
+    {
+        AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
+
+        if (resp.data?.textData != null)
+        {
+            foreach (var item in resp.data.textData)
+            {
+                item.isMine = (item.isMine.ToString().ToLower() == "true");
+            }
+        }
+
+        return JsonUtility.ToJson(resp);
     }
 
 }

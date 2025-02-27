@@ -33,6 +33,6 @@ public abstract class UIContentsManager : MonoBehaviour
         if (nextBtn != null)
             nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
     }
-
+    public abstract void ClearData();
     public abstract void DisplayPage();
 }

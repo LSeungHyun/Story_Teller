@@ -4,21 +4,21 @@ using System.Linq;
 
 public class UITextSetter : UIContentsManager
 {
-    [SerializeField] private DialogueContainer dialogueContainer;
-
+    [SerializeField] public DialogueContainer dialogueContainer;
+    public DialogueData targetRow;
     public Text textDisplay;
     public string[] textData;
 
     public void SetTextData(string currentObjCode)
     {
-        DialogueData targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
         
         textData = targetRow.dataList;
-        totalDataPage = (targetRow.dataList != null) ? targetRow.dataList.Length : 0;
+        totalDataPage = textData != null ? textData.Length : 0;
         currentDataPage = 1;
         DisplayPage();
     }
-    public void ClearTextData()
+    public override void ClearData()
     {
         textData = new string[0];
         if (textDisplay != null)
