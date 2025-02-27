@@ -26,13 +26,10 @@ public class UIImageSetter : UIContentsManager
 
         foreach (string resource in targetRow.dataList)
         {
-            string resourceName = resource.Trim();
-            string resourcePath = "ImagePopup/" + (resourceName.Contains("_") ? resourceName.Replace('_', '/') : resourceName);
-
-            Sprite sprite = Resources.Load<Sprite>(resourcePath);
+            Sprite sprite = Resources.Load<Sprite>(resource);
             if (sprite == null)
             {
-                Debug.LogWarning("Failed to load sprite: " + resourceName);
+                Debug.LogWarning("Failed to load sprite: " + resource);
             }
             sprites.Add(sprite);
         }
