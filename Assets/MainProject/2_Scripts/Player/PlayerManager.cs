@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField]  private RowDataContainer rowDataContainer;
+    [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
 
     [HideInInspector] public Rigidbody2D rigid;
     [HideInInspector] public Vector2 inputVec;
@@ -53,9 +53,9 @@ public class PlayerManager : MonoBehaviour
     private void UpdateInteractObject()
     {
 
-        if (rowDataContainer != null)
+        if (objDataTypeContainer != null)
         {
-            rowDataContainer.objCode = interactableStack.Count > 0 ? interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>().objCode : null;
+            objDataTypeContainer.objCode = interactableStack.Count > 0 ? interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>().objCode : null;
             Debug.Log("RowDataContainer updated with new data!");
         }
 

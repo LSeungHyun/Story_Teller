@@ -6,34 +6,25 @@ using System.Collections.Generic;
 
 public class UIPopUpManager : MonoBehaviour
 {
-    public string objCode;
+    public KeyInputManager keyInputManager;
+    
     public GameObject popUpGroup;
-    public GameObject dialoguePopUpGroup;
-    public Text text;
-    public Button backBtn;
-    public Button nextBtn;
+    public GameObject defaultPopUpGroup;
+    public GameObject questPopUpGroup;
+    public GameObject windowPopUp;
 
-    public string[] textData;
-    public int totalTextDataPage;
-    public int currentTextPage = 1;
-
-    public List<Sprite> spriteData;
-
-    public RowData nextObjCode;
-
-    public void OpenPopUpWindow(RowData targetRow)
+    public void OpenDefaultWindow()
     {
         popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
-        textData = targetRow.dataList;
-        totalTextDataPage = targetRow.dataList.Length;
-        currentTextPage = 1;
-        SetPage();
+        defaultPopUpGroup.SetActive(true);
+        windowPopUp.SetActive(true);
     }
 
-    public void SetNextCode(RowData targetRow)
+    public void OpenQuestWindow()
     {
-        nextObjCode = targetRow;
+        popUpGroup.SetActive(true);
+        questPopUpGroup.SetActive(true);
+        windowPopUp.SetActive(true);
     }
     public void ClosePopUpWindow()
     {
@@ -41,40 +32,5 @@ public class UIPopUpManager : MonoBehaviour
         var session = GameManager.Instance.Session;
         // 2) 세션에게 팝업 닫기 로직 위임
         session.ClosePopUp(this);
-    }
-    //public void ClosePopUpWindow()
-    //{
-    //    popUpGroup.SetActive(false);
-    //    dialoguePopUpGroup.SetActive(false);
-    //    if(nextObjCode.IsNextObj != null)
-    //    {
-    //        OpenPopUpWindow(nextObjCode);
-    //        nextObjCode = null;
-    //    }
-    //}
-
-
-    public void OpenImage(List<Sprite> spriteList)
-    {
-        spriteData = spriteList;
-    }
-
-    public void NextPage()
-    {
-        if(currentTextPage < totalTextDataPage) { currentTextPage++; }
-        SetPage();
-    }
-
-    public void BackPage()
-    {
-        if(currentTextPage > 1) { currentTextPage--; }
-        SetPage();
-    }
-
-    public void SetPage()
-    {
-        text.text = textData[currentTextPage-1];
-        backBtn.gameObject.SetActive(currentTextPage > 1);
-        nextBtn.gameObject.SetActive(currentTextPage < totalTextDataPage);
     }
 }
