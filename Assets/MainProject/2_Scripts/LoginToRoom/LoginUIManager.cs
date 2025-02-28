@@ -7,6 +7,7 @@ public class LoginUIManager : MonoBehaviour
 {
     #region UI Elements
     [Header("Logo UI")]
+    public GameObject leda_Logo_Group;
     public Image leda_Logo;
     public GameObject black_BackGround;
 
@@ -23,6 +24,8 @@ public class LoginUIManager : MonoBehaviour
     [Header("Code UI")]
     public InputField codeInputField;
     public GameObject codeCheckGroup;
+    public GameObject codeErrorGroup;
+    public GameObject accessCompleted;
     public Text codeCheckText;
 
     [Header("Title Start UI")]
@@ -80,6 +83,7 @@ public class LoginUIManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         Start_Group.SetActive(true);
+        leda_Logo_Group.SetActive(false);
         StartCoroutine(SmoothBlink());
     }
 
@@ -133,6 +137,18 @@ public class LoginUIManager : MonoBehaviour
     {
         emailCheckGroup.SetActive(true);
     }
+    public void ActiveCodeAccessGroup()
+    {
+        emailCheckGroup.SetActive(false);
+        codeCheckGroup.SetActive(false);
+        accessCompleted.SetActive(true);
+    }
+    public void ActiveCodeErrorGroup()
+    {
+        codeCheckGroup.SetActive(false);
+        codeErrorGroup.SetActive(true);
+    }
+
     public IEnumerator DotAnimation()
     {
         int dotCount = 0;

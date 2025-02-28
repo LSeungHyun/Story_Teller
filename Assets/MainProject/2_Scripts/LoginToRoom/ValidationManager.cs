@@ -154,11 +154,11 @@ public class ValidationManager : MonoBehaviour
 
             case "CODE_OK":
                 //resultText.text = " 코드 인증 완료!";
-                loginUIManager.TitleUIManagement();
+                loginUIManager.ActiveCodeAccessGroup();
                 break;
 
             case "ERROR":
-                //resultText.text = $" 오류 발생: {response.message}";
+                loginUIManager.ActiveCodeErrorGroup();
                 break;
 
             default:
