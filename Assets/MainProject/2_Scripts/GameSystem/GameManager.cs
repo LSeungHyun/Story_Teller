@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [SerializeField]
-    private AbstractGameSession currentSession;
+    private IGameSession currentSession;
 
     [SerializeField] private bool isMulti = false;
     // 에디터나 다른 로직에서 싱글/멀티 여부 지정
@@ -29,5 +29,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public AbstractGameSession Session => currentSession;
+    public IGameSession Session => currentSession;
 }

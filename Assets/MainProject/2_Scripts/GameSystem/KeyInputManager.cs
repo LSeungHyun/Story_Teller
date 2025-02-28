@@ -1,27 +1,26 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using System.Net.WebSockets;
 
 public class KeyInputManager : MonoBehaviour
 {
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
-    [SerializeField] private CenterLabelContainer centerLabelContainer;
-    [SerializeField] private DialogueContainer dialogueContainer;
-    [SerializeField] private BubbleContainer bubbleContainer;
-    [SerializeField] private ImageContainer imageContainer;
-    [SerializeField] private QuestContainer questContainer;
-    [SerializeField] private HintContainer hintContainer;
     public UIPopUpManager uiPopUpManager;
+    public UITextSetter uiTextSetter;
+    public UIImageSetter uiImageSetter;
 
+    public ObjDataType currentRow;
     public string currentObjCode;
     public string currentObjType;
+    public bool currentObjisMine;
 
     private void Update()
-    {
+    {   
         if (Input.GetKeyDown(KeyCode.F))
         {
             currentObjCode = objDataTypeContainer.objCode;
-            HandleActionInteraction(currentObjCode);
+            SetCurrentObjData(currentObjCode);
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -29,62 +28,60 @@ public class KeyInputManager : MonoBehaviour
         }
     }
 
-    private void HandleActionInteraction(string currentObjCode)
+    public void SetCurrentObjData(string currentObjCode)
     {
-        currentObjType = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode).dataType;
-
-        if (currentObjType == null)
-            return;
-
-        switch (currentObjType)
-        {
-            case "centerLabel":
-                Debug.Log("이건 센터라벨입니다ㅣ");
-                break;
-            case "dialogue":
-                SetDialogue(currentObjCode);
-                break;
-            case "image":
-                SetImagePopUp(currentObjCode);
-                break;
-            default:
-                Debug.LogWarning("데이터타입 없음");
-                break;
-        }
-
-/*        targetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-
-        if (targetRow.IsNextObj != null)
-        {
-            nextTargetRow = rowDataContainer.rowDatas.FirstOrDefault(r => r.objCode == targetRow.IsNextObj);
-            uiPopUpManager.SetNextCode(nextTargetRow);
-        }*/
-
+        currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+        var session = GameManager.Instance.Session;
+        session.HandleActionInteraction(this);
     }
 
-    private void SetDialogue(string currentObjCode)
-    {
-        DialogueData targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        uiPopUpManager.OpenPopUpWindow(targetRow);
-    }
-    private void SetImagePopUp(string currentObjCode)
-    {
-        ImageData targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        var sprites = new List<Sprite>();
+    /* private void HandleActionInteraction(ObjDataType currentRow)
+     {
+         currentObjType = currentRow.dataType.ToLower();
+         currentObjisMine = currentRow.isMine;
 
-        foreach (string resource in targetRow.dataList)
-        {
-            string resourceName = resource.Trim(); 
-            string resourcePath = "ImagePopup/" + (resourceName.Contains("_") ? resourceName.Replace('_', '/') : resourceName);
+         if (currentObjType == null)
+             return;
 
-            Sprite sprite = Resources.Load<Sprite>(resourcePath);
-            if (sprite == null)
-            {
-                Debug.LogWarning("Failed to load sprite: " + resourceName);
-            }
-            sprites.Add(sprite);
-        }
+         if (currentObjType.Contains("hint"))
+         {
+             Debug.Log("이건 힌트입니다");
+             return;
+         }
+         if (currentObjType.Contains("bubble"))
+         {
+             Debug.Log("이건 말풍선입니다");
+             return;
+         }
+         if (currentObjType.Contains("centerlabel"))
+         {
+             Debug.Log("이건 센터라벨입니다");
+             return;
+         }
 
-        uiPopUpManager.OpenImage(sprites);
-    }
+
+         if (currentObjType.Contains("dialogue"))
+         {
+             uiTextSetter.SetTextData(currentObjCode);
+
+             if (currentObjType.Contains("quest"))
+                 uiPopUpManager.OpenQuestWindow();
+             else 
+                 uiPopUpManager.OpenDefaultWindow();
+
+             return;
+         }
+
+         if (currentObjType.Contains("image"))
+         {
+             uiImageSetter.SetImageData(currentObjCode);
+
+             if (currentObjType.Contains("quest"))
+                 uiPopUpManager.OpenQuestWindow();
+             else
+                 uiPopUpManager.OpenDefaultWindow();
+
+             return;
+         }
+     }*/
 }

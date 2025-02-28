@@ -1,23 +1,91 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleSession : AbstractGameSession
+public class SingleSession : IGameSession
 {
-    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public void ClosePopUp(UIPopUpManager uiPopUpManager)
     {
+        
         // 싱글 모드용 팝업 닫기 로직
         uiPopUpManager.popUpGroup.SetActive(false);
-        uiPopUpManager.dialoguePopUpGroup.SetActive(false); 
-        uiPopUpManager.textData = new string[0];
-        uiPopUpManager.spriteData = new List<Sprite>();
-        uiPopUpManager.text.text = "";
-        uiPopUpManager.sprite.sprite = null;
+        uiPopUpManager.windowPopUp.SetActive(false);
+        uiPopUpManager.defaultPopUpGroup.SetActive(false);
+        uiPopUpManager.questPopUpGroup.SetActive(false);
 
-        if (uiPopUpManager.nextObjCode != null && uiPopUpManager.nextObjCode.IsNextObj != null)
+        UITextSetter uiTextSetter = uiPopUpManager.GetComponent<UITextSetter>();
+        if (uiTextSetter != null)
         {
-            //uiPopUpManager.OpenPopUpWindow(uiPopUpManager.nextObjCode);
-            uiPopUpManager.nextObjCode = null;
+            uiTextSetter.ClearData();
+            if (uiTextSetter.targetRow.IsNextObj != null)
+            {
+                uiPopUpManager.keyInputManager.SetCurrentObjData(uiTextSetter.targetRow.IsNextObj);
+                uiTextSetter.targetRow.IsNextObj = null;
+            }
         }
+
+        UIImageSetter uiImageSetter = uiPopUpManager.GetComponent<UIImageSetter>();
+        if (uiImageSetter != null)
+        {
+            uiImageSetter.ClearData();
+            if (uiImageSetter.targetRow.IsNextObj != null)
+            {
+                uiPopUpManager.keyInputManager.SetCurrentObjData(uiTextSetter.targetRow.IsNextObj);
+                uiImageSetter.targetRow.IsNextObj = null;
+            }
+        }
+
+       
+
         Debug.Log("SingleSession: PopUp closed in single mode.");
+    }
+
+    public void HandleActionInteraction(KeyInputManager keyInputManager)
+    {
+        string currentObjCode = keyInputManager.currentRow.objCode;
+        string currentObjType = keyInputManager.currentRow.dataType.ToLower();
+
+        if (currentObjType == null)
+            return;
+
+        if (currentObjType.Contains("hint"))
+        {
+            Debug.Log("이건 힌트입니다");
+            return;
+        }
+        if (currentObjType.Contains("bubble"))
+        {
+            Debug.Log("이건 말풍선입니다");
+            return;
+        }
+        if (currentObjType.Contains("centerlabel"))
+        {
+            Debug.Log("이건 센터라벨입니다");
+            return;
+        }
+
+
+        if (currentObjType.Contains("dialogue"))
+        {
+            keyInputManager.uiTextSetter.SetTextData(currentObjCode);
+
+            if (currentObjType.Contains("quest"))
+                keyInputManager.uiPopUpManager.OpenQuestWindow();
+            else
+                keyInputManager.uiPopUpManager.OpenDefaultWindow();
+
+            return;
+        }
+
+        if (currentObjType.Contains("image"))
+        {
+            keyInputManager.uiImageSetter.SetImageData(currentObjCode);
+
+            if (currentObjType.Contains("quest"))
+                keyInputManager.uiPopUpManager.OpenQuestWindow();
+            else
+                keyInputManager.uiPopUpManager.OpenDefaultWindow();
+
+            return;
+        }
     }
 }

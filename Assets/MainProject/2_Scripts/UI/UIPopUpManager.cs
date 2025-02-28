@@ -6,44 +6,25 @@ using System.Collections.Generic;
 
 public class UIPopUpManager : MonoBehaviour
 {
+    public KeyInputManager keyInputManager;
+    
     public GameObject popUpGroup;
-    public GameObject dialoguePopUpGroup;
-    public Text text;
-    public SpriteRenderer sprite;
-    public Button backBtn;
-    public Button nextBtn;
+    public GameObject defaultPopUpGroup;
+    public GameObject questPopUpGroup;
+    public GameObject windowPopUp;
 
-    public string[] textData;
-    public List<Sprite> spriteData;
-    public int totalDataPage;
-    public int currentDataPage = 1;
-
-    public RowData nextObjCode;
-
-    public void OpenPopUpWindow(DialogueData targetRow)
+    public void OpenDefaultWindow()
     {
         popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
-        textData = targetRow.dataList;
-        totalDataPage = targetRow.dataList.Length;
-        currentDataPage = 1;
-        SetPage();
+        defaultPopUpGroup.SetActive(true);
+        windowPopUp.SetActive(true);
     }
 
-    public void OpenImage(List<Sprite> spriteList)
+    public void OpenQuestWindow()
     {
         popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
-        spriteData = spriteList;
-        totalDataPage = spriteList.Count;
-        currentDataPage = 1;
-        SetPage();
-    }
-
-
-    public void SetNextCode(RowData targetRow)
-    {
-        nextObjCode = targetRow;
+        questPopUpGroup.SetActive(true);
+        windowPopUp.SetActive(true);
     }
     public void ClosePopUpWindow()
     {
@@ -51,43 +32,5 @@ public class UIPopUpManager : MonoBehaviour
         var session = GameManager.Instance.Session;
         // 2) 세션에게 팝업 닫기 로직 위임
         session.ClosePopUp(this);
-    }
-    //public void ClosePopUpWindow()
-    //{
-    //    popUpGroup.SetActive(false);
-    //    dialoguePopUpGroup.SetActive(false);
-    //    if(nextObjCode.IsNextObj != null)
-    //    {
-    //        OpenPopUpWindow(nextObjCode);
-    //        nextObjCode = null;
-    //    }
-    //}
-
-
-    public void NextPage()
-    {
-        if(currentDataPage < totalDataPage) { currentDataPage++; }
-        SetPage();
-    }
-
-    public void BackPage()
-    {
-        if(currentDataPage > 1) { currentDataPage--; }
-        SetPage();
-    }
-
-    public void SetPage()
-    {
-        if(textData.Length > 0)
-        {
-            text.text = textData[currentDataPage - 1];
-        
-        }
-        if(spriteData.Count > 0)
-        {
-            sprite.sprite = spriteData[currentDataPage - 1];
-        }
-        backBtn.gameObject.SetActive(currentDataPage > 1);
-        nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
     }
 }
