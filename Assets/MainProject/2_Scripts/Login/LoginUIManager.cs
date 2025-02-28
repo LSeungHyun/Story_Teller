@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoginUIManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class LoginUIManager : MonoBehaviour
 
     [Header("Start UI")]
     public GameObject Start_Group;
+    public Image Start_Img;
 
     [Header("Email UI")]
     public InputField emailInputField;
@@ -27,10 +29,16 @@ public class LoginUIManager : MonoBehaviour
     public GameObject backGround_Blur;
     public GameObject backGround_Start;
     public GameObject Title_Btn_Group;
+
+    [Header("Single Multi UI")]
+    public GameObject singlePlay_Btn;
+    public GameObject multiPlay_Btn;
     #endregion
 
     float time = 0f;
     float F_time = 1f;
+
+    private bool isBlinking = false;
 
     public bool isWaiting;
 
@@ -72,14 +80,49 @@ public class LoginUIManager : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         Start_Group.SetActive(true);
-        //ActiveEmailCheckGroup();
-        //SceneManager.LoadScene(transferMapName);
+        StartCoroutine(SmoothBlink());
     }
 
+    IEnumerator SmoothBlink()
+    {
+        isBlinking = true;
+
+        Color c = Start_Img.color;
+        while (isBlinking)
+        {
+            // 1) 알파를 1→0으로 서서히 감소 (0.5초 동안)
+            float duration = 0.5f;
+            for (float t = 0f; t < duration; t += Time.deltaTime)
+            {
+                float normalizedTime = t / duration; // 0→1
+                c.a = Mathf.Lerp(1f, 0f, normalizedTime);
+                Start_Img.color = c;
+                yield return null; // 프레임 대기
+            }
+            // 마지막에 확실히 0으로
+            c.a = 0f;
+            Start_Img.color = c;
+
+            // 2) 알파를 0→1로 서서히 증가 (0.5초 동안)
+            for (float t = 0f; t < duration; t += Time.deltaTime)
+            {
+                float normalizedTime = t / duration; // 0→1
+                c.a = Mathf.Lerp(0f, 1f, normalizedTime);
+                Start_Img.color = c;
+                yield return null;
+            }
+            // 마지막에 확실히 1로
+            c.a = 1f;
+            Start_Img.color = c;
+        }
+    }
     public void PendingEmailValidation()
     {
         if (!isWaiting)
+        {
+            StopAllCoroutines();
             StartCoroutine(DotAnimation());
+        }
 
         isWaiting = true;
 
@@ -131,8 +174,14 @@ public class LoginUIManager : MonoBehaviour
         backGround_Start.SetActive(true);
         Title_Btn_Group.SetActive(true);
 
-        //영상 로드시켜주는 
+        //영상 로드시켜주는 메서드
+
         //SceneManager.LoadScene("1_WaitingRoom");
+    }
+
+    public void SceneMove(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
     #endregion
 
