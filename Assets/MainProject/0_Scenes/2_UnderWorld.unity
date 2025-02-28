@@ -7430,7 +7430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ddde3a6f7e7c24dbd6f35d56fe898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMulti: 0
+  isMulti: 1
 --- !u!4 &885658667
 Transform:
   m_ObjectHideFlags: 0
@@ -15868,6 +15868,10 @@ MonoBehaviour:
   backBtn: {fileID: 431907348}
   nextBtn: {fileID: 1005605667}
   imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
+  targetRow:
+    objCode: 
+    IsNextObj: 
+    dataList: []
   spriteDisplay: {fileID: 502621937}
   spriteData: []
 --- !u!114 &1871142909

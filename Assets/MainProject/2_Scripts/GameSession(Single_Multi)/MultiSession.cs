@@ -1,37 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiSession : IGameSession
+public class MultiSession : AbsctractGameSession
 {
-    public void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
     {
-        // 멀티(Photon) 모드용 팝업 닫기 로직
-        uiPopUpManager.popUpGroup.SetActive(false);
-        uiPopUpManager.windowPopUp.SetActive(false);
-        uiPopUpManager.defaultPopUpGroup.SetActive(false);
-        uiPopUpManager.questPopUpGroup.SetActive(false);
+        ClosePopUpBasic(uiPopUpManager);
 
-        UITextSetter textPopUp = uiPopUpManager.GetComponent<UITextSetter>();
-        if (textPopUp != null)
-        {
-            textPopUp.ClearData();
-        }
-
-        UIImageSetter imagePopUp = uiPopUpManager.GetComponent<UIImageSetter>();
-        if (imagePopUp != null)
-        {
-            imagePopUp.ClearData();
-        }
-
-        // 예: PhotonView.isMine 체크, 네트워크 상에서 동기화
-        // ... 
-
-        Debug.Log("MultiSession: PopUp closed in multi mode.");
+        Debug.Log("멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티.");
     }
-    public void HandleActionInteraction(KeyInputManager keyInputManager)
+
+    public override void HandleActionInteraction(KeyInputManager keyInputManager)
     {
+        Debug.Log("나야나 멀티야");
         //멀티일때 키 인풋에 관련된 내용
+        if (keyInputManager.currentRow == null) return;
+
         string currentObjCode = keyInputManager.currentRow.objCode;
+        
         string currentObjType = keyInputManager.currentRow.dataType.ToLower();
         bool currentObjisMine = keyInputManager.currentRow.isMine;
 

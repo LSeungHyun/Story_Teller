@@ -1,47 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleSession : IGameSession
+public class SingleSession : AbsctractGameSession
 {
-    public void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
     {
-        
-        // ½Ì±Û ¸ðµå¿ë ÆË¾÷ ´Ý±â ·ÎÁ÷
-        uiPopUpManager.popUpGroup.SetActive(false);
-        uiPopUpManager.windowPopUp.SetActive(false);
-        uiPopUpManager.defaultPopUpGroup.SetActive(false);
-        uiPopUpManager.questPopUpGroup.SetActive(false);
-
-        UITextSetter uiTextSetter = uiPopUpManager.GetComponent<UITextSetter>();
-        if (uiTextSetter != null)
-        {
-            uiTextSetter.ClearData();
-            if (uiTextSetter.targetRow.IsNextObj != null)
-            {
-                uiPopUpManager.keyInputManager.SetCurrentObjData(uiTextSetter.targetRow.IsNextObj);
-                uiTextSetter.targetRow.IsNextObj = null;
-            }
-        }
-
-        UIImageSetter uiImageSetter = uiPopUpManager.GetComponent<UIImageSetter>();
-        if (uiImageSetter != null)
-        {
-            uiImageSetter.ClearData();
-            if (uiImageSetter.targetRow.IsNextObj != null)
-            {
-                uiPopUpManager.keyInputManager.SetCurrentObjData(uiTextSetter.targetRow.IsNextObj);
-                uiImageSetter.targetRow.IsNextObj = null;
-            }
-        }
-
-       
+        ClosePopUpBasic(uiPopUpManager);
 
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }
 
-    public void HandleActionInteraction(KeyInputManager keyInputManager)
+    public override void HandleActionInteraction(KeyInputManager keyInputManager)
     {
+        Debug.Log("³ª¾ß³ª ½Ì±ÛÀÌ¾ß");
+        if (keyInputManager.currentRow == null) return;
+        
         string currentObjCode = keyInputManager.currentRow.objCode;
+        
+            
         string currentObjType = keyInputManager.currentRow.dataType.ToLower();
 
         if (currentObjType == null)
