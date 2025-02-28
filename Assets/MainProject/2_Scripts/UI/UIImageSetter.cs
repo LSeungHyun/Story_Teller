@@ -1,8 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Android.Gradle.Manifest;
-using NUnit.Framework.Interfaces;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class UIImageSetter : UIContentsManager
 {
@@ -11,14 +10,52 @@ public class UIImageSetter : UIContentsManager
     public SpriteRenderer spriteDisplay;
     public List<Sprite> spriteData;
 
-    public void SetImageData(string currentObjCode)
+    public UIPopUpBtnManager uiPopUpBtnManager;
+
+    private void Awake()
+    {
+        OnPageChanged += HandlePageChanged;
+    }
+
+    private void OnDestroy()
+    {
+        OnPageChanged -= HandlePageChanged;
+    }
+
+    private void HandlePageChanged(int currentPage, int totalPages)
+    {
+        if (uiPopUpBtnManager != null)
+        {
+            uiPopUpBtnManager.UpdateNavigationButtons(currentPage, totalPages);
+        }
+    }
+
+    public override void SetData(string currentObjCode)
     {
         targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (targetRow == null)
+            return;
 
         spriteData = SetImage(targetRow);
-        totalDataPage = spriteData != null ? spriteData.Count : 0;
+        totalDataPage = (spriteData != null) ? spriteData.Count : 0;
         currentDataPage = 1;
         DisplayPage();
+    }
+
+    public override void ClearData()
+    {
+        spriteData = new List<Sprite>();
+        if (spriteDisplay != null)
+            spriteDisplay.sprite = null;
+    }
+
+    // 角力 能刨明 钎矫 肺流
+    protected override void DisplayPageContent()
+    {
+        if (spriteData != null && spriteData.Count > 0)
+        {
+            spriteDisplay.sprite = spriteData[currentDataPage - 1];
+        }
     }
 
     private List<Sprite> SetImage(ImageData targetRow)
@@ -36,21 +73,5 @@ public class UIImageSetter : UIContentsManager
         }
 
         return sprites;
-    }
-
-    public override void ClearData()
-    {
-        spriteData = new List<Sprite>();
-        if (spriteDisplay != null)
-            spriteDisplay.sprite = null;
-    }
-
-    public override void DisplayPage()
-    {
-        if (spriteData != null && spriteData.Count > 0)
-        {
-            spriteDisplay.sprite = spriteData[currentDataPage - 1];
-            UpdateNavigationButtons();
-        }
     }
 }
