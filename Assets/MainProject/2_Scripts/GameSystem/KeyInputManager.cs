@@ -4,11 +4,15 @@ using System.Linq;
 public class KeyInputManager : MonoBehaviour
 {
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
+
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UITextSetter uiTextSetter;
     public UIImageSetter uiImageSetter; 
+
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
     public UICenterLabelSetter uiCenterLabelSetter;
+
+    public HintStateManager hintStateManager;
 
     public ObjDataType currentRow;
     public string currentObjCode;

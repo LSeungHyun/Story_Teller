@@ -22,43 +22,44 @@ public abstract class AbsctractGameSession
         string currentObjCode = keyInputManager.currentRow.objCode;
         string currentObjType = keyInputManager.currentRow.dataType.ToLower();
 
-        if (currentObjType.Contains("hint"))
+        bool hasHint = currentObjType.Contains("hint");
+        bool hasDialogue = currentObjType.Contains("dialogue");
+        bool hasQuest = currentObjType.Contains("quest");
+        bool hasBubble = currentObjType.Contains("bubble");
+        bool hasCenterLabel = currentObjType.Contains("centerlabel");
+        bool hasImage = currentObjType.Contains("image");
+
+        if (hasHint)
         {
-            Debug.Log("이건 힌트입니다");
-            return;
+            keyInputManager.hintStateManager.HIntUnlocked(currentObjCode);
         }
-        if (currentObjType.Contains("bubble"))
+        if (hasBubble)
         {
             Debug.Log("이건 말풍선입니다");
-            return;
         }
-        if (currentObjType.Contains("centerlabel"))
+        if (hasCenterLabel)
         {
             keyInputManager.uiCenterLabelSetter.SetData(currentObjCode);
             keyInputManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
-            return;
         }
-
-        if (currentObjType.Contains("dialogue"))
+        if (hasDialogue)
         {
             keyInputManager.uiTextSetter.SetData(currentObjCode);
-            if (currentObjType.Contains("quest"))
+            if (hasQuest)
                 keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
                 keyInputManager.uiPopUpOnOffManager.OpenDefaultWindow();
-            return;
         }
-
-        if (currentObjType.Contains("image"))
+        if (hasImage)
         {
             keyInputManager.uiImageSetter.SetData(currentObjCode);
-            if (currentObjType.Contains("quest"))
+            if (hasQuest)
                 keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
                 keyInputManager.uiPopUpOnOffManager.OpenDefaultWindow();
-            return;
         }
     }
+
     protected void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest)
     {
         UIPopUpOnOffManager.popUpGroup.SetActive(true);
@@ -81,13 +82,13 @@ public abstract class AbsctractGameSession
 
         string currentNextObjCode = null;
 
-        if (UIPopUpOnOffManager.uiTextSetter.targetRow?.IsNextObj != null)
+        if (UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextObj != null)
         {
-            currentNextObjCode = UIPopUpOnOffManager.uiTextSetter.targetRow.IsNextObj;
+            currentNextObjCode = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextObj;
         }
-        else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.IsNextObj != null)
+        else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextObj != null)
         {
-            currentNextObjCode = UIPopUpOnOffManager.uiImageSetter.targetRow.IsNextObj;
+            currentNextObjCode = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextObj;
         }
 
         if (!string.IsNullOrEmpty(currentNextObjCode))

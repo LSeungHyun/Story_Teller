@@ -7489,6 +7489,7 @@ GameObject:
   - component: {fileID: 885658667}
   - component: {fileID: 885658666}
   - component: {fileID: 885658668}
+  - component: {fileID: 885658669}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7542,11 +7543,25 @@ MonoBehaviour:
   uiImageSetter: {fileID: 1871142908}
   uiCenterLabelOnOffManager: {fileID: 1871142911}
   uiCenterLabelSetter: {fileID: 1871142910}
+  hintStateManager: {fileID: 885658669}
   currentRow:
     objCode: 
     dataType: 
     isMine: 0
   currentObjCode: 
+--- !u!114 &885658669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885658665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cf1b68163d78545ac204d5c0037dae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hintContainer: {fileID: 11400000, guid: 23ef7f1b52f978240bc432d64e95fd57, type: 2}
 --- !u!1 &897817387
 GameObject:
   m_ObjectHideFlags: 0
@@ -16030,7 +16045,7 @@ MonoBehaviour:
   imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
   targetRow:
     objCode: 
-    IsNextObj: 
+    isNextObj: 
     dataList: []
   spriteDisplay: {fileID: 502621937}
   spriteData: []
@@ -16052,7 +16067,7 @@ MonoBehaviour:
   dialogueContainer: {fileID: 11400000, guid: 95dcfab4c22ebc84ca953236974878f8, type: 2}
   targetRow:
     objCode: 
-    IsNextObj: 
+    isNextObj: 
     dataList: []
   textDisplay: {fileID: 1730852362}
   textData: []
