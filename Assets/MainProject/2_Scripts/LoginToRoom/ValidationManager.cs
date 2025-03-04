@@ -51,6 +51,8 @@ public class ValidationManager : MonoBehaviour
         if (!loginUIManager.IsValidInput(loginUIManager.emailInputField.text, "이메일을 입력해주세요.")) 
             return;
 
+        StartCoroutine(loginUIManager.DotAnimation("이메일 전송 중"));
+
         string emailInput = loginUIManager.emailInputField.text;
 
         string noWhitespaceEmail = Regex.Replace(emailInput, @"\s+", "");
@@ -138,7 +140,7 @@ public class ValidationManager : MonoBehaviour
         switch (response.status)
         {
             case "SendEmail":
-                //resultText.text = $"이메일 전송 완료: {response.message}";
+                StopAllCoroutines();
                 break;
 
             //이메일 인증 완료

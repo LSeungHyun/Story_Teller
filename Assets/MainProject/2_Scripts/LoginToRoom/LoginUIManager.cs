@@ -124,8 +124,7 @@ public class LoginUIManager : MonoBehaviour
     {
         if (!isWaiting)
         {
-            StopAllCoroutines();
-            StartCoroutine(DotAnimation());
+            StartCoroutine(DotAnimation("인증 대기 중"));
         }
 
         isWaiting = true;
@@ -149,7 +148,7 @@ public class LoginUIManager : MonoBehaviour
         codeErrorGroup.SetActive(true);
     }
 
-    public IEnumerator DotAnimation()
+    public IEnumerator DotAnimation(string text)
     {
         int dotCount = 0;
 
@@ -166,7 +165,7 @@ public class LoginUIManager : MonoBehaviour
 
             // 3) "인증 대기 중" + 점(dotCount개)
             //    new string('.', dotCount)는 점을 dotCount만큼 반복한 문자열 생성
-            emailCheckText.text = "인증 대기 중" + new string('.', dotCount);
+            emailCheckText.text = text + new string('.', dotCount);
 
             // 4) 1초 대기
             yield return new WaitForSeconds(1f);
@@ -189,10 +188,6 @@ public class LoginUIManager : MonoBehaviour
 
         backGround_Start.SetActive(true);
         Title_Btn_Group.SetActive(true);
-
-        //영상 로드시켜주는 메서드
-
-        //SceneManager.LoadScene("1_WaitingRoom");
     }
 
     public void SceneMove(string sceneName)
