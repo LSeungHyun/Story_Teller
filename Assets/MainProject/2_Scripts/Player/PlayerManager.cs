@@ -55,8 +55,18 @@ public class PlayerManager : MonoBehaviour
 
         if (objDataTypeContainer != null)
         {
-            objDataTypeContainer.objCode = interactableStack.Count > 0 ? interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>().objCode : null;
-            Debug.Log("RowDataContainer updated with new data!");
+            if (interactableStack.Count > 0)
+            {
+                TriggerObj triggerObj = interactableStack[interactableStack.Count - 1].GetComponent<TriggerObj>();
+                Transform objTransform = interactableStack[interactableStack.Count - 1].transform;
+
+                objDataTypeContainer.objCode = triggerObj != null ? triggerObj.objCode : null;
+                objDataTypeContainer.SetTransform(objTransform); 
+            }
+            else
+            {
+                objDataTypeContainer.objCode = null;
+            }
         }
 
         for (int i = 0; i < interactableStack.Count; i++)

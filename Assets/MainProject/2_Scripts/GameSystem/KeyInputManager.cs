@@ -3,7 +3,7 @@ using System.Linq;
 
 public class KeyInputManager : MonoBehaviour
 {
-    [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
+    [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UITextSetter uiTextSetter;
@@ -13,6 +13,7 @@ public class KeyInputManager : MonoBehaviour
     public UICenterLabelSetter uiCenterLabelSetter;
 
     public HintStateManager hintStateManager;
+    public BubbleSetter bubbleSetter;
 
     public ObjDataType currentRow;
     public string currentObjCode;

@@ -34,7 +34,8 @@ public abstract class AbsctractGameSession
         }
         if (hasBubble)
         {
-            Debug.Log("이건 말풍선입니다");
+            keyInputManager.bubbleSetter.currentObjOffset = keyInputManager.objDataTypeContainer.position;
+            keyInputManager.bubbleSetter.SetData(currentObjCode);
         }
         if (hasCenterLabel)
         {
