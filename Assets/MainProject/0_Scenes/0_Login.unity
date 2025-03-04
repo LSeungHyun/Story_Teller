@@ -1148,6 +1148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 860993639}
   - component: {fileID: 860993638}
+  - component: {fileID: 860993640}
   m_Layer: 0
   m_Name: UI Manager
   m_TagString: Untagged
@@ -1202,6 +1203,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 158503341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860993640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860993637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af06f1e40994e6428039dcef94aa445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shrinkScale: 0.9
+  tweenDuration: 0.1
+  easeType: 6
 --- !u!1 &922795191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1342,18 @@ MonoBehaviour:
       - m_Target: {fileID: 242607679}
         m_TargetAssemblyTypeName: ValidationManager, Assembly-CSharp
         m_MethodName: OnValidateCode
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860993640}
+        m_TargetAssemblyTypeName: TestUIDoTween, Assembly-CSharp
+        m_MethodName: ClickAnim
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2267,7 +2295,7 @@ GameObject:
   - component: {fileID: 1297120054}
   - component: {fileID: 1297120053}
   m_Layer: 5
-  m_Name: RawImage
+  m_Name: VideoRawImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3326,6 +3354,18 @@ MonoBehaviour:
       - m_Target: {fileID: 242607679}
         m_TargetAssemblyTypeName: ValidationManager, Assembly-CSharp
         m_MethodName: OnSendEmail
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860993640}
+        m_TargetAssemblyTypeName: TestUIDoTween, Assembly-CSharp
+        m_MethodName: ClickAnim
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
