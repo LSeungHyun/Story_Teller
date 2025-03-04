@@ -1,14 +1,18 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public abstract class UIContentsManager : MonoBehaviour
 {
     public int currentDataPage = 1;
     public int totalDataPage = 0;
-    public Button backBtn;
-    public Button nextBtn;
 
-    public virtual void NextPage()
+    public event Action<int, int> OnPageChanged;
+
+    public abstract void SetData(string currentObjCode);
+    public abstract void ClearData();
+    protected abstract void DisplayPageContent();
+
+    public void NextPage()
     {
         if (currentDataPage < totalDataPage)
         {
@@ -17,7 +21,7 @@ public abstract class UIContentsManager : MonoBehaviour
         }
     }
 
-    public virtual void BackPage()
+    public void BackPage()
     {
         if (currentDataPage > 1)
         {
@@ -26,13 +30,9 @@ public abstract class UIContentsManager : MonoBehaviour
         }
     }
 
-    protected void UpdateNavigationButtons()
+    public void DisplayPage()
     {
-        if (backBtn != null)
-            backBtn.gameObject.SetActive(currentDataPage > 1);
-        if (nextBtn != null)
-            nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
+        DisplayPageContent();
+        OnPageChanged?.Invoke(currentDataPage, totalDataPage);
     }
-    public abstract void ClearData();
-    public abstract void DisplayPage();
 }

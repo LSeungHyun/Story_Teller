@@ -62,7 +62,7 @@ public class CenterLabelData
 public class DialogueData
 {
     public string objCode;
-    public string IsNextObj;
+    public string isNextObj;
     public string[] dataList;
 }
 
@@ -78,7 +78,7 @@ public class BubbleData
 public class ImageData
 {
     public string objCode;
-    public string IsNextObj;
+    public string isNextObj;
     public string[] dataList;
 }
 
@@ -86,14 +86,14 @@ public class ImageData
 public class QuestData
 {
     public string objCode;
-    public string IsNextObj;
     public string[] dataList;
 }
 
 [Serializable]
 public class HintData
 {
-    public string hintCode;
+    public string objCode;
+    public string name;
     public string answer;
     public string isUsed;
     public string hintTextData;

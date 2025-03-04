@@ -1,6 +1,6 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class UITextSetter : UIContentsManager
 {
@@ -9,15 +9,39 @@ public class UITextSetter : UIContentsManager
     public Text textDisplay;
     public string[] textData;
 
-    public void SetTextData(string currentObjCode)
+    // UIPopUpBtnManager를 인스펙터에서 할당 (이벤트를 통해 자동 업데이트됩니다)
+    public UIPopUpBtnManager uiPopUpBtnManager;
+
+    private void Awake()
+    {
+        OnPageChanged += HandlePageChanged;
+    }
+
+    private void OnDestroy()
+    {
+        OnPageChanged -= HandlePageChanged;
+    }
+
+    private void HandlePageChanged(int currentPage, int totalPages)
+    {
+        if (uiPopUpBtnManager != null)
+        {
+            uiPopUpBtnManager.UpdateNavigationButtons(currentPage, totalPages);
+        }
+    }
+
+    public override void SetData(string currentObjCode)
     {
         targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        
+        if (targetRow == null)
+            return;
+
         textData = targetRow.dataList;
-        totalDataPage = textData != null ? textData.Length : 0;
+        totalDataPage = (textData != null) ? textData.Length : 0;
         currentDataPage = 1;
         DisplayPage();
     }
+
     public override void ClearData()
     {
         textData = new string[0];
@@ -25,12 +49,11 @@ public class UITextSetter : UIContentsManager
             textDisplay.text = "";
     }
 
-    public override void DisplayPage()
+    protected override void DisplayPageContent()
     {
         if (textData != null && textData.Length > 0)
         {
             textDisplay.text = textData[currentDataPage - 1];
-            UpdateNavigationButtons();
         }
     }
 }
