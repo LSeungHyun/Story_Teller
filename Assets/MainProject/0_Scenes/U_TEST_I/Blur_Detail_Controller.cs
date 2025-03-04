@@ -6,14 +6,17 @@ using UnityEngine.Rendering.Universal; // URP의 경우
 
 public class Blur_Detail_Controller : MonoBehaviour
 {
-    [Header("Volume & UI References")]
+    [Header("Volume")]
     public Volume volume;           // Volume 컴포넌트를 할당 (Post Process Volume)
-    public Slider weightSlider;     // Volume Weight 조절용 슬라이더
-    public Text weight_Text;
-    public Slider maxRadiusSlider;  // Depth Of Field의 Max Radius 조절용 슬라이더
-    public Text maxRadius_Text;
-    public InputField colorInputField; // Color Filter를 설정할 때 사용할 Hex 입력 필드 (예: "FFFFFF")
+
+    [Header("Blur Detail")]
+    public InputField color_InputField; // Color Filter를 설정할 때 사용할 Hex 입력 필드 (예: "FFFFFF")
     public Text color_Text;
+    public Slider weight_Slider;     // Volume Weight 조절용 슬라이더
+    public Text weight_Text;
+    public Slider FocalLength_Slider;  // Depth Of Field의 Max Radius 조절용 슬라이더
+    public Text FocalLength_Text;
+    
 
     [Header("Panel BackGround")]
     public Image panel_Image;
@@ -22,25 +25,30 @@ public class Blur_Detail_Controller : MonoBehaviour
     public Slider alphaSlider;
     public Text alpha_Text;
 
+    void Awake()
+    {
+        
+    }
+
     // Volume Weight 슬라이더 값이 바뀔 때 호출 (OnValueChanged 이벤트에 연결)
     public void OnWeightSliderChanged()
     {
         if (volume != null)
         {
-            volume.weight = weightSlider.value;
-            weight_Text.text = Math.Round(weightSlider.value, 2).ToString();
-            Debug.Log("Volume Weight set to: " + weightSlider.value);
+            volume.weight = weight_Slider.value;
+            weight_Text.text = Math.Round(weight_Slider.value, 2).ToString();
+            Debug.Log("Volume Weight set to: " + weight_Slider.value);
         }
     }
 
     // Max Radius 슬라이더 값이 바뀔 때 호출 (OnValueChanged 이벤트에 연결)
-    public void OnMaxRadiusSliderChanged()
+    public void OnFocalLengthSliderChanged()
     {
         if (volume != null && volume.profile != null && volume.profile.TryGet<DepthOfField>(out var dof))
         {
-            dof.gaussianMaxRadius.Override(maxRadiusSlider.value);
-            maxRadius_Text.text = Math.Round(maxRadiusSlider.value, 2).ToString();
-            Debug.Log("DepthOfField Max Radius set to: " + maxRadiusSlider.value);
+            dof.focalLength.Override(FocalLength_Slider.value);
+            FocalLength_Text.text = Math.Round(FocalLength_Slider.value, 2).ToString();
+            Debug.Log("DepthOfField Max Radius set to: " + FocalLength_Slider.value);
         }
     }
 
@@ -48,7 +56,7 @@ public class Blur_Detail_Controller : MonoBehaviour
     // 입력 값은 "FFFFFF"와 같이 6자리 Hex 값으로 입력 (선택적으로 '#'를 붙여도 됨)
     public void OnColorInputChanged()
     {
-        string hexColor = colorInputField.text;
+        string hexColor = color_InputField.text;
         // 입력 값에 '#'가 없으면 붙여줍니다.
         if (!hexColor.StartsWith("#"))
             hexColor = "#" + hexColor;
