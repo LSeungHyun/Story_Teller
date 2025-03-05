@@ -124,6 +124,7 @@ public class LoginUIManager : MonoBehaviour
     {
         if (!isWaiting)
         {
+            StopAllCoroutines();
             StartCoroutine(DotAnimation("인증 대기 중"));
         }
 
