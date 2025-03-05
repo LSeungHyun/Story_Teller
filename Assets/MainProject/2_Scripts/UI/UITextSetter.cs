@@ -49,6 +49,11 @@ public class UITextSetter : UIContentsManager
             textDisplay.text = "";
     }
 
+    public void ChatDataJson()
+    {
+
+    }
+
     protected override void DisplayPageContent()
     {
         if (textData != null && textData.Length > 0)

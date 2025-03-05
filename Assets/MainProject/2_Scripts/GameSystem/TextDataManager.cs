@@ -20,7 +20,6 @@ public class AllSheetsResponse
 [Serializable]
 public class AllData 
 {
-    public RowData[] textData;       // 기존 TextDataSheet
     public ObjDataType[] objDataType;    // ObjDataTypeSheet
     public CenterLabelData[] centerLabelData;
     public DialogueData[] dialogueData;
@@ -28,18 +27,6 @@ public class AllData
     public ImageData[] imageData;
     public QuestData[] questData;
     public HintData[] hintData;
-}
-
-[Serializable]
-public class RowData
-{
-    public string objCode;
-    public string dataType;
-    public string IsNextObj;
-    public string name;      // 새로 추가
-    public bool isMine;
-    public int closeTime;
-    public string[] dataList;
 }
 
 [Serializable]
@@ -162,15 +149,7 @@ public class TextDataManager : MonoBehaviour
                 if (resp != null && resp.data != null)
                 {
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
-/*
-                    // 1) RowData
-                    if (rowDataContainer != null && resp.data.textData != null)
-                    {
-                        rowDataContainer.rowDatas = resp.data.textData;
-                        Debug.Log("RowData loaded: " + resp.data.textData.Length);
-                    }*/
 
-                    // 2) CenterLabelData
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
                     {
                         centerLabelContainer.centerLabelDatas = resp.data.centerLabelData;
@@ -247,9 +226,9 @@ public class TextDataManager : MonoBehaviour
     {
         AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
 
-        if (resp.data?.textData != null)
+        if (resp.data?.objDataType != null)
         {
-            foreach (var item in resp.data.textData)
+            foreach (var item in resp.data.objDataType)
             {
                 item.isMine = (item.isMine.ToString().ToLower() == "true");
             }
