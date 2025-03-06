@@ -89,11 +89,28 @@ public abstract class AbsctractGameSession
         else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextObj != null)
         {
             currentNextObjCode = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextObj;
+            Debug.Log("오브젝트 켜보자고");
         }
 
         if (!string.IsNullOrEmpty(currentNextObjCode))
         {
-            UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextObjCode);
+            UIPopUpOnOffManager.objectDictionary.ToggleObjectActive(currentNextObjCode);
+        }
+
+        string currentNextObjdata = null;
+
+        if (UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextData != null)
+        {
+            currentNextObjdata = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextData;
+        }
+        else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextData != null)
+        {
+            currentNextObjdata = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextData;
+        }
+
+        if (!string.IsNullOrEmpty(currentNextObjdata))
+        {
+            UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextObjdata);
         }
     }
 

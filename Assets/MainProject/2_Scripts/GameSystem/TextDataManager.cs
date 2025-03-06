@@ -50,6 +50,7 @@ public class DialogueData
 {
     public string objCode;
     public string isNextObj;
+    public string isNextData;
     public string[] dataList;
 }
 
@@ -66,6 +67,7 @@ public class ImageData
 {
     public string objCode;
     public string isNextObj;
+    public string isNextData;
     public string[] dataList;
 }
 
