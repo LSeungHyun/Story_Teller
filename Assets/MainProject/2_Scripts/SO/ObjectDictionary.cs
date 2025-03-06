@@ -37,6 +37,7 @@ public class ObjectDictionary : MonoBehaviour
     {
         if (objectDictionary.ContainsKey(key))
         {
+            Debug.Log(key);
             GameObject obj = objectDictionary[key];
             obj.SetActive(!obj.activeSelf);
         }

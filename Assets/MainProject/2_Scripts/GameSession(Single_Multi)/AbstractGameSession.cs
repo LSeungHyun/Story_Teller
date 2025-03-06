@@ -82,14 +82,13 @@ public abstract class AbsctractGameSession
 
         string currentNextObjCode = null;
 
-        if (UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextObj != null)
+        if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextObj))
         {
             currentNextObjCode = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextObj;
         }
-        else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextObj != null)
+        else if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextObj))
         {
             currentNextObjCode = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextObj;
-            Debug.Log("오브젝트 켜보자고");
         }
 
         if (!string.IsNullOrEmpty(currentNextObjCode))
@@ -97,20 +96,20 @@ public abstract class AbsctractGameSession
             UIPopUpOnOffManager.objectDictionary.ToggleObjectActive(currentNextObjCode);
         }
 
-        string currentNextObjdata = null;
+        string currentNextdata = null;
 
-        if (UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextData != null)
+        if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextData))
         {
-            currentNextObjdata = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextData;
+            currentNextdata = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextData;
         }
-        else if (UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextData != null)
+        else if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextData))
         {
-            currentNextObjdata = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextData;
+            currentNextdata = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextData;
         }
 
-        if (!string.IsNullOrEmpty(currentNextObjdata))
+        if (!string.IsNullOrEmpty(currentNextdata))
         {
-            UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextObjdata);
+            UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextdata);
         }
     }
 

@@ -12,3 +12,189 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bcede9a6fa2b5040a1d46f70cc04b90, type: 3}
   m_Name: ImageContainer
   m_EditorClassIdentifier: 
+  imageDatas:
+  - objCode: UnderWorld_SteelHouse_In
+    isNextObj: Inv_Sara
+    isNextData: UnderWorld_SteelHouse_Driver_Six
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/In
+  - objCode: UnderWorld_SteelHouse_Driver_Cross
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Cross
+  - objCode: UnderWorld_SteelHouse_Driver_Six
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Six
+  - objCode: UnderWorld_SteelHouse_Driver_Star
+    isNextObj: Inv_Sara
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Star
+  - objCode: UnderWorld_SteelHouse_Cutter
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Cutter
+  - objCode: UnderWorld_SteelHouse_Screw
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Screw
+  - objCode: UnderWorld_SteelHouse_Wrench
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Wrench
+  - objCode: UnderWorld_SteelHouse_Direction
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/Direction
+  - objCode: UnderWorld_SteelHouse_ScrewList
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/SteelHouse/ScrewList
+  - objCode: UnderWorld_Bakery_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/Bakery/In
+  - objCode: UnderWorld_Bakery_Note_Apnal
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/Bakery/Apnal
+  - objCode: UnderWorld_Bakery_Note_Eia
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/Bakery/Eia
+  - objCode: UnderWorld_Bakery_Note_Neup
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/Bakery/Neup
+  - objCode: UnderWorld_Bakery_Note_Nai
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/Bakery/Nai
+  - objCode: UnderWorld_JungCafe_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/JungCafe/In
+  - objCode: UnderWorld_JungCafe_Notebook_Gam
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/JungCafe/Gam
+  - objCode: UnderWorld_JungCafe_Notebook_Seong
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/JungCafe/Seong
+  - objCode: UnderWorld_JungCafe_Notebook_GGoat
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/JungCafe/GGoat
+  - objCode: UnderWorld_JungCafe_Notebook_Ar
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/JungCafe/Ar
+  - objCode: UnderWorld_HappyHair_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/HappyHair1/In
+  - objCode: UnderWorld_HappyHair_Note_Over
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/HappyHair1/Over
+  - objCode: UnderWorld_HappyHair_Note_Under
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/UnderWorld/HappyHair1/Under
+  - objCode: LivingWorld_FlowerShop_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/In
+  - objCode: LivingWorld_FlowerShop_Flower_Lilac
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/Lilac
+  - objCode: LivingWorld_FlowerShop_Flower_Chija
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/Chija
+  - objCode: LivingWorld_FlowerShop_Flower_Jasmine
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/Jasmine
+  - objCode: LivingWorld_FlowerShop_Flower_Su
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/Su
+  - objCode: LivingWorld_FlowerShop_Flower_Neung
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/FlowerShop/Neung
+  - objCode: LivingWorld_Bakery_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/Bakery/In
+  - objCode: LivingWorld_JungCafe_In
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/In
+  - objCode: LivingWorld_JungCafe_Music_Mool
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Mool
+  - objCode: LivingWorld_JungCafe_Music_Mok
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Mok
+  - objCode: LivingWorld_JungCafe_Music_Bal
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Bal
+  - objCode: LivingWorld_JungCafe_Music_Sae
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Sae
+  - objCode: LivingWorld_JungCafe_Music_Pul
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Pul
+  - objCode: LivingWorld_JungCafe_Music_Sum
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Sum
+  - objCode: LivingWorld_JungCafe_Music_Quest
+    isNextObj: 
+    isNextData: 
+    dataList:
+    - ImagePopup/LivingWorld/JungCafe/Quest
