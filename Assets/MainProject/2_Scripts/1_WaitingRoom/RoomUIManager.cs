@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class RoomUIManager : MonoBehaviour
+public class RoomUIManager : DoTweenManager
 {
     [System.Serializable]
     public class PopupItem
@@ -16,7 +16,7 @@ public class RoomUIManager : MonoBehaviour
     private List<PopupItem> popupList;
 
     // 내부에서 (popupName -> popupObject) 매핑
-    private Dictionary<string, GameObject> popupDict;
+    public Dictionary<string, GameObject> popupDict;
 
     private void Awake()
     {
@@ -42,7 +42,7 @@ public class RoomUIManager : MonoBehaviour
     {
         if (popupDict.ContainsKey(popupName))
         {
-            popupDict[popupName].SetActive(true);
+            ShowUI(popupDict[popupName]);
         }
         else
         {
@@ -57,7 +57,8 @@ public class RoomUIManager : MonoBehaviour
     {
         if (popupDict.ContainsKey(popupName))
         {
-            popupDict[popupName].SetActive(false);
+            HideUI(popupDict[popupName]);
+            //popupDict[popupName].SetActive(false);
         }
         else
         {

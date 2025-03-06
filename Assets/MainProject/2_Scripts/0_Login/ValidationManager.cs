@@ -21,6 +21,8 @@ public class ValidationManager : MonoBehaviour
     public string loggedInEmail = string.Empty;
     
     private bool isCheckingVerification = false;
+
+    private bool isSendEmail = false;
     private ValidationResponse lastResponse;
 
     [System.Serializable]
@@ -51,7 +53,13 @@ public class ValidationManager : MonoBehaviour
         if (!loginUIManager.IsValidInput(loginUIManager.emailInputField.text, "이메일을 입력해주세요.")) 
             return;
 
-        StartCoroutine(loginUIManager.DotAnimation("이메일 전송 중"));
+        //StartCoroutine(loginUIManager.DotAnimation("이메일 전송 중"));
+
+        if (!loginUIManager.isWaiting)
+        {
+            StartCoroutine(loginUIManager.DotAnimation("이메일 전송 중"));
+        }
+
 
         string emailInput = loginUIManager.emailInputField.text;
 
