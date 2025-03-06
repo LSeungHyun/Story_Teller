@@ -10,12 +10,22 @@ public class StringGameObjectPair
 
 public class ObjectDictionary : MonoBehaviour
 {
+    public static ObjectDictionary Instance { get; private set; }
+
     [SerializeField] private List<StringGameObjectPair> objectList = new List<StringGameObjectPair>();
     private Dictionary<string, GameObject> objectDictionary = new Dictionary<string, GameObject>();
 
     private void Awake()
     {
-        PopulateDictionary();
+        if (Instance == null)
+        {
+            Instance = this;
+            PopulateDictionary();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void PopulateDictionary()

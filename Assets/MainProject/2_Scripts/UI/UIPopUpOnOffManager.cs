@@ -3,7 +3,6 @@ using UnityEngine;
 public class UIPopUpOnOffManager : MonoBehaviour
 {
     public KeyInputManager keyInputManager;
-    public ObjectDictionary objectDictionary;
     public UITextSetter uiTextSetter;
     public UIImageSetter uiImageSetter;
 

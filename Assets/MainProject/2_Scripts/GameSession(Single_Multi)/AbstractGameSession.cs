@@ -93,7 +93,7 @@ public abstract class AbsctractGameSession
 
         if (!string.IsNullOrEmpty(currentNextObjCode))
         {
-            UIPopUpOnOffManager.objectDictionary.ToggleObjectActive(currentNextObjCode);
+            ObjectDictionary.Instance.ToggleObjectActive(currentNextObjCode);
         }
 
         string currentNextdata = null;
