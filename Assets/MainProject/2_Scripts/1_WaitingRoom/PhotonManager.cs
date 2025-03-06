@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
@@ -151,12 +152,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
     public void CopyToClipBoard()
     {
-        Copy(PhotonNetwork.CurrentRoom.Name);
+        if(PhotonNetwork.CurrentRoom.Name != null)
+        {
+            Copy(PhotonNetwork.CurrentRoom.Name);
+        }
     }
 
     public void GameStart()
     {
-        PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
+        if(PhotonNetwork.IsConnected) 
+        {
+            PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
+            return;
+        }
+        SceneManager.LoadScene("2_UnderWorld");
     }
 
 
@@ -194,7 +203,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("접속 콜백 완료");
 
-        roomUIManager.CloseAllPopUps();
+        roomUIManager.ClosePopUp("Single_Multi_Select");
         roomUIManager.OpenPopUp("Lobby_Group");
 
         LogUpdate();
@@ -204,7 +213,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("접속 끊기 콜백 완료");
 
-        roomUIManager.CloseAllPopUps();
+        roomUIManager.ClosePopUp("Lobby_Group");
         roomUIManager.OpenPopUp("Single_Multi_Select");
 
         LogUpdate();
@@ -222,7 +231,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         MasterStartBtnOnOff();
         RoomInfoUpdate();
 
-       
         LogUpdate();
     }
 
@@ -230,8 +238,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("방 나가기 콜백 완료");
 
-        roomUIManager.CloseAllPopUps();
-        roomUIManager.OpenPopUp("Lobby_Group");
+        roomUIManager.ClosePopUp("Waiting_Room");
+        //roomUIManager.OpenPopUp("Lobby_Group");
+
         LogUpdate();
     }
 
@@ -283,43 +292,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             print("모든 방에 있는 인원 수 : " + PhotonNetwork.CountOfPlayersInRooms);
             print("로비에 있는지? : " + PhotonNetwork.InLobby);
             print("연결됐는지? : " + PhotonNetwork.IsConnected);
-        }
-    }
-
-
-    /// <summary>
-    /// 대기실 이름 명단 업데이트 및 본인 이름 색 변환
-    /// </summary>
-    private void WaitRoomUpdate()
-    {
-        PhotonNetwork.NickName = "";
-
-        for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        {
-            Text childText = NameTextList[i];
-
-            PhotonNetwork.PlayerList[i].NickName = "";
-
-            // 플레이어 닉네임과 역할(M 또는 P) 설정
-            childText.text = (i == 0) ? $"{PhotonNetwork.PlayerList[i].NickName = "Master"}" : $"{PhotonNetwork.PlayerList[i].NickName = "Player" + i}";
-
-            Debug.Log(i + "번째 이름: " + PhotonNetwork.PlayerList[i].NickName);
-
-            // 본인 닉네임인지 확인하여 색상 설정
-            childText.color = (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.NickName)
-                ? Color.red
-                : Color.black;
-        }
-
-        if (PhotonNetwork.PlayerList.Length - PhotonNetwork.CurrentRoom.MaxPlayers <= -1)
-        {
-            for (int i = PhotonNetwork.PlayerList.Length; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
-            {
-                TMP_Text childText = OutLineList[i].GetComponentInChildren<TMP_Text>();
-
-                childText.text = "대기 중...";
-                childText.color = Color.gray; // 대기 중 메시지는 회색
-            }
         }
     }
 
