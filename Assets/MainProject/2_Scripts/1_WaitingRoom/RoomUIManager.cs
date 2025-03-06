@@ -16,7 +16,7 @@ public class RoomUIManager : DoTweenManager
     private List<PopupItem> popupList;
 
     // 내부에서 (popupName -> popupObject) 매핑
-    private Dictionary<string, GameObject> popupDict;
+    public Dictionary<string, GameObject> popupDict;
 
     private void Awake()
     {

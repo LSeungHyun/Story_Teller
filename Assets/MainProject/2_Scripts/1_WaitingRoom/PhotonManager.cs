@@ -203,7 +203,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("접속 콜백 완료");
 
+        roomUIManager.popupDict["Title_Btn_Group"].SetActive(false);
         roomUIManager.ClosePopUp("Single_Multi_Select");
+
         roomUIManager.OpenPopUp("Lobby_Group");
 
         LogUpdate();
@@ -213,7 +215,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("접속 끊기 콜백 완료");
 
+        roomUIManager.popupDict["Title_Btn_Group"].SetActive(true);
         roomUIManager.ClosePopUp("Lobby_Group");
+
         roomUIManager.OpenPopUp("Single_Multi_Select");
 
         LogUpdate();
