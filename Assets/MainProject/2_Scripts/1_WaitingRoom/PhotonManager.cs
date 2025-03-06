@@ -96,14 +96,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        
+        room_Code_Input.text.Trim();
+
         if (room_Code_Input.text == "")
         {
             RoomCodeIsNull();
 
             return;
         }
-        room_Code_Input.text.Trim();
 
         PhotonNetwork.JoinRoom(room_Code_Input.text);
     }
@@ -116,8 +116,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         ResetPlayerRoomInfo();
         Debug.Log("방 나왔음 : " + room_Code_Input.text);
         PhotonNetwork.LeaveRoom();
-        //RoomUpdate();
-        //SetWaitList(true);
     }
 
     /// <summary>
@@ -125,6 +123,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// </summary>
     private void MasterStartBtnOnOff()
     {
+        roomUIManager.ClosePopUp("Info_Group_Master");
+        roomUIManager.ClosePopUp("Info_Group_Guest");
         if (PhotonNetwork.IsMasterClient)
         {
             roomUIManager.OpenPopUp("Info_Group_Master");
@@ -252,7 +252,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log($"Room creation failed : {message}");
+        roomUIManager.OpenPopUp("Room_Create_Error");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -342,33 +342,45 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// <param name="isTrue"> 활용하지 않는 대기실을 ON/OFF 할지 선택 가능 </param>
     public void RefreshPlayerUI()
     {
+        // 현재 방 정보
         int currentCount = PhotonNetwork.CurrentRoom.PlayerCount;
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;
 
         for (int i = 0; i < maxCount; i++)
         {
-            // 1) i < currentCount => 활성화, 아니면 비활성화
             bool isActive = (i < currentCount);
             OutLineList[i].SetActive(isActive);
 
             if (isActive)
             {
-                // 플레이어가 존재하는 슬롯
-                // 닉네임/텍스트 세팅
-                NameTextList[i].text = "집배원 " + (i + 1);
+                // PhotonNetwork.PlayerList[i]가 i번째 플레이어
+                Player p = PhotonNetwork.PlayerList[i];
 
-                // PhotonNetwork.PlayerList[i]가 i인덱스와 1:1 매칭된다고 가정
-                // (플레이어 순서가 정렬되는지 확인 필요)
-                PhotonNetwork.PlayerList[i].NickName = NameTextList[i].text;
+                // 닉네임 설정 (예: "집배원 i+1")
+                NameTextList[i].text = "집배원 " + (i + 1);
+                p.NickName = NameTextList[i].text;
+
+                // 로컬 플레이어인지 체크
+                if (p == PhotonNetwork.LocalPlayer)
+                {
+                    // 로컬 플레이어 => 빨간색
+                    NameTextList[i].color = Color.red;
+                }
+                else
+                {
+                    // 다른 플레이어 => 흰색
+                    NameTextList[i].color = Color.white;
+                }
             }
             else
             {
-                // 플레이어가 없는 슬롯
+                // 아직 플레이어가 없는 슬롯
                 NameTextList[i].text = "대기중 . . .";
+                NameTextList[i].color = Color.white;
             }
         }
 
-        // (선택) 디버그용
-        Debug.Log("내이름 : " + PhotonNetwork.NickName);
+        // 디버그용
+        Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
     }
 }
