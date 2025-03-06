@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue_Anim
+  m_Name: Blue_Down
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,19 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1828700619, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
-    - time: 0.083333336
       value: {fileID: 2020541923, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
-    - time: 0.16666667
+    - time: 0.2
       value: {fileID: 1362365744, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
-    - time: 0.25
+    - time: 0.4
       value: {fileID: 1519527238, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
-    - time: 0.33333334
+    - time: 0.6
       value: {fileID: 2037755583, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
     flags: 2
-  m_SampleRate: 12
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -52,7 +50,6 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1828700619, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
     - {fileID: 2020541923, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
     - {fileID: 1362365744, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
     - {fileID: 1519527238, guid: 285ee18d1a7956d41803f4f1a46f2330, type: 3}
@@ -62,7 +59,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4166667
+    m_StopTime: 0.8
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
