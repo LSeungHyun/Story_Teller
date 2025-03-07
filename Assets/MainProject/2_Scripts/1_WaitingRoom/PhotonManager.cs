@@ -161,9 +161,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsConnected) 
         {
             PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
+            GameManager.Instance.SelectGameMode(true);
             return;
         }
         SceneManager.LoadScene("2_UnderWorld");
+        GameManager.Instance.SelectGameMode(false);
     }
 
 
