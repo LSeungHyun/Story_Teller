@@ -8,7 +8,6 @@ public class UITextSetter : UIContentsManager
     public DialogueList[] dialogueList;
     public Text textDisplay;
 
-    // UIPopUpBtnManager를 인스펙터에서 할당 (이벤트를 통해 자동 업데이트됩니다)
     public UIPopUpBtnManager uiPopUpBtnManager;
 
     private void Awake()
@@ -42,11 +41,6 @@ public class UITextSetter : UIContentsManager
         dialogueList = new DialogueList[0];
         if (textDisplay != null)
             textDisplay.text = "";
-    }
-
-    public void ChatDataJson()
-    {
-
     }
 
     protected override void DisplayPageContent()

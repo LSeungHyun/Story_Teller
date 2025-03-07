@@ -1,14 +1,12 @@
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UIImageSetter : UIContentsManager
 {
     [SerializeField] private ImageContainer imageContainer;
-    public ImageData targetRow;
+    public ImageList[] imageList;
     public SpriteRenderer spriteDisplay;
-    public List<Sprite> spriteData;
+    public Sprite[] spriteData;
 
     public UIPopUpBtnManager uiPopUpBtnManager;
 
@@ -32,44 +30,40 @@ public class UIImageSetter : UIContentsManager
 
     public override void SetData(string currentObjCode)
     {
-        targetRow = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (targetRow == null)
-            return;
-
-        spriteData = SetImage(targetRow);
-        totalDataPage = (spriteData != null) ? spriteData.Count : 0;
+        imageList = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode).dataList;
+        spriteData = SetImage(imageList);
+        totalDataPage = (imageList != null) ? imageList.Length : 0;
         currentDataPage = 1;
         DisplayPage();
     }
 
     public override void ClearData()
     {
-        spriteData = new List<Sprite>();
+        spriteData = new Sprite[0];
         if (spriteDisplay != null)
             spriteDisplay.sprite = null;
     }
 
-    // 角力 能刨明 钎矫 肺流
     protected override void DisplayPageContent()
     {
-        if (spriteData != null && spriteData.Count > 0)
+        if (spriteData != null && spriteData.Length > 0)
         {
             spriteDisplay.sprite = spriteData[currentDataPage - 1];
         }
     }
 
-    private List<Sprite> SetImage(ImageData targetRow)
+    private Sprite[] SetImage(ImageList[] imageList)
     {
-        var sprites = new List<Sprite>();
+        Sprite[] sprites = new Sprite[imageList.Length];
 
-        foreach (string resource in targetRow.dataList)
+        for (int i = 0; i < imageList.Length; i++)
         {
-            Sprite sprite = Resources.Load<Sprite>(resource);
+            Sprite sprite = Resources.Load<Sprite>(imageList[i].imageData);
             if (sprite == null)
             {
-                Debug.LogWarning("Failed to load sprite: " + resource);
+                Debug.LogWarning("Failed to load sprite: " + imageList[i].imageData);
             }
-            sprites.Add(sprite);
+            sprites[i] = sprite;
         }
 
         return sprites;

@@ -13911,7 +13911,7 @@ MonoBehaviour:
   targetRow:
     objCode: 
     closeTime: 0
-    dataList: []
+    dataList: 
   textData: 
   showTime: 2
   currentObjOffset: {x: 0, y: 0, z: 0}
@@ -13936,12 +13936,8 @@ MonoBehaviour:
   totalDataPage: 0
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
   uiCenterLabelOnOffManager: {fileID: 1540128500}
-  targetRow:
-    objCode: 
-    closeTime: 0
-    dataList: []
+  centerLabelList: []
   textDisplay: {fileID: 1460725787}
-  textData: []
   closeTime: 0
 --- !u!114 &1540128500
 MonoBehaviour:
@@ -13972,9 +13968,7 @@ MonoBehaviour:
   currentDataPage: 1
   totalDataPage: 0
   imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
-  targetRow:
-    objCode: 
-    dataList: []
+  imageList: []
   spriteDisplay: {fileID: 502621937}
   spriteData: []
   uiPopUpBtnManager: {fileID: 1540128503}
@@ -17563,7 +17557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847234d413683564fa5157a24ebed292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objCode: Move
+  objCode: Enter_All
 --- !u!60 &1921622053
 PolygonCollider2D:
   m_ObjectHideFlags: 0

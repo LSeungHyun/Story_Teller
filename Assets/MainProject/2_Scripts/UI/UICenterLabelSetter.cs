@@ -7,28 +7,22 @@ public class UICenterLabelSetter : UIContentsManager
     [SerializeField] public CenterLabelContainer centerLabelContainer;
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
 
-    public CenterLabelData targetRow;
+    public CenterLabelList[] centerLabelList;
     public Text textDisplay;
-    public string[] textData;
 
     public int closeTime = 0;
 
     public override void SetData(string currentObjCode)
     {
-        targetRow = centerLabelContainer.centerLabelDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (targetRow == null)
-            return;
-
-        textData = targetRow.dataList;
-        closeTime = targetRow.closeTime;
-        totalDataPage = textData != null ? textData.Length : 0;
+        centerLabelList = centerLabelContainer.centerLabelDatas.FirstOrDefault(r => r.objCode == currentObjCode).dataList;
+        totalDataPage = centerLabelList != null ? centerLabelList.Length : 0;
         currentDataPage = 1;
         DisplayPage();
     }
 
     public override void ClearData()
     {
-        textData = new string[0];
+        centerLabelList = new CenterLabelList[0];
         if (textDisplay != null)
             textDisplay.text = "";
         CancelInvoke("AdvancePageOrClose");
@@ -36,9 +30,10 @@ public class UICenterLabelSetter : UIContentsManager
 
     protected override void DisplayPageContent()
     {
-        if (textData != null && textData.Length > 0)
+        if (centerLabelList != null && centerLabelList.Length > 0)
         {
-            textDisplay.text = textData[currentDataPage - 1];
+            textDisplay.text = centerLabelList[currentDataPage - 1].centerLabelData;
+            closeTime = centerLabelList[currentDataPage - 1].closeTime;
             CancelInvoke("AdvancePageOrClose");
             Invoke("AdvancePageOrClose", closeTime);
         }
