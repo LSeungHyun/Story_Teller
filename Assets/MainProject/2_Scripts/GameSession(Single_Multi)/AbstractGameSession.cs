@@ -47,7 +47,7 @@ public abstract class AbsctractGameSession
         }
         if (hasDialogue)
         {
-            keyInputManager.uiTextSetter.SetData(currentObjCode);
+            keyInputManager.uiPopUpManager.SetData(currentObjCode);
             if (hasQuest)
                 keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
@@ -55,7 +55,7 @@ public abstract class AbsctractGameSession
         }
         if (hasImage)
         {
-            keyInputManager.uiImageSetter.SetData(currentObjCode);
+            keyInputManager.uiPopUpManager.SetData(currentObjCode);
             if (hasQuest)
                 keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
@@ -80,8 +80,7 @@ public abstract class AbsctractGameSession
         UIPopUpOnOffManager.defaultPopUpGroup.SetActive(false);
         UIPopUpOnOffManager.questPopUpGroup.SetActive(false);
 
-        UIPopUpOnOffManager.uiTextSetter.ClearData();
-        UIPopUpOnOffManager.uiImageSetter.ClearData();
+        UIPopUpOnOffManager.uiPopUpManager.ClearData();
 
         string currentNextObjCode = null;
         string currentNextdata = null;
