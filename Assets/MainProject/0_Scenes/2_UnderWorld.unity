@@ -4626,8 +4626,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1540128502}
-        m_TargetAssemblyTypeName: UIContentsManager, Assembly-CSharp
+      - m_Target: {fileID: 1540128509}
+        m_TargetAssemblyTypeName: UIPopUpManager, Assembly-CSharp
         m_MethodName: BackPage
         m_Mode: 1
         m_Arguments:
@@ -7731,8 +7731,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   uiPopUpOnOffManager: {fileID: 1540128504}
-  uiTextSetter: {fileID: 1540128502}
-  uiImageSetter: {fileID: 1540128501}
+  uiPopUpManager: {fileID: 1540128509}
   uiCenterLabelOnOffManager: {fileID: 1540128500}
   uiCenterLabelSetter: {fileID: 1540128499}
   hintStateManager: {fileID: 885658669}
@@ -8830,8 +8829,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1540128502}
-        m_TargetAssemblyTypeName: UIContentsManager, Assembly-CSharp
+      - m_Target: {fileID: 1540128509}
+        m_TargetAssemblyTypeName: UIPopUpManager, Assembly-CSharp
         m_MethodName: NextPage
         m_Mode: 1
         m_Arguments:
@@ -13880,9 +13879,7 @@ GameObject:
   - component: {fileID: 1540128506}
   - component: {fileID: 1540128505}
   - component: {fileID: 1540128504}
-  - component: {fileID: 1540128503}
-  - component: {fileID: 1540128502}
-  - component: {fileID: 1540128501}
+  - component: {fileID: 1540128509}
   - component: {fileID: 1540128500}
   - component: {fileID: 1540128499}
   - component: {fileID: 1540128498}
@@ -13905,8 +13902,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dce832490c30f554dac0d4932c822dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDataPage: 1
-  totalDataPage: 0
   bubbleContainer: {fileID: 11400000, guid: 81dea6f149606f847b6519856d17aea0, type: 2}
   targetRow:
     objCode: 
@@ -13932,8 +13927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b01f327531fbca44af1b8b728e6bc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDataPage: 1
-  totalDataPage: 0
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
   uiCenterLabelOnOffManager: {fileID: 1540128500}
   centerLabelList: []
@@ -13953,57 +13946,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiCenterLabelSetter: {fileID: 1540128499}
   centerLabelGroup: {fileID: 586458301}
---- !u!114 &1540128501
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540128497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1e46f8bf92fe6b40ac7ee8431a8d0de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentDataPage: 1
-  totalDataPage: 0
-  imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
-  imageList: []
-  spriteDisplay: {fileID: 502621937}
-  spriteData: []
-  uiPopUpBtnManager: {fileID: 1540128503}
---- !u!114 &1540128502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540128497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24272d0993b681e41877520fc4fcebb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentDataPage: 1
-  totalDataPage: 0
-  dialogueContainer: {fileID: 11400000, guid: 95dcfab4c22ebc84ca953236974878f8, type: 2}
-  dialogueList: []
-  textDisplay: {fileID: 1730852362}
-  uiPopUpBtnManager: {fileID: 1540128503}
---- !u!114 &1540128503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1540128497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 504049dd29ac5234c8d10e5b3f16d032, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  backBtn: {fileID: 431907348}
-  nextBtn: {fileID: 1005605667}
 --- !u!114 &1540128504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14018,8 +13960,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
   keyInputManager: {fileID: 885658668}
-  uiTextSetter: {fileID: 1540128502}
-  uiImageSetter: {fileID: 1540128501}
+  uiPopUpManager: {fileID: 1540128509}
   popUpGroup: {fileID: 1319718091}
   defaultPopUpGroup: {fileID: 1927402983}
   questPopUpGroup: {fileID: 1456435542}
@@ -14106,6 +14047,30 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1540128509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1540128497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 504049dd29ac5234c8d10e5b3f16d032, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueContainer: {fileID: 11400000, guid: 95dcfab4c22ebc84ca953236974878f8, type: 2}
+  imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
+  backBtn: {fileID: 431907348}
+  nextBtn: {fileID: 1005605667}
+  dialogueList: []
+  textDisplay: {fileID: 1730852362}
+  imageList: []
+  spriteDisplay: {fileID: 502621937}
+  spriteData: []
+  defaultImg: {fileID: -3438926303640708885, guid: 8570fbdcc6a533f4e921ab0b30c9c0f1, type: 3}
+  monoImg: {fileID: 4399948315795175599, guid: f89204ca73bf1c3479902fb6de181620, type: 3}
+  saraImg: {fileID: 3489835508319976794, guid: da9da1b982674e2419ce76f28c0765ee, type: 3}
 --- !u!1 &1556629852
 GameObject:
   m_ObjectHideFlags: 0
@@ -16810,7 +16775,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -301783507
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1871142905
 RectTransform:

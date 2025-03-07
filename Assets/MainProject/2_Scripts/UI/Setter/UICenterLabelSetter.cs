@@ -28,7 +28,7 @@ public class UICenterLabelSetter : UIContentsManager
         CancelInvoke("AdvancePageOrClose");
     }
 
-    protected override void DisplayPageContent()
+    public override void DisplayPage()
     {
         if (centerLabelList != null && centerLabelList.Length > 0)
         {
@@ -42,7 +42,8 @@ public class UICenterLabelSetter : UIContentsManager
     {
         if (currentDataPage < totalDataPage)
         {
-            NextPage(); 
+            currentDataPage++;
+            DisplayPage(); 
         }
         else
         {

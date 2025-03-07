@@ -37,7 +37,7 @@ public class BubbleSetter : UIContentsManager
         DisplayPage();
     }
 
-    protected override void DisplayPageContent()
+    public override void DisplayPage()
     {
         if (balloonPrefab != null)
         {

@@ -6,8 +6,7 @@ public class KeyInputManager : MonoBehaviour
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;
-    public UITextSetter uiTextSetter;
-    public UIImageSetter uiImageSetter; 
+    public UIPopUpManager uiPopUpManager;
 
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
     public UICenterLabelSetter uiCenterLabelSetter;

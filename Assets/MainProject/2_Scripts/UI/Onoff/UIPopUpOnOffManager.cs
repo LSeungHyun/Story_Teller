@@ -5,8 +5,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
     [SerializeField] public NextDataContainer nextDataContainer;
 
     public KeyInputManager keyInputManager;
-    public UITextSetter uiTextSetter;
-    public UIImageSetter uiImageSetter;
+    public UIPopUpManager uiPopUpManager;
 
     public GameObject popUpGroup;
     public GameObject defaultPopUpGroup;
