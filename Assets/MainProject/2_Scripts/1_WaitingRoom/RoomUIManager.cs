@@ -64,6 +64,29 @@ public class RoomUIManager : DoTweenManager
         }
     }
 
+    public void OpenPopUpNotDot(string popupName)
+    {
+        if (popupDict.ContainsKey(popupName))
+        {
+            popupDict[popupName].SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {popupName}");
+        }
+    }
+    public void ClosePopUpNotDot(string popupName)
+    {
+        if (popupDict.ContainsKey(popupName))
+        {
+            popupDict[popupName].SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {popupName}");
+        }
+    }
+
     /// <summary>
     /// 모든 팝업을 비활성화
     /// </summary>

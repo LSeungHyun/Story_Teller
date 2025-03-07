@@ -266,10 +266,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Debug.Log("누군가 나갔다!");
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
-    {
-        RoomInfoUpdate();
-    }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         roomUIManager.OpenPopUp("Room_Create_Error");
@@ -340,16 +336,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         if (localIndex == 0)
         {
             // 플레이어0 → 마스터 Info
-            roomUIManager.CloseAllPopUps();
-            roomUIManager.OpenPopUp("Waiting_Room");
 
             roomUIManager.OpenPopUp("Info_Group_Master");
+            //roomUIManager.OpenPopUpNotDot("Info_Group_Master");
         }
         else
         {
             // 플레이어1,2,3 → 게스트 Info
-            roomUIManager.CloseAllPopUps();
-            roomUIManager.OpenPopUp("Waiting_Room");
             
             roomUIManager.OpenPopUp("Info_Group_Guest");
         }
