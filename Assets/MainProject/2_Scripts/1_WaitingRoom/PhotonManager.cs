@@ -3,8 +3,8 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
@@ -21,7 +21,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     // 현재 서버 상태를 알려주는 텍스트 및 방 코드를 입력 받는 오브젝트
     public Text StatusText;
-    public Text room_Code_Input;
+    public InputField room_Code_Input;
     public Text room_Code_Text; 
 
     public Text current_Player_Text;
@@ -34,9 +34,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public GameObject CenterLabel;
     public GameObject CheckMyName;
 
-    // 유저명과 서버 정보를 나타내주는 오브젝트
-    public List<GameObject> WaitList;
-    public List<Text> RoomInfo;
+    // 테두리오브젝트와 이름Text 담는 배열
+    public List<GameObject> OutLineList;
+    public List<Text> NameTextList;
 
     // 방 코드
     [SerializeField]
@@ -45,7 +45,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        Screen.SetResolution(1920, 1080, false);
+        PhotonNetwork.SendRate = 60;
+        PhotonNetwork.SerializationRate = 30; 
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
     #region 자체 함수 모음
 
@@ -55,7 +57,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void Connect()
     {
         PhotonNetwork.ConnectUsingSettings();
-        Debug.Log("접속 완료");
     }
 
     /// <summary>
@@ -81,8 +82,21 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Debug.Log($"Room Created with Code : {roomCode}");
     }
 
+    /// <summary>
+    /// 6자리 방코드 만들어주는 곳
+    /// </summary>
+    /// <returns> 방 코드 6자리 </returns>
+    private string GenerateRoomCode()
+    {
+        System.Random random = new System.Random();
+
+        return new string(Enumerable.Repeat(characters, 6).Select(s => s[random.Next(s.Length)]).ToArray());
+    }
+
     public void JoinRoom()
     {
+        room_Code_Input.text.Trim();
+
         if (room_Code_Input.text == "")
         {
             RoomCodeIsNull();
@@ -99,10 +113,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         ResetPlayerRoomInfo();
-
+        Debug.Log("방 나왔음 : " + room_Code_Input.text);
         PhotonNetwork.LeaveRoom();
-        //RoomUpdate();
-        //SetWaitList(true);
     }
 
     /// <summary>
@@ -110,6 +122,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// </summary>
     private void MasterStartBtnOnOff()
     {
+        roomUIManager.ClosePopUp("Info_Group_Master");
+        roomUIManager.ClosePopUp("Info_Group_Guest");
         if (PhotonNetwork.IsMasterClient)
         {
             roomUIManager.OpenPopUp("Info_Group_Master");
@@ -136,29 +150,22 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
     public void CopyToClipBoard()
     {
-        //GUIUtility.systemCopyBuffer = PhotonNetwork.CurrentRoom.Name;
-        //GUIUtility.systemCopyBuffer = roomCode;
-        Copy(PhotonNetwork.CurrentRoom.Name);
+        if(PhotonNetwork.CurrentRoom.Name != null)
+        {
+            Copy(PhotonNetwork.CurrentRoom.Name);
+        }
     }
 
     public void GameStart()
     {
-        PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
-        //모두 게임씬으로 이동
-    }
-    /// <summary>
-    /// 대기실 리스트 방 최대 인원수에 따라 오브젝트 활성화
-    /// </summary>
-    /// <param name="isTrue"> 활용하지 않는 대기실을 ON/OFF 할지 선택 가능 </param>
-    public void SetWaitList(bool isTrue)
-    {
-        //if (PhotonNetwork.CurrentRoom.MaxPlayers < 5)
-        //{
-        //    for (int i = PhotonNetwork.CurrentRoom.MaxPlayers; i < 5; i++)
-        //    {
-        //        WaitList[i].SetActive(isTrue);
-        //    }
-        //}
+        if(PhotonNetwork.IsConnected) 
+        {
+            PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
+            GameManager.Instance.SelectGameMode(true);
+            return;
+        }
+        SceneManager.LoadScene("2_UnderWorld");
+        GameManager.Instance.SelectGameMode(false);
     }
 
 
@@ -176,85 +183,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private void RoomCodeIsNull()
     {
         Debug.Log("코드에러창 띄우기");
-        //roomUIManager.CloseAllPopUps();
         roomUIManager.OpenPopUp("Room_Code_Error");
     }
-
-    /// <summary>
-    /// 방 업데이트 매서드 종합
-    /// </summary>
-    private void RoomUpdate()
-    {
-        CheckMyNickName();
-    }
-
-    /// <summary>
-    /// 방 코드와 플레이어 수 정보를 업데이트 시켜주는 매서드
-    /// </summary>
-    private void RoomInfoUpdate()
-    {
-        //현재 방 인원수
-        if (PhotonNetwork.InRoom)
-        {
-            current_Player_Text.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString();
-        }
-    }
-
-
-    
-
-    /// <summary>
-    /// 대기실 이름 명단 업데이트 및 본인 이름 색 변환
-    /// </summary>
-    private void WaitRoomUpdate()
-    {
-        //PhotonNetwork.NickName = "";
-
-        //for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
-        //{
-        //    TMP_Text childText = WaitList[i].GetComponentInChildren<TMP_Text>();
-
-        //    PhotonNetwork.PlayerList[i].NickName = "";
-
-        //    // 플레이어 닉네임과 역할(M 또는 P) 설정
-        //    childText.text = (i == 0) ? $"{PhotonNetwork.PlayerList[i].NickName = "Master"}" : $"{PhotonNetwork.PlayerList[i].NickName = "Player" + i}";
-
-        //    Debug.Log(i + "번째 이름: " + PhotonNetwork.PlayerList[i].NickName);
-
-        //    // 본인 닉네임인지 확인하여 색상 설정
-        //    childText.color = (PhotonNetwork.PlayerList[i].NickName == PhotonNetwork.NickName)
-        //        ? Color.red
-        //        : Color.black;
-        //}
-
-        //if (PhotonNetwork.PlayerList.Length - PhotonNetwork.CurrentRoom.MaxPlayers <= -1)
-        //{
-        //    for (int i = PhotonNetwork.PlayerList.Length; i < PhotonNetwork.CurrentRoom.MaxPlayers; i++)
-        //    {
-        //        TMP_Text childText = WaitList[i].GetComponentInChildren<TMP_Text>();
-
-        //        childText.text = "대기 중...";
-        //        childText.color = Color.gray; // 대기 중 메시지는 회색
-        //    }
-        //}
-    }
-
-    /// <summary>
-    /// 6자리 방코드 만들어주는 곳
-    /// </summary>
-    /// <returns> 방 코드 6자리 </returns>
-    private string GenerateRoomCode()
-    {
-        System.Random random = new System.Random();
-
-        return new string(Enumerable.Repeat(characters, 6).Select(s => s[random.Next(s.Length)]).ToArray());
-    }
-
-    private void CheckMyNickName()
-    {
-        //TMP_Text childText = CheckMyName.GetComponentInChildren<TMP_Text>();
-        //childText.text = $"나의 닉네임 : {PhotonNetwork.NickName} ==> 닉네임 가챠";
-    }
+   
 
     /// <summary>
     /// 게임 상태 Log로 확인
@@ -271,16 +202,24 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("접속 콜백 완료");
-        roomUIManager.CloseAllPopUps();
+
+        roomUIManager.popupDict["Title_Btn_Group"].SetActive(false);
+        roomUIManager.ClosePopUp("Single_Multi_Select");
+
         roomUIManager.OpenPopUp("Lobby_Group");
+
         LogUpdate();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log("접속 끊기 콜백 완료");
-        roomUIManager.CloseAllPopUps();
+
+        roomUIManager.popupDict["Title_Btn_Group"].SetActive(true);
+        roomUIManager.ClosePopUp("Lobby_Group");
+
         roomUIManager.OpenPopUp("Single_Multi_Select");
+
         LogUpdate();
     }
 
@@ -292,10 +231,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         roomUIManager.OpenPopUp("Waiting_Room");
 
         room_Code_Text.text = PhotonNetwork.CurrentRoom.Name;
+
         MasterStartBtnOnOff();
         RoomInfoUpdate();
 
-        SetWaitList(false);
         LogUpdate();
     }
 
@@ -303,8 +242,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("방 나가기 콜백 완료");
 
-        roomUIManager.CloseAllPopUps();
-        roomUIManager.OpenPopUp("Lobby_Group");
+        roomUIManager.ClosePopUp("Waiting_Room");
+
         LogUpdate();
     }
 
@@ -325,7 +264,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
-        Debug.Log($"Room creation failed : {message}");
+        roomUIManager.OpenPopUp("Room_Create_Error");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -357,5 +296,66 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             print("로비에 있는지? : " + PhotonNetwork.InLobby);
             print("연결됐는지? : " + PhotonNetwork.IsConnected);
         }
+    }
+
+    /// <summary>
+    /// 방 코드와 플레이어 수 정보를 업데이트 시켜주는 매서드
+    /// </summary>
+    private void RoomInfoUpdate()
+    {
+        //현재 방 인원수
+        if (PhotonNetwork.InRoom)
+        {
+            current_Player_Text.text = PhotonNetwork.CurrentRoom.PlayerCount.ToString();
+            RefreshPlayerUI();
+        }
+    }
+
+    /// <summary>
+    /// 대기실 리스트 방 최대 인원수에 따라 오브젝트 활성화
+    /// </summary>
+    /// <param name="isTrue"> 활용하지 않는 대기실을 ON/OFF 할지 선택 가능 </param>
+    public void RefreshPlayerUI()
+    {
+        // 현재 방 정보
+        int currentCount = PhotonNetwork.CurrentRoom.PlayerCount;
+        int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;
+
+        for (int i = 0; i < maxCount; i++)
+        {
+            bool isActive = (i < currentCount);
+            OutLineList[i].SetActive(isActive);
+
+            if (isActive)
+            {
+                // PhotonNetwork.PlayerList[i]가 i번째 플레이어
+                Player p = PhotonNetwork.PlayerList[i];
+
+                // 닉네임 설정 (예: "집배원 i+1")
+                NameTextList[i].text = "집배원 " + (i + 1);
+                p.NickName = NameTextList[i].text;
+
+                // 로컬 플레이어인지 체크
+                if (p == PhotonNetwork.LocalPlayer)
+                {
+                    // 로컬 플레이어 => 빨간색
+                    NameTextList[i].color = Color.red;
+                }
+                else
+                {
+                    // 다른 플레이어 => 흰색
+                    NameTextList[i].color = Color.white;
+                }
+            }
+            else
+            {
+                // 아직 플레이어가 없는 슬롯
+                NameTextList[i].text = "대기중 . . .";
+                NameTextList[i].color = Color.white;
+            }
+        }
+
+        // 디버그용
+        Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
     }
 }

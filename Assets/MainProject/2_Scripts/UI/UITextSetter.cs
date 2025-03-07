@@ -5,9 +5,8 @@ using UnityEngine.UI;
 public class UITextSetter : UIContentsManager
 {
     [SerializeField] public DialogueContainer dialogueContainer;
-    public DialogueData targetRow;
+    public DialogueList[] dialogueList;
     public Text textDisplay;
-    public string[] textData;
 
     // UIPopUpBtnManager를 인스펙터에서 할당 (이벤트를 통해 자동 업데이트됩니다)
     public UIPopUpBtnManager uiPopUpBtnManager;
@@ -32,19 +31,15 @@ public class UITextSetter : UIContentsManager
 
     public override void SetData(string currentObjCode)
     {
-        targetRow = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (targetRow == null)
-            return;
-
-        textData = targetRow.dataList;
-        totalDataPage = (textData != null) ? textData.Length : 0;
+        dialogueList = dialogueContainer.dialogueDatas.FirstOrDefault(r => r.objCode == currentObjCode).dataList;
+        totalDataPage = (dialogueList != null) ? dialogueList.Length : 0;
         currentDataPage = 1;
         DisplayPage();
     }
 
     public override void ClearData()
     {
-        textData = new string[0];
+        dialogueList = new DialogueList[0];
         if (textDisplay != null)
             textDisplay.text = "";
     }
@@ -56,9 +51,9 @@ public class UITextSetter : UIContentsManager
 
     protected override void DisplayPageContent()
     {
-        if (textData != null && textData.Length > 0)
+        if (dialogueList != null && dialogueList.Length > 0)
         {
-            textDisplay.text = textData[currentDataPage - 1];
+            textDisplay.text = dialogueList[currentDataPage - 1].textData;
         }
     }
 }

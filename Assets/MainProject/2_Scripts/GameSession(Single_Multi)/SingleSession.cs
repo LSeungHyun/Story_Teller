@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SingleSession : AbsctractGameSession
 {
-    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager)
+    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
-        ClosePopUpBasic(UIPopUpOnOffManager);
+        ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);
 
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }
