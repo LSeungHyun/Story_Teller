@@ -122,9 +122,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// </summary>
     //private void MasterStartBtnOnOff()
     //{
-    //    //roomUIManager.ClosePopUp("Info_Group_Master");
-    //    //roomUIManager.ClosePopUp("Info_Group_Guest");
-    //    if (PhotonNetwork.IsMasterClient)
+    //    roomUIManager.ClosePopUp("Info_Group_Master");
+    //    roomUIManager.ClosePopUp("Info_Group_Guest");
+    //    if (PhotonNetwork.LocalPlayer.IsMasterClient)
     //    {
     //        roomUIManager.OpenPopUp("Info_Group_Master");
     //        Debug.Log("마스터");
@@ -243,8 +243,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("방 나가기 콜백 완료");
-        roomUIManager.ClosePopUp("Info_Group_Guest");
-        roomUIManager.ClosePopUp("Info_Group_Master");
+        //roomUIManager.ClosePopUp("Info_Group_Guest");
+        //roomUIManager.ClosePopUp("Info_Group_Master");
         roomUIManager.ClosePopUp("Waiting_Room");
 
         LogUpdate();
@@ -329,56 +329,59 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         int currentCount = PhotonNetwork.CurrentRoom.PlayerCount;
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;
 
-        if (PhotonNetwork.LocalPlayer.IsMasterClient)
+        // -- 먼저 마스터/게스트 Info 초기화 (둘 다 끔) --
+        roomUIManager.ClosePopUp("Info_Group_Master");
+        roomUIManager.ClosePopUp("Info_Group_Guest");
+
+        // 2) 로컬 플레이어의 인덱스 찾기
+        int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
+
+        // 3) 로컬 플레이어가 0번이면 마스터 Info, 아니면 게스트 Info
+        if (localIndex == 0)
         {
-            //roomUIManager.ClosePopUp("Info_Group_Guest");
+            // 플레이어0 → 마스터 Info
+            roomUIManager.CloseAllPopUps();
+            roomUIManager.OpenPopUp("Waiting_Room");
+
             roomUIManager.OpenPopUp("Info_Group_Master");
-            Debug.Log("나는 마스터 (로컬 플레이어)");
         }
         else
         {
-            //roomUIManager.ClosePopUp("Info_Group_Master");
+            // 플레이어1,2,3 → 게스트 Info
+            roomUIManager.CloseAllPopUps();
+            roomUIManager.OpenPopUp("Waiting_Room");
+            
             roomUIManager.OpenPopUp("Info_Group_Guest");
-            Debug.Log("나는 게스트 (로컬 플레이어)");
         }
 
-        // 3) 슬롯(OutLineList, NameTextList) 갱신
+        // 4) 나머지 슬롯(OutLineList, NameTextList) 갱신
         for (int i = 0; i < maxCount; i++)
         {
-            // 슬롯 활성화 여부 (현재 인원보다 작으면 활성화)
             bool isActive = (i < currentCount);
-            // 우선 Outline은 모두 끔 (필요 시 로컬 플레이어만 켤 예정)
+            // 기본적으로 Outline은 끔
             OutLineList[i].SetActive(false);
 
             if (isActive)
             {
-                // PhotonNetwork.PlayerList[i]가 i번째 플레이어
                 Player p = PhotonNetwork.PlayerList[i];
 
-                // 닉네임 설정 (예: "집배원 i+1")
+                // 닉네임 설정
                 NameTextList[i].text = "집배원 " + (i + 1);
                 p.NickName = NameTextList[i].text;
 
-                // 로컬 플레이어 슬롯인지 확인
+                // 로컬 플레이어 슬롯이면 색상 + Outline
                 if (p == PhotonNetwork.LocalPlayer)
                 {
-                    // 내 슬롯 → 색상 변경 & Outline 켜기
                     NameTextList[i].color = localPlayerColors[i];
                     OutLineList[i].SetActive(true);
-                    if (PhotonNetwork.IsMasterClient)
-                    {
-
-                    }
                 }
                 else
                 {
-                    // 다른 플레이어 → 흰색 닉네임
                     NameTextList[i].color = Color.white;
                 }
             }
             else
             {
-                // 아직 플레이어가 없는 슬롯
                 NameTextList[i].text = "대기중 . . .";
                 NameTextList[i].color = Color.white;
             }
@@ -386,5 +389,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
     }
+
 
 }
