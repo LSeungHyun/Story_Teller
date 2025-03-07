@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class MultiSession : AbsctractGameSession
 {
-    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager)
+    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
-        ClosePopUpBasic(UIPopUpOnOffManager);
+        ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);
 
         Debug.Log("멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티.");
     }

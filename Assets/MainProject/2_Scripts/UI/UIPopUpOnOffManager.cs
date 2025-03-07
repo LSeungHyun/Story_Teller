@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class UIPopUpOnOffManager : MonoBehaviour
 {
+    [SerializeField] public NextDataContainer nextDataContainer;
+
     public KeyInputManager keyInputManager;
     public UITextSetter uiTextSetter;
     public UIImageSetter uiImageSetter;
@@ -26,6 +28,6 @@ public class UIPopUpOnOffManager : MonoBehaviour
     {
         // GameManager에서 현재 세션(IGameSession) 객체를 가져와 팝업 닫기 로직 위임
         var session = GameManager.Instance.Session;
-        session.ClosePopUp(this);
+        session.ClosePopUp(this, keyInputManager.currentObjCode);
     }
 }
