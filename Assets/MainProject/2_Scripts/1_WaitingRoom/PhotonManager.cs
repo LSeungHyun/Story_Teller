@@ -3,7 +3,6 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -49,7 +48,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30; 
         PhotonNetwork.AutomaticallySyncScene = true;
-        //Screen.SetResolution(1920, 1080, false);
     }
     #region 자체 함수 모음
 
@@ -243,7 +241,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Debug.Log("방 나가기 콜백 완료");
 
         roomUIManager.ClosePopUp("Waiting_Room");
-        //roomUIManager.OpenPopUp("Lobby_Group");
 
         LogUpdate();
     }

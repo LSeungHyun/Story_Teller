@@ -78,11 +78,9 @@ public class DoTweenManager : MonoBehaviour
 
         rect.DOKill();
 
-        rect.DOScale(0f, scaleDuration)
-            //.SetEase(scaleEase)
-            .OnComplete(() =>
-            {
-                ui.SetActive(false);
-            });
+        // Επΐε: 1 -> 0, Ease.InBack
+        rect.DOScale(0f, 0.125f)
+            .SetEase(Ease.InBack)
+            .OnComplete(() => ui.SetActive(false));
     }
 }

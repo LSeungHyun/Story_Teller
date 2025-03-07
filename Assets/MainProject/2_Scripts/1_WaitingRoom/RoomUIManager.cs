@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RoomUIManager : DoTweenManager
 {
@@ -58,7 +57,6 @@ public class RoomUIManager : DoTweenManager
         if (popupDict.ContainsKey(popupName))
         {
             HideUI(popupDict[popupName]);
-            //popupDict[popupName].SetActive(false);
         }
         else
         {
