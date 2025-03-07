@@ -3580,7 +3580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   REDIRECT_URI: https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
-  rowDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
+  nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
   dialogueContainer: {fileID: 11400000, guid: 95dcfab4c22ebc84ca953236974878f8, type: 2}
   bubbleContainer: {fileID: 11400000, guid: 81dea6f149606f847b6519856d17aea0, type: 2}
@@ -7699,6 +7699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
+  nextDataContainer: {fileID: 0}
   uiPopUpOnOffManager: {fileID: 1540128504}
   uiTextSetter: {fileID: 1540128502}
   uiImageSetter: {fileID: 1540128501}
@@ -13748,8 +13749,6 @@ MonoBehaviour:
   imageContainer: {fileID: 11400000, guid: 9f8fd1d0000b4434088e49a35158aee3, type: 2}
   targetRow:
     objCode: 
-    isNextObj: 
-    isNextData: 
     dataList: []
   spriteDisplay: {fileID: 502621937}
   spriteData: []
@@ -13769,13 +13768,8 @@ MonoBehaviour:
   currentDataPage: 1
   totalDataPage: 0
   dialogueContainer: {fileID: 11400000, guid: 95dcfab4c22ebc84ca953236974878f8, type: 2}
-  targetRow:
-    objCode: 
-    isNextObj: 
-    isNextData: 
-    dataList: []
+  dialogueList: []
   textDisplay: {fileID: 1730852362}
-  textData: []
   uiPopUpBtnManager: {fileID: 1540128503}
 --- !u!114 &1540128503
 MonoBehaviour:
@@ -13803,8 +13797,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dcde1df544b934ab952c03e7292504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
   keyInputManager: {fileID: 885658668}
-  objectDictionary: {fileID: 1245198105}
   uiTextSetter: {fileID: 1540128502}
   uiImageSetter: {fileID: 1540128501}
   popUpGroup: {fileID: 1319718091}

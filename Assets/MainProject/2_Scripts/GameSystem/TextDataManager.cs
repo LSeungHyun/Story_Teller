@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 #region Data Array
 [Serializable]
@@ -21,8 +22,9 @@ public class AllSheetsResponse
 public class AllData 
 {
     public ObjDataType[] objDataType;    // ObjDataTypeSheet
+    public NextData[] textData;
     public CenterLabelData[] centerLabelData;
-    public DialogueData[] dialogueData;
+    public DialogueRawData[] dialogueData;
     public BubbleData[] bubbleData;
     public ImageData[] imageData;
     public QuestData[] questData;
@@ -38,6 +40,15 @@ public class ObjDataType
 }
 
 [Serializable]
+public class NextData
+{
+    public string objCode;
+    public string isNextData;
+    public string isNextObj;
+}
+
+
+[Serializable]
 public class CenterLabelData
 {
     public string objCode;
@@ -45,14 +56,39 @@ public class CenterLabelData
     public string[] dataList;
 }
 
+#region Dialogue Data
+[Serializable]
+public class DialogueRawData
+{
+    public string pageNum;
+    public string objCode;
+    public string bgType;
+    public string textData;
+}
+
 [Serializable]
 public class DialogueData
 {
     public string objCode;
-    public string isNextObj;
-    public string isNextData;
-    public string[] dataList;
+    public DialogueList[] dataList;
 }
+
+[Serializable]
+public class DialogueList
+{
+    public string pageNum;
+    public BgType bgType;
+    public string textData;
+}
+
+public enum BgType
+{
+    기본,
+    독백,
+    사라도령
+}
+
+#endregion
 
 [Serializable]
 public class BubbleData
@@ -66,8 +102,6 @@ public class BubbleData
 public class ImageData
 {
     public string objCode;
-    public string isNextObj;
-    public string isNextData;
     public string[] dataList;
 }
 
@@ -99,7 +133,7 @@ public class TextDataManager : MonoBehaviour
     private ObjDataTypeContainer objDataTypeContainer;
 
     [SerializeField]
-    private RowDataContainer rowDataContainer;
+    private NextDataContainer nextDataContainer;
 
     [SerializeField]
     private CenterLabelContainer centerLabelContainer;
@@ -158,10 +192,17 @@ public class TextDataManager : MonoBehaviour
                         Debug.Log("CenterLabelData loaded: " + resp.data.centerLabelData.Length);
                     }
 
+                    if (centerLabelContainer != null && resp.data.textData != null)
+                    {
+                        nextDataContainer.nextDatas = resp.data.textData;
+                        Debug.Log("NextData loaded: " + resp.data.textData.Length);
+                    }
+
+
                     // 3) DialogueData
                     if (dialogueContainer != null && resp.data.dialogueData != null)
                     {
-                        dialogueContainer.dialogueDatas = resp.data.dialogueData;
+                        dialogueContainer.dialogueDatas = GroupDialogueData(resp.data.dialogueData);
                         Debug.Log("DialogueData loaded: " + resp.data.dialogueData.Length);
                     }
 
@@ -207,6 +248,41 @@ public class TextDataManager : MonoBehaviour
             }
         }
     }
+
+    private DialogueData[] GroupDialogueData(DialogueRawData[] dialogueList)
+    {
+        Dictionary<string, List<DialogueList>> dialogueDict = new Dictionary<string, List<DialogueList>>();
+
+        foreach (var dialogue in dialogueList)
+        {
+            BgType bgTypeEnum;
+            if (Enum.TryParse(dialogue.bgType, out bgTypeEnum))
+            {
+                if (!dialogueDict.ContainsKey(dialogue.objCode))
+                {
+                    dialogueDict[dialogue.objCode] = new List<DialogueList>();
+                }
+                dialogueDict[dialogue.objCode].Add(new DialogueList
+                {
+                    pageNum = dialogue.pageNum,
+                    bgType = bgTypeEnum,
+                    textData = dialogue.textData
+                });
+            }
+            else
+            {
+                Debug.LogError("타입 이상해");
+            }
+        }
+
+        return dialogueDict.Select(entry => new DialogueData
+        {
+            objCode = entry.Key,
+            dataList = entry.Value.ToArray()
+        }).ToArray();
+    }
+
+
 
     private string SplitTextData(string json)
     {

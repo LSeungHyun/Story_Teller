@@ -1,10 +1,13 @@
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
+using UnityEngine.UI;
 
 public abstract class AbsctractGameSession
 {
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(KeyInputManager keyInputManager);
-    public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager);
+    public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
     public abstract void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest);
     public abstract void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
@@ -69,7 +72,7 @@ public abstract class AbsctractGameSession
         UIPopUpOnOffManager.questPopUpGroup.SetActive(isQuest);
     }
 
-    protected void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager)
+    protected void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
         UIPopUpOnOffManager.popUpGroup.SetActive(false);
         UIPopUpOnOffManager.windowPopUp.SetActive(false);
@@ -81,14 +84,14 @@ public abstract class AbsctractGameSession
         UIPopUpOnOffManager.uiImageSetter.ClearData();
 
         string currentNextObjCode = null;
+        string currentNextdata = null;
 
-        if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextObj))
+        NextData foundData = UIPopUpOnOffManager.nextDataContainer.nextDatas.FirstOrDefault(data => data.objCode == currentObjCode);
+
+        if (foundData != null)
         {
-            currentNextObjCode = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextObj;
-        }
-        else if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextObj))
-        {
-            currentNextObjCode = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextObj;
+            currentNextObjCode = foundData.isNextObj;
+            currentNextdata = foundData.isNextData;
         }
 
         if (!string.IsNullOrEmpty(currentNextObjCode))
@@ -96,21 +99,11 @@ public abstract class AbsctractGameSession
             ObjectDictionary.Instance.ToggleObjectActive(currentNextObjCode);
         }
 
-        string currentNextdata = null;
-
-        if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiTextSetter.targetRow?.isNextData))
-        {
-            currentNextdata = UIPopUpOnOffManager.uiTextSetter.targetRow.isNextData;
-        }
-        else if (!string.IsNullOrEmpty(UIPopUpOnOffManager.uiImageSetter.targetRow?.isNextData))
-        {
-            currentNextdata = UIPopUpOnOffManager.uiImageSetter.targetRow.isNextData;
-        }
-
         if (!string.IsNullOrEmpty(currentNextdata))
         {
             UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextdata);
         }
+        UIPopUpOnOffManager.keyInputManager.currentObjCode = null;
     }
 
     protected void OpenCenterLabelBasic(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
