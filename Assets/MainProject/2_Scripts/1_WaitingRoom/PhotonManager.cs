@@ -117,24 +117,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
-    /// <summary>
-    /// 마스터한테만 게임 스타트 버튼 표시
-    /// </summary>
-    //private void MasterStartBtnOnOff()
-    //{
-    //    roomUIManager.ClosePopUp("Info_Group_Master");
-    //    roomUIManager.ClosePopUp("Info_Group_Guest");
-    //    if (PhotonNetwork.LocalPlayer.IsMasterClient)
-    //    {
-    //        roomUIManager.OpenPopUp("Info_Group_Master");
-    //        Debug.Log("마스터");
-    //    }
-    //    else
-    //    {
-    //        roomUIManager.OpenPopUp("Info_Group_Guest");
-    //        Debug.Log("게스트");
-    //    }
-    //}
 
     /// <summary>
     /// 방 코드 복사
@@ -243,8 +225,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         Debug.Log("방 나가기 콜백 완료");
-        //roomUIManager.ClosePopUp("Info_Group_Guest");
-        //roomUIManager.ClosePopUp("Info_Group_Master");
+
         roomUIManager.ClosePopUp("Waiting_Room");
 
         LogUpdate();
@@ -254,7 +235,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         //RoomUpdate();
         RoomInfoUpdate();
-        //MasterStartBtnOnOff();
+        
         Debug.Log("누군가 들어왔다!");
     }
 
@@ -262,14 +243,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         //RoomUpdate();
         RoomInfoUpdate();
-        //MasterStartBtnOnOff();
+        
         Debug.Log("누군가 나갔다!");
     }
 
-    public override void OnMasterClientSwitched(Player newMasterClient)
-    {
-        RoomInfoUpdate();
-    }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         roomUIManager.OpenPopUp("Room_Create_Error");
@@ -330,8 +307,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;
 
         // -- 먼저 마스터/게스트 Info 초기화 (둘 다 끔) --
-        roomUIManager.ClosePopUp("Info_Group_Master");
-        roomUIManager.ClosePopUp("Info_Group_Guest");
+        roomUIManager.ClosePopUpNotDot("Info_Group_Master");
+        roomUIManager.ClosePopUpNotDot("Info_Group_Guest");
 
         // 2) 로컬 플레이어의 인덱스 찾기
         int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
@@ -340,18 +317,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         if (localIndex == 0)
         {
             // 플레이어0 → 마스터 Info
-            roomUIManager.CloseAllPopUps();
-            roomUIManager.OpenPopUp("Waiting_Room");
 
-            roomUIManager.OpenPopUp("Info_Group_Master");
+            roomUIManager.OpenPopUpNotDot("Info_Group_Master");
         }
         else
         {
             // 플레이어1,2,3 → 게스트 Info
-            roomUIManager.CloseAllPopUps();
-            roomUIManager.OpenPopUp("Waiting_Room");
             
-            roomUIManager.OpenPopUp("Info_Group_Guest");
+            roomUIManager.OpenPopUpNotDot("Info_Group_Guest");
         }
 
         // 4) 나머지 슬롯(OutLineList, NameTextList) 갱신
