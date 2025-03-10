@@ -1,23 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SingleSession : AbstractGameSession
+public class SingleSession : AbsctractGameSession
 {
-    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
-        // ½Ì±Û ¸ðµå¿ë ÆË¾÷ ´Ý±â ·ÎÁ÷
-        uiPopUpManager.popUpGroup.SetActive(false);
-        uiPopUpManager.dialoguePopUpGroup.SetActive(false); 
-        uiPopUpManager.textData = new string[0];
-        uiPopUpManager.spriteData = new List<Sprite>();
-        uiPopUpManager.text.text = "";
-        uiPopUpManager.sprite.sprite = null;
+        ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);
 
-        if (uiPopUpManager.nextObjCode != null && uiPopUpManager.nextObjCode.IsNextObj != null)
-        {
-            //uiPopUpManager.OpenPopUpWindow(uiPopUpManager.nextObjCode);
-            uiPopUpManager.nextObjCode = null;
-        }
         Debug.Log("SingleSession: PopUp closed in single mode.");
+    }
+
+    public override void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest)
+    {
+        OpenPopUpBasic(UIPopUpOnOffManager, isQuest);
+
+        Debug.Log("SingleSession: PopUp closed in single mode.");
+    }
+
+    public override void HandleInteraction(CurrentObjectManager currentObjectManager)
+    {
+        HandleInteractionBasic(currentObjectManager);
+        Debug.Log("³ª¾ß³ª ½Ì±ÛÀÌ¾ß");
+    }
+    public override void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
+    {
+        OpenCenterLabelBasic(uiCenterLabelOnOffManager);
+    }
+    public override void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
+    {
+        CloseCenterLabelBasic(uiCenterLabelOnOffManager);
     }
 }

@@ -4,6 +4,7 @@ using System.Collections;
 using System;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
 
 #region Data Array
 [Serializable]
@@ -20,26 +21,14 @@ public class AllSheetsResponse
 [Serializable]
 public class AllData 
 {
-    public RowData[] textData;       // 기존 TextDataSheet
     public ObjDataType[] objDataType;    // ObjDataTypeSheet
-    public CenterLabelData[] centerLabelData;
-    public DialogueData[] dialogueData;
+    public NextData[] textData;
+    public DialogueRawData[] dialogueData;
+    public ImageRawData[] imageData;
+    public CenterLabelRawData[] centerLabelData;
     public BubbleData[] bubbleData;
-    public ImageData[] imageData;
     public QuestData[] questData;
     public HintData[] hintData;
-}
-
-[Serializable]
-public class RowData
-{
-    public string objCode;
-    public string dataType;
-    public string IsNextObj;
-    public string name;      // 새로 추가
-    public bool isMine;
-    public int closeTime;
-    public string[] dataList;
 }
 
 [Serializable]
@@ -47,55 +36,121 @@ public class ObjDataType
 {
     public string objCode;
     public string dataType;
+    public bool isMine;
+}
+
+[Serializable]
+public class NextData
+{
+    public string objCode;
+    public string isNextData;
+    public string isNextObj;
+}
+
+#region CenterLabel Data
+[Serializable]
+public class CenterLabelRawData
+{
+    public string objCode;
+    public string pageNum;
+    public int closeTime;
+    public string centerLabelData;
 }
 
 [Serializable]
 public class CenterLabelData
 {
     public string objCode;
+    public CenterLabelList[] dataList;
+}
+
+[Serializable]
+public class CenterLabelList
+{
+    public string pageNum;
     public int closeTime;
-    public string[] dataList;
+    public string centerLabelData;
+}
+#endregion
+
+
+#region Dialogue Data
+[Serializable]
+public class DialogueRawData
+{
+    public string pageNum;
+    public string objCode;
+    public string bgType;
+    public string textData;
 }
 
 [Serializable]
 public class DialogueData
 {
     public string objCode;
-    public string IsNextObj;
-    public bool isMine;
-    public string[] dataList;
+    public DialogueList[] dataList;
 }
 
 [Serializable]
-public class BubbleData
+public class DialogueList
+{
+    public string pageNum;
+    public BgType bgType;
+    public string textData;
+}
+
+public enum BgType
+{
+    기본,
+    독백,
+    사라도령
+}
+#endregion
+
+#region Image Data
+[Serializable]
+public class ImageRawData
 {
     public string objCode;
-    public int closeTime;
-    public string[] dataList;
+    public string pageNum;
+    public string imageData;
 }
 
 [Serializable]
 public class ImageData
 {
     public string objCode;
-    public string IsNextObj;
-    public bool isMine;
-    public string[] dataList;
+    public ImageList[] dataList;
+}
+
+[Serializable]
+public class ImageList
+{
+    public string pageNum;
+    public string imageData;
+}
+#endregion
+
+[Serializable]
+public class BubbleData
+{
+    public string objCode;
+    public int closeTime;
+    public string dataList;
 }
 
 [Serializable]
 public class QuestData
 {
     public string objCode;
-    public string IsNextObj;
-    public bool isMine;
-    public string[] dataList;
+    public string dataList;
 }
 
 [Serializable]
 public class HintData
 {
-    public string hintCode;
+    public string objCode;
+    public string name;
     public string answer;
     public string isUsed;
     public string hintTextData;
@@ -112,7 +167,7 @@ public class TextDataManager : MonoBehaviour
     private ObjDataTypeContainer objDataTypeContainer;
 
     [SerializeField]
-    private RowDataContainer rowDataContainer;
+    private NextDataContainer nextDataContainer;
 
     [SerializeField]
     private CenterLabelContainer centerLabelContainer;
@@ -155,9 +210,6 @@ public class TextDataManager : MonoBehaviour
                 // JSON 응답
                 string json = request.downloadHandler.text;
 
-                // 필요 시 ';' 파싱 등 추가 처리
-                json = SplitTextData(json);
-
                 // 파싱
                 AllSheetsResponse resp = JsonUtility.FromJson<AllSheetsResponse>(json);
 
@@ -165,24 +217,23 @@ public class TextDataManager : MonoBehaviour
                 {
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
 
-                    // 1) RowData
-                    if (rowDataContainer != null && resp.data.textData != null)
-                    {
-                        rowDataContainer.rowDatas = resp.data.textData;
-                        Debug.Log("RowData loaded: " + resp.data.textData.Length);
-                    }
-
-                    // 2) CenterLabelData
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
                     {
-                        centerLabelContainer.centerLabelDatas = resp.data.centerLabelData;
+                        centerLabelContainer.centerLabelDatas = GroupCenterLabelData(resp.data.centerLabelData);
                         Debug.Log("CenterLabelData loaded: " + resp.data.centerLabelData.Length);
                     }
+
+                    if (centerLabelContainer != null && resp.data.textData != null)
+                    {
+                        nextDataContainer.nextDatas = resp.data.textData;
+                        Debug.Log("NextData loaded: " + resp.data.textData.Length);
+                    }
+
 
                     // 3) DialogueData
                     if (dialogueContainer != null && resp.data.dialogueData != null)
                     {
-                        dialogueContainer.dialogueDatas = resp.data.dialogueData;
+                        dialogueContainer.dialogueDatas = GroupDialogueData(resp.data.dialogueData);
                         Debug.Log("DialogueData loaded: " + resp.data.dialogueData.Length);
                     }
 
@@ -203,7 +254,7 @@ public class TextDataManager : MonoBehaviour
                     // 6) ImageData
                     if (imageContainer != null && resp.data.imageData != null)
                     {
-                        imageContainer.imageDatas = resp.data.imageData;
+                        imageContainer.imageDatas = GroupImageData(resp.data.imageData); 
                         Debug.Log("ImageData loaded: " + resp.data.imageData.Length);
                     }
 
@@ -229,20 +280,104 @@ public class TextDataManager : MonoBehaviour
         }
     }
 
-    private string SplitTextData(string json)
+    private CenterLabelData[] GroupCenterLabelData(CenterLabelRawData[] centerLabelList)
     {
-        string pattern = "\"dataList\"\\s*:\\s*\"([^\"]*)\"";
-        return Regex.Replace(json, pattern, match =>
+        Dictionary<string, List<CenterLabelList>> centerLabelDic = new Dictionary<string, List<CenterLabelList>>();
+
+        foreach (var centerLabel in centerLabelList)
         {
-            string text = match.Groups[1].Value;
-            string[] parts = text.Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-            for (int i = 0; i < parts.Length; i++)
+            if (!centerLabelDic.ContainsKey(centerLabel.objCode))
             {
-                parts[i] = parts[i].Trim();
+                centerLabelDic[centerLabel.objCode] = new List<CenterLabelList>();
             }
-            string jsonArray = "[" + string.Join(",", parts.Select(p => "\"" + p.Replace("\"", "\\\"") + "\"")) + "]";
-            return "\"dataList\": " + jsonArray;
-        });
+            centerLabelDic[centerLabel.objCode].Add(new CenterLabelList
+            {
+                pageNum = centerLabel.pageNum,
+                closeTime = centerLabel.closeTime,
+                centerLabelData = centerLabel.centerLabelData
+            });
+        }
+        
+        List<CenterLabelData> centerLabelDataList = new List<CenterLabelData>();
+
+        foreach (var entry in centerLabelDic)
+        {
+            centerLabelDataList.Add(new CenterLabelData
+            {
+                objCode = entry.Key,
+                dataList = entry.Value.ToArray()
+            });
+        }
+
+        return centerLabelDataList.ToArray();
+    }
+
+
+    private DialogueData[] GroupDialogueData(DialogueRawData[] dialogueList)
+    {
+        Dictionary<string, List<DialogueList>> dialogueDict = new Dictionary<string, List<DialogueList>>();
+
+        foreach (var dialogue in dialogueList)
+        {
+            BgType bgTypeEnum;
+            if (Enum.TryParse(dialogue.bgType, out bgTypeEnum))
+            {
+                if (!dialogueDict.ContainsKey(dialogue.objCode))
+                {
+                    dialogueDict[dialogue.objCode] = new List<DialogueList>();
+                }
+                dialogueDict[dialogue.objCode].Add(new DialogueList
+                {
+                    pageNum = dialogue.pageNum,
+                    bgType = bgTypeEnum,
+                    textData = dialogue.textData
+                });
+            }
+        }
+
+        List<DialogueData> dialogueDataList = new List<DialogueData>();
+
+        foreach (var entry in dialogueDict)
+        {
+            dialogueDataList.Add(new DialogueData
+            {
+                objCode = entry.Key,
+                dataList = entry.Value.ToArray()
+            });
+        }
+
+        return dialogueDataList.ToArray();
+    }
+
+    private ImageData[] GroupImageData(ImageRawData[] imageList)
+    {
+        Dictionary<string, List<ImageList>> imageDic = new Dictionary<string, List<ImageList>>();
+
+        foreach (var image in imageList)
+        {
+            if (!imageDic.ContainsKey(image.objCode))
+            {
+                imageDic[image.objCode] = new List<ImageList>();
+            }
+            imageDic[image.objCode].Add(new ImageList
+            {
+                pageNum = image.pageNum,
+                imageData = image.imageData
+            });
+        }
+
+        List<ImageData> imageDataList = new List<ImageData>();
+
+        foreach (var entry in imageDic)
+        {
+            imageDataList.Add(new ImageData
+            {
+                objCode = entry.Key,
+                dataList = entry.Value.ToArray()
+            });
+        }
+
+        return imageDataList.ToArray();
     }
 
 }

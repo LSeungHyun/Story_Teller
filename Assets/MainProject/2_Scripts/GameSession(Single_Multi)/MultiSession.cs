@@ -1,16 +1,31 @@
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MultiSession : AbstractGameSession
+public class MultiSession : AbsctractGameSession
 {
-    public override void ClosePopUp(UIPopUpManager uiPopUpManager)
+    public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
-        // 멀티(Photon) 모드용 팝업 닫기 로직
-        uiPopUpManager.popUpGroup.SetActive(false);
-        uiPopUpManager.dialoguePopUpGroup.SetActive(false);
+        ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);
 
-        // 예: PhotonView.isMine 체크, 네트워크 상에서 동기화
-        // ... 
+        Debug.Log("멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티.");
+    }
+    public override void OpenPopUp(UIPopUpOnOffManager uiPopUpOnOffManager, bool isQuest)
+    {
+        OpenPopUpBasic(uiPopUpOnOffManager, isQuest);
 
-        Debug.Log("MultiSession: PopUp closed in multi mode.");
+        Debug.Log("SingleSession: PopUp closed in single mode.");
+    }
+    public override void HandleInteraction(CurrentObjectManager currentObjectManager)
+    {
+        HandleInteractionBasic(currentObjectManager);
+        Debug.Log("나야나 멀티야");
+    }
+    public override void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
+    {
+        OpenCenterLabelBasic(uiCenterLabelOnOffManager);
+    }
+    public override void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
+    {
+        CloseCenterLabelBasic(uiCenterLabelOnOffManager);
     }
 }

@@ -1,93 +1,59 @@
-using NUnit.Framework;
-using Unity.VisualScripting;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
+using static UnityEditor.U2D.ScriptablePacker;
 
-public class UIPopUpManager : MonoBehaviour
+public abstract class UIPopUpManager : UIContentsManager
 {
-    public GameObject popUpGroup;
-    public GameObject dialoguePopUpGroup;
-    public Text text;
-    public SpriteRenderer sprite;
     public Button backBtn;
     public Button nextBtn;
+    public event Action<int, int> OnPageChanged;
 
-    public string[] textData;
-    public List<Sprite> spriteData;
-    public int totalDataPage;
-    public int currentDataPage = 1;
-
-    public RowData nextObjCode;
-
-    public void OpenPopUpWindow(DialogueData targetRow)
+    protected virtual void Awake()
     {
-        popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
-        textData = targetRow.dataList;
-        totalDataPage = targetRow.dataList.Length;
-        currentDataPage = 1;
-        SetPage();
+        OnPageChanged += HandlePageChanged;
     }
 
-    public void OpenImage(List<Sprite> spriteList)
+    protected virtual void OnDestroy()
     {
-        popUpGroup.SetActive(true);
-        dialoguePopUpGroup.SetActive(true);
-        spriteData = spriteList;
-        totalDataPage = spriteList.Count;
-        currentDataPage = 1;
-        SetPage();
+        OnPageChanged -= HandlePageChanged;
     }
 
-
-    public void SetNextCode(RowData targetRow)
+    void HandlePageChanged(int currentPage, int totalPages)
     {
-        nextObjCode = targetRow;
+        UpdateNavigationButtons(currentPage, totalPages);
     }
-    public void ClosePopUpWindow()
-    {
-        // 1) GameManager에서 현재 세션(IGameSession) 객체를 가져옴
-        var session = GameManager.Instance.Session;
-        // 2) 세션에게 팝업 닫기 로직 위임
-        session.ClosePopUp(this);
-    }
-    //public void ClosePopUpWindow()
-    //{
-    //    popUpGroup.SetActive(false);
-    //    dialoguePopUpGroup.SetActive(false);
-    //    if(nextObjCode.IsNextObj != null)
-    //    {
-    //        OpenPopUpWindow(nextObjCode);
-    //        nextObjCode = null;
-    //    }
-    //}
 
+    public void UpdateNavigationButtons(int currentPage, int totalPages)
+    {
+        if (backBtn != null)
+            backBtn.gameObject.SetActive(currentPage > 1);
+        if (nextBtn != null)
+            nextBtn.gameObject.SetActive(currentPage < totalPages);
+    }
+
+    protected void StartOnPageChanged(int currentPage, int totalPages)
+    {
+        OnPageChanged?.Invoke(currentPage, totalPages);
+    }
 
     public void NextPage()
     {
-        if(currentDataPage < totalDataPage) { currentDataPage++; }
-        SetPage();
+        if (currentDataPage < totalDataPage)
+        {
+            currentDataPage++;
+            DisplayPage();
+        }
     }
 
     public void BackPage()
     {
-        if(currentDataPage > 1) { currentDataPage--; }
-        SetPage();
-    }
-
-    public void SetPage()
-    {
-        if(textData.Length > 0)
+        if (currentDataPage > 1)
         {
-            text.text = textData[currentDataPage - 1];
-        
+            currentDataPage--;
+            DisplayPage();
         }
-        if(spriteData.Count > 0)
-        {
-            sprite.sprite = spriteData[currentDataPage - 1];
-        }
-        backBtn.gameObject.SetActive(currentDataPage > 1);
-        nextBtn.gameObject.SetActive(currentDataPage < totalDataPage);
     }
 }

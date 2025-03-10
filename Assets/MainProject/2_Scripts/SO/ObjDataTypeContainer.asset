@@ -12,3 +12,276 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d8c3e2665ee8fa42b73cce6e574b403, type: 3}
   m_Name: ObjDataTypeContainer
   m_EditorClassIdentifier: 
+  objCode: 
+  position: {x: 0, y: 0, z: 0}
+  objDataType:
+  - objCode: '"GameSystemData ObjCode"'
+    dataType: 
+    isMine: 0
+  - objCode: Enter_All
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Enter_Wait3
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Move
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Arrive
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Active_Arrow
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Enter_CutScene_Area
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Pass_Quest
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Road_Fog
+    dataType: centerLabel
+    isMine: 1
+  - objCode: '"PopUpData ObjCode"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_Tutorial_Sara
+    dataType: dialoguequesthint
+    isMine: 1
+  - objCode: UnderWorld_Tutorial_Board_Hint
+    dataType: dialogue
+    isMine: 1
+  - objCode: Road_SteelHouseGhost
+    dataType: bubble
+    isMine: 1
+  - objCode: '"UnderWorld_SteelHouse"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_SteelHouse_In
+    dataType: image
+    isMine: 0
+  - objCode: UnderWorld_SteelHouse_Driver_Cross
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Driver_Six
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Driver_Star
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Cutter
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Screw
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Wrench
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Direction
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_ScrewList
+    dataType: imagequest
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"UnderWorld_Bakery"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_Bakery_InDial
+    dataType: dialogue
+    isMine: 0
+  - objCode: UnderWorld_Bakery_In
+    dataType: image
+    isMine: 0
+  - objCode: UnderWorld_Bakery_Note_Apnal
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Note_Eia
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Note_Neup
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Note_Nai
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Note_Quest
+    dataType: quest
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"UnderWorld_JungCafe"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_JungCafe_InDial
+    dataType: dialogue
+    isMine: 0
+  - objCode: UnderWorld_JungCafe_In
+    dataType: image
+    isMine: 0
+  - objCode: UnderWorld_JungCafe_Notebook_Gam
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Notebook_Seong
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Notebook_GGoat
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Notebook_Ar
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Notebook_Quest
+    dataType: quest
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"UnderWorld_HappyHair"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_HappyHair_In
+    dataType: image
+    isMine: 0
+  - objCode: UnderWorld_HappyHair_GukHwa
+    dataType: dialogue
+    isMine: 1
+  - objCode: UnderWorld_HappyHair_Note_Over
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_HappyHair_Note_Under
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_HappyHair_Note_Quest
+    dataType: quest
+    isMine: 1
+  - objCode: UnderWorld_HappyHair_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"UnderWorld_HappyHair_2ndfloor"'
+    dataType: 
+    isMine: 0
+  - objCode: UnderWorld_HappyHair_2ndfloor_Quest
+    dataType: quest
+    isMine: 1
+  - objCode: UnderWorld_HappyHair_2ndfloor_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"Boundary"'
+    dataType: 
+    isMine: 0
+  - objCode: Boundary_Sara
+    dataType: dialogue
+    isMine: 1
+  - objCode: '"LivingWorld_FlowerShop"'
+    dataType: 
+    isMine: 0
+  - objCode: LivingWorld_FlowerShop_In
+    dataType: image
+    isMine: 0
+  - objCode: LivingWorld_FlowerShop_Flower_Lilac
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Flower_Chija
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Flower_Jasmine
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Flower_Su
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Flower_Neung
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Flower_Quest
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Man
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Girl
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_FlowerShop_Answer
+    dataType: dialogue
+    isMine: 1
+  - objCode: '"LivingWorld_Bakery"'
+    dataType: 
+    isMine: 0
+  - objCode: LivingWorld_Bakery_In
+    dataType: image
+    isMine: 0
+  - objCode: LivingWorld_Bakery_Cart
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Girl1
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Man1
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Man2
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Girl2
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Man3
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Girl3
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Girl4
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Answer
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_Bakery_Girl
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_Bakery_Man
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"LivingWorld_JungCafe"'
+    dataType: 
+    isMine: 0
+  - objCode: LivingWorld_JungCafe_In
+    dataType: image
+    isMine: 0
+  - objCode: LivingWorld_JungCafe_InDial
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_JungCafe_Music_Mool
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Mok
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Bal
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Sae
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Pul
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Sum
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Music_Quest
+    dataType: imagequest
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: '"LivingWorld_HairSalon"'
+    dataType: imagedrag
+    isMine: 0
