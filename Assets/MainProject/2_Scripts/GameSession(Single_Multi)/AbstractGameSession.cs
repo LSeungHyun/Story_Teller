@@ -24,6 +24,70 @@ public abstract class AbsctractGameSession
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
 
     // 2) (선택) 공통 로직이 있다면 추상 클래스 내부에 보호(protected) 메서드나 필드로 작성 가능
+    #region Player Basic Methods
+    protected void MoveBasic(PlayerManager playerManager)
+    {
+        playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
+        playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec);
+    }
+
+    protected void AnimControllerBasic(PlayerManager playerManager)
+    {
+        bool isMoving = playerManager.inputVec.x != 0 || playerManager.inputVec.y != 0;
+        if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
+        {
+            playerManager.anim.SetBool("Walking", true);
+
+            if (playerManager.inputVec.x != 0)
+            {
+                playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                playerManager.anim.SetFloat("DirY", 0);
+            }
+            else if (playerManager.inputVec.y != 0)
+            {
+                playerManager.anim.SetFloat("DirX", 0);
+                playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+            }
+        }
+        else
+        {
+            playerManager.anim.SetBool("Walking", false);
+        }
+
+        playerManager.ResetInputOnKeyUp();
+    }
+
+    protected void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
+    {
+        if (!collision.CompareTag("Interaction"))
+        {
+            return;
+        }
+        
+        playerManager.interactableStack.Remove(collision);
+        playerManager.interactableStack.Add(collision);
+        playerManager.UpdateInteractObject();
+    }
+
+    protected void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
+    {
+        if (!collision.CompareTag("Interaction"))
+        {
+            return;
+        }
+
+        playerManager.interactableStack.Remove(collision);
+        Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
+        if (renderOfCurrentCollision != null)
+        {
+            renderOfCurrentCollision.material = playerManager.originalMaterial;
+        }
+    }
+
+    #endregion
     protected void HandleInteractionBasic(CurrentObjectManager currentObjectManager)
     {
         if (currentObjectManager.currentRow == null)

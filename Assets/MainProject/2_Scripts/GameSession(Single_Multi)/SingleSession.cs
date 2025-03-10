@@ -5,41 +5,25 @@ public class SingleSession : AbsctractGameSession
     #region Player Abstract Methods;
     public override void Move(PlayerManager playerManager)
     {
-        Debug.Log("싱글움직이기");
-        playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
-        playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
-        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec);
+        MoveBasic(playerManager);
     }
 
     public override void AnimController(PlayerManager playerManager)
     {
-        bool isMoving = playerManager.inputVec.x != 0 || playerManager.inputVec.y != 0;
-        if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
-        {
-            playerManager.anim.SetBool("Walking", true);
-
-            if (playerManager.inputVec.x != 0)
-            {
-                playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
-                playerManager.anim.SetFloat("DirY", 0);
-            }
-            else if (playerManager.inputVec.y != 0)
-            {
-                playerManager.anim.SetFloat("DirX", 0);
-                playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
-            }
-        }
-        else
-        {
-            playerManager.anim.SetBool("Walking", false);
-        }
-
-        playerManager.ResetInputOnKeyUp();
+        AnimControllerBasic(playerManager);
     }
 
 
+    public override void TriggerEnter(PlayerManager playerManager, Collider2D collision)
+    {
+        Debug.Log("싱글충돌 완료!");
+        TriggerEnterBasic(playerManager, collision);
+    }
+
+    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
+    {
+        TriggerExitBasic(playerManager, collision);
+    }
     #endregion
     public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
@@ -67,15 +51,5 @@ public class SingleSession : AbsctractGameSession
     public override void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
     {
         CloseCenterLabelBasic(uiCenterLabelOnOffManager);
-    }
-
-    public override void TriggerEnter(PlayerManager playerManager, Collider2D collision)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
-    {
-        throw new System.NotImplementedException();
     }
 }
