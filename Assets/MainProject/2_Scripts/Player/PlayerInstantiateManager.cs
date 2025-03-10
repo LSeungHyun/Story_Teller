@@ -1,22 +1,22 @@
-using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using UnityEngine;
 
 public class PlayerInstantiateManager : MonoBehaviour
 {
-    public GameObject[] playerList;
+    public GameObject singlePlayer;
     public GameObject StartPoint;
 
     private void Awake()
     {
         if (GameManager.Instance.isType == false)
         {
-            Debug.Log("싱글모드입니다 파괴합니다");
-            Destroy(this.gameObject);
+            Debug.Log("싱글모드입니다");
+            Instantiate(singlePlayer, StartPoint.transform.position, Quaternion.identity);
         }
 
         else
         {
+            Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
             // 2) 인덱스별로 다른 프리팹 이름
