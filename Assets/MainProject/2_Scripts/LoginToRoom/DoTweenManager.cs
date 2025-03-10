@@ -15,6 +15,7 @@ public class DoTweenManager : MonoBehaviour
     public float scaleDuration = 0.3f; // 팝업 열고 닫을 때 스케일 애니메이션 시간
     public Ease fadeEase = Ease.Linear;
     public Ease scaleEase = Ease.OutBack;
+
     // 모든 버튼 OnClick에서 이 메서드를 호출
     public void ClickAnim()
     {

@@ -204,6 +204,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.OpenPopUp("Single_Multi_Select");
 
+        roomUIManager.BlurBoolStatus(true);
+
         LogUpdate();
     }
 
