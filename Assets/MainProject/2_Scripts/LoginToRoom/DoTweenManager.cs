@@ -44,7 +44,7 @@ public class DoTweenManager : MonoBehaviour
                 rect.DOScale(1f, tweenDuration).SetEase(easeType);
             });
 
-        Debug.Log("클릭애니메이션 완료 for " + clickedObj.name);
+        //Debug.Log("클릭애니메이션 완료 for " + clickedObj.name);
     }
 
     /// <summary>

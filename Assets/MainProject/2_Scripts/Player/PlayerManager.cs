@@ -39,12 +39,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        //if (session != null)
-        //{
-        //    session.Move(this);
-        //    session.AnimController(this);
-        //}
-        Move();
+        if (session != null)
+        {
+            session.Move(this);
+            session.AnimController(this);
+        }
+        //Move();
     }
     #endregion
 
@@ -97,31 +97,33 @@ public class PlayerManager : MonoBehaviour
     #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Interaction"))
-        {
-            return;
-        }
+        session.TriggerEnter(this,collision);
+        //if (!collision.CompareTag("Interaction"))
+        //{
+        //    return;
+        //}
 
-        interactableStack.Remove(collision);
-        interactableStack.Add(collision);
-        UpdateInteractObject();
+        //interactableStack.Remove(collision);
+        //interactableStack.Add(collision);
+        //UpdateInteractObject();
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Interaction"))
-        {
-            return;
-        }
+        session.TriggerExit(this, collision);
+        //if (!collision.CompareTag("Interaction"))
+        //{
+        //    return;
+        //}
 
-        interactableStack.Remove(collision);
-        Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
-        if (renderOfCurrentCollision != null)
-        {
-            renderOfCurrentCollision.material = originalMaterial;
-        }
+        //interactableStack.Remove(collision);
+        //Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
+        //if (renderOfCurrentCollision != null)
+        //{
+        //    renderOfCurrentCollision.material = originalMaterial;
+        //}
 
-        UpdateInteractObject();
+        //UpdateInteractObject();
     }
 
     public void UpdateInteractObject()

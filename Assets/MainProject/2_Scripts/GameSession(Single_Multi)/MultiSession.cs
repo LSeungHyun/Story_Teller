@@ -50,12 +50,12 @@ public class MultiSession : AbsctractGameSession
     {
         if (playerManager.PV.IsMine)
         {
-            Debug.Log("멀티충돌 완료!");
+            
             if (!collision.CompareTag("Interaction"))
             {
                 return;
             }
-
+            Debug.Log("멀티충돌 완료!");
             playerManager.interactableStack.Remove(collision);
             playerManager.interactableStack.Add(collision);
             playerManager.UpdateInteractObject();
@@ -66,7 +66,17 @@ public class MultiSession : AbsctractGameSession
     {
         if (playerManager.PV.IsMine)
         {
+            if (!collision.CompareTag("Interaction"))
+            {
+                return;
+            }
 
+            playerManager.interactableStack.Remove(collision);
+            Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
+            if (renderOfCurrentCollision != null)
+            {
+                renderOfCurrentCollision.material = playerManager.originalMaterial;
+            }
         }
     }
     #endregion

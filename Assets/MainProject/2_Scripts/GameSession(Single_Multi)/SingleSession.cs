@@ -40,6 +40,33 @@ public class SingleSession : AbsctractGameSession
     }
 
 
+    public override void TriggerEnter(PlayerManager playerManager, Collider2D collision)
+    {
+        
+        if (!collision.CompareTag("Interaction"))
+        {
+            return;
+        }
+        Debug.Log("싱글충돌 완료!");
+        playerManager.interactableStack.Remove(collision);
+        playerManager.interactableStack.Add(collision);
+        playerManager.UpdateInteractObject();
+    }
+
+    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
+    {
+        if (!collision.CompareTag("Interaction"))
+        {
+            return;
+        }
+
+        playerManager.interactableStack.Remove(collision);
+        Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
+        if (renderOfCurrentCollision != null)
+        {
+            renderOfCurrentCollision.material = playerManager.originalMaterial;
+        }
+    }
     #endregion
     public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
@@ -67,15 +94,5 @@ public class SingleSession : AbsctractGameSession
     public override void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
     {
         CloseCenterLabelBasic(uiCenterLabelOnOffManager);
-    }
-
-    public override void TriggerEnter(PlayerManager playerManager, Collider2D collision)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
-    {
-        throw new System.NotImplementedException();
     }
 }
