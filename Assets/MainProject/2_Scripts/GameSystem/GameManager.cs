@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        SelectGameMode(isType);
     }
 
     public void SelectGameMode(bool isMulti)
