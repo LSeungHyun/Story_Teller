@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using Photon.Pun;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
+
+    public PhotonView PV;
 
     [Header("Player Components")]
     public Rigidbody2D rigid;
@@ -17,22 +19,34 @@ public class PlayerManager : MonoBehaviour
     [Header("Input Keys")]
     public readonly KeyCode[] horizontalKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.A, KeyCode.D };
     public readonly KeyCode[] verticalKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.W, KeyCode.S };
+    public Vector2 inputVec;
 
-    [HideInInspector] public Vector2 inputVec;
+
     public List<Collider2D> interactableStack = new List<Collider2D>();
     public Material originalMaterial;
     public Material outlineMaterial;
 
-    void Awake()
+    public AbsctractGameSession session;
+    #region LifeCycle Methods
+    void Start()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        session = GameManager.Instance.Session;
+        if (session != null)
+            Debug.Log("Session 받아옴");
+        else
+            Debug.Log("Session 없음");
     }
 
     void Update()
     {
-        Move();
+        //if(session != null)
+        //{
+        //    session.Move(this);
+        //}
+        session.Move(this);
         AnimController();
     }
+    #endregion
 
     #region Animation Methods
     /// <summary>
@@ -80,6 +94,15 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region KeyCode Input
+    public void Move()
+    {
+        inputVec.x = Input.GetAxisRaw("Horizontal");
+        inputVec.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
+        rigid.MovePosition(rigid.position + nextVec);
+    }
+
     /// <summary>
     /// 전달된 KeyCode 중 하나라도 눌렸는지 확인
     /// </summary>
@@ -98,6 +121,7 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Interaction"))
@@ -165,13 +189,6 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    public void Move()
-    {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-    }
 }
