@@ -3,6 +3,18 @@ using UnityEngine;
 
 public class SingleSession : AbsctractGameSession
 {
+    #region Player Abstract Methods;
+    public override void Move(PlayerManager playerManager)
+    {
+        Debug.Log("싱글움직이기");
+        playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
+        playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec);
+    }
+
+    #endregion
     public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
         ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);

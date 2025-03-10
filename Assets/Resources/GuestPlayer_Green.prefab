@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 3695983434335586103}
   - component: {fileID: 4306972491748636140}
   m_Layer: 6
-  m_Name: MasterPlayer_Yellow
+  m_Name: GuestPlayer_Green
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: -1274686295
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 538387996, guid: 01a7e5f3867ced74fbf5ee1e2d9961d0, type: 3}
+  m_Sprite: {fileID: 636104702, guid: 7e4eacb47de270f43ba4c52cd62b77c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,7 @@ Animator:
   m_GameObject: {fileID: 1839602670562630100}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 83fffcab6de0dd240bb1e2d6c5bb5264, type: 2}
+  m_Controller: {fileID: 9100000, guid: cbdfb93281f62e346810512eed0edfc7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -194,10 +194,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
+  PV: {fileID: 4507779827862953659}
   rigid: {fileID: 760193480370583864}
   anim: {fileID: 1559352059937034625}
   joystick: {fileID: 0}
   webglBtn: {fileID: 0}
+  inputVec: {x: 0, y: 0}
   interactableStack: []
   originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   outlineMaterial: {fileID: 2100000, guid: ab7737d920ed6824798c7a015a146df7, type: 2}

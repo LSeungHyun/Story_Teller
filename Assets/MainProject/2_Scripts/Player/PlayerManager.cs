@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
+
+    public PhotonView PV;
 
     [Header("Player Components")]
     public Rigidbody2D rigid;
@@ -16,22 +19,31 @@ public class PlayerManager : MonoBehaviour
     [Header("Input Keys")]
     public readonly KeyCode[] horizontalKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.A, KeyCode.D };
     public readonly KeyCode[] verticalKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.W, KeyCode.S };
-    private Vector2 inputVec;
+    public Vector2 inputVec;
 
 
     public List<Collider2D> interactableStack = new List<Collider2D>();
     public Material originalMaterial;
     public Material outlineMaterial;
 
+    public AbsctractGameSession session;
     #region LifeCycle Methods
-    void Awake()
+    void Start()
     {
-        
+        session = GameManager.Instance.Session;
+        if (session != null)
+            Debug.Log("Session ¹Þ¾Æ¿È");
+        else
+            Debug.Log("Session ¾øÀ½");
     }
 
     void Update()
     {
-        Move();
+        //if(session != null)
+        //{
+        //    session.Move(this);
+        //}
+        session.Move(this);
         AnimController();
     }
     #endregion

@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public abstract class AbsctractGameSession
 {
+    public abstract void Move(PlayerManager playerManager);
+
+
+
+
+
+    //위의 내용 복사 후 Discard
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(KeyInputManager keyInputManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
