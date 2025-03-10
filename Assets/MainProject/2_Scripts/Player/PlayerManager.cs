@@ -31,6 +31,7 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         Move();
+        AnimController();
     }
 
     #region Animation Methods
