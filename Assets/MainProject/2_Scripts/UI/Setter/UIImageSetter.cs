@@ -17,6 +17,7 @@ public class UIImageSetter : UIPopUpManager
             var imageData = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
             if (imageData != null)
             {
+                Debug.Log(currentObjCode+"SDGDSG");
                 imageList = imageData.dataList;
                 spriteData = SetImage(imageList);
                 totalDataPage = spriteData.Length;

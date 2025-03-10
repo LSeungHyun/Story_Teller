@@ -15,7 +15,7 @@ public abstract class AbsctractGameSession
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(CurrentObjectManager currentObjectManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
-    public abstract void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest);
+    public abstract void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial);
     public abstract void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
 
@@ -54,29 +54,32 @@ public abstract class AbsctractGameSession
         }
         if (hasDialogue)
         {
-            currentObjectManager.uiPopUpManager.SetData(currentObjCode);
+            currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
             if (hasQuest)
-                currentObjectManager.uiPopUpOnOffManager.OpenQuestWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, true);
             else
-                currentObjectManager.uiPopUpOnOffManager.OpenDefaultWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
         }
         if (hasImage)
         {
-            currentObjectManager.uiPopUpManager.SetData(currentObjCode);
+            currentObjectManager.uiImageSetter.SetData(currentObjCode);
             if (hasQuest)
-                currentObjectManager.uiPopUpOnOffManager.OpenQuestWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
             else
-                currentObjectManager.uiPopUpOnOffManager.OpenDefaultWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
         }
     }
 
-    protected void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest)
+    protected void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
     {
         UIPopUpOnOffManager.popUpGroup.SetActive(true);
         UIPopUpOnOffManager.windowPopUp.SetActive(true);
 
         UIPopUpOnOffManager.defaultPopUpGroup.SetActive(!isQuest);
         UIPopUpOnOffManager.questPopUpGroup.SetActive(isQuest);
+
+        UIPopUpOnOffManager.imageGroup.SetActive(!isDial);
+        UIPopUpOnOffManager.dialogueGroup.SetActive(isDial);
     }
 
     protected void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
@@ -86,6 +89,9 @@ public abstract class AbsctractGameSession
 
         UIPopUpOnOffManager.defaultPopUpGroup.SetActive(false);
         UIPopUpOnOffManager.questPopUpGroup.SetActive(false);
+
+        UIPopUpOnOffManager.imageGroup.SetActive(false);
+        UIPopUpOnOffManager.dialogueGroup.SetActive(false);
 
         UIPopUpOnOffManager.uiPopUpManager.ClearData();
 

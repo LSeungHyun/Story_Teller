@@ -22,9 +22,9 @@ public class MultiSession : AbsctractGameSession
 
         Debug.Log("멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티멀티.");
     }
-    public override void OpenPopUp(UIPopUpOnOffManager uiPopUpOnOffManager, bool isQuest)
+    public override void OpenPopUp(UIPopUpOnOffManager uiPopUpOnOffManager, bool isQuest, bool isDial)
     {
-        OpenPopUpBasic(uiPopUpOnOffManager, isQuest);
+        OpenPopUpBasic(uiPopUpOnOffManager, isQuest, isDial);
 
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }

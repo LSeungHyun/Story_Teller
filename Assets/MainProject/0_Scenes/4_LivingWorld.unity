@@ -1537,7 +1537,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 598862033}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -15598,7 +15598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -170.99982, y: 1297}
+  m_AnchoredPosition: {x: -170.99976, y: 1297}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1223935778
@@ -15645,7 +15645,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1784867149}
         m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
         m_MethodName: ClosePopUpWindow
         m_Mode: 1
@@ -17552,7 +17552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
-  uiCenterLabelOnOffManager: {fileID: 0}
+  uiCenterLabelOnOffManager: {fileID: 1372068998}
   centerLabelList: []
   textDisplay: {fileID: 172933083}
   closeTime: 0
@@ -17568,7 +17568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6efb2c37736504a4e91b20a0991e5682, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiCenterLabelSetter: {fileID: 0}
+  uiCenterLabelSetter: {fileID: 1372068997}
   centerLabelGroup: {fileID: 406108875}
 --- !u!224 &1372068999
 RectTransform:
@@ -22998,12 +22998,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
-  currentObjectManager: {fileID: 0}
-  uiPopUpManager: {fileID: 0}
+  currentObjectManager: {fileID: 2054990395}
+  uiPopUpManager: {fileID: 1784867148}
   popUpGroup: {fileID: 245706942}
   defaultPopUpGroup: {fileID: 736258180}
   questPopUpGroup: {fileID: 990978089}
   windowPopUp: {fileID: 1365716147}
+  imageGroup: {fileID: 2106721021}
+  dialogueGroup: {fileID: 1948422191}
 --- !u!1001 &1796223793
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25493,7 +25495,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1948422192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26688,6 +26690,8 @@ MonoBehaviour:
   currentObjCode: 
   uiPopUpOnOffManager: {fileID: 1784867149}
   uiPopUpManager: {fileID: 1784867148}
+  uiDialogueSetter: {fileID: 1784867148}
+  uiImageSetter: {fileID: 1784867147}
   uiCenterLabelOnOffManager: {fileID: 1372068998}
   uiCenterLabelSetter: {fileID: 1372068997}
   hintStateManager: {fileID: 2054990396}
@@ -27497,7 +27501,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2106721022
 RectTransform:
   m_ObjectHideFlags: 0

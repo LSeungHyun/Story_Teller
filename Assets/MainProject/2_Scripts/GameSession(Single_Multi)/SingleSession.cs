@@ -21,9 +21,9 @@ public class SingleSession : AbsctractGameSession
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }
 
-    public override void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest)
+    public override void OpenPopUp(UIPopUpOnOffManager uiPopUpOnOffManager, bool isQuest, bool isDial)
     {
-        OpenPopUpBasic(UIPopUpOnOffManager, isQuest);
+        OpenPopUpBasic(uiPopUpOnOffManager, isQuest, isDial);
 
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }

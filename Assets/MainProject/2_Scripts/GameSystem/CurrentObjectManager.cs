@@ -11,6 +11,8 @@ public class CurrentObjectManager : MonoBehaviour
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UIPopUpManager uiPopUpManager;
+    public UIDialogueSetter uiDialogueSetter;
+    public UIImageSetter uiImageSetter;
 
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
     public UICenterLabelSetter uiCenterLabelSetter;
