@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -17,15 +16,17 @@ public class PlayerManager : MonoBehaviour
     [Header("Input Keys")]
     public readonly KeyCode[] horizontalKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.A, KeyCode.D };
     public readonly KeyCode[] verticalKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.W, KeyCode.S };
+    private Vector2 inputVec;
 
-    [HideInInspector] public Vector2 inputVec;
+
     public List<Collider2D> interactableStack = new List<Collider2D>();
     public Material originalMaterial;
     public Material outlineMaterial;
 
+    #region LifeCycle Methods
     void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
@@ -33,6 +34,7 @@ public class PlayerManager : MonoBehaviour
         Move();
         AnimController();
     }
+    #endregion
 
     #region Animation Methods
     /// <summary>
@@ -80,6 +82,15 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region KeyCode Input
+    public void Move()
+    {
+        inputVec.x = Input.GetAxisRaw("Horizontal");
+        inputVec.y = Input.GetAxisRaw("Vertical");
+
+        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
+        rigid.MovePosition(rigid.position + nextVec);
+    }
+
     /// <summary>
     /// 전달된 KeyCode 중 하나라도 눌렸는지 확인
     /// </summary>
@@ -98,6 +109,7 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!collision.CompareTag("Interaction"))
@@ -165,13 +177,6 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
-    public void Move()
-    {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-    }
 }
