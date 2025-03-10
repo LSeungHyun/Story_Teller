@@ -6,7 +6,11 @@ using UnityEngine.UI;
 public abstract class AbsctractGameSession
 {
     public abstract void Move(PlayerManager playerManager);
+    public abstract void AnimController(PlayerManager playerManager);
 
+    public abstract void TriggerEnter(PlayerManager playerManager, Collider2D collision);
+
+    public abstract void TriggerExit(PlayerManager playerManager, Collider2D collision);
 
 
 

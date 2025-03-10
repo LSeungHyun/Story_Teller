@@ -39,45 +39,31 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        //if(session != null)
+        //if (session != null)
         //{
         //    session.Move(this);
+        //    session.AnimController(this);
         //}
-        session.Move(this);
-        AnimController();
+        Move();
     }
     #endregion
 
-    #region Animation Methods
-    /// <summary>
-    /// 플레이어 애니메이션 관리 추상메서드
-    /// </summary>
-    public void AnimController()
+
+    #region KeyCode Input
+
+    //TODO : 나경님 테스트 끝나고 추후에 지울 메서드
+    public void Move()
     {
-        bool isMoving = inputVec.x != 0 || inputVec.y != 0;
-        if (isMoving || joystick != null && (joystick.Horizontal != 0 || joystick.Vertical != 0))
-        {
-            anim.SetBool("Walking", true);
+        inputVec.x = Input.GetAxisRaw("Horizontal");
+        inputVec.y = Input.GetAxisRaw("Vertical");
 
-            if (inputVec.x != 0)
-            {
-                anim.SetFloat("DirX", inputVec.x);
-                anim.SetFloat("DirY", 0);
-            }
-            else if (inputVec.y != 0)
-            {
-                anim.SetFloat("DirX", 0);
-                anim.SetFloat("DirY", inputVec.y);
-            }
-        }
-        else
-        {
-            anim.SetBool("Walking", false);
-        }
-
-        ResetInputOnKeyUp();
+        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
+       rigid.MovePosition(rigid.position + nextVec);
     }
 
+    /// <summary>
+    /// KeyInput 입력 끝난 뒤 초기화 메서드
+    /// </summary>
     public void ResetInputOnKeyUp()
     {
         if (IsKeyPressed(horizontalKeys))
@@ -90,19 +76,6 @@ public class PlayerManager : MonoBehaviour
             inputVec.y = 0;
         }
     }
-
-    #endregion
-
-    #region KeyCode Input
-    public void Move()
-    {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-    }
-
     /// <summary>
     /// 전달된 KeyCode 중 하나라도 눌렸는지 확인
     /// </summary>
@@ -151,7 +124,7 @@ public class PlayerManager : MonoBehaviour
         UpdateInteractObject();
     }
 
-    private void UpdateInteractObject()
+    public void UpdateInteractObject()
     {
 
         if (objDataTypeContainer != null)
