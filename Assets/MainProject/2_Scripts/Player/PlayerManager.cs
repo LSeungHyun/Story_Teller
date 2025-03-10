@@ -31,14 +31,14 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         Move();
-        AnimController();
+        //AnimController();
     }
 
     #region Animation Methods
     /// <summary>
     /// 플레이어 애니메이션 관리 추상메서드
     /// </summary>
-    public void AnimController()
+   /* public void AnimController()
     {
         bool isMoving = inputVec.x != 0 || inputVec.y != 0;
         if (isMoving || joystick != null && (joystick.Horizontal != 0 || joystick.Vertical != 0))
@@ -62,7 +62,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         ResetInputOnKeyUp();
-    }
+    }*/
 
     public void ResetInputOnKeyUp()
     {
