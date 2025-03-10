@@ -1,11 +1,23 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
 
-    [HideInInspector] public Rigidbody2D rigid;
+    [Header("Player Components")]
+    public Rigidbody2D rigid;
+    public Animator anim;
+
+    [Header("Direct Assignment")]
+    public FixedJoystick joystick;
+    public GameObject webglBtn;
+
+    [Header("Input Keys")]
+    public readonly KeyCode[] horizontalKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.A, KeyCode.D };
+    public readonly KeyCode[] verticalKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.W, KeyCode.S };
+
     [HideInInspector] public Vector2 inputVec;
     public List<Collider2D> interactableStack = new List<Collider2D>();
     public Material originalMaterial;
@@ -20,6 +32,70 @@ public class PlayerManager : MonoBehaviour
     {
         Move();
     }
+
+    #region Animation Methods
+    /// <summary>
+    /// 플레이어 애니메이션 관리 추상메서드
+    /// </summary>
+    public void AnimController()
+    {
+        bool isMoving = inputVec.x != 0 || inputVec.y != 0;
+        if (isMoving || joystick != null && (joystick.Horizontal != 0 || joystick.Vertical != 0))
+        {
+            anim.SetBool("Walking", true);
+
+            if (inputVec.x != 0)
+            {
+                anim.SetFloat("DirX", inputVec.x);
+                anim.SetFloat("DirY", 0);
+            }
+            else if (inputVec.y != 0)
+            {
+                anim.SetFloat("DirX", 0);
+                anim.SetFloat("DirY", inputVec.y);
+            }
+        }
+        else
+        {
+            anim.SetBool("Walking", false);
+        }
+
+        ResetInputOnKeyUp();
+    }
+
+    public void ResetInputOnKeyUp()
+    {
+        if (IsKeyPressed(horizontalKeys))
+        {
+            inputVec.x = 0;
+        }
+
+        if (IsKeyPressed(verticalKeys))
+        {
+            inputVec.y = 0;
+        }
+    }
+
+    #endregion
+
+    #region KeyCode Input
+    /// <summary>
+    /// 전달된 KeyCode 중 하나라도 눌렸는지 확인
+    /// </summary>
+    /// <param name="keys">확인할 KeyCode 배열</param>
+    /// <returns>키가 눌렸으면 true</returns>
+    public bool IsKeyPressed(params KeyCode[] keys)
+    {
+        foreach (var key in keys)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    #endregion
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
