@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.U2D.ScriptablePacker;
 
 public class UIPopUpManager : UIContentsManager
 {

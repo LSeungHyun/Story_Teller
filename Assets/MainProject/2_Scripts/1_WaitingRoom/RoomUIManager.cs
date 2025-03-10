@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Rendering;
 
 public class RoomUIManager : DoTweenManager
 {
@@ -14,8 +16,14 @@ public class RoomUIManager : DoTweenManager
     [SerializeField]
     private List<PopupItem> popupList;
 
+    [Header("Blur Object")]
+    [SerializeField]
+    private GameObject blurObject;
+
     // 내부에서 (popupName -> popupObject) 매핑
     public Dictionary<string, GameObject> popupDict;
+
+    public bool blurAble = true;
 
     private void Awake()
     {
@@ -96,5 +104,22 @@ public class RoomUIManager : DoTweenManager
         {
             kvp.Value.SetActive(false);
         }
+    }
+
+    public void BlurOn()
+    {
+        if (blurAble)
+            blurObject.SetActive(true);
+    }
+
+    public void BlurOff()
+    {
+        if (blurAble)
+            blurObject.SetActive(false);
+    }
+
+    public void BlurBoolStatus(bool OnOff)
+    {
+        blurAble = OnOff;
     }
 }
