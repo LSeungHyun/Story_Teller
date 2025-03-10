@@ -6,23 +6,23 @@ using UnityEngine.UI;
 public abstract class AbsctractGameSession
 {
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
-    public abstract void HandleInteraction(KeyInputManager keyInputManager);
+    public abstract void HandleInteraction(CurrentObjectManager currentObjectManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
     public abstract void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest);
     public abstract void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
 
     // 2) (선택) 공통 로직이 있다면 추상 클래스 내부에 보호(protected) 메서드나 필드로 작성 가능
-    protected void HandleInteractionBasic(KeyInputManager keyInputManager)
+    protected void HandleInteractionBasic(CurrentObjectManager currentObjectManager)
     {
-        if (keyInputManager.currentRow == null)
+        if (currentObjectManager.currentRow == null)
             return;
 
-        if (string.IsNullOrEmpty(keyInputManager.currentRow.dataType))
+        if (string.IsNullOrEmpty(currentObjectManager.currentRow.dataType))
             return;
 
-        string currentObjCode = keyInputManager.currentRow.objCode;
-        string currentObjType = keyInputManager.currentRow.dataType.ToLower();
+        string currentObjCode = currentObjectManager.currentRow.objCode;
+        string currentObjType = currentObjectManager.currentRow.dataType.ToLower();
 
         bool hasHint = currentObjType.Contains("hint");
         bool hasDialogue = currentObjType.Contains("dialogue");
@@ -33,33 +33,33 @@ public abstract class AbsctractGameSession
 
         if (hasHint)
         {
-            keyInputManager.hintStateManager.HIntUnlocked(currentObjCode);
+            currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
         }
         if (hasBubble)
         {
-            keyInputManager.bubbleSetter.currentObjOffset = keyInputManager.objDataTypeContainer.position;
-            keyInputManager.bubbleSetter.SetData(currentObjCode);
+            currentObjectManager.bubbleSetter.currentObjOffset = currentObjectManager.objDataTypeContainer.position;
+            currentObjectManager.bubbleSetter.SetData(currentObjCode);
         }
         if (hasCenterLabel)
         {
-            keyInputManager.uiCenterLabelSetter.SetData(currentObjCode);
-            keyInputManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
+            currentObjectManager.uiCenterLabelSetter.SetData(currentObjCode);
+            currentObjectManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
         }
         if (hasDialogue)
         {
-            keyInputManager.uiPopUpManager.SetData(currentObjCode);
+            currentObjectManager.uiPopUpManager.SetData(currentObjCode);
             if (hasQuest)
-                keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
-                keyInputManager.uiPopUpOnOffManager.OpenDefaultWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenDefaultWindow();
         }
         if (hasImage)
         {
-            keyInputManager.uiPopUpManager.SetData(currentObjCode);
+            currentObjectManager.uiPopUpManager.SetData(currentObjCode);
             if (hasQuest)
-                keyInputManager.uiPopUpOnOffManager.OpenQuestWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenQuestWindow();
             else
-                keyInputManager.uiPopUpOnOffManager.OpenDefaultWindow();
+                currentObjectManager.uiPopUpOnOffManager.OpenDefaultWindow();
         }
     }
 
@@ -100,9 +100,9 @@ public abstract class AbsctractGameSession
 
         if (!string.IsNullOrEmpty(currentNextdata))
         {
-            UIPopUpOnOffManager.keyInputManager.SetCurrentObjData(currentNextdata);
+            UIPopUpOnOffManager.currentObjectManager.SetCurrentObjData(currentNextObjCode);
         }
-        UIPopUpOnOffManager.keyInputManager.currentObjCode = null;
+        UIPopUpOnOffManager.currentObjectManager.currentObjCode = null;
     }
 
     protected void OpenCenterLabelBasic(UICenterLabelOnOffManager uiCenterLabelOnOffManager)

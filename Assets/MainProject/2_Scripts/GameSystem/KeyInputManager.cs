@@ -3,20 +3,7 @@ using System.Linq;
 
 public class KeyInputManager : MonoBehaviour
 {
-    [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
-
     public UIPopUpOnOffManager uiPopUpOnOffManager;
-    public UIPopUpManager uiPopUpManager;
-
-    public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
-    public UICenterLabelSetter uiCenterLabelSetter;
-
-    public HintStateManager hintStateManager;
-    public BubbleSetter bubbleSetter;
-
-    public ObjDataType currentRow;
-    public string currentObjCode;
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -31,16 +18,6 @@ public class KeyInputManager : MonoBehaviour
 
     private void HandleFKey()
     {
-        currentObjCode = objDataTypeContainer.objCode;
-        SetCurrentObjData(currentObjCode);
-    }
-
-    public void SetCurrentObjData(string currentObjCode)
-    {
-        currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (currentRow == null)
-            return;
-        var session = GameManager.Instance.Session;
-        session.HandleInteraction(this);
+        CurrentObjectManager.Instance.SetCurrentObjData(null);
     }
 }

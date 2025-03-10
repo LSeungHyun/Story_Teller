@@ -4,7 +4,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
 {
     [SerializeField] public NextDataContainer nextDataContainer;
 
-    public KeyInputManager keyInputManager;
+    public CurrentObjectManager currentObjectManager;
     public UIPopUpManager uiPopUpManager;
 
     public GameObject popUpGroup;
@@ -27,6 +27,6 @@ public class UIPopUpOnOffManager : MonoBehaviour
     {
         // GameManager에서 현재 세션(IGameSession) 객체를 가져와 팝업 닫기 로직 위임
         var session = GameManager.Instance.Session;
-        session.ClosePopUp(this, keyInputManager.currentObjCode);
+        session.ClosePopUp(this, currentObjectManager.currentObjCode);
     }
 }

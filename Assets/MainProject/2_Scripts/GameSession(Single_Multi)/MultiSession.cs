@@ -15,9 +15,9 @@ public class MultiSession : AbsctractGameSession
 
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }
-    public override void HandleInteraction(KeyInputManager keyInputManager)
+    public override void HandleInteraction(CurrentObjectManager currentObjectManager)
     {
-        HandleInteractionBasic(keyInputManager);
+        HandleInteractionBasic(currentObjectManager);
         Debug.Log("나야나 멀티야");
     }
     public override void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)

@@ -17,9 +17,9 @@ public class SingleSession : AbsctractGameSession
         Debug.Log("SingleSession: PopUp closed in single mode.");
     }
 
-    public override void HandleInteraction(KeyInputManager keyInputManager)
+    public override void HandleInteraction(CurrentObjectManager currentObjectManager)
     {
-        HandleInteractionBasic(keyInputManager);
+        HandleInteractionBasic(currentObjectManager);
         Debug.Log("나야나 싱글이야");
     }
     public override void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
