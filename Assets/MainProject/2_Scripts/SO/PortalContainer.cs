@@ -4,4 +4,5 @@ using UnityEngine;
 public class PortalContainer : ScriptableObject
 {
     public UICenterLabelOnOffManager uICenterLabelOnOffManager;
+    public PlayerManager playerManager;
 }

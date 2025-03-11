@@ -15,7 +15,8 @@ public class PlayerInstantiateManager : MonoBehaviour
         if (GameManager.Instance.isType == false)
         {
             Debug.Log("싱글모드입니다");
-            Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
+            playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
+            dontDes.SetFollowCam(playerObj);
         }
 
         else
@@ -51,10 +52,9 @@ public class PlayerInstantiateManager : MonoBehaviour
 
             // 4) PhotonNetwork.Instantiate 호출 (프리팹 이름, 위치, 회전)
             playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
+            dontDes.SetFollowCam(playerObj);
         }
         //PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
-        dontDes.SetFollowCam(playerObj);
-
 
         //필요시 사용
         //playerManager.joystick = joyStick;

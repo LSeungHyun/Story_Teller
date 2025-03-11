@@ -1,19 +1,31 @@
-using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
-using UnityEngine.UI;
+using UnityEngine;
+
 
 public abstract class AbsctractGameSession
 {
-    public virtual void PortalEnter(PortalMananager portalMananager, Collider2D collision)
+    // 센터 라벨 출력 메서드 (공통 기본 구현)
+    public virtual void ShowPortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
     {
         CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
     }
 
-    public virtual void PortalExit(PortalMananager portalMananager, Collider2D collision)
+    // 센터 라벨 제거 메서드 (공통 기본 구현)
+    public virtual void ClosePortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
     {
         CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
     }
+
+    // 센터 라벨 관련 추가 메서드 (예시)
+    public virtual void CloseCenterLabel(object centerLabelManager)
+    {
+        // center label 제거 로직
+    }
+
+    // 포탈 카운트다운 시작/종료 메서드: 모드별로 다르게 구현 가능하도록 추상/가상 메서드로 선언
+    public abstract void StartPortalCountdown(PortalMananager portal, Collider2D collision);
+    public abstract void StopPortalCountdown(PortalMananager portal, Collider2D collision);
+
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(CurrentObjectManager currentObjectManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);

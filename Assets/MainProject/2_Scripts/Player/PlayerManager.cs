@@ -6,7 +6,7 @@ using Photon.Pun.Demo.PunBasics;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
-
+    public PortalContainer PortalContainer;
     public PhotonView PV;
 
     [Header("Player Components")]
@@ -36,6 +36,8 @@ public class PlayerManager : MonoBehaviour
             Debug.Log("Session ¹Þ¾Æ¿È");
         else
             Debug.Log("Session ¾øÀ½");
+
+        PortalContainer.playerManager = this;
     }
 
     void Update()
