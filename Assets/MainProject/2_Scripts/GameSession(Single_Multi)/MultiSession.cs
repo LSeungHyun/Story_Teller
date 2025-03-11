@@ -22,8 +22,10 @@ public class MultiSession : AbsctractGameSession
 
     public override void TriggerEnter(PlayerManager playerManager,Collider2D collision)
     {
-        Debug.Log("멀티충돌 완료!");
-        TriggerEnterBasic(playerManager, collision);
+        if (playerManager.PV.IsMine)
+        {
+            TriggerEnterBasic(playerManager, collision);
+        }     
     }
 
     public override void TriggerExit(PlayerManager playerManager, Collider2D collision)

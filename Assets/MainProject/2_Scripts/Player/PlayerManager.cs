@@ -97,33 +97,18 @@ public class PlayerManager : MonoBehaviour
     #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        session.TriggerEnter(this,collision);
-        //if (!collision.CompareTag("Interaction"))
-        //{
-        //    return;
-        //}
-
-        //interactableStack.Remove(collision);
-        //interactableStack.Add(collision);
-        //UpdateInteractObject();
+        if (session != null)
+        {
+            session.TriggerEnter(this, collision);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        session.TriggerExit(this, collision);
-        //if (!collision.CompareTag("Interaction"))
-        //{
-        //    return;
-        //}
-
-        //interactableStack.Remove(collision);
-        //Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
-        //if (renderOfCurrentCollision != null)
-        //{
-        //    renderOfCurrentCollision.material = originalMaterial;
-        //}
-
-        //UpdateInteractObject();
+        if (session != null)
+        {
+            session.TriggerExit(this, collision);
+        }
     }
 
     public void UpdateInteractObject()
