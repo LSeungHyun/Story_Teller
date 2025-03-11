@@ -77,7 +77,7 @@ public class SingleSession : AbsctractGameSession
 
     public override void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
     {
-        base.TriggerExitBasic(playerManager, collision);
+        base.TriggerEnterBasic(playerManager, collision);
     }
 
     public override void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using UnityEditor.Experimental.GraphView;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -116,11 +115,20 @@ public class MultiSession : AbsctractGameSession
         portal.isAreadyMove = true;
         Debug.Log("멀티 모드: 이동 실행!");
         yield return new WaitForSeconds(1f);
-        // 예시: 플레이어 위치 변경 (필요한 네트워크 동기화 로직 추가 가능)
-        portal.portalContainer.playerManager.gameObject.transform.position = portal.nextMap.position;
-        //PhotonView.RPC("MoveTransform",RpcTarget.AllBuffered);
+
+        // 플레이어 매니저에 부착된 PhotonView를 가져옴
+        PhotonView photonView = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
+        if (photonView != null)
+        {
+            // 모든 클라이언트에서 이동을 동기화하기 위해 nextMap.position을 Vector3로 전달
+            photonView.RPC("MoveTransform", RpcTarget.AllBuffered, portal.nextMap.position);
+        }
+        else
+        {
+            Debug.LogError("PhotonView가 playerManager 객체에 존재하지 않습니다.");
+        }
+
         portal.isAreadyMove = false;
-        // 이동 후 해당 포탈의 상태 초기화
         if (portalStatuses.ContainsKey(portal))
         {
             portalStatuses.Remove(portal);
@@ -154,7 +162,7 @@ public class MultiSession : AbsctractGameSession
     {
         if (playerManager.PV.IsMine)
         {
-            base.TriggerExitBasic(playerManager, collision);
+            base.TriggerEnterBasic(playerManager, collision);
         }     
     }
 

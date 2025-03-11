@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using Photon.Pun;
 
 #region Data Array
 [Serializable]
@@ -159,6 +160,8 @@ public class HintData
 
 public class TextDataManager : MonoBehaviour
 {
+    public PhotonView PV;
+
     [SerializeField]
     private string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec";
 
@@ -190,6 +193,11 @@ public class TextDataManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(LoadSheetData());
+
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+        }
     }
 
     private IEnumerator LoadSheetData()

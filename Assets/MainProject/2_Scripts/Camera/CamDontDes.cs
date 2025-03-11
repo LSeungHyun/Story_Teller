@@ -31,10 +31,6 @@ public class CamDontDes : MonoBehaviour
             virtualCam.Lens.OrthographicSize = 2.5f;
     }
 
-    private void Start()
-    {
-        //StartCoroutine(FindPlayerCoroutine());
-    }
     private void Update()
     {
         if (isTeleporting)

@@ -1,17 +1,24 @@
 using Photon.Pun;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInstantiateManager : MonoBehaviour
 {
+    public PhotonView PV;
     public GameObject singlePlayer;
     public GameObject startPoint;
+    public CamDontDes dontDes;
+
 
     public GameObject playerObj;
-    public CamDontDes dontDes;
 
     private void Awake()
     {
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+        }
+
+
         if (GameManager.Instance.isType == false)
         {
             Debug.Log("싱글모드입니다");

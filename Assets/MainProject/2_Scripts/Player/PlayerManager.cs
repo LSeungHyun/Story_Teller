@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
     public PortalContainer PortalContainer;
     public PhotonView PV;
+    public PhotonTransformView PTV;
+    public PhotonAnimatorView PAV;
 
     [Header("Player Components")]
     public Rigidbody2D rigid;
@@ -31,6 +33,13 @@ public class PlayerManager : MonoBehaviour
     #region LifeCycle Methods
     void Start()
     {
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+            Destroy(PTV);
+            Destroy(PAV);
+        }
+
         session = GameManager.Instance.Session;
         if (session != null)
             Debug.Log("Session ¹Þ¾Æ¿È");

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 public class PortalMananager : MonoBehaviour
@@ -46,5 +47,12 @@ public class PortalMananager : MonoBehaviour
         session.ClosePortalCenterLabel(this, collision);
         session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
         session.StopPortalCountdown(this, collision);
+    }
+
+    [PunRPC]
+    public void MoveTransform(Vector3 targetPosition)
+    {
+        // 모든 클라이언트에서 실행되어, 이 GameObject의 위치를 targetPosition으로 변경
+        transform.position = targetPosition;
     }
 }
