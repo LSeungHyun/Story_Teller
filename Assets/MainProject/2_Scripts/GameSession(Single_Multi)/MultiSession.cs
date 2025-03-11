@@ -17,12 +17,13 @@ public class MultiSession : AbsctractGameSession
     // 각 PortalMananager별 상태를 저장하는 딕셔너리
     private Dictionary<PortalMananager, PortalStatus> portalStatuses = new Dictionary<PortalMananager, PortalStatus>();
 
+    [PunRPC]
     public override void ShowPortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
     {
         // 멀티 모드 특화 로직 추가 가능 (네트워크 동기화, UI 업데이트 등)
         base.ShowPortalCenterLabel(portalMananager, collision);
     }
-
+    [PunRPC]
     public override void ClosePortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
     {
         base.ClosePortalCenterLabel(portalMananager, collision);
@@ -31,32 +32,31 @@ public class MultiSession : AbsctractGameSession
     // 포탈 내에 플레이어가 들어올 때 호출되는 메서드
     public override void StartPortalCountdown(PortalMananager portal, Collider2D collision)
     {
+        PhotonView PV = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
+
         if (!portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
             status = new PortalStatus();
             portalStatuses.Add(portal, status);
         }
 
-        // 플레이어의 고유 ID를 추가
         int playerID = collision.gameObject.GetInstanceID();
         status.playersInside.Add(playerID);
 
-        // 현재 포톤 방에 참여한 플레이어 수를 가져옴
         int requiredPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        // 모든 플레이어가 아직 포탈에 들어오지 않은 경우
+        // 방 참여자 모두가 포탈에 들어오지 않았다면 "Enter_All" 상태로 센터라벨 표시
         if (status.playersInside.Count < requiredPlayerCount)
         {
             portal.objCode = "Enter_All";
-            ShowPortalCenterLabel(portal, collision);
+            PV.RPC("ShowPortalCenterLabel", RpcTarget.AllBuffered, portal, collision);
         }
-        // 방의 모든 플레이어가 포탈에 들어온 경우
+        // 방의 모든 플레이어가 포탈에 들어온 경우 "Enter_Wait3" 상태로 센터라벨 표시 후 카운트다운 시작
         else if (status.playersInside.Count == requiredPlayerCount)
         {
             portal.objCode = "Enter_Wait3";
-            ShowPortalCenterLabel(portal, collision);
+            PV.RPC("ShowPortalCenterLabel", RpcTarget.AllBuffered, portal, collision);
 
-            // 카운트다운이 진행 중이 아니라면 시작
             if (status.countdownCoroutine == null)
             {
                 status.countdownCoroutine = portal.StartCoroutine(PortalCountdownCoroutine(portal));
@@ -64,7 +64,7 @@ public class MultiSession : AbsctractGameSession
         }
     }
 
-    // 포탈에서 플레이어가 나갈 때 호출되는 메서드
+    // 포탈에서 플레이어가 나갈 때 호출 (RPC를 통해 센터라벨 해제)
     public override void StopPortalCountdown(PortalMananager portal, Collider2D collision)
     {
         if (portalStatuses.TryGetValue(portal, out PortalStatus status))
@@ -72,8 +72,21 @@ public class MultiSession : AbsctractGameSession
             int playerID = collision.gameObject.GetInstanceID();
             status.playersInside.Remove(playerID);
 
-            // 방의 모든 플레이어가 아직 포탈에 들어와 있지 않으면
-            if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+            PhotonView PV = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
+
+            // 포탈 내에 아무도 없으면 센터라벨 제거 RPC 호출
+            if (status.playersInside.Count == 0)
+            {
+                if (status.countdownCoroutine != null)
+                {
+                    portal.StopCoroutine(status.countdownCoroutine);
+                    status.countdownCoroutine = null;
+                }
+                PV.RPC("ClosePortalCenterLabel", RpcTarget.AllBuffered, portal, collision);
+                portalStatuses.Remove(portal);
+            }
+            // 모두 들어오지 않은 상태라면 "Enter_All" 상태로 업데이트
+            else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
             {
                 if (status.countdownCoroutine != null)
                 {
@@ -81,12 +94,7 @@ public class MultiSession : AbsctractGameSession
                     status.countdownCoroutine = null;
                 }
                 portal.objCode = "Enter_All";
-                ShowPortalCenterLabel(portal, collision);
-            }
-            // 포탈 내부에 아무도 없으면 상태 삭제
-            if (status.playersInside.Count == 0)
-            {
-                portalStatuses.Remove(portal);
+                PV.RPC("ShowPortalCenterLabel", RpcTarget.AllBuffered, portal, collision);
             }
         }
     }
@@ -112,12 +120,13 @@ public class MultiSession : AbsctractGameSession
     // 이동 처리 코루틴 (1초 대기 후 실제 이동)
     private IEnumerator LoadMapCoroutine(PortalMananager portal)
     {
+        // 플레이어 매니저에 부착된 PhotonView를 가져옴
+        PhotonView photonView = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
         portal.isAreadyMove = true;
         Debug.Log("멀티 모드: 이동 실행!");
         yield return new WaitForSeconds(1f);
 
-        // 플레이어 매니저에 부착된 PhotonView를 가져옴
-        PhotonView photonView = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
+        
         if (photonView != null)
         {
             // 모든 클라이언트에서 이동을 동기화하기 위해 nextMap.position을 Vector3로 전달
