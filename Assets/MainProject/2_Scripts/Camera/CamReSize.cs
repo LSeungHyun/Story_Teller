@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FixedAspectRatio : MonoBehaviour
+public class CamReSize : MonoBehaviour
 {
     public Camera camera;
 
