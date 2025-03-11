@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PortalMananager : MonoBehaviour
 {
-    public string objCode;
+    public string objCode = "";
     public PortalContainer portalContainer;
     public AbsctractGameSession session;
 
@@ -16,6 +16,15 @@ public class PortalMananager : MonoBehaviour
     void Start()
     {
         session = GameManager.Instance.Session;
+
+        if(GameManager.Instance.isType == false)
+        {
+            objCode = "Enter_Wait3";
+        }
+        else
+        {
+            objCode = "Enter_All";
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
