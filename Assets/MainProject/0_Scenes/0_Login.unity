@@ -755,6 +755,7 @@ GameObject:
   - component: {fileID: 598862033}
   - component: {fileID: 598862032}
   - component: {fileID: 598862035}
+  - component: {fileID: 598862036}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -880,6 +881,19 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &598862036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598862031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bc57ec9cbcb5fe43906370101145123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 598862033}
 --- !u!1001 &760194756
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3273,7 +3287,7 @@ Canvas:
   m_GameObject: {fileID: 1870825854}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 598862033}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
