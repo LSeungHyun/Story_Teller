@@ -144,7 +144,8 @@ public class BubbleData
 public class QuestData
 {
     public string objCode;
-    public string dataList;
+    public string name;
+    public string answer;
 }
 
 [Serializable]
