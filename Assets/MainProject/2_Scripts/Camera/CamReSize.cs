@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class FixedAspectRatio : MonoBehaviour
 {
+    public Camera camera;
+
     // 목표 비율: 16:9 (1920/1080)
     private const float targetAspect = 16f / 9f;
     // 최소 뷰포트 높이와 너비 (0~1 비율)
@@ -42,7 +44,7 @@ public class FixedAspectRatio : MonoBehaviour
 
     void AdjustCameraViewport()
     {
-        Camera cam = Camera.main;
+        Camera cam = camera;
         if (cam == null)
         {
             Debug.LogError("메인 카메라를 찾을 수 없습니다.");
