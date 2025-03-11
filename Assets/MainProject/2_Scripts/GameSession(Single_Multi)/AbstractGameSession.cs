@@ -181,7 +181,7 @@ public abstract class AbsctractGameSession
 
         if (!string.IsNullOrEmpty(currentNextdata))
         {
-            UIPopUpOnOffManager.currentObjectManager.SetCurrentObjData(currentNextObjCode);
+            UIPopUpOnOffManager.currentObjectManager.SetCurrentObjData(currentNextdata);
         }
         UIPopUpOnOffManager.currentObjectManager.currentObjCode = null;
     }
