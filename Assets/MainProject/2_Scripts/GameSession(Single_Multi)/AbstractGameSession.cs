@@ -124,7 +124,10 @@ public abstract class AbsctractGameSession
         {
             currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
             if (hasQuest)
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, true);
+            {
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
+                currentObjectManager.uiQuestSetter.SetQuest(currentObjCode);
+            }
             else
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
         }
@@ -132,10 +135,14 @@ public abstract class AbsctractGameSession
         {
             currentObjectManager.uiImageSetter.SetData(currentObjCode);
             if (hasQuest)
+            {
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
-            else
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
+                currentObjectManager.uiQuestSetter.SetQuest(currentObjCode);
+            }
         }
+        else
+            currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
+        
     }
 
     protected void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)

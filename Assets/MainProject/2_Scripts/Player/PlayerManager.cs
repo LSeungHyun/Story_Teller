@@ -39,12 +39,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (session != null)
+/*        if (session != null)
         {
             session.Move(this);
             session.AnimController(this);
-        }
-        //Move();
+        }*/
+        Move();
     }
     #endregion
 
