@@ -2,37 +2,47 @@ using UnityEngine;
 
 public class MultiSession : AbsctractGameSession
 {
+    public override void PortalEnter(PortalMananager portalMananager, Collider2D collision)
+    {
+        //
+        base.PortalEnter(portalMananager, collision);
+    }
+
+    public override void PortalExit(PortalMananager portalMananager, Collider2D collision)
+    {
+        base.PortalExit(portalMananager, collision);
+    }
     #region Player Abstract Methods;
-    public override void Move(PlayerManager playerManager)
+    public override void MoveBasic(PlayerManager playerManager)
     {
         if (playerManager.PV.IsMine)
         {
-            MoveBasic(playerManager);
+            base.MoveBasic(playerManager);
         }
     }
 
-    public override void AnimController(PlayerManager playerManager)
+    public override void AnimControllerBasic(PlayerManager playerManager)
     {
         if (playerManager.PV.IsMine)
         {
-            AnimControllerBasic(playerManager);
+            base.AnimControllerBasic(playerManager);
         }
     }
 
 
-    public override void TriggerEnter(PlayerManager playerManager,Collider2D collision)
+    public override void TriggerEnterBasic(PlayerManager playerManager,Collider2D collision)
     {
         if (playerManager.PV.IsMine)
         {
-            TriggerEnterBasic(playerManager, collision);
+            base.TriggerExitBasic(playerManager, collision);
         }     
     }
 
-    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
+    public override void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
         if (playerManager.PV.IsMine)
         {
-            TriggerExitBasic(playerManager, collision);
+            base.TriggerExitBasic(playerManager, collision);
         }
     }
     #endregion

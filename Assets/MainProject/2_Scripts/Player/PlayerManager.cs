@@ -40,12 +40,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        //if (session != null)
-        //{
-        //    session.Move(this);
-        //    session.AnimController(this);
-        //}
-        Move();
+        if (session != null)
+        {
+            session.MoveBasic(this);
+            session.AnimControllerBasic(this);
+        }
+        //Move();
     }
     #endregion
 
@@ -98,37 +98,37 @@ public class PlayerManager : MonoBehaviour
     #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Interaction"))
-        {
-            return;
-        }
-
-        interactableStack.Remove(collision);
-        interactableStack.Add(collision);
-        UpdateInteractObject();
-        //if (session != null)
+        //if (!collision.CompareTag("Interaction"))
         //{
-        //    session.TriggerEnter(this, collision);
+        //    return;
         //}
+
+        //interactableStack.Remove(collision);
+        //interactableStack.Add(collision);
+        //UpdateInteractObject();
+        if (session != null)
+        {
+            session.TriggerEnterBasic(this, collision);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Interaction"))
-        {
-            return;
-        }
-
-        interactableStack.Remove(collision);
-        Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
-        if (renderOfCurrentCollision != null)
-        {
-            renderOfCurrentCollision.material = originalMaterial;
-        }
-        //if (session != null)
+        //if (!collision.CompareTag("Interaction"))
         //{
-        //    session.TriggerExit(this, collision);
+        //    return;
         //}
+
+        //interactableStack.Remove(collision);
+        //Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
+        //if (renderOfCurrentCollision != null)
+        //{
+        //    renderOfCurrentCollision.material = originalMaterial;
+        //}
+        if (session != null)
+        {
+            session.TriggerExitBasic(this, collision);
+        }
     }
 
     public void UpdateInteractObject()

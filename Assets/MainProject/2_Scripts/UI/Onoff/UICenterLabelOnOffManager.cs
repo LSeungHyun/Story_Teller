@@ -4,8 +4,13 @@ public class UICenterLabelOnOffManager : MonoBehaviour
 {
     public UICenterLabelSetter uiCenterLabelSetter;
 
+    public PortalContainer portalContainer;
     public GameObject centerLabelGroup;
 
+    private void Start()
+    {
+        portalContainer.uICenterLabelOnOffManager = this;
+    }
     public void OpenCenterLabelWindow()
     {
         var session = GameManager.Instance.Session;

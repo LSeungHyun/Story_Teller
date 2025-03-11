@@ -2,27 +2,41 @@ using UnityEngine;
 
 public class SingleSession : AbsctractGameSession
 {
+    public override void PortalEnter(PortalMananager portalMananager, Collider2D collision)
+    {
+        //Enter_Wait3 출력 -> 끝나면 Move출력
+        Debug.Log("싱글 포탈 이동 고고");
+        base.PortalEnter(portalMananager, collision);
+        
+    }
+
+    public override void PortalExit(PortalMananager portalMananager, Collider2D collision)
+    {
+        //센터라벨 제거, 타이머 초기화
+        base.PortalExit(portalMananager, collision);
+
+        //도착은 나경님이 만든 isPassive 활용 
+    }
     #region Player Abstract Methods;
-    public override void Move(PlayerManager playerManager)
+    public override void MoveBasic(PlayerManager playerManager)
     {
-        MoveBasic(playerManager);
+        //MoveBasic(playerManager);
+        base.MoveBasic(playerManager);
     }
 
-    public override void AnimController(PlayerManager playerManager)
+    public override void AnimControllerBasic(PlayerManager playerManager)
     {
-        AnimControllerBasic(playerManager);
+        base.AnimControllerBasic(playerManager);
     }
 
-
-    public override void TriggerEnter(PlayerManager playerManager, Collider2D collision)
+    public override void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
     {
-        Debug.Log("싱글충돌 완료!");
-        TriggerEnterBasic(playerManager, collision);
+        base.TriggerExitBasic(playerManager, collision);
     }
 
-    public override void TriggerExit(PlayerManager playerManager, Collider2D collision)
+    public override void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
-        TriggerExitBasic(playerManager, collision);
+        base.TriggerExitBasic(playerManager, collision);
     }
     #endregion
     public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)

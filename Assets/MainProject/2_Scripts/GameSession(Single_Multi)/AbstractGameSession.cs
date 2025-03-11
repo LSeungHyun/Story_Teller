@@ -5,17 +5,15 @@ using UnityEngine.UI;
 
 public abstract class AbsctractGameSession
 {
-    public abstract void Move(PlayerManager playerManager);
-    public abstract void AnimController(PlayerManager playerManager);
+    public virtual void PortalEnter(PortalMananager portalMananager, Collider2D collision)
+    {
+        CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
+    }
 
-    public abstract void TriggerEnter(PlayerManager playerManager, Collider2D collision);
-
-    public abstract void TriggerExit(PlayerManager playerManager, Collider2D collision);
-
-
-
-
-    //위의 내용 복사 후 Discard
+    public virtual void PortalExit(PortalMananager portalMananager, Collider2D collision)
+    {
+        CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
+    }
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(CurrentObjectManager currentObjectManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
@@ -23,9 +21,9 @@ public abstract class AbsctractGameSession
     public abstract void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
 
-    // 2) (선택) 공통 로직이 있다면 추상 클래스 내부에 보호(protected) 메서드나 필드로 작성 가능
-    #region Player Basic Methods
-    protected void MoveBasic(PlayerManager playerManager)
+    // 2) (선택) 공통 로직이 있다면 추상 클래스 내부에 보호(protected) 메서드나 virtual 필드로 작성 가능
+    #region Player Basic Virtual Methods
+    public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
         playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
@@ -34,7 +32,7 @@ public abstract class AbsctractGameSession
         playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec);
     }
 
-    protected void AnimControllerBasic(PlayerManager playerManager)
+    public virtual void AnimControllerBasic(PlayerManager playerManager)
     {
         bool isMoving = playerManager.inputVec.x != 0 || playerManager.inputVec.y != 0;
         if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
@@ -60,7 +58,7 @@ public abstract class AbsctractGameSession
         playerManager.ResetInputOnKeyUp();
     }
 
-    protected void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
+    public virtual void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
     {
         if (!collision.CompareTag("Interaction"))
         {
@@ -72,7 +70,7 @@ public abstract class AbsctractGameSession
         playerManager.UpdateInteractObject();
     }
 
-    protected void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
+    public virtual void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
         if (!collision.CompareTag("Interaction"))
         {
