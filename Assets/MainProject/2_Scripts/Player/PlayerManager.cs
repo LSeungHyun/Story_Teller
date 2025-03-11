@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -41,8 +42,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (session != null)
         {
-            session.Move(this);
-            session.AnimController(this);
+            session.MoveBasic(this);
+            session.AnimControllerBasic(this);
         }
         //Move();
     }
@@ -97,7 +98,6 @@ public class PlayerManager : MonoBehaviour
     #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        session.TriggerEnter(this,collision);
         //if (!collision.CompareTag("Interaction"))
         //{
         //    return;
@@ -106,11 +106,14 @@ public class PlayerManager : MonoBehaviour
         //interactableStack.Remove(collision);
         //interactableStack.Add(collision);
         //UpdateInteractObject();
+        if (session != null)
+        {
+            session.TriggerEnterBasic(this, collision);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        session.TriggerExit(this, collision);
         //if (!collision.CompareTag("Interaction"))
         //{
         //    return;
@@ -122,8 +125,10 @@ public class PlayerManager : MonoBehaviour
         //{
         //    renderOfCurrentCollision.material = originalMaterial;
         //}
-
-        //UpdateInteractObject();
+        if (session != null)
+        {
+            session.TriggerExitBasic(this, collision);
+        }
     }
 
     public void UpdateInteractObject()

@@ -129,7 +129,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 #else
         // 에디터나 다른 플랫폼에서는 systemCopyBuffer 사용
         GUIUtility.systemCopyBuffer = text;
-        Debug.Log("에디터복사");
 #endif
     }
     public void CopyToClipBoard()

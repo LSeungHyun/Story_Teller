@@ -1,17 +1,21 @@
 using Photon.Pun;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInstantiateManager : MonoBehaviour
 {
     public GameObject singlePlayer;
-    public GameObject StartPoint;
+    public GameObject startPoint;
+
+    public GameObject playerObj;
+    public CamDontDes dontDes;
 
     private void Awake()
     {
         if (GameManager.Instance.isType == false)
         {
             Debug.Log("싱글모드입니다");
-            Instantiate(singlePlayer, StartPoint.transform.position, Quaternion.identity);
+            Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
         }
 
         else
@@ -42,11 +46,18 @@ public class PlayerInstantiateManager : MonoBehaviour
             }
 
             // 3) 생성 위치/회전
-            Vector3 spawnPos = StartPoint.transform.position;
+            Vector3 spawnPos = startPoint.transform.position;
             Quaternion spawnRot = Quaternion.identity;
 
             // 4) PhotonNetwork.Instantiate 호출 (프리팹 이름, 위치, 회전)
-            GameObject playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
+            playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
         }
+        //PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
+        dontDes.SetFollowCam(playerObj);
+
+
+        //필요시 사용
+        //playerManager.joystick = joyStick;
+        //playerManager.webglBtn = webGLbtn;
     }
 }
