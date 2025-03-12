@@ -6,6 +6,8 @@ public class CurrentObjectManager : MonoBehaviour
     public static CurrentObjectManager Instance { get; private set; }
 
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
+    public PortalContainer portalContainer;
+
     public ObjDataType currentRow;
     public string currentObjCode;
 
@@ -23,6 +25,7 @@ public class CurrentObjectManager : MonoBehaviour
 
     private void Awake()
     {
+        portalContainer.currentObjectManager = this;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

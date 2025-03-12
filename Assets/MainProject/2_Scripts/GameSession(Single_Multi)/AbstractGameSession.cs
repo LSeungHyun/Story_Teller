@@ -1,4 +1,6 @@
+using Photon.Pun;
 using System.Linq;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 
@@ -26,7 +28,6 @@ public abstract class AbsctractGameSession
     // 1) 공통으로 필요한 추상 메서드 (기존 IGameSession의 메서드)
     public abstract void HandleInteraction(CurrentObjectManager currentObjectManager);
     public abstract void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode);
-    public abstract void OpenPopUp(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial);
     public abstract void OpenCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
     public abstract void CloseCenterLabel(UICenterLabelOnOffManager uiCenterLabelOnOffManager);
 
@@ -107,6 +108,7 @@ public abstract class AbsctractGameSession
 
         string currentObjCode = currentObjectManager.currentRow.objCode;
         string currentObjType = currentObjectManager.currentRow.dataType.ToLower();
+        bool currentIsMine = currentObjectManager.currentRow.isMine;
 
         bool hasHint = currentObjType.Contains("hint");
         bool hasDialogue = currentObjType.Contains("dialogue");
@@ -114,7 +116,11 @@ public abstract class AbsctractGameSession
         bool hasBubble = currentObjType.Contains("bubble");
         bool hasCenterLabel = currentObjType.Contains("centerlabel");
         bool hasImage = currentObjType.Contains("image");
-
+        
+        if (currentIsMine)
+        {
+            currentObjectManager.portalContainer.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
+        }
         if (hasHint)
         {
             currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
@@ -134,26 +140,22 @@ public abstract class AbsctractGameSession
             currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
             if (hasQuest)
             {
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
                 currentObjectManager.uiQuestSetter.SetQuest(currentObjCode);
             }
-            else
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
+            currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
         }
         if (hasImage)
         {
             currentObjectManager.uiImageSetter.SetData(currentObjCode);
             if (hasQuest)
             {
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
                 currentObjectManager.uiQuestSetter.SetQuest(currentObjCode);
             }
-            else
-                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
         }
     }
 
-    protected void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
+    public virtual void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
     {
         UIPopUpOnOffManager.popUpGroup.SetActive(true);
         UIPopUpOnOffManager.windowPopUp.SetActive(true);

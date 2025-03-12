@@ -210,5 +210,13 @@ public class PlayerManager : MonoBehaviour
         transform.position = targetPosition;
         //Debug.Log("가자잇!!!");
     }
+
+    [PunRPC]
+    public void RPC_ShowIsMineData(string objCode)
+    {
+        Debug.Log($"[RPC_ShowIsMineData] objCode = {objCode}");
+        // 실제 UI 라벨 표시 로직
+        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+    }
     #endregion
 }
