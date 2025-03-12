@@ -87,17 +87,20 @@ public class MultiSession : AbsctractGameSession
         // 아직 portalStatuses에 정보가 남아 있는지 확인
         if (portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
+            // 일부만 남았다면 'Enter_All' 상태로 갱신
+            if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+            {
+                portal.objCode = "Enter_All";
+                PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
+                PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
+
+                Debug.Log("다른사람들 센터라벨 켜주기" + portal.objCode);
+            }
             // 아무도 안 남았다면 라벨 닫고, 딕셔너리 제거
-            if (status.playersInside.Count == 0)
+            else if (status.playersInside.Count == 0)
             {
                 PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
                 portalStatuses.Remove(portal);
-            }
-            // 일부만 남았다면 'Enter_All' 상태로 갱신
-            else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
-            {
-                portal.objCode = "Enter_All";
-                PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
             }
         }
         //else

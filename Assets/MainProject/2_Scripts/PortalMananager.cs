@@ -54,6 +54,6 @@ public class PortalMananager : MonoBehaviour
         session.ClosePortalCenterLabel(this);
 
         // 3) 싱글/멀티 공통으로 쓰이는 CenterLabel UI가 있다면 별도 메서드
-        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
+        //session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
     }
 }
