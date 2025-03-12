@@ -20,9 +20,16 @@ public class UIPopUpOnOffManager : MonoBehaviour
         session.OpenPopUp(this, isQuest, isDial);
     }
 
-    public void ClosePopUpWindow()
+    public void CloseAndCheckPopUpWindow()
     {
         // GameManager에서 현재 세션(IGameSession) 객체를 가져와 팝업 닫기 로직 위임
+        var session = GameManager.Instance.Session;
+        session.ClosePopUp(this, currentObjectManager.currentObjCode);
+        session.CheckNextCode(this, currentObjectManager.currentObjCode);
+    }
+
+    public void ClosePopUpWindow()
+    {
         var session = GameManager.Instance.Session;
         session.ClosePopUp(this, currentObjectManager.currentObjCode);
     }

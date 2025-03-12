@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379646daa434e5947890bc96f7cbaf82, type: 3}
   m_Name: QuestContainer
   m_EditorClassIdentifier: 
-  questDatas: []
+  questDatas:
+  - objCode: UnderWorld_SteelHouse_ScrewList
+    name: "\uCCA0\uBB3C\uC810\uC758 \uB098\uC0AC\uB4E4"
+    answer: "\uC870\uC6A9\uD558\uAC8C"
+    isDone: 1
+  - objCode: LivingWorld_JungCafe_Music_Quest
+    name: "\u3139"
+    answer: "\uD30C\uC778\uC560\uD50C"
+    isDone: 0
+  - objCode: UnderWorld_Bakery_Note_Quest
+    name: "\u3139"
+    answer: "\uBAA8\uC2B5"
+    isDone: 0
+  - objCode: UnderWorld_JungCafe_Notebook_Quest
+    name: "\u3139"
+    answer: "\uADF8\uB824\uB0B4\uB2E4"
+    isDone: 0
+  - objCode: UnderWorld_HappyHair_Note_Quest
+    name: "\u3139"
+    answer: "\uBBF8\uB828"
+    isDone: 0
+  - objCode: UnderWorld_HappyHair_2ndfloor_Quest
+    name: "\u314E"
+    answer: "\uC790\uC0C1\uD568"
+    isDone: 0
