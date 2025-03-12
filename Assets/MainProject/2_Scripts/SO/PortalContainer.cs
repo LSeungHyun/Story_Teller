@@ -5,4 +5,5 @@ public class PortalContainer : ScriptableObject
 {
     public UICenterLabelOnOffManager uICenterLabelOnOffManager;
     public PlayerManager playerManager;
+    public PortalMananager portalMananager;
 }

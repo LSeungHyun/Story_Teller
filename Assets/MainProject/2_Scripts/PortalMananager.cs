@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PortalMananager : MonoBehaviour
 {
+    public TriggerObj triggerObj;
+
     public string objCode = "";
     public PortalContainer portalContainer;
     public AbsctractGameSession session;
@@ -26,13 +28,16 @@ public class PortalMananager : MonoBehaviour
         {
             objCode = "Enter_All";
         }
+
+        triggerObj.objCode = objCode;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         if (isAreadyMove)
             return;
-
+        
         Debug.Log("Æ÷Å»¿¡ ÁøÀÔ");
         session.ShowPortalCenterLabel(this);
         session.StartPortalCountdown(this, collision);
@@ -42,7 +47,7 @@ public class PortalMananager : MonoBehaviour
     {
         if (isAreadyMove)
             return;
-
+        
         Debug.Log("Æ÷Å»À» ¹þ¾î³²");
         session.StopPortalCountdown(this, collision);
 

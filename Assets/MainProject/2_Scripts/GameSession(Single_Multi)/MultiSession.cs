@@ -19,7 +19,6 @@ public class MultiSession : AbsctractGameSession
     public override void StartPortalCountdown(PortalMananager portal, Collider2D collision)
     {
         PhotonView PV = portal.portalContainer.playerManager.PV;
-
         // PortalStatus 초기화
         if (!portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
@@ -38,12 +37,14 @@ public class MultiSession : AbsctractGameSession
         if (status.playersInside.Count < requiredPlayerCount)
         {
             portal.objCode = "Enter_All";
+            PV.RPC("ChangeObjCode",RpcTarget.AllBuffered,portal.objCode);
             PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
         }
         // 전원이 들어옴
         else if (status.playersInside.Count == requiredPlayerCount)
         {
             portal.objCode = "Enter_Wait3";
+            PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
             PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
 
             // 카운트다운 코루틴이 없으면 시작

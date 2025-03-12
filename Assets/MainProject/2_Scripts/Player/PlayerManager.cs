@@ -5,7 +5,7 @@ using Photon.Pun;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
-    public PortalContainer PortalContainer;
+    public PortalContainer portalContainer;
     public PhotonView PV;
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
         //else
             //Debug.Log("Session 없음");
 
-        PortalContainer.playerManager = this;
+        portalContainer.playerManager = this;
     }
 
     void Update()
@@ -189,7 +189,6 @@ public class PlayerManager : MonoBehaviour
         Debug.Log($"[RPC_ShowPortalLabel] labelCode = {labelCode}");
         // 실제 UI 라벨 표시 로직
         CurrentObjectManager.Instance.SetCurrentObjData(labelCode);
-        
     }
 
     // [PunRPC] : 모든 클라이언트에서 라벨 닫기
@@ -198,7 +197,7 @@ public class PlayerManager : MonoBehaviour
     {
         Debug.Log("다 나갔다 싹다 꺼버려");
         // 실제 UI 라벨 제거 로직
-        session.CloseCenterLabel(PortalContainer.uICenterLabelOnOffManager);
+        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
     }
 
     [PunRPC]
@@ -207,6 +206,13 @@ public class PlayerManager : MonoBehaviour
         // 모든 클라이언트에서 이 GameObject의 위치를 targetPosition으로 변경
         transform.position = targetPosition;
         //Debug.Log("가자잇!!!");
+    }
+
+    [PunRPC]
+    public void ChangeObjCode(string multiCode)
+    {
+        //portalContainer.portalMananager.triggerObj.objCode = multiCode;
+        objDataTypeContainer.objCode = multiCode;
     }
     #endregion
 }
