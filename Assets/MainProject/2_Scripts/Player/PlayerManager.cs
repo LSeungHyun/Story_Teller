@@ -169,6 +169,8 @@ public class PlayerManager : MonoBehaviour
             }
 
             Renderer rend = indexedCollision.GetComponent<Renderer>();
+            if (rend == null) return;
+
             if (i == interactableStack.Count - 1)
             {
                 rend.material = outlineMaterial;

@@ -90,7 +90,7 @@ public class SingleSession : AbsctractGameSession
     {
         OpenPopUpBasic(uiPopUpOnOffManager, isQuest, isDial);
 
-        Debug.Log("SingleSession: PopUp closed in single mode.");
+        Debug.Log("SingleSession: PopUp Opened in single mode.");
     }
 
     public override void HandleInteraction(CurrentObjectManager currentObjectManager)

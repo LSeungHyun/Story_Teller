@@ -100,11 +100,11 @@ public class MultiSession : AbsctractGameSession
                 PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
             }
         }
-        else
-        {
-            // 혹은 portalStatuses에 없다면 이미 전부 정리된 상태이므로
-            PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
-        }
+        //else
+        //{
+        //    // 혹은 portalStatuses에 없다면 이미 전부 정리된 상태이므로
+        //    PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
+        //}
     }
 
     //------------------------------------------------------------------------

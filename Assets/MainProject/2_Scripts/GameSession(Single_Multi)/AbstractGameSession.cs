@@ -87,6 +87,8 @@ public abstract class AbsctractGameSession
         }
 
         playerManager.interactableStack.Remove(collision);
+        playerManager.UpdateInteractObject();
+
         Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
         if (renderOfCurrentCollision != null)
         {

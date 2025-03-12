@@ -34,7 +34,6 @@ public class PortalMananager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
         if (isAreadyMove)
             return;
         
