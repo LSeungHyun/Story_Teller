@@ -117,7 +117,7 @@ public abstract class AbsctractGameSession
         bool hasCenterLabel = currentObjType.Contains("centerlabel");
         bool hasImage = currentObjType.Contains("image");
 
-        if (currentIsMine)
+        if (!currentIsMine)
         {
             currentObjectManager.portalContainer.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
         }
