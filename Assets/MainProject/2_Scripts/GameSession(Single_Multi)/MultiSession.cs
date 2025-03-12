@@ -5,58 +5,48 @@ using Photon.Pun;
 
 public class MultiSession : AbsctractGameSession
 {
-    // 각 포탈(PortalMananager)마다 현재 포탈 안에 들어온 플레이어들을 관리하는 클래스
+    // 포탈별 상태 (포탈에 들어온 플레이어 목록, 카운트다운 코루틴)
     private class PortalStatus
     {
-        // 플레이어 고유 ID를 저장 (collision.gameObject.GetInstanceID() 사용)
         public HashSet<int> playersInside = new HashSet<int>();
-        // 해당 포탈의 카운트다운 코루틴 참조
         public Coroutine countdownCoroutine = null;
     }
 
-    // 각 PortalMananager별 상태를 저장하는 딕셔너리
+    // 각 포탈마다 PortalStatus를 관리
     private Dictionary<PortalMananager, PortalStatus> portalStatuses = new Dictionary<PortalMananager, PortalStatus>();
 
-    public override void ShowPortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
-    {
-        // 멀티 모드 특화 로직 추가 가능 (네트워크 동기화, UI 업데이트 등)
-        base.ShowPortalCenterLabel(portalMananager, collision);
-    }
-
-    public override void ClosePortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
-    {
-        base.ClosePortalCenterLabel(portalMananager, collision);
-    }
-
-    // 포탈 내에 플레이어가 들어올 때 호출되는 메서드
+    // 포탈 내에 플레이어가 들어올 때
     public override void StartPortalCountdown(PortalMananager portal, Collider2D collision)
     {
+        PhotonView PV = portal.portalContainer.playerManager.PV;
+
+        // PortalStatus 초기화
         if (!portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
             status = new PortalStatus();
             portalStatuses.Add(portal, status);
         }
 
-        // 플레이어의 고유 ID를 추가
+        // 충돌체(플레이어)의 고유 ID를 저장
         int playerID = collision.gameObject.GetInstanceID();
         status.playersInside.Add(playerID);
 
-        // 현재 포톤 방에 참여한 플레이어 수를 가져옴
+        // 현재 방의 플레이어 수
         int requiredPlayerCount = PhotonNetwork.CurrentRoom.PlayerCount;
 
-        // 모든 플레이어가 아직 포탈에 들어오지 않은 경우
+        // 아직 전원이 들어오지 않음
         if (status.playersInside.Count < requiredPlayerCount)
         {
             portal.objCode = "Enter_All";
-            ShowPortalCenterLabel(portal, collision);
+            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
         }
-        // 방의 모든 플레이어가 포탈에 들어온 경우
+        // 전원이 들어옴
         else if (status.playersInside.Count == requiredPlayerCount)
         {
             portal.objCode = "Enter_Wait3";
-            ShowPortalCenterLabel(portal, collision);
+            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
 
-            // 카운트다운이 진행 중이 아니라면 시작
+            // 카운트다운 코루틴이 없으면 시작
             if (status.countdownCoroutine == null)
             {
                 status.countdownCoroutine = portal.StartCoroutine(PortalCountdownCoroutine(portal));
@@ -64,34 +54,61 @@ public class MultiSession : AbsctractGameSession
         }
     }
 
-    // 포탈에서 플레이어가 나갈 때 호출되는 메서드
+    //------------------------------------------------------------------------
+    // 2) 포탈에서 플레이어가 나갔을 때 "카운트다운만" 중단
+    //------------------------------------------------------------------------
     public override void StopPortalCountdown(PortalMananager portal, Collider2D collision)
     {
         if (portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
+            // 나간 플레이어 제거
             int playerID = collision.gameObject.GetInstanceID();
             status.playersInside.Remove(playerID);
 
-            // 방의 모든 플레이어가 아직 포탈에 들어와 있지 않으면
-            if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+            // 진행 중인 코루틴이 있으면 중단
+            if (status.countdownCoroutine != null)
             {
-                if (status.countdownCoroutine != null)
-                {
-                    portal.StopCoroutine(status.countdownCoroutine);
-                    status.countdownCoroutine = null;
-                }
-                portal.objCode = "Enter_All";
-                ShowPortalCenterLabel(portal, collision);
+                portal.StopCoroutine(status.countdownCoroutine);
+                status.countdownCoroutine = null;
             }
-            // 포탈 내부에 아무도 없으면 상태 삭제
-            if (status.playersInside.Count == 0)
-            {
-                portalStatuses.Remove(portal);
-            }
+            // 여기서는 '라벨' 관련 로직은 수행하지 않음 (기능 분리)
+            // 라벨 처리는 ClosePortalCenterLabel(...)에서 담당
         }
     }
 
-    // 포탈에 모든 플레이어가 들어와 있을 때 진행되는 카운트다운 코루틴
+    //------------------------------------------------------------------------
+    // 3) "센터 라벨"을 실제로 끄거나, 'Enter_All'로 변경
+    //------------------------------------------------------------------------
+    public override void ClosePortalCenterLabel(PortalMananager portal)
+    {
+        PhotonView PV = portal.portalContainer.playerManager.PV;
+
+        // 아직 portalStatuses에 정보가 남아 있는지 확인
+        if (portalStatuses.TryGetValue(portal, out PortalStatus status))
+        {
+            // 아무도 안 남았다면 라벨 닫고, 딕셔너리 제거
+            if (status.playersInside.Count == 0)
+            {
+                PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
+                portalStatuses.Remove(portal);
+            }
+            // 일부만 남았다면 'Enter_All' 상태로 갱신
+            else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+            {
+                portal.objCode = "Enter_All";
+                PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
+            }
+        }
+        else
+        {
+            // 혹은 portalStatuses에 없다면 이미 전부 정리된 상태이므로
+            PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
+        }
+    }
+
+    //------------------------------------------------------------------------
+    // 4) 모든 플레이어가 들어왔을 때 카운트다운 후 맵 이동
+    //------------------------------------------------------------------------
     private IEnumerator PortalCountdownCoroutine(PortalMananager portal)
     {
         float timer = 0f;
@@ -100,32 +117,27 @@ public class MultiSession : AbsctractGameSession
             timer += Time.deltaTime;
             yield return null;
         }
-        // 카운트다운 완료 시, 코루틴 참조 초기화
+
+        // 카운트다운 완료
         if (portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
             status.countdownCoroutine = null;
         }
-        // 1초 대기 후 이동 처리 실행
         yield return portal.StartCoroutine(LoadMapCoroutine(portal));
     }
 
-    // 이동 처리 코루틴 (1초 대기 후 실제 이동)
+    // 1초 대기 후 맵 이동
     private IEnumerator LoadMapCoroutine(PortalMananager portal)
     {
         portal.isAreadyMove = true;
         Debug.Log("멀티 모드: 이동 실행!");
         yield return new WaitForSeconds(1f);
 
-        // 플레이어 매니저에 부착된 PhotonView를 가져옴
-        PhotonView photonView = portal.portalContainer.playerManager.gameObject.GetComponent<PhotonView>();
+        // 위치 동기화
+        PhotonView photonView = portal.portalContainer.playerManager.PV;
         if (photonView != null)
         {
-            // 모든 클라이언트에서 이동을 동기화하기 위해 nextMap.position을 Vector3로 전달
             photonView.RPC("MoveTransform", RpcTarget.AllBuffered, portal.nextMap.position);
-        }
-        else
-        {
-            Debug.LogError("PhotonView가 playerManager 객체에 존재하지 않습니다.");
         }
 
         portal.isAreadyMove = false;
@@ -135,12 +147,9 @@ public class MultiSession : AbsctractGameSession
         }
     }
 
-    [PunRPC]
-    public void MoveTransform(PortalMananager portal)
-    {
-        portal.portalContainer.playerManager.gameObject.transform.position = portal.nextMap.position;
-    }
-    #region Player Abstract Methods;
+    //------------------------------------------------------------------------
+    // (싱글/멀티 공통) 플레이어 이동 로직 등
+    //------------------------------------------------------------------------
     public override void MoveBasic(PlayerManager playerManager)
     {
         if (playerManager.PV.IsMine)
@@ -173,7 +182,7 @@ public class MultiSession : AbsctractGameSession
             base.TriggerExitBasic(playerManager, collision);
         }
     }
-    #endregion
+
     public override void ClosePopUp(UIPopUpOnOffManager UIPopUpOnOffManager, string currentObjCode)
     {
         ClosePopUpBasic(UIPopUpOnOffManager, currentObjCode);

@@ -79,7 +79,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CreateRoom(roomCode, new RoomOptions { MaxPlayers = 4 });
 
-        Debug.Log($"Room Created with Code : {roomCode}");
+        //Debug.Log($"Room Created with Code : {roomCode}");
     }
 
     /// <summary>
@@ -113,7 +113,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void LeaveRoom()
     {
         ResetPlayerRoomInfo();
-        Debug.Log("방 나왔음 : " + room_Code_Input.text);
+        //Debug.Log("방 나왔음 : " + room_Code_Input.text);
         PhotonNetwork.LeaveRoom();
     }
 
@@ -165,7 +165,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     private void RoomCodeIsNull()
     {
-        Debug.Log("코드에러창 띄우기");
+        //Debug.Log("코드에러창 띄우기");
         roomUIManager.OpenPopUp("Room_Code_Error");
     }
 
@@ -184,7 +184,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #region 콜백 함수 모음
     public override void OnConnectedToMaster()
     {
-        Debug.Log("접속 콜백 완료");
+        //Debug.Log("접속 콜백 완료");
 
         roomUIManager.popupDict["Title_Btn_Group"].SetActive(false);
         roomUIManager.ClosePopUp("Single_Multi_Select");
@@ -196,7 +196,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        Debug.Log("접속 끊기 콜백 완료");
+        //Debug.Log("접속 끊기 콜백 완료");
 
         roomUIManager.popupDict["Title_Btn_Group"].SetActive(true);
         roomUIManager.ClosePopUp("Lobby_Group");
@@ -210,7 +210,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        Debug.Log("방 참가 콜백 완료");
+        //Debug.Log("방 참가 콜백 완료");
 
         roomUIManager.CloseAllPopUps();
         roomUIManager.OpenPopUp("Waiting_Room");
@@ -225,7 +225,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        Debug.Log("방 나가기 콜백 완료");
+        //Debug.Log("방 나가기 콜백 완료");
 
         roomUIManager.ClosePopUp("Waiting_Room");
 
@@ -237,7 +237,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         //RoomUpdate();
         RoomInfoUpdate();
         
-        Debug.Log("누군가 들어왔다!");
+        //Debug.Log("누군가 들어왔다!");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -245,7 +245,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         //RoomUpdate();
         RoomInfoUpdate();
         
-        Debug.Log("누군가 나갔다!");
+        //Debug.Log("누군가 나갔다!");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
@@ -361,8 +361,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             }
         }
 
-        Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
+        //Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
     }
-
-
 }

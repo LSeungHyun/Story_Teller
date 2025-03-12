@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -41,10 +40,10 @@ public class PlayerManager : MonoBehaviour
         }
 
         session = GameManager.Instance.Session;
-        if (session != null)
-            Debug.Log("Session 받아옴");
-        else
-            Debug.Log("Session 없음");
+        //if (session != null)
+            //Debug.Log("Session 받아옴");
+        //else
+            //Debug.Log("Session 없음");
 
         PortalContainer.playerManager = this;
     }
@@ -182,4 +181,32 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    #region PunRPC
+
+    [PunRPC]
+    public void RPC_ShowPortalLabel(string labelCode)
+    {
+        Debug.Log($"[RPC_ShowPortalLabel] labelCode = {labelCode}");
+        // 실제 UI 라벨 표시 로직
+        CurrentObjectManager.Instance.SetCurrentObjData(labelCode);
+        
+    }
+
+    // [PunRPC] : 모든 클라이언트에서 라벨 닫기
+    [PunRPC]
+    public void RPC_ClosePortalLabel()
+    {
+        Debug.Log("다 나갔다 싹다 꺼버려");
+        // 실제 UI 라벨 제거 로직
+        session.CloseCenterLabel(PortalContainer.uICenterLabelOnOffManager);
+    }
+
+    [PunRPC]
+    public void MoveTransform(Vector3 targetPosition)
+    {
+        // 모든 클라이언트에서 이 GameObject의 위치를 targetPosition으로 변경
+        transform.position = targetPosition;
+        //Debug.Log("가자잇!!!");
+    }
+    #endregion
 }

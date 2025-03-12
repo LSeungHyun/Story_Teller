@@ -21,14 +21,14 @@ public class PlayerInstantiateManager : MonoBehaviour
 
         if (GameManager.Instance.isType == false)
         {
-            Debug.Log("싱글모드입니다");
+            //Debug.Log("싱글모드입니다");
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
             dontDes.SetFollowCam(playerObj);
         }
 
         else
         {
-            Debug.Log("멀티모드입니다");
+            //Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
             // 2) 인덱스별로 다른 프리팹 이름

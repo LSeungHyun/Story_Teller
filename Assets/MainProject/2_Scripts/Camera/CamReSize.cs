@@ -86,6 +86,6 @@ public class CamReSize : MonoBehaviour
         }
 
         cam.rect = rect;
-        Debug.Log("조정된 카메라 뷰포트: " + rect);
+        //Debug.Log("조정된 카메라 뷰포트: " + rect);
     }
 }
