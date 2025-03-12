@@ -116,7 +116,7 @@ public abstract class AbsctractGameSession
         bool hasBubble = currentObjType.Contains("bubble");
         bool hasCenterLabel = currentObjType.Contains("centerlabel");
         bool hasImage = currentObjType.Contains("image");
-        
+
         if (currentIsMine)
         {
             currentObjectManager.portalContainer.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
