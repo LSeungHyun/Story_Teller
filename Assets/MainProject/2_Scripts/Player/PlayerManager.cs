@@ -152,6 +152,7 @@ public class PlayerManager : MonoBehaviour
                 Transform objTransform = interactableStack[interactableStack.Count - 1].transform;
 
                 objDataTypeContainer.objCode = triggerObj != null ? triggerObj.objCode : null;
+                Debug.Log("현재 objCode: " + objDataTypeContainer.objCode);
                 objDataTypeContainer.SetTransform(objTransform); 
             }
             else
@@ -208,13 +209,6 @@ public class PlayerManager : MonoBehaviour
         // 모든 클라이언트에서 이 GameObject의 위치를 targetPosition으로 변경
         transform.position = targetPosition;
         //Debug.Log("가자잇!!!");
-    }
-
-    [PunRPC]
-    public void ChangeObjCode(string multiCode)
-    {
-        //portalContainer.portalMananager.triggerObj.objCode = multiCode;
-        objDataTypeContainer.objCode = multiCode;
     }
     #endregion
 }

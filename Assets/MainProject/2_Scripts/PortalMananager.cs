@@ -37,7 +37,7 @@ public class PortalMananager : MonoBehaviour
         if (isAreadyMove)
             return;
         
-        Debug.Log("포탈에 진입");
+        //Debug.Log("포탈에 진입");
         session.ShowPortalCenterLabel(this);
         session.StartPortalCountdown(this, collision);
     }
@@ -47,13 +47,13 @@ public class PortalMananager : MonoBehaviour
         if (isAreadyMove)
             return;
         
-        Debug.Log("포탈을 벗어남");
+        //Debug.Log("포탈을 벗어남");
         session.StopPortalCountdown(this, collision);
 
         // 2) 실제로 라벨을 끄거나 'Enter_All'로 갱신
         session.ClosePortalCenterLabel(this);
 
         // 3) 싱글/멀티 공통으로 쓰이는 CenterLabel UI가 있다면 별도 메서드
-        //session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
+        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
     }
 }

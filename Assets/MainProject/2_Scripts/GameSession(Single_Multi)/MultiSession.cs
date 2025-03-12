@@ -37,14 +37,15 @@ public class MultiSession : AbsctractGameSession
         if (status.playersInside.Count < requiredPlayerCount)
         {
             portal.objCode = "Enter_All";
-            PV.RPC("ChangeObjCode",RpcTarget.AllBuffered,portal.objCode);
+            portal.portalContainer.playerManager.UpdateInteractObject();
             PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
         }
         // 전원이 들어옴
         else if (status.playersInside.Count == requiredPlayerCount)
         {
             portal.objCode = "Enter_Wait3";
-            PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
+            //PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
+            portal.portalContainer.playerManager.UpdateInteractObject();
             PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
 
             // 카운트다운 코루틴이 없으면 시작
@@ -87,21 +88,27 @@ public class MultiSession : AbsctractGameSession
         // 아직 portalStatuses에 정보가 남아 있는지 확인
         if (portalStatuses.TryGetValue(portal, out PortalStatus status))
         {
+            if (status.playersInside.Count == 0)
+            {
+                PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
+                portalStatuses.Remove(portal);
+            }
+
             // 일부만 남았다면 'Enter_All' 상태로 갱신
-            if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+            else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
             {
                 portal.objCode = "Enter_All";
-                PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
+
+                //PV.RPC("ChangeObjCode", RpcTarget.OthersBuffered, portal.objCode);
+                //본인의 SO objCode는 갱신된 objCode 할당
+                portal.portalContainer.playerManager.UpdateInteractObject();
+
                 PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
 
                 Debug.Log("다른사람들 센터라벨 켜주기" + portal.objCode);
             }
             // 아무도 안 남았다면 라벨 닫고, 딕셔너리 제거
-            else if (status.playersInside.Count == 0)
-            {
-                PV.RPC("RPC_ClosePortalLabel", RpcTarget.AllBuffered);
-                portalStatuses.Remove(portal);
-            }
+            
         }
         //else
         //{
