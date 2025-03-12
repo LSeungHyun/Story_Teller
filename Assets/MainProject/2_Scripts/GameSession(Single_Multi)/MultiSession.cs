@@ -36,17 +36,17 @@ public class MultiSession : AbsctractGameSession
         // 아직 전원이 들어오지 않음
         if (status.playersInside.Count < requiredPlayerCount)
         {
-            portal.objCode = "Enter_All";
+            portal.triggerObj.objCode = "Enter_All";
             portal.portalContainer.playerManager.UpdateInteractObject();
-            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
+            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.triggerObj.objCode);
         }
         // 전원이 들어옴
         else if (status.playersInside.Count == requiredPlayerCount)
         {
-            portal.objCode = "Enter_Wait3";
+            portal.triggerObj.objCode = "Enter_Wait3";
             //PV.RPC("ChangeObjCode", RpcTarget.AllBuffered, portal.objCode);
             portal.portalContainer.playerManager.UpdateInteractObject();
-            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
+            PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.triggerObj.objCode);
 
             // 카운트다운 코루틴이 없으면 시작
             if (status.countdownCoroutine == null)
@@ -97,15 +97,15 @@ public class MultiSession : AbsctractGameSession
             // 일부만 남았다면 'Enter_All' 상태로 갱신
             else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
             {
-                portal.objCode = "Enter_All";
+                portal.triggerObj.objCode = "Enter_All";
 
                 //PV.RPC("ChangeObjCode", RpcTarget.OthersBuffered, portal.objCode);
                 //본인의 SO objCode는 갱신된 objCode 할당
                 portal.portalContainer.playerManager.UpdateInteractObject();
 
-                PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.objCode);
+                PV.RPC("RPC_ShowPortalLabel", RpcTarget.AllBuffered, portal.triggerObj.objCode);
 
-                Debug.Log("다른사람들 센터라벨 켜주기" + portal.objCode);
+                Debug.Log("다른사람들 센터라벨 켜주기" + portal.triggerObj.objCode);
             }
             // 아무도 안 남았다면 라벨 닫고, 딕셔너리 제거
             

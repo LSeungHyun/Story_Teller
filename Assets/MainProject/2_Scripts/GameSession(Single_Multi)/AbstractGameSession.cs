@@ -8,7 +8,7 @@ public abstract class AbsctractGameSession
     public virtual void ShowPortalCenterLabel(PortalMananager portalMananager)
     {
         // 포탈이 가진 objCode를 현재 상호작용 오브젝트에 설정
-        CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
+        CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.triggerObj.objCode);
     }
 
     // 필요하다면 ClosePortalCenterLabel도 추가 가능

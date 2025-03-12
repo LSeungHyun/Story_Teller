@@ -5,7 +5,6 @@ public class PortalMananager : MonoBehaviour
 {
     public TriggerObj triggerObj;
 
-    public string objCode = "";
     public PortalContainer portalContainer;
     public AbsctractGameSession session;
 
@@ -20,23 +19,25 @@ public class PortalMananager : MonoBehaviour
     {
         session = GameManager.Instance.Session;
 
-        if(GameManager.Instance.isType == false)
+        portalContainer.portalMananager = this;
+
+        if (GameManager.Instance.isType == false)
         {
-            objCode = "Enter_Wait3";
+            triggerObj.objCode = "Enter_Wait3";
         }
         else
         {
-            objCode = "Enter_All";
+            triggerObj.objCode = "Enter_All";
         }
 
-        triggerObj.objCode = objCode;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isAreadyMove)
             return;
-        
+
         //Debug.Log("Æ÷Å»¿¡ ÁøÀÔ");
         session.ShowPortalCenterLabel(this);
         session.StartPortalCountdown(this, collision);
@@ -46,7 +47,7 @@ public class PortalMananager : MonoBehaviour
     {
         if (isAreadyMove)
             return;
-        
+
         //Debug.Log("Æ÷Å»À» ¹þ¾î³²");
         session.StopPortalCountdown(this, collision);
 
