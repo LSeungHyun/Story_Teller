@@ -146,6 +146,7 @@ public class QuestData
     public string objCode;
     public string name;
     public string answer;
+    public bool isDone;
 }
 
 [Serializable]
