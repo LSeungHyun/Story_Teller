@@ -49,7 +49,7 @@ public class CamDontDes : MonoBehaviour
             // 필요한 참조 설정
             virtualCam.Follow = playerObj.transform;
             virtualCam.LookAt = playerObj.transform;
-            Debug.Log("카메라빨로우미");
+            //Debug.Log("카메라빨로우미");
         }
        
     }

@@ -44,15 +44,12 @@ public class PortalMananager : MonoBehaviour
             return;
 
         Debug.Log("포탈을 벗어남");
-        //session.ClosePortalCenterLabel(this, collision);
-        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
         session.StopPortalCountdown(this, collision);
-    }
 
-    [PunRPC]
-    public void MoveTransform(Vector3 targetPosition)
-    {
-        // 모든 클라이언트에서 실행되어, 이 GameObject의 위치를 targetPosition으로 변경
-        transform.position = targetPosition;
+        // 2) 실제로 라벨을 끄거나 'Enter_All'로 갱신
+        session.ClosePortalCenterLabel(this);
+
+        // 3) 싱글/멀티 공통으로 쓰이는 CenterLabel UI가 있다면 별도 메서드
+        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
     }
 }

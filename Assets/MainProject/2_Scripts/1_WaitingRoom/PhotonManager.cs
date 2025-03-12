@@ -361,6 +361,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             }
         }
 
-        Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
+        //Debug.Log("내 이름: " + PhotonNetwork.LocalPlayer.NickName);
     }
 }
