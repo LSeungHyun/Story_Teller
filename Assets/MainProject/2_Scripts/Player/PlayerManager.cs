@@ -218,7 +218,7 @@ public class PlayerManager : MonoBehaviour
         Debug.Log($"[RPC_ShowIsMineData] objCode = {objCode}");
         // 실제 UI 라벨 표시 로직
         objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
-        //CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
     }
     #endregion
 }
