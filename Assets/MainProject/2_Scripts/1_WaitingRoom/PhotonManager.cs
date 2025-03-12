@@ -131,18 +131,24 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public void GetMessage(string ReceiveMessage)
     {
         GameObject Message_Box;
+        Player p = null;
 
-        if (PV.IsMine)
+        for (int i = 0; i < 2; i++)
         {
-            Message_Box = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
-        }
-        else
-        {
-            Message_Box = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
-            Message_Box.GetComponent<Message>().MyName.text = PhotonNetwork.NickName;
-        }
+            p = PhotonNetwork.PlayerList[i];
 
-        Message_Box.GetComponent<Message>().MyMessage.text = ReceiveMessage;
+            if (p == PhotonNetwork.LocalPlayer)
+            {
+                Message_Box = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
+            }
+            else
+            {
+                Message_Box = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
+                Message_Box.GetComponent<Message>().MyName.text = PhotonNetwork.NickName;
+            }
+
+            Message_Box.GetComponent<Message>().MyMessage.text = ReceiveMessage;
+        }    
     }
 
 
