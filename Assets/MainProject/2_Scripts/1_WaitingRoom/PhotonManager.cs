@@ -3,6 +3,7 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -29,6 +30,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     // 테두리오브젝트와 이름Text 담는 배열
     public List<GameObject> OutLineList;
     public List<Text> NameTextList;
+
+    public InputField Message_InputField;
+    public GameObject myMessage;
+    public GameObject otherMessage;
+    public GameObject Content;
 
     private Color[] localPlayerColors = new Color[4];
 
@@ -117,6 +123,36 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
     }
 
+    public void SendMessage()
+    {
+        bool isMine = false;
+
+        if (PV.IsMine)
+        {
+            isMine = true;
+        }
+
+        PV.RPC("GetMessage", RpcTarget.All, Message_InputField.text, isMine);
+    }
+
+    [PunRPC]
+    public void GetMessage(string ReceiveMessage, bool WhoRU)
+    {
+        GameObject Message_Box;
+
+        if (WhoRU)
+        {
+            Message_Box = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
+        }
+        else
+        {
+            Message_Box = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
+            Message_Box.GetComponent<Message>().MyName.text = PhotonNetwork.NickName;
+        }
+
+        Message_Box.GetComponent<Message>().MyMessage.text = ReceiveMessage;
+    }
+
 
     /// <summary>
     /// 방 코드 복사
@@ -151,12 +187,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         GameManager.Instance.SelectGameMode(false);
     }
 
-
     [PunRPC]
     public void MoveNextScene()
     {
         PhotonNetwork.LoadLevel("2_UnderWorld");
     }
+
+    
+
     private void ResetPlayerRoomInfo()
     {
         room_Code_Input.text = "";
