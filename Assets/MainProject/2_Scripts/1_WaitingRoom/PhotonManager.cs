@@ -3,7 +3,6 @@ using Photon.Realtime;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -125,22 +124,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void SendMessage()
     {
-        bool isMine = false;
-
-        if (PV.IsMine)
-        {
-            isMine = true;
-        }
-
-        PV.RPC("GetMessage", RpcTarget.All, Message_InputField.text, isMine);
+        PV.RPC("GetMessage", RpcTarget.AllBuffered, Message_InputField.text);
     }
 
     [PunRPC]
-    public void GetMessage(string ReceiveMessage, bool WhoRU)
+    public void GetMessage(string ReceiveMessage)
     {
         GameObject Message_Box;
 
-        if (WhoRU)
+        if (PV.IsMine)
         {
             Message_Box = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
         }
@@ -252,6 +244,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.CloseAllPopUps();
         roomUIManager.OpenPopUp("Waiting_Room");
+        roomUIManager.OpenPopUp("UI_Btn_Group");
 
         room_Code_Text.text = PhotonNetwork.CurrentRoom.Name;
 
@@ -266,6 +259,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         //Debug.Log("방 나가기 콜백 완료");
 
         roomUIManager.ClosePopUp("Waiting_Room");
+        roomUIManager.ClosePopUp("UI_Btn_Group");
 
         LogUpdate();
     }
