@@ -34,7 +34,7 @@ public class PortalMananager : MonoBehaviour
             return;
 
         Debug.Log("Æ÷Å»¿¡ ÁøÀÔ");
-        session.ShowPortalCenterLabel(this, collision);
+        session.ShowPortalCenterLabel(this);
         session.StartPortalCountdown(this, collision);
     }
 
@@ -44,7 +44,7 @@ public class PortalMananager : MonoBehaviour
             return;
 
         Debug.Log("Æ÷Å»À» ¹þ¾î³²");
-        session.ClosePortalCenterLabel(this, collision);
+        //session.ClosePortalCenterLabel(this, collision);
         session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
         session.StopPortalCountdown(this, collision);
     }

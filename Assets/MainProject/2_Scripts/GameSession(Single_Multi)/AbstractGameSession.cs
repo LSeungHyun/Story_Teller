@@ -4,23 +4,20 @@ using UnityEngine;
 
 public abstract class AbsctractGameSession
 {
-    // 센터 라벨 출력 메서드 (공통 기본 구현)
-    public virtual void ShowPortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
+    // 포탈에 표시할 라벨 설정 (기본 구현)
+    public virtual void ShowPortalCenterLabel(PortalMananager portalMananager)
     {
+        // 포탈이 가진 objCode를 현재 상호작용 오브젝트에 설정
         CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
     }
 
-    // 센터 라벨 제거 메서드 (공통 기본 구현)
-    public virtual void ClosePortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
+    // 필요하다면 ClosePortalCenterLabel도 추가 가능
+    public virtual void ClosePortalCenterLabel(PortalMananager portalMananager)
     {
-        CurrentObjectManager.Instance.SetCurrentObjData(portalMananager.objCode);
+        // 라벨 닫기 로직
+        CurrentObjectManager.Instance.SetCurrentObjData(null);
     }
 
-    // 센터 라벨 관련 추가 메서드 (예시)
-    public virtual void CloseCenterLabel(object centerLabelManager)
-    {
-        // center label 제거 로직
-    }
 
     // 포탈 카운트다운 시작/종료 메서드: 모드별로 다르게 구현 가능하도록 추상/가상 메서드로 선언
     public abstract void StartPortalCountdown(PortalMananager portal, Collider2D collision);

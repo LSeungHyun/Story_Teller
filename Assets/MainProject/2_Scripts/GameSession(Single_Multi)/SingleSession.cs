@@ -8,16 +8,10 @@ public class SingleSession : AbsctractGameSession
     // 각 포탈에 대한 코루틴 참조를 관리하기 위한 딕셔너리
     private Dictionary<PortalMananager, Coroutine> portalCoroutines = new Dictionary<PortalMananager, Coroutine>();
 
-    public override void ShowPortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
+    public override void ShowPortalCenterLabel(PortalMananager portalMananager)
     {
         // 필요한 싱글 모드 전용 로직 추가 가능
-        base.ShowPortalCenterLabel(portalMananager, collision);
-    }
-
-    public override void ClosePortalCenterLabel(PortalMananager portalMananager, Collider2D collision)
-    {
-        // 싱글 모드 전용 로직 추가 가능
-        base.ClosePortalCenterLabel(portalMananager, collision);
+        base.ShowPortalCenterLabel(portalMananager);
     }
 
     public override void StartPortalCountdown(PortalMananager portal, Collider2D collision)

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -182,4 +181,32 @@ public class PlayerManager : MonoBehaviour
     }
     #endregion
 
+    #region PunRPC
+
+    [PunRPC]
+    public void RPC_ShowPortalLabel(string labelCode)
+    {
+        Debug.Log($"[RPC_ShowPortalLabel] labelCode = {labelCode}");
+        // 실제 UI 라벨 표시 로직
+        CurrentObjectManager.Instance.SetCurrentObjData(labelCode);
+        //     UIManager.Instance.ShowCenterLabel(labelCode);
+    }
+
+    // [PunRPC] : 모든 클라이언트에서 라벨 닫기
+    [PunRPC]
+    public void RPC_ClosePortalLabel()
+    {
+        Debug.Log("[RPC_ClosePortalLabel] 라벨 닫기");
+        // 실제 UI 라벨 제거 로직
+        CurrentObjectManager.Instance.SetCurrentObjData(null);
+        //     UIManager.Instance.HideCenterLabel();
+    }
+
+    [PunRPC]
+    public void MoveTransform(Vector3 targetPosition)
+    {
+        // 모든 클라이언트에서 이 GameObject의 위치를 targetPosition으로 변경
+        transform.position = targetPosition;
+    }
+    #endregion
 }
