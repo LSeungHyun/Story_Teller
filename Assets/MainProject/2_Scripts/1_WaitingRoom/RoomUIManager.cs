@@ -139,7 +139,10 @@ public class RoomUIManager : DoTweenManager
     public void ChatBool(bool chatStatus)
     {
         chatOn = chatStatus;
-        ChatUIStatus();
+        if (chatOn)
+        {
+            ChatUIStatus();
+        }
     }
 
     public void ChatUIStatus()

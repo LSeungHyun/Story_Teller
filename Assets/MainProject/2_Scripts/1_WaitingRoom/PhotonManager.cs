@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -31,6 +32,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public List<Text> NameTextList;
 
     public InputField Message_InputField;
+    public ScrollRect chatScrollRect;
+    public GameObject newMessageNotification;
     public GameObject myMessage;
     public GameObject otherMessage;
     public GameObject Content;
@@ -140,6 +143,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         // 2) 수신자: RPC를 호출하여 발신자 메시지와 이름 전달
         PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
 
+        ScrollToBottom();
+
         Message_InputField.text = null;
     }
 
@@ -152,6 +157,47 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         messageBox.GetComponent<Message>().MyName.text = senderName;
 
         roomUIManager.ChatUIStatus();
+
+        if (!IsScrolledToBottom())
+        {
+            newMessageNotification.SetActive(true);
+        }
+    }
+
+    private bool IsScrolledToBottom()
+    {
+        // 일반적으로 verticalNormalizedPosition가 0이면 바닥에 도달한 상태입니다.
+        return chatScrollRect.verticalNormalizedPosition <= 0.01f;
+    }
+
+    // ScrollRect의 OnValueChanged 이벤트와 연결하여 사용자가 스크롤할 때마다 호출
+    public void OnScrollChanged()
+    {
+        // 사용자가 스크롤하여 바닥에 도달했다면 알림 숨기기
+        if (IsScrolledToBottom())
+        {
+            newMessageNotification.SetActive(false);
+        }
+    }
+
+    public void OnNewMessageNotificationClicked()
+    {
+        // 알림 클릭 시 스크롤 이동
+        ScrollToBottom();
+        // 알림 숨김
+        newMessageNotification.SetActive(false);
+    }
+
+    public void ScrollToBottom()
+    {
+        StartCoroutine(ScrollToBottomCoroutine());
+    }
+
+    private IEnumerator ScrollToBottomCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();  // 필요 시 강제 업데이트
+        chatScrollRect.verticalNormalizedPosition = 0f;
     }
 
     public void ClearChatMessage()
