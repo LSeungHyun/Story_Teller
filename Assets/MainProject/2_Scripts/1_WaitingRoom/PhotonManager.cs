@@ -167,7 +167,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private bool IsScrolledToBottom()
     {
         // 일반적으로 verticalNormalizedPosition가 0이면 바닥에 도달한 상태입니다.
-        return chatScrollRect.verticalNormalizedPosition <= 0.01f || chatScrollRect.verticalNormalizedPosition == 1;
+        return chatScrollRect.verticalNormalizedPosition <= 0.01f || chatScrollRect.verticalScrollbar.value == 1;
     }
 
     // ScrollRect의 OnValueChanged 이벤트와 연결하여 사용자가 스크롤할 때마다 호출
