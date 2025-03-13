@@ -158,16 +158,20 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        if (!IsScrolledToBottom())
+        if (!IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
         }
     }
 
+    private bool IsScrolledToBottom_Size()
+    {
+        return chatScrollRect.verticalScrollbar.size == 1;
+    }
     private bool IsScrolledToBottom()
     {
         // 일반적으로 verticalNormalizedPosition가 0이면 바닥에 도달한 상태입니다.
-        return chatScrollRect.verticalNormalizedPosition <= 0.01f || chatScrollRect.verticalScrollbar.value == 1;
+        return chatScrollRect.verticalNormalizedPosition <= 0.01f;
     }
 
     // ScrollRect의 OnValueChanged 이벤트와 연결하여 사용자가 스크롤할 때마다 호출
