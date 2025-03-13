@@ -124,31 +124,34 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void SendMessage()
     {
-        PV.RPC("GetMessage", RpcTarget.AllBuffered, Message_InputField.text);
+        // 1) 발신자: 자신의 메시지 셀 생성
+        GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
+        myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
+
+        // 2) 수신자: RPC를 호출하여 발신자 메시지와 이름 전달
+        PV.RPC("GetMessage", RpcTarget.OthersBuffered, Message_InputField.text, PhotonNetwork.NickName);
     }
 
     [PunRPC]
-    public void GetMessage(string ReceiveMessage)
+    public void GetMessage(string receiveMessage, string senderName)
     {
-        GameObject Message_Box;
-        Player p = null;
+        // 수신자의 경우, 다른 메시지 셀 생성
+        GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
+        messageBox.GetComponent<Message>().MyMessage.text = receiveMessage;
+        messageBox.GetComponent<Message>().MyName.text = senderName;
+    }
 
-        for (int i = 0; i < 2; i++)
+    public void ClearChatMessage()
+    {
+        RectTransform Chat = Content.GetComponent<RectTransform>();
+
+        for (int i = Chat.childCount - 1; i >= 0; i--)
         {
-            p = PhotonNetwork.PlayerList[i];
+            Destroy(Chat.GetChild(i).gameObject);
+        }
 
-            if (p == PhotonNetwork.LocalPlayer)
-            {
-                Message_Box = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
-            }
-            else
-            {
-                Message_Box = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
-                Message_Box.GetComponent<Message>().MyName.text = PhotonNetwork.NickName;
-            }
-
-            Message_Box.GetComponent<Message>().MyMessage.text = ReceiveMessage;
-        }    
+        // 필요하다면 강제로 레이아웃을 갱신합니다.
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Chat);
     }
 
 
@@ -258,6 +261,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         RoomInfoUpdate();
 
         LogUpdate();
+
+        ClearChatMessage();
     }
 
     public override void OnLeftRoom()
@@ -268,6 +273,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         roomUIManager.ClosePopUp("UI_Btn_Group");
 
         LogUpdate();
+
+        ClearChatMessage();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
