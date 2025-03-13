@@ -15,7 +15,7 @@ public class UITextOverflowChecker : MonoBehaviour
         textRect = uiText.GetComponent<RectTransform>();
     }
 
-    void Start()
+    public void ForceResize()
     {
         var settings = uiText.GetGenerationSettings(textRect.rect.size);
 
