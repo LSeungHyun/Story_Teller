@@ -15,7 +15,7 @@ public class UITextOverflowChecker : MonoBehaviour
         textRect = uiText.GetComponent<RectTransform>();
     }
 
-    public void ForceResize()
+    public bool ForceResize()
     {
         var settings = uiText.GetGenerationSettings(textRect.rect.size);
 
@@ -27,6 +27,8 @@ public class UITextOverflowChecker : MonoBehaviour
             ReSizeRect(textRect, 236);
             LayoutRebuilder.ForceRebuildLayoutImmediate(verticalLayoutGroup);
         }
+
+        return true;
     }
 
     public void ReSizeRect(RectTransform Rect, float num)
