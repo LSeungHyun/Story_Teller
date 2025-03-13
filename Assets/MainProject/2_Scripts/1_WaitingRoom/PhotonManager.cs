@@ -158,9 +158,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        UITextOverflowChecker overflowChecker = messageBox.GetComponent<UITextOverflowChecker>();
-
-        if (overflowChecker.ForceResize() && !IsScrolledToBottom_Size())
+        if (!IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
         }
