@@ -150,6 +150,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
         messageBox.GetComponent<Message>().MyMessage.text = receiveMessage;
         messageBox.GetComponent<Message>().MyName.text = senderName;
+
+        roomUIManager.ChatUIStatus();
     }
 
     public void ClearChatMessage()

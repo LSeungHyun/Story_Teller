@@ -139,11 +139,12 @@ public class RoomUIManager : DoTweenManager
     public void ChatBool(bool chatStatus)
     {
         chatOn = chatStatus;
+        ChatUIStatus();
     }
 
-    public void ChatUIStatus(bool change)
+    public void ChatUIStatus()
     {
-        if (!chatOn && change)
+        if (!chatOn)
         {
             ChatStatusList[0].ShadowObj.SetActive(false);
             ChatStatusList[0].IconObj.SetActive(false);
