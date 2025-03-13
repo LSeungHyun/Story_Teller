@@ -192,6 +192,8 @@ public class TextDataManager : MonoBehaviour
     [SerializeField]
     private HintContainer hintContainer;
 
+    [SerializeField]
+    private GameObject loadingUI;
     private void Start()
     {
         StartCoroutine(LoadSheetData());
@@ -226,6 +228,11 @@ public class TextDataManager : MonoBehaviour
                 if (resp != null && resp.data != null)
                 {
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
+
+                    if (loadingUI != null)
+                    {
+                        loadingUI.SetActive(false);
+                    }
 
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
                     {
