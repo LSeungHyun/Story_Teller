@@ -7,6 +7,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public CurrentObjectManager currentObjectManager;
     public UIPopUpManager uiPopUpManager;
 
+
     public GameObject popUpGroup;
     public GameObject defaultPopUpGroup;
     public GameObject questPopUpGroup;
@@ -17,7 +18,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public void OpenWindow(bool isQuest, bool isDial)
     {
         var session = GameManager.Instance.Session;
-        session.OpenPopUp(this, isQuest, isDial);
+        session.OpenPopUpBasic(this, isQuest, isDial);
     }
 
     public void CloseAndCheckPopUpWindow()

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -220,5 +221,25 @@ public class PlayerManager : MonoBehaviour
         transform.position = targetPosition;
         //Debug.Log("∞°¿⁄¿’!!!");
     }
+
+   //HashSet<string> executedObjects = new HashSet<string>();
+
+    [PunRPC]
+    public void RPC_ShowIsMineData(string objCode)
+    {
+/*        if (executedObjects.Contains(objCode))
+        {
+            Debug.Log($"[RPC_ShowIsMineData] Skipping duplicate execution: {objCode}");
+            return;
+        }
+
+        Debug.Log($"[RPC_ShowIsMineData] objCode = {objCode}");
+        executedObjects.Add(objCode);*/
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
+        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
+    }
+
     #endregion
 }
