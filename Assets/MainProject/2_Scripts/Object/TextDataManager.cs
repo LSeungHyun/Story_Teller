@@ -192,9 +192,6 @@ public class TextDataManager : MonoBehaviour
     [SerializeField]
     private HintContainer hintContainer;
 
-    // 타겟 씬 내 로딩 UI (예: 로딩 패널)
-    [SerializeField]
-    private GameObject loadingUI;
     private void Start()
     {
         StartCoroutine(LoadSheetData());
@@ -229,12 +226,6 @@ public class TextDataManager : MonoBehaviour
                 if (resp != null && resp.data != null)
                 {
                     Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
-
-                    // 데이터 로딩 완료 시 로딩 UI 끄기
-                    if (loadingUI != null)
-                    {
-                        loadingUI.SetActive(false);
-                    }
 
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
                     {
