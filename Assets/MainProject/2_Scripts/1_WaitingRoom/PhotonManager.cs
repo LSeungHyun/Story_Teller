@@ -124,12 +124,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void SendMessage()
     {
+        string trimmedMessage = Message_InputField.text.Trim();
+
+        // 입력값이 빈 문자열이면 메시지를 전송하지 않습니다.
+        if (string.IsNullOrEmpty(trimmedMessage))
+        {
+            Debug.Log("공백 메시지는 전송되지 않습니다.");
+            return;
+        }
+
         // 1) 발신자: 자신의 메시지 셀 생성
         GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
         myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
 
         // 2) 수신자: RPC를 호출하여 발신자 메시지와 이름 전달
-        PV.RPC("GetMessage", RpcTarget.OthersBuffered, Message_InputField.text, PhotonNetwork.NickName);
+        PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
+
+        Message_InputField.text = null;
     }
 
     [PunRPC]

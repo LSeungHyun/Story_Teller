@@ -12,9 +12,21 @@ public class RoomUIManager : DoTweenManager
         public GameObject popupObject;
     }
 
+    [System.Serializable]
+    public class ChatStatus
+    {
+        public string justName;
+        public GameObject ShadowObj;
+        public GameObject IconObj;
+    }
+
     [Header("PopUp List")]
     [SerializeField]
     private List<PopupItem> popupList;
+
+    [Header("OnOffChat List")]
+    [SerializeField]
+    private List<ChatStatus> ChatStatusList;
 
     [Header("Blur Object")]
     [SerializeField]
@@ -24,6 +36,7 @@ public class RoomUIManager : DoTweenManager
     public Dictionary<string, GameObject> popupDict;
 
     public bool blurAble = true;
+    public bool chatOn = false;
 
     private void Awake()
     {
@@ -121,5 +134,30 @@ public class RoomUIManager : DoTweenManager
     public void BlurBoolStatus(bool OnOff)
     {
         blurAble = OnOff;
+    }
+
+    public void ChatBool(bool chatStatus)
+    {
+        chatOn = chatStatus;
+    }
+
+    public void ChatUIStatus(bool change)
+    {
+        if (!chatOn && change)
+        {
+            ChatStatusList[0].ShadowObj.SetActive(false);
+            ChatStatusList[0].IconObj.SetActive(false);
+
+            ChatStatusList[1].ShadowObj.SetActive(true);
+            ChatStatusList[1].IconObj.SetActive(true);
+        }
+        else
+        {
+            ChatStatusList[0].ShadowObj.SetActive(true);
+            ChatStatusList[0].IconObj.SetActive(true);
+
+            ChatStatusList[1].ShadowObj.SetActive(false);
+            ChatStatusList[1].IconObj.SetActive(false);
+        }
     }
 }
