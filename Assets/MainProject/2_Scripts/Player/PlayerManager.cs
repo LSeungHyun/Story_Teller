@@ -212,13 +212,24 @@ public class PlayerManager : MonoBehaviour
         //Debug.Log("가자잇!!!");
     }
 
+   //HashSet<string> executedObjects = new HashSet<string>();
+
     [PunRPC]
     public void RPC_ShowIsMineData(string objCode)
     {
+/*        if (executedObjects.Contains(objCode))
+        {
+            Debug.Log($"[RPC_ShowIsMineData] Skipping duplicate execution: {objCode}");
+            return;
+        }
+
         Debug.Log($"[RPC_ShowIsMineData] objCode = {objCode}");
-        // 실제 UI 라벨 표시 로직
+        executedObjects.Add(objCode);*/
         objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
         CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
     }
+
     #endregion
 }
