@@ -37,6 +37,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public GameObject myMessage;
     public GameObject otherMessage;
     public GameObject Content;
+    public bool OneCheck = false;
 
     private Color[] localPlayerColors = new Color[4];
 
@@ -154,16 +155,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        Canvas.ForceUpdateCanvases();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(Content.GetComponent<RectTransform>());
-
-        if (!IsScrolledToBottom_Size())
+        if (OneCheck)
         {
-            newMessageNotification.SetActive(true);
-            Debug.Log("GetMessage");
+            CheckScrollSize();
         }
-
-        Invoke("CheckScrollSize", 0.05f);
+        else
+        {
+            Invoke("CheckScrollSize", 0.05f);
+        }
     }
 
     private void CheckScrollSize()
@@ -171,7 +170,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         if (!IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
-            Debug.Log("CheckScrollSize");
         }
     }
     private bool IsScrolledToBottom_Size()
