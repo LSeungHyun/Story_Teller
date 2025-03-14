@@ -6,6 +6,8 @@ public class CurrentObjectManager : MonoBehaviour
     public static CurrentObjectManager Instance { get; private set; }
 
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
+    public ManagerConnector managerConnector;
+
     public ObjDataType currentRow;
     public string currentObjCode;
 
@@ -23,6 +25,7 @@ public class CurrentObjectManager : MonoBehaviour
 
     private void Awake()
     {
+        managerConnector.currentObjectManager = this;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -42,6 +45,6 @@ public class CurrentObjectManager : MonoBehaviour
         if (currentRow == null)
             return;
         var session = GameManager.Instance.Session;
-        session.HandleInteraction(this);
+        session.HandleInteractionBasic(this);
     }
 }

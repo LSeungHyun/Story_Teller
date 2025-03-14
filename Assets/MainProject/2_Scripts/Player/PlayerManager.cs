@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField]  private ObjDataTypeContainer objDataTypeContainer;
-    public PortalContainer portalContainer;
+    public ManagerConnector managerConnector;
     public PhotonView PV;
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
@@ -26,56 +27,40 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Interaction Objects")]
     public List<Collider2D> interactableStack = new List<Collider2D>();
-    public GameObject ConfirmOnSprite;
     public Material originalMaterial;
     public Material outlineMaterial;
 
+    public SpriteRenderer confirmOn;
+    public Sprite confirmOn_PC;
+    public Sprite confirmOn_Mob;
+
     public AbsctractGameSession session;
+
     #region LifeCycle Methods
     void Start()
     {
-        ConfirmOnSprite.SetActive(false);
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+            Destroy(PTV);
+            Destroy(PAV);
+        }
 
-        //if (!GameManager.Instance.isType)
-        //{
-        //    Destroy(PV);
-        //    Destroy(PTV);
-        //    Destroy(PAV);
-        //}
-
-        //session = GameManager.Instance.Session;
-        //if (session != null)
-            //Debug.Log("Session 받아옴");
-        //else
-            //Debug.Log("Session 없음");
-
-        portalContainer.playerManager = this;
+        session = GameManager.Instance.Session;
+        managerConnector.playerManager = this;
     }
 
     void Update()
     {
-        //if (session != null)
-        //{
-        //    session.MoveBasic(this);
-        //    session.AnimControllerBasic(this);
-        //}
-        Move();
+        if (session != null)
+        {
+            session.MoveBasic(this);
+            session.AnimControllerBasic(this);
+        }
     }
     #endregion
 
-
     #region KeyCode Input
-
-    //TODO : 나경님 테스트 끝나고 추후에 지울 메서드
-    public void Move()
-    {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
-       rigid.MovePosition(rigid.position + nextVec);
-    }
-
     /// <summary>
     /// KeyInput 입력 끝난 뒤 초기화 메서드
     /// </summary>
@@ -112,44 +97,20 @@ public class PlayerManager : MonoBehaviour
     #region Collision Methods
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if (!collision.CompareTag("Interaction"))
-        //{
-        //    return;
-        //}
-
-        //interactableStack.Remove(collision);
-        //interactableStack.Add(collision);
-        //UpdateInteractObject();
         if (session != null)
         {
             session.TriggerEnterBasic(this, collision);
         }
-        ConfirmOnSprite.SetActive(true);
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
-        //if (!collision.CompareTag("Interaction"))
-        //{
-        //    return;
-        //}
-
-        //interactableStack.Remove(collision);
-        //Renderer renderOfCurrentCollision = collision.GetComponent<Renderer>();
-        //if (renderOfCurrentCollision != null)
-        //{
-        //    renderOfCurrentCollision.material = originalMaterial;
-        //}
         if (session != null)
         {
             session.TriggerExitBasic(this, collision);
         }
-        ConfirmOnSprite.SetActive(false);
     }
-
     public void UpdateInteractObject()
     {
-
         if (objDataTypeContainer != null)
         {
             if (interactableStack.Count > 0)
@@ -158,15 +119,14 @@ public class PlayerManager : MonoBehaviour
                 Transform objTransform = interactableStack[interactableStack.Count - 1].transform;
 
                 objDataTypeContainer.objCode = triggerObj != null ? triggerObj.objCode : null;
-                Debug.Log("현재 objCode: " + objDataTypeContainer.objCode);
                 objDataTypeContainer.SetTransform(objTransform); 
+
             }
             else
             {
                 objDataTypeContainer.objCode = null;
             }
         }
-
         for (int i = 0; i < interactableStack.Count; i++)
         {
             Collider2D indexedCollision = interactableStack[i];
@@ -181,44 +141,40 @@ public class PlayerManager : MonoBehaviour
             if (i == interactableStack.Count - 1)
             {
                 rend.material = outlineMaterial;
-                
-                Debug.Log("들");
             }
             else
             {
                 rend.material = originalMaterial;
-                
-                Debug.Log("낙");
             }
+        }
+    }
+    public void ChangeConfirmOn(bool isConfirmOn)
+    {
+        if(isConfirmOn)
+        {
+            confirmOn.sprite = confirmOn_PC;
+        }
+        else
+        {
+            confirmOn.sprite = null;
         }
     }
     #endregion
 
     #region PunRPC
-
-    [PunRPC]
-    public void RPC_ShowPortalLabel(string labelCode)
-    {
-        Debug.Log($"[RPC_ShowPortalLabel] labelCode = {labelCode}");
-        // 실제 UI 라벨 표시 로직
-        CurrentObjectManager.Instance.SetCurrentObjData(labelCode);
-    }
-
-    // [PunRPC] : 모든 클라이언트에서 라벨 닫기
-    [PunRPC]
-    public void RPC_ClosePortalLabel()
-    {
-        Debug.Log("다 나갔다 싹다 꺼버려");
-        // 실제 UI 라벨 제거 로직
-        session.CloseCenterLabel(portalContainer.uICenterLabelOnOffManager);
-    }
-
-    [PunRPC]
     public void MoveTransform(Vector3 targetPosition)
     {
-        // 모든 클라이언트에서 이 GameObject의 위치를 targetPosition으로 변경
         transform.position = targetPosition;
-        //Debug.Log("가자잇!!!");
     }
+
+    [PunRPC]
+    public void RPC_ShowIsMineData(string objCode)
+    {
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
+        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
+    }
+
     #endregion
 }

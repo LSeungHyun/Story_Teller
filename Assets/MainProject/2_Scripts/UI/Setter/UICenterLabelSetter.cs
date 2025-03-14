@@ -49,7 +49,7 @@ public class UICenterLabelSetter : UIContentsManager
         {
             if (uiCenterLabelOnOffManager != null)
             {
-                uiCenterLabelOnOffManager.CloseCenterLabelWindow();
+                uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
             }
         }
     }

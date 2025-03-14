@@ -8,13 +8,19 @@ public class UIDialogueSetter : UIPopUpManager
     [SerializeField] public DialogueContainer dialogueContainer;
 
     private Dictionary<BgType, Sprite> bgTypeSpritesCache = new Dictionary<BgType, Sprite>();
+
     public Sprite defaultImg;
     public Sprite monoImg;
     public Sprite saraImg;
+
+    public Sprite whiteCloseBtn;
+    public Sprite blackCloseBtn;
+
     public DialogueList[] dialogueList;
 
     public Text textDisplay;
-    public SpriteRenderer spriteDisplay;
+    public Image spriteDisplay;
+    public Image closeBtn;
 
     void ManualCacheSprites()
     {
@@ -46,6 +52,16 @@ public class UIDialogueSetter : UIPopUpManager
             textDisplay.text = dialogueList[currentDataPage - 1].textData;
             BgType bgType = dialogueList[currentDataPage - 1].bgType;
             spriteDisplay.sprite = bgTypeSpritesCache[bgType];
+            if (bgType == BgType.기본 || bgType == BgType.사라도령)
+            {
+                closeBtn.sprite = blackCloseBtn;
+                textDisplay.color = new Color32(35, 35, 35, 255);
+            }
+            else if (bgType == BgType.독백)
+            {
+                closeBtn.sprite = whiteCloseBtn;
+                textDisplay.color = new Color32(249, 235, 232, 255);
+            }
         }
         StartOnPageChanged(currentDataPage, totalDataPage);
         Debug.Log(currentDataPage + "," + totalDataPage);
