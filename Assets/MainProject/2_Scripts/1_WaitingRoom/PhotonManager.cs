@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
@@ -31,9 +32,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public List<Text> NameTextList;
 
     public InputField Message_InputField;
+    public ScrollRect chatScrollRect;
+    public GameObject newMessageNotification;
     public GameObject myMessage;
     public GameObject otherMessage;
     public GameObject Content;
+    public bool OneCheck = false;
 
     private Color[] localPlayerColors = new Color[4];
 
@@ -124,21 +128,84 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void SendMessage()
     {
-        // 1) 발신자: 자신의 메시지 셀 생성
+        string trimmedMessage = Message_InputField.text.Trim();
+
+        if (string.IsNullOrEmpty(trimmedMessage))
+        {
+            Debug.Log("공백 메시지는 전송되지 않습니다.");
+            return;
+        }
+
         GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
         myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
 
-        // 2) 수신자: RPC를 호출하여 발신자 메시지와 이름 전달
-        PV.RPC("GetMessage", RpcTarget.OthersBuffered, Message_InputField.text, PhotonNetwork.NickName);
+        PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
+
+        ScrollToBottom();
+
+        Message_InputField.text = null;
     }
 
     [PunRPC]
     public void GetMessage(string receiveMessage, string senderName)
     {
-        // 수신자의 경우, 다른 메시지 셀 생성
         GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
         messageBox.GetComponent<Message>().MyMessage.text = receiveMessage;
         messageBox.GetComponent<Message>().MyName.text = senderName;
+
+        roomUIManager.ChatUIStatus();
+
+        if (OneCheck)
+        {
+            CheckScrollSize();
+        }
+        else
+        {
+            Invoke("CheckScrollSize", 0.05f);
+        }
+    }
+
+    private void CheckScrollSize()
+    {
+        if (!IsScrolledToBottom_Size())
+        {
+            newMessageNotification.SetActive(true);
+        }
+    }
+    private bool IsScrolledToBottom_Size()
+    {
+        return chatScrollRect.verticalScrollbar.size == 1;
+    }
+
+    private bool IsScrolledToBottom()
+    {
+        return chatScrollRect.verticalNormalizedPosition <= 0.01f;
+    }
+
+    public void OnScrollChanged()
+    {
+        if (IsScrolledToBottom())
+        {
+            newMessageNotification.SetActive(false);
+        }
+    }
+
+    public void OnNewMessageNotificationClicked()
+    {
+        ScrollToBottom();
+        newMessageNotification.SetActive(false);
+    }
+
+    public void ScrollToBottom()
+    {
+        StartCoroutine(ScrollToBottomCoroutine());
+    }
+
+    private IEnumerator ScrollToBottomCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+        Canvas.ForceUpdateCanvases();
+        chatScrollRect.verticalNormalizedPosition = 0f;
     }
 
     public void ClearChatMessage()
@@ -150,7 +217,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             Destroy(Chat.GetChild(i).gameObject);
         }
 
-        // 필요하다면 강제로 레이아웃을 갱신합니다.
         LayoutRebuilder.ForceRebuildLayoutImmediate(Chat);
     }
 
