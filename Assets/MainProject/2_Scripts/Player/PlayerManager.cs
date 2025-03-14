@@ -27,7 +27,6 @@ public class PlayerManager : MonoBehaviour
 
     [Header("Interaction Objects")]
     public List<Collider2D> interactableStack = new List<Collider2D>();
-    public GameObject ConfirmOnSprite;
     public Material originalMaterial;
     public Material outlineMaterial;
 
@@ -40,8 +39,6 @@ public class PlayerManager : MonoBehaviour
     #region LifeCycle Methods
     void Start()
     {
-        ConfirmOnSprite.SetActive(false);
-
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
@@ -104,7 +101,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.TriggerEnterBasic(this, collision);
         }
-        ConfirmOnSprite.SetActive(true);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -112,7 +108,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.TriggerExitBasic(this, collision);
         }
-        ConfirmOnSprite.SetActive(false);
     }
     public void UpdateInteractObject()
     {
@@ -146,14 +141,10 @@ public class PlayerManager : MonoBehaviour
             if (i == interactableStack.Count - 1)
             {
                 rend.material = outlineMaterial;
-                
-                Debug.Log("µé");
             }
             else
             {
                 rend.material = originalMaterial;
-                
-                Debug.Log("³«");
             }
         }
     }

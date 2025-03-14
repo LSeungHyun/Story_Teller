@@ -208,9 +208,9 @@ MonoBehaviour:
   interactableStack: []
   originalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   outlineMaterial: {fileID: 2100000, guid: ab7737d920ed6824798c7a015a146df7, type: 2}
-  confirmOn: {fileID: 6431437664122903807}
-  confirmOn_PC: {fileID: 0}
-  confirmOn_Mob: {fileID: 0}
+  confirmOn: {fileID: 2699308757880255516}
+  confirmOn_PC: {fileID: 4533199416115848664, guid: ca19a235b4df5ba49988528210ee2a74, type: 3}
+  confirmOn_Mob: {fileID: 8806777409404198092, guid: c9b0e878c8fe0d040a6d6e7f29f902fa, type: 3}
 --- !u!114 &2034885970295202564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4533199416115848664, guid: ca19a235b4df5ba49988528210ee2a74, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -590,6 +590,6 @@ SpriteRenderer:
   m_Size: {x: 0.9, y: 0.27}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
