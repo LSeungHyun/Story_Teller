@@ -154,7 +154,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        if (chatScrollRect.verticalNormalizedPosition != 0 && !IsScrolledToBottom())
+        if (chatScrollRect.verticalNormalizedPosition != 0 && !IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
         }
