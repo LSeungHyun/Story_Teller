@@ -129,18 +129,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         string trimmedMessage = Message_InputField.text.Trim();
 
-        // 입력값이 빈 문자열이면 메시지를 전송하지 않습니다.
         if (string.IsNullOrEmpty(trimmedMessage))
         {
             Debug.Log("공백 메시지는 전송되지 않습니다.");
             return;
         }
 
-        // 1) 발신자: 자신의 메시지 셀 생성
         GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
         myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
 
-        // 2) 수신자: RPC를 호출하여 발신자 메시지와 이름 전달
         PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
 
         ScrollToBottom();
@@ -151,12 +148,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void GetMessage(string receiveMessage, string senderName)
     {
-        // 수신자의 경우, 다른 메시지 셀 생성
         GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
         messageBox.GetComponent<Message>().MyMessage.text = receiveMessage;
         messageBox.GetComponent<Message>().MyName.text = senderName;
 
         roomUIManager.ChatUIStatus();
+
+        // 레이아웃 업데이트를 강제로 실행하여, 새로운 메시지 추가에 따른 사이즈 변동을 즉시 반영합니다.
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Content.GetComponent<RectTransform>());
 
         if (!IsScrolledToBottom_Size())
         {
@@ -164,20 +164,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         }
     }
 
+
     private bool IsScrolledToBottom_Size()
     {
         return chatScrollRect.verticalScrollbar.size == 1;
     }
+
     private bool IsScrolledToBottom()
     {
-        // 일반적으로 verticalNormalizedPosition가 0이면 바닥에 도달한 상태입니다.
         return chatScrollRect.verticalNormalizedPosition <= 0.01f;
     }
 
-    // ScrollRect의 OnValueChanged 이벤트와 연결하여 사용자가 스크롤할 때마다 호출
     public void OnScrollChanged()
     {
-        // 사용자가 스크롤하여 바닥에 도달했다면 알림 숨기기
         if (IsScrolledToBottom())
         {
             newMessageNotification.SetActive(false);
@@ -186,9 +185,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void OnNewMessageNotificationClicked()
     {
-        // 알림 클릭 시 스크롤 이동
         ScrollToBottom();
-        // 알림 숨김
         newMessageNotification.SetActive(false);
     }
 
@@ -200,7 +197,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private IEnumerator ScrollToBottomCoroutine()
     {
         yield return new WaitForEndOfFrame();
-        Canvas.ForceUpdateCanvases();  // 필요 시 강제 업데이트
+        Canvas.ForceUpdateCanvases();
         chatScrollRect.verticalNormalizedPosition = 0f;
     }
 
@@ -213,7 +210,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             Destroy(Chat.GetChild(i).gameObject);
         }
 
-        // 필요하다면 강제로 레이아웃을 갱신합니다.
         LayoutRebuilder.ForceRebuildLayoutImmediate(Chat);
     }
 
