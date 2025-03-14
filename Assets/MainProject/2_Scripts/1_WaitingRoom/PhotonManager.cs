@@ -154,16 +154,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        // 레이아웃 업데이트를 강제로 실행하여, 새로운 메시지 추가에 따른 사이즈 변동을 즉시 반영합니다.
-        Canvas.ForceUpdateCanvases();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(Content.GetComponent<RectTransform>());
+        if (chatScrollRect.verticalNormalizedPosition != 0 && !IsScrolledToBottom())
+        {
+            newMessageNotification.SetActive(true);
+        }
 
-        if (!IsScrolledToBottom_Size())
+        else if (!IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
         }
     }
-
 
     private bool IsScrolledToBottom_Size()
     {
