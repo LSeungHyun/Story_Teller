@@ -7694,6 +7694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MasterPlayer_Yellow
       objectReference: {fileID: 0}
+    - target: {fileID: 1839602670562630100, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3858101098242157967, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -7847,7 +7851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &686345620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11502,6 +11506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 966753638}
   - component: {fileID: 966753637}
+  - component: {fileID: 966753639}
   m_Layer: 0
   m_Name: AMB
   m_TagString: Untagged
@@ -11579,6 +11584,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1020966948}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &966753639
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966753636}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.36, y: 1.6500087}
+    newSize: {x: 2.36, y: 1.65}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.1867108, y: -0.41826588}
+      - {x: 1.204376, y: 0.34396654}
+      - {x: -1.1776752, y: 0.3559547}
+      - {x: -1.1776752, y: -0.36576408}
+  m_UseDelaunayMesh: 0
 --- !u!1 &969141953
 GameObject:
   m_ObjectHideFlags: 0
