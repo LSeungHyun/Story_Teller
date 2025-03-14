@@ -203,7 +203,6 @@ GameObject:
   m_Component:
   - component: {fileID: 16598628}
   - component: {fileID: 16598625}
-  - component: {fileID: 16598627}
   - component: {fileID: 16598626}
   - component: {fileID: 16598629}
   m_Layer: 0
@@ -308,14 +307,6 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!81 &16598627
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 16598624}
-  m_Enabled: 1
 --- !u!4 &16598628
 Transform:
   m_ObjectHideFlags: 0
@@ -10382,6 +10373,7 @@ MonoBehaviour:
   myMessage: {fileID: 424147091597990619, guid: 087184c2b1429804db58691e3af866f8, type: 3}
   otherMessage: {fileID: 1771803889969175639, guid: debf16a86fd45f0478eefb2f9b49922a, type: 3}
   Content: {fileID: 1744293199}
+  OneCheck: 0
   roomCode: 
 --- !u!4 &1678940257
 Transform:
