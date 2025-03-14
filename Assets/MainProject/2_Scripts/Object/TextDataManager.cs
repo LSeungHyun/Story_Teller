@@ -196,12 +196,12 @@ public class TextDataManager : MonoBehaviour
     private GameObject loadingUI;
     private void Start()
     {
-        StartCoroutine(LoadSheetData());
+        //StartCoroutine(LoadSheetData());
 
-        if (!GameManager.Instance.isType)
-        {
-            Destroy(PV);
-        }
+        //if (!GameManager.Instance.isType)
+        //{
+        //    Destroy(PV);
+        //}
     }
 
     private IEnumerator LoadSheetData()
