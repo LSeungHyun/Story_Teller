@@ -5,7 +5,7 @@ public class TriggerObj : MonoBehaviour
     public string objCode;
     public bool isPassiveObject = false;
 
-    private void Awake()
+    private void OnEnable()
     {
         if (isPassiveObject)
         {
