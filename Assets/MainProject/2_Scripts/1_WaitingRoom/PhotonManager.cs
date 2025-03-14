@@ -139,6 +139,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
         myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
 
+
         PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
 
         ScrollToBottom();
@@ -146,12 +147,31 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         Message_InputField.text = null;
     }
 
+    public Color CheckNickNameColor(string name)
+    {
+        char lastChar = name[name.Length - 1];
+        int lastNum = int.Parse(lastChar.ToString());
+
+        Color color = localPlayerColors[lastNum-1];
+
+        return color;
+    }
+
     [PunRPC]
     public void GetMessage(string receiveMessage, string senderName)
     {
         GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
-        messageBox.GetComponent<Message>().MyMessage.text = receiveMessage;
-        messageBox.GetComponent<Message>().MyName.text = senderName;
+
+        Text myMsg = messageBox.GetComponent<Message>().MyMessage;
+        Text myName = messageBox.GetComponent<Message>().MyName;
+
+        Color color = CheckNickNameColor(senderName);
+
+        myMsg.text = receiveMessage;
+        myMsg.color = color;
+
+        myName.text = senderName;
+        myName.color = color;
 
         roomUIManager.ChatUIStatus();
 
