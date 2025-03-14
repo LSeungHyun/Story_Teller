@@ -39,7 +39,9 @@ public class CurrentObjectManager : MonoBehaviour
         if (outterCurrentObjCode == null)
             currentObjCode = objDataTypeContainer.objCode;
         else
+        {
             currentObjCode = outterCurrentObjCode;
+        }
 
         currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null)

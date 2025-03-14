@@ -2,47 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using TMPro;
+using static PortalSetter;
 
 public class MultiSession : AbsctractGameSession
 {
-
-/*    private IEnumerator PortalCountdownCoroutine(PortalMananager portal)
+    #region Portal
+    public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        float timer = 0f;
-        while (timer < portal.countTime)
+        base.OnEnterPortal(portalSetter, collision);
+        if (portalSetter.status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
-            timer += Time.deltaTime;
-            yield return null;
+            portalSetter.portalManager.targetObj = portalSetter.targetPosition;
+            portalSetter.SetPortalObjects(false, false, true);
         }
-
-        // 카운트다운 완료
-        if (portalStatuses.TryGetValue(portal, out PortalStatus status))
+        else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount && portalSetter.status.playersInside.Count > 0)
         {
-            status.countdownCoroutine = null;
+            portalSetter.SetPortalObjects(false, true, false);
         }
-        yield return portal.StartCoroutine(LoadMapCoroutine(portal));
     }
-
-    // 1초 대기 후 맵 이동
-    private IEnumerator LoadMapCoroutine(PortalMananager portal)
+    public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portal.isAreadyMove = true;
-        Debug.Log("멀티 모드: 이동 실행!");
-        yield return new WaitForSeconds(1f);
-
-        // 위치 동기화
-        PhotonView photonView = portal.portalContainer.playerManager.PV;
-        if (photonView != null)
+        base.OnExitPortal(portalSetter, collision);
+        if (portalSetter.status.playersInside.Count == 0)
         {
-            photonView.RPC("MoveTransform", RpcTarget.AllBuffered, portal.nextMap.position);
+            portalSetter.portalManager.targetObj = null;
+            portalSetter.SetPortalObjects(true, false, false);
+            portalSetter.portalStatuses.Remove(portalSetter.managerConnector);
         }
-
-        portal.isAreadyMove = false;
-        if (portalStatuses.ContainsKey(portal))
+        else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
-            portalStatuses.Remove(portal);
+            portalSetter.SetPortalObjects(false, true, false);
         }
-    }*/
+    }
+    #endregion
 
     #region Player
     public override void MoveBasic(PlayerManager playerManager)

@@ -1,20 +1,32 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static PortalSetter;
 
 public class SingleSession : AbsctractGameSession
 {
-    #region Portal & CenterLabel Methods
-
-/*    private IEnumerator LoadMapCoroutine(PortalMananager portal)
+    #region Portal
+    public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portal.isAreadyMove = true;
-        Debug.Log("이동 (싱글 모드)!");
-        yield return new WaitForSeconds(1f);
-        // 실제 이동 처리 (예: 플레이어 위치 변경)
-        portal.portalContainer.playerManager.gameObject.transform.position = portal.nextMap.position;
-        portal.isAreadyMove = false;
-    }*/
+        base.OnEnterPortal(portalSetter, collision);
+        if (portalSetter.status.playersInside.Count == 1)
+        {
+            portalSetter.portalManager.targetObj = portalSetter.targetPosition;
+            portalSetter.SetPortalObjects(false, false, true);
+        }
+    }
+    public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
+    {
+        base.OnExitPortal(portalSetter, collision);
+        if (portalSetter.status.playersInside.Count == 0)
+        {
+            portalSetter.portalManager.targetObj = null;
+            portalSetter.SetPortalObjects(true, false, false);
+            portalSetter.portalStatuses.Remove(portalSetter.managerConnector);
+        }
+    }
     #endregion
 
     #region Player
