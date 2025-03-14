@@ -154,17 +154,26 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.ChatUIStatus();
 
-        if (chatScrollRect.verticalNormalizedPosition != 0 && !IsScrolledToBottom_Size())
+        Canvas.ForceUpdateCanvases();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(Content.GetComponent<RectTransform>());
+
+        if (!IsScrolledToBottom_Size())
         {
             newMessageNotification.SetActive(true);
+            Debug.Log("GetMessage");
         }
 
-        else if (!IsScrolledToBottom_Size())
-        {
-            newMessageNotification.SetActive(true);
-        }
+        Invoke("CheckScrollSize", 0.05f);
     }
 
+    private void CheckScrollSize()
+    {
+        if (!IsScrolledToBottom_Size())
+        {
+            newMessageNotification.SetActive(true);
+            Debug.Log("CheckScrollSize");
+        }
+    }
     private bool IsScrolledToBottom_Size()
     {
         return chatScrollRect.verticalScrollbar.size == 1;
