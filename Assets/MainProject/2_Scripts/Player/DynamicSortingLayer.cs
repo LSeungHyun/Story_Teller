@@ -2,62 +2,50 @@ using UnityEngine;
 
 public class DynamicSortingLayer : MonoBehaviour
 {
+    public ManagerConnector managerConnector;
+    public PlayerManager thePlayer;
     public SpriteRenderer spriteRenderer;
 
-    [Header("Sorting Layer Names")]
-    public string underObjectLayer = "UnderObjectPlayer";
-    public string aboveObjectLayer = "AboveObjectPlayer";
+    public string currentSortingLayer;
 
-    [SerializeField]
-    private string currentSortingLayer;
+    // 오브젝트가 뒤에 있을 때 사용할 레이어 이름
+    public string underObjectLayer = "UnderObject";
+    // 오브젝트가 앞에 있을 때 사용할 레이어 이름
+    public string aboveObjectLayer = "AboveObject";
 
-    [SerializeField]
-    private Transform objTransform;
+    // 기준이 될 다른 오브젝트 (예: 플레이어)
+    
 
-    public bool isColliding = false;
-
-    #region Lifecycle Methods
-    void Awake()
+    public bool isColliding;
+    void Start()
     {
         currentSortingLayer = spriteRenderer.sortingLayerName;
+        thePlayer = managerConnector.playerManager;
     }
+
 
     void Update()
     {
-        if (isColliding)
+        if (thePlayer && isColliding)
         {
-            UpdateSortingLayer();
+            string newSortingLayer = (transform.position.y > thePlayer.transform.position.y) ? underObjectLayer : aboveObjectLayer;
+
+            // 레이어가 실제로 변경될 때만 업데이트
+            if (newSortingLayer != currentSortingLayer)
+            {
+                currentSortingLayer = newSortingLayer;
+                spriteRenderer.sortingLayerName = currentSortingLayer;
+            }
         }
     }
-    #endregion
 
-    #region
-    public void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         isColliding = true;
-        objTransform = collision.transform;
     }
 
-    public void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         isColliding = false;
-        objTransform = null;
     }
-    #endregion
-
-    #region Sorting Methods
-
-    private void UpdateSortingLayer()
-    {
-        if (objTransform == null) return;
-
-        string newSortingLayer = objTransform.transform.position.y > this.transform.position.y ? aboveObjectLayer : underObjectLayer;
-
-        if (newSortingLayer != currentSortingLayer)
-        {
-            currentSortingLayer = newSortingLayer;
-            spriteRenderer.sortingLayerName = currentSortingLayer;
-        }
-    }
-    #endregion
 }
