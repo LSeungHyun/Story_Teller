@@ -1,5 +1,6 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIImageSetter : UIPopUpManager
 {
@@ -8,7 +9,8 @@ public class UIImageSetter : UIPopUpManager
     public ImageList[] imageList;
     public Sprite[] spriteData;
 
-    public SpriteRenderer spriteDisplay;
+    public Image defaultSpriteDisplay;
+    public Image questSpriteDisplay;
 
     public override void SetData(string currentObjCode)
     {
@@ -17,7 +19,6 @@ public class UIImageSetter : UIPopUpManager
             var imageData = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
             if (imageData != null)
             {
-                Debug.Log(currentObjCode+"SDGDSG");
                 imageList = imageData.dataList;
                 spriteData = SetImage(imageList);
                 totalDataPage = spriteData.Length;
@@ -31,7 +32,8 @@ public class UIImageSetter : UIPopUpManager
     {
         if (spriteData != null && spriteData.Length > 0)
         {
-            spriteDisplay.sprite = spriteData[currentDataPage - 1];
+            defaultSpriteDisplay.sprite = spriteData[currentDataPage - 1];
+            questSpriteDisplay.sprite = spriteData[currentDataPage - 1];
         }
         StartOnPageChanged(currentDataPage, totalDataPage);
         Debug.Log(currentDataPage + "," + totalDataPage);
@@ -41,8 +43,10 @@ public class UIImageSetter : UIPopUpManager
     {
         imageList = new ImageList[0];
         spriteData = new Sprite[0];
-        if (spriteDisplay != null)
-            spriteDisplay.sprite = null;
+        if (defaultSpriteDisplay != null)
+            defaultSpriteDisplay.sprite = null;
+        if (questSpriteDisplay != null)
+            questSpriteDisplay.sprite = null;
     }
 
     Sprite[] SetImage(ImageList[] imageList)
