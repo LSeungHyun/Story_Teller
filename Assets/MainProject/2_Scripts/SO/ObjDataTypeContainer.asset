@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ObjDataTypeContainer
   m_EditorClassIdentifier: 
   objCode: 
-  position: {x: -1.57, y: -2.18, z: 0}
+  position: {x: -2.04, y: -0.87, z: 0}
   objDataType:
   - objCode: '"GameSystemData ObjCode"'
     dataType: 
@@ -21,10 +21,10 @@ MonoBehaviour:
   - objCode: Enter_All
     dataType: centerLabel
     isMine: 0
-  - objCode: Enter_Wait3
+  - objCode: Enter_Wait
     dataType: centerLabel
     isMine: 0
-  - objCode: Move
+  - objCode: Enter_Move
     dataType: centerLabel
     isMine: 0
   - objCode: Arrive
@@ -83,7 +83,7 @@ MonoBehaviour:
     isMine: 1
   - objCode: UnderWorld_SteelHouse_ScrewList
     dataType: imagequest
-    isMine: 1
+    isMine: 0
   - objCode: UnderWorld_SteelHouse_Answer
     dataType: dialogue
     isMine: 0

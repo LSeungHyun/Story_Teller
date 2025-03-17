@@ -49,6 +49,6 @@ public class UICenterLabelOnOffManager : MonoBehaviour
         {
             currentObjectManager.SetCurrentObjData(currentNextdata);
         }
-        currentObjectManager.currentObjCode = currentNextObjCode;
+        currentObjectManager.currentObjCode = currentNextdata;
     }
 }

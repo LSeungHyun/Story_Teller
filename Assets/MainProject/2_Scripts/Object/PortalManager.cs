@@ -1,18 +1,21 @@
+using Photon.Pun;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+
 
 public class PortalManager : MonoBehaviour
 {
     public ManagerConnector managerConnector;
+    public Vector3 spawnAt;
 
-    public Transform targetObj;
     private void Awake()
     {
         managerConnector.portalManager = this;
     }
     public void OnEnable()
     {
-       Vector3 spawnAt =  targetObj.position;
-        managerConnector.playerManager.MoveTransform(spawnAt);
-
+        var session = GameManager.Instance.Session;
+        session.MovePlayers(this);
     }
 }

@@ -4,66 +4,44 @@ using UnityEngine;
 
 public class PortalSetter : MonoBehaviour
 {
-    [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
-    public ManagerConnector managerConnector;
+    public PortalManager portalManager;
+    public CutSceneManager cutsceneManager;
 
+    public GameObject targetObj;
     [SerializeField] private GameObject Enter_None;
     [SerializeField] private GameObject Enter_All;
     [SerializeField] private GameObject Enter_Wait;
 
+    public bool isCutScene = false;
+
     void Start()
     {
-        managerConnector.portalSetter = this;
         SetPortalObjects(true, false, false);
     }
 
-    private class PortalStatus
+    public PortalStatus status;
+
+    public class PortalStatus
     {
         public HashSet<int> playersInside = new HashSet<int>();
         public Coroutine countdownCoroutine = null;
     }
 
-    private Dictionary<ManagerConnector, PortalStatus> portalStatuses = new Dictionary<ManagerConnector, PortalStatus>();
+    public Dictionary<PortalSetter, PortalStatus> portalStatuses = new Dictionary<PortalSetter, PortalStatus>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PhotonView PV = managerConnector.playerManager.PV;
-        if (!portalStatuses.ContainsKey(managerConnector))
-        {
-            portalStatuses[managerConnector] = new PortalStatus();
-        }
-
-        PortalStatus status = portalStatuses[managerConnector];
-        status.playersInside.Add(collision.GetInstanceID());
-
-        if (status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
-        {
-            SetPortalObjects(false, false, true);
-        }
-        else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount && status.playersInside.Count > 0)
-        {
-            SetPortalObjects(false, true, false);
-        }
+        var session = GameManager.Instance.Session;
+        session.OnEnterPortal(this, collision);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        PhotonView PV = managerConnector.playerManager.PV;
-        PortalStatus status = portalStatuses[managerConnector];
-        status.playersInside.Remove(collision.GetInstanceID());
-
-        if (status.playersInside.Count == 0)
-        {
-            SetPortalObjects(true, false, false);
-            portalStatuses.Remove(managerConnector);
-        }
-        else if (status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
-        {
-            SetPortalObjects(false, true, false);
-        }
+        var session = GameManager.Instance.Session;
+        session.OnExitPortal(this, collision);
     }
 
-    private void SetPortalObjects(bool first, bool second, bool third)
+    public void SetPortalObjects(bool first, bool second, bool third)
     {
         Enter_None.SetActive(first);
         Enter_All.SetActive(second);
