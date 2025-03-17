@@ -9,9 +9,9 @@ public class DynamicSortingLayer : MonoBehaviour
     public string currentSortingLayer;
 
     // 오브젝트가 뒤에 있을 때 사용할 레이어 이름
-    public string underObjectLayer = "UnderObject";
+    public string underObjectLayer;
     // 오브젝트가 앞에 있을 때 사용할 레이어 이름
-    public string aboveObjectLayer = "AboveObject";
+    public string aboveObjectLayer;
 
     // 기준이 될 다른 오브젝트 (예: 플레이어)
     

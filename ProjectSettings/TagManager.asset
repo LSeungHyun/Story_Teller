@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interaction
+  - Back
   layers:
   - Default
   - TransparentFX
@@ -42,13 +43,22 @@ TagManager:
   - name: Map
     uniqueID: 3475531039
     locked: 0
-  - name: UnderObjectPlayer
+  - name: BackObj
+    uniqueID: 241087627
+    locked: 0
+  - name: BackPlayer
+    uniqueID: 3552869829
+    locked: 0
+  - name: FrontObj
+    uniqueID: 1417725447
+    locked: 0
+  - name: UnderObject
     uniqueID: 3020281001
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: AboveObjectPlayer
+  - name: AboveObject
     uniqueID: 3061978127
     locked: 0
   - name: Nickname
