@@ -41,8 +41,6 @@ public class LoginUIManager : DoTweenManager
 
     #endregion
 
-    
-
     float time = 0f;
     float F_time = 1f;
 
