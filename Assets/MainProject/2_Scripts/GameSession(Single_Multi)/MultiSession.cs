@@ -13,7 +13,14 @@ public class MultiSession : AbsctractGameSession
         base.OnEnterPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
-            portalSetter.portalManager.targetObj = portalSetter.targetPosition;
+            if (portalSetter.isCutScene)
+            {
+                portalSetter.cutsceneManager.cutSceneTrigger = portalSetter.targetObj;
+            }
+            else
+            {
+                portalSetter.portalManager.spawnAt = portalSetter.targetObj.transform.position;
+            }
             portalSetter.SetPortalObjects(false, false, true);
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount && portalSetter.status.playersInside.Count > 0)
@@ -26,14 +33,26 @@ public class MultiSession : AbsctractGameSession
         base.OnExitPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == 0)
         {
-            portalSetter.portalManager.targetObj = null;
+            if (portalSetter.isCutScene)
+            {
+                portalSetter.cutsceneManager.cutSceneTrigger = null;
+            }
+            else
+            {
+                portalSetter.portalManager.spawnAt = Vector3.zero;
+            }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter.managerConnector);
+            portalSetter.portalStatuses.Remove(portalSetter);
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
             portalSetter.SetPortalObjects(false, true, false);
         }
+    }
+    public override void MovePlayers(PortalManager portalManager)
+    {
+        portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
+        base.MovePlayers(portalManager);
     }
     #endregion
 
@@ -52,12 +71,12 @@ public class MultiSession : AbsctractGameSession
             base.AnimControllerBasic(playerManager);
         }
     }
-    public override void TriggerEnterBasic(PlayerManager playerManager,Collider2D collision)
+    public override void TriggerEnterBasic(PlayerManager playerManager, Collider2D collision)
     {
         if (playerManager.PV.IsMine)
         {
             base.TriggerEnterBasic(playerManager, collision);
-        }     
+        }
     }
     public override void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
@@ -84,7 +103,7 @@ public class MultiSession : AbsctractGameSession
     #region UI On Off
     public override void OpenPopUpBasic(UIPopUpOnOffManager uiPopUpOnOffManager, bool isQuest, bool isDial)
     {
-       base.OpenPopUpBasic(uiPopUpOnOffManager, isQuest, isDial);
+        base.OpenPopUpBasic(uiPopUpOnOffManager, isQuest, isDial);
     }
     public override void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager)
     {

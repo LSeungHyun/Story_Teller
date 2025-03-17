@@ -9,17 +9,21 @@ public abstract class AbsctractGameSession
     #region Portal
     public virtual void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        if (!portalSetter.portalStatuses.ContainsKey(portalSetter.managerConnector))
+        if (!portalSetter.portalStatuses.ContainsKey(portalSetter))
         {
-            portalSetter.portalStatuses[portalSetter.managerConnector] = new PortalSetter.PortalStatus();
+            portalSetter.portalStatuses[portalSetter] = new PortalSetter.PortalStatus();
         }
-        portalSetter.status = portalSetter.portalStatuses[portalSetter.managerConnector];
+        portalSetter.status = portalSetter.portalStatuses[portalSetter];
         portalSetter.status.playersInside.Add(collision.GetInstanceID());
     }
     public virtual void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portalSetter.status = portalSetter.portalStatuses[portalSetter.managerConnector];
+        portalSetter.status = portalSetter.portalStatuses[portalSetter];
         portalSetter.status.playersInside.Remove(collision.GetInstanceID());
+    }
+    public virtual void MovePlayers(PortalManager portalManager)
+    {
+        portalManager.gameObject.SetActive(false);
     }
     #endregion
     #region Player
