@@ -6,6 +6,7 @@ public class DynamicSortingLayer : MonoBehaviour
     public PlayerManager thePlayer;
     public SpriteRenderer spriteRenderer;
 
+    public string basicLayer;
     public string currentSortingLayer;
 
     // 오브젝트가 뒤에 있을 때 사용할 레이어 이름
@@ -19,7 +20,7 @@ public class DynamicSortingLayer : MonoBehaviour
     public bool isColliding;
     void Start()
     {
-        currentSortingLayer = spriteRenderer.sortingLayerName;
+        basicLayer = spriteRenderer.sortingLayerName;
         thePlayer = managerConnector.playerManager;
     }
 
@@ -29,13 +30,8 @@ public class DynamicSortingLayer : MonoBehaviour
         if (thePlayer && isColliding)
         {
             string newSortingLayer = (transform.position.y > thePlayer.transform.position.y) ? underObjectLayer : aboveObjectLayer;
-
-            // 레이어가 실제로 변경될 때만 업데이트
-            if (newSortingLayer != currentSortingLayer)
-            {
-                currentSortingLayer = newSortingLayer;
-                spriteRenderer.sortingLayerName = currentSortingLayer;
-            }
+            currentSortingLayer = newSortingLayer;
+            spriteRenderer.sortingLayerName = currentSortingLayer;
         }
     }
 
@@ -47,5 +43,6 @@ public class DynamicSortingLayer : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isColliding = false;
+        spriteRenderer.sortingLayerName = basicLayer;
     }
 }

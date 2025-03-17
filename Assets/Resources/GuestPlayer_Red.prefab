@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 2139742738253805826}
   - component: {fileID: 760193480370583864}
   - component: {fileID: 4902304303837942944}
-  - component: {fileID: 2034885970295202564}
   - component: {fileID: 4507779827862953659}
   - component: {fileID: 3695983434335586103}
   - component: {fileID: 4306972491748636140}
@@ -183,8 +182,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1274686295
-  m_SortingLayer: -1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -617678631, guid: 452a111c593713f46b1262d1496247d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -302,6 +301,7 @@ MonoBehaviour:
   PAV: {fileID: 4306972491748636140}
   rigid: {fileID: 760193480370583864}
   anim: {fileID: 1559352059937034625}
+  sprite: {fileID: 0}
   joystick: {fileID: 0}
   webglBtn: {fileID: 0}
   inputVec: {x: 0, y: 0}
@@ -311,24 +311,6 @@ MonoBehaviour:
   confirmOn: {fileID: 4731097560735640513}
   confirmOn_PC: {fileID: 4533199416115848664, guid: ca19a235b4df5ba49988528210ee2a74, type: 3}
   confirmOn_Mob: {fileID: 8806777409404198092, guid: c9b0e878c8fe0d040a6d6e7f29f902fa, type: 3}
---- !u!114 &2034885970295202564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1839602670562630100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 6431437664122903807}
-  underObjectLayer: UnderObjectPlayer
-  aboveObjectLayer: AboveObjectPlayer
-  currentSortingLayer: 
-  objTransform: {fileID: 0}
-  isColliding: 0
 --- !u!114 &4507779827862953659
 MonoBehaviour:
   m_ObjectHideFlags: 0
