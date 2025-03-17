@@ -13,7 +13,14 @@ public class SingleSession : AbsctractGameSession
         base.OnEnterPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == 1)
         {
-            portalSetter.portalManager.targetObj = portalSetter.targetPosition;
+            if (portalSetter.isCutScene)
+            {
+                portalSetter.cutsceneManager.cutSceneTrigger = portalSetter.targetObj;
+            }
+            else
+            {
+                portalSetter.portalManager.spawnAt = portalSetter.targetObj.transform.position;
+            }
             portalSetter.SetPortalObjects(false, false, true);
         }
     }
@@ -22,10 +29,22 @@ public class SingleSession : AbsctractGameSession
         base.OnExitPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == 0)
         {
-            portalSetter.portalManager.targetObj = null;
+            if (portalSetter.isCutScene)
+            {
+                portalSetter.cutsceneManager.cutSceneTrigger = null;
+            }
+            else
+            {
+                portalSetter.portalManager.spawnAt = Vector3.zero;
+            }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter.managerConnector);
+            portalSetter.portalStatuses.Remove(portalSetter);
         }
+    }
+    public override void MovePlayers(PortalManager portalManager)
+    {
+        portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
+        base.MovePlayers(portalManager);
     }
     #endregion
 

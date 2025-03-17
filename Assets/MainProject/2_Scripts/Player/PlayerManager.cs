@@ -52,11 +52,12 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (session != null)
-        {
-            session.MoveBasic(this);
-            session.AnimControllerBasic(this);
-        }
+            if (session != null)
+            {
+                session.MoveBasic(this);
+                session.AnimControllerBasic(this);
+            }
+        
     }
     #endregion
 
@@ -162,9 +163,13 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PunRPC
-    public void MoveTransform(Vector3 targetPosition)
+    [PunRPC]
+    public void RPC_MoveTransform(Vector3 targetPosition)
     {
-        transform.position = targetPosition;
+        if (PV.IsMine)
+        {
+            transform.position = targetPosition;
+        }
     }
 
     [PunRPC]

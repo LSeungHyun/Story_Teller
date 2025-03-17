@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PortalSetter : MonoBehaviour
 {
-    [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
-    public ManagerConnector managerConnector;
     public PortalManager portalManager;
+    public CutSceneManager cutsceneManager;
 
-    public Transform targetPosition;
+    public GameObject targetObj;
     [SerializeField] private GameObject Enter_None;
     [SerializeField] private GameObject Enter_All;
     [SerializeField] private GameObject Enter_Wait;
 
+    public bool isCutScene = false;
+
     void Start()
     {
-        managerConnector.portalSetter = this;
         SetPortalObjects(true, false, false);
     }
 
@@ -27,7 +27,7 @@ public class PortalSetter : MonoBehaviour
         public Coroutine countdownCoroutine = null;
     }
 
-    public Dictionary<ManagerConnector, PortalStatus> portalStatuses = new Dictionary<ManagerConnector, PortalStatus>();
+    public Dictionary<PortalSetter, PortalStatus> portalStatuses = new Dictionary<PortalSetter, PortalStatus>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
