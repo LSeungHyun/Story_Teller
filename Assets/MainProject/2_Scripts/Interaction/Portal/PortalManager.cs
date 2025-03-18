@@ -1,7 +1,4 @@
-using Photon.Pun;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
 public class PortalManager : MonoBehaviour
