@@ -1193,6 +1193,307 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_ShouldActivateOnSelect: 1
+--- !u!1 &810517836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 810517837}
+  - component: {fileID: 810517838}
+  - component: {fileID: 810517839}
+  - component: {fileID: 810517840}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &810517837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810517836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &810517838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810517836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abe83bd7b6bd3cb43baedee40f3dbeba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
+  bgmSource: {fileID: 810517839}
+  sfxSource: {fileID: 810517840}
+  soundList:
+  - soundName: "50mang - \uC0BC\uC6D4\uC758 \uC5FC\uC6D0"
+    clip: {fileID: 8300000, guid: 9d4f956a0d89bd548ade26e9ce7424b4, type: 3}
+    loop: 1
+  - soundName: 50meru - aldebaran
+    clip: {fileID: 8300000, guid: 7a8c351b75fb9394da5f1cf40be7ad2e, type: 3}
+    loop: 0
+  - soundName: 50meru - Merope
+    clip: {fileID: 8300000, guid: 719720a3e11d5544c8a5ef8c781a4f27, type: 3}
+    loop: 1
+  - soundName: 50meru - Vega
+    clip: {fileID: 8300000, guid: 7dcbc964b5fea4045a452a518edd85fe, type: 3}
+    loop: 1
+  - soundName: 50meru-constellations
+    clip: {fileID: 8300000, guid: 61de703361c507a47bccfafd8ee37071, type: 3}
+    loop: 0
+  - soundName: 50meru-Cygni
+    clip: {fileID: 8300000, guid: 6b86a44b7cf30784aa6be70cfa7d849e, type: 3}
+    loop: 0
+  - soundName: Dreamers Sorrow
+    clip: {fileID: 8300000, guid: 0a6be19602d37e844bb03750a6f5191d, type: 3}
+    loop: 1
+  - soundName: FIXED FOCUS_ Rainy day
+    clip: {fileID: 8300000, guid: ba4dc5c4b1ae5ae489aafd78d2d7cfac, type: 3}
+    loop: 1
+  - soundName: FIXED FOCUS_dry flower
+    clip: {fileID: 8300000, guid: fe6b9c97b04ee6444a35307dfff369ba, type: 3}
+    loop: 1
+  - soundName: noma (noma)_sakura
+    clip: {fileID: 8300000, guid: 58aeebdf833c12741b47fc01a52dda21, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uB118\uC5B4\uAC00\uB294\uCC45\uC7A5"
+    clip: {fileID: 8300000, guid: fa3441e04a3e227469d03cfb68b306e7, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uB370\uC774\uC9C0"
+    clip: {fileID: 8300000, guid: 4b8f6258fc52afc46b4b3e97877c5831, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uB808\uBAAC"
+    clip: {fileID: 8300000, guid: 83f365af9dc9be645bf3f64372464a9e, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uB9DD\uACE0\uC2A4\uD2F4"
+    clip: {fileID: 8300000, guid: 394ba3d3c9a7ce944ac3f0f6eb11ad60, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uBC9A\uAF43"
+    clip: {fileID: 8300000, guid: 87a0c58c77a79f3488eff0ad2261a10b, type: 3}
+    loop: 1
+  - soundName: "\uB2EC\uB2F4\uBBA4\uC9C1_\uC624\uB80C\uC9C0"
+    clip: {fileID: 8300000, guid: 55f8c01af42e74f4b89ff7591d2759bc, type: 3}
+    loop: 1
+  - soundName: button_sound
+    clip: {fileID: 8300000, guid: c2510e4b4758edf468547bb8b35d7af7, type: 3}
+    loop: 0
+  - soundName: chat_Alert_Sound
+    clip: {fileID: 8300000, guid: 554e01c5ab1474a449d8d4229f1f02c4, type: 3}
+    loop: 0
+  - soundName: pencil Sound
+    clip: {fileID: 8300000, guid: 05b4fb688d8878f4e808db7b140c458e, type: 3}
+    loop: 0
+--- !u!82 &810517839
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810517836}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &810517840
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810517836}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &860993637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,9 +1504,8 @@ GameObject:
   m_Component:
   - component: {fileID: 860993639}
   - component: {fileID: 860993638}
-  - component: {fileID: 860993640}
   m_Layer: 0
-  m_Name: UI Manager
+  m_Name: Login UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1223,6 +1523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73633a5148ddebd4a9732308b99ba012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
   shrinkScale: 0.9
   tweenDuration: 0.1
   easeType: 6
@@ -1260,25 +1561,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 158503341}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &860993640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860993637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5af06f1e40994e6428039dcef94aa445, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shrinkScale: 0.9
-  tweenDuration: 0.1
-  easeType: 6
-  fadeDuration: 1
-  scaleDuration: 0.3
-  fadeEase: 1
-  scaleEase: 27
 --- !u!1 &922795191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,8 +1694,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 860993640}
-        m_TargetAssemblyTypeName: TestUIDoTween, Assembly-CSharp
+      - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
         m_MethodName: ClickAnim
         m_Mode: 1
         m_Arguments:
@@ -1719,12 +2001,24 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 860993638}
-        m_TargetAssemblyTypeName: LoginUIManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
         m_MethodName: HideUI
         m_Mode: 2
         m_Arguments:
           m_ObjectArgument: {fileID: 1569252400}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
+        m_MethodName: ClickAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2250,6 +2544,18 @@ MonoBehaviour:
       - m_Target: {fileID: 860993638}
         m_TargetAssemblyTypeName: LoginUIManager, Assembly-CSharp
         m_MethodName: ActiveEmailCheckGroup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
+        m_MethodName: ClickAnim
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2938,6 +3244,30 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
+        m_MethodName: HideUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1442403442}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 1_WaitingRoom
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
+        m_MethodName: ClickAnim
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 860993638}
         m_TargetAssemblyTypeName: LoginUIManager, Assembly-CSharp
         m_MethodName: SceneMove
         m_Mode: 5
@@ -3614,8 +3944,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 860993640}
-        m_TargetAssemblyTypeName: TestUIDoTween, Assembly-CSharp
+      - m_Target: {fileID: 860993638}
+        m_TargetAssemblyTypeName: DoTweenManager, Assembly-CSharp
         m_MethodName: ClickAnim
         m_Mode: 1
         m_Arguments:
@@ -4011,6 +4341,7 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 810517837}
   - {fileID: 158503341}
   - {fileID: 598862034}
   - {fileID: 2084265082}

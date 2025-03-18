@@ -4,6 +4,8 @@ using DG.Tweening;
 
 public class DoTweenManager : MonoBehaviour
 {
+    public SoundContainer SoundContainer;
+
     [Header("Animation Settings")]
     public float shrinkScale = 0.9f;   // 눌렸을 때 줄일 비율
     public float tweenDuration = 0.1f; // 축소/확대 시간
@@ -33,6 +35,8 @@ public class DoTweenManager : MonoBehaviour
             Debug.LogWarning("Clicked object has no RectTransform.");
             return;
         }
+
+        SoundContainer.soundManager.Play("button_sound");
 
         // 3) 이전 트위닝 중단
         rect.DOKill();

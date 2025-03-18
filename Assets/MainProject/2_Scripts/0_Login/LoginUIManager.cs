@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.EventSystems;
 
 public class LoginUIManager : DoTweenManager
 {
@@ -29,20 +28,7 @@ public class LoginUIManager : DoTweenManager
     public GameObject codeErrorGroup;
     public GameObject accessCompleted;
     public Text codeCheckText;
-
-    //[Header("Title Start UI")]
-    //public GameObject backGround_Blur;
-    //public GameObject backGround_Start;
-    //public GameObject Title_Btn_Group;
-
-    //[Header("Single Multi UI")]
-    //public GameObject singlePlay_Btn;
-    //public GameObject multiPlay_Btn;
-
     #endregion
-
-    float time = 0f;
-    float F_time = 1f;
 
     private bool isBlinking = false;
     public bool isWaiting;
@@ -83,7 +69,7 @@ public class LoginUIManager : DoTweenManager
 
         // 5) Start UI È°¼ºÈ­
         Start_Group.SetActive(true);
-
+        SoundContainer.soundManager.Play("´Þ´ã¹ÂÁ÷_¿À·»Áö");
         // 6) ¹öÆ° ±ôºýÀÓ ÄÚ·çÆ¾
         StartCoroutine(SmoothBlink());
     }
