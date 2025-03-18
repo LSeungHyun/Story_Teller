@@ -26,7 +26,7 @@ public class CurrentObjectManager : MonoBehaviour
     private void Awake()
     {
         managerConnector.currentObjectManager = this;
-        if (Instance != null && Instance != this)
+        if (Instance != null)
         {
             Destroy(gameObject);
             return;

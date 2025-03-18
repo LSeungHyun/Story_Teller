@@ -3,7 +3,6 @@ using System.Linq;
 using System;
 public class HintStateManager : MonoBehaviour
 {
-
     [SerializeField]
     private HintContainer hintContainer;
     private HintData targetRow;
