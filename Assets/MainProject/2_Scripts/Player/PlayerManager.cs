@@ -40,25 +40,25 @@ public class PlayerManager : MonoBehaviour
     #region LifeCycle Methods
     void Awake()
     {
-        if (!GameManager.Instance.isType)
-        {
-            Destroy(PV);
-            Destroy(PTV);
-            Destroy(PAV);
-        }
+        //if (!GameManager.Instance.isType)
+        //{
+        //    Destroy(PV);
+        //    Destroy(PTV);
+        //    Destroy(PAV);
+        //}
 
-        session = GameManager.Instance.Session;
+        //session = GameManager.Instance.Session;
         managerConnector.playerManager = this;
     }
 
     void Update()
     {
-        if (session != null)
-        {
-            session.MoveBasic(this);
-            session.AnimControllerBasic(this);
-        }
-        //Move();
+        //if (session != null)
+        //{
+        //    session.MoveBasic(this);
+        //    session.AnimControllerBasic(this);
+        //}
+        Move();
     }
     #endregion
 

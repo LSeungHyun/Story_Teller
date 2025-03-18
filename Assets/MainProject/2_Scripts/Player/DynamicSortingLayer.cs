@@ -6,6 +6,8 @@ public class DynamicSortingLayer : MonoBehaviour
     public PlayerManager thePlayer;
     public SpriteRenderer spriteRenderer;
 
+    public SpriteRenderer[] childSpriteGroup;
+
     public string basicLayer;
     public string currentSortingLayer;
 
@@ -32,6 +34,11 @@ public class DynamicSortingLayer : MonoBehaviour
             string newSortingLayer = (transform.position.y > thePlayer.transform.position.y) ? underObjectLayer : aboveObjectLayer;
             currentSortingLayer = newSortingLayer;
             spriteRenderer.sortingLayerName = currentSortingLayer;
+
+            if(childSpriteGroup != null)
+            {
+                SetLayerName(currentSortingLayer);
+            }
         }
     }
 
@@ -44,5 +51,14 @@ public class DynamicSortingLayer : MonoBehaviour
     {
         isColliding = false;
         spriteRenderer.sortingLayerName = basicLayer;
+        SetLayerName(basicLayer);
+    }
+
+    public void SetLayerName(string layerName)
+    {
+        for (int i = 0; i < childSpriteGroup.Length; i++)
+        {
+            childSpriteGroup[i].sortingLayerName = layerName;
+        }
     }
 }
