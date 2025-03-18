@@ -1,13 +1,13 @@
 using UnityEngine;
 using Photon.Pun;
-using static UIQuestSetter;
+using static UINextSetter;
 
 public class MultiSession : AbsctractGameSession
 {
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        base.OnEnterPortal(portalSetter, collision);
+        portalSetter.status.playersInside.Add(collision.GetInstanceID());
         if (portalSetter.status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
             if (portalSetter.isCutScene)
@@ -27,7 +27,7 @@ public class MultiSession : AbsctractGameSession
     }
     public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        base.OnExitPortal(portalSetter, collision);
+        portalSetter.status.playersInside.Remove(collision.GetInstanceID());
         if (portalSetter.status.playersInside.Count == 0)
         {
             if (portalSetter.isCutScene)
@@ -54,29 +54,23 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void OnEnterAnswer(UIQuestSetter uiQuestSetter)
+    public override void CheckEveryoneIsDone(UINextSetter uiNextSetter)
     {
-        base.OnEnterAnswer(uiQuestSetter);
-
-        if (uiQuestSetter.status == null)
-        {
-            uiQuestSetter.status = new QuestStatus();
-        }
-
         int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
 
-        if (!uiQuestSetter.status.playersIsDone.Contains(playerID))
+        if (!uiNextSetter.status.playersIsDone.Contains(playerID))
         {
-            uiQuestSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
+            uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
         }
 
-        if (uiQuestSetter.status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount)
+        if (uiNextSetter.status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
-            uiQuestSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
+            uiNextSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
+            uiNextSetter.status = new DoneStatus();
         }
         else
         {
-            uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+            uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
         }
     }
     #endregion

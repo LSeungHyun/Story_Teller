@@ -209,10 +209,9 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void RPC_AddPlayerToDoneList(int playerID)
     {
-        if (!managerConnector.uiQuestSetter.status.playersIsDone.Contains(playerID))
+        if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
         {
-            managerConnector.uiQuestSetter.status.playersIsDone.Add(playerID);
-            managerConnector.uiQuestSetter.SetDonePage();
+            managerConnector.uiNextSetter.status.playersIsDone.Add(playerID);
         }
     }
 

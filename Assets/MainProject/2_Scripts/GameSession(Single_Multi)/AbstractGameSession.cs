@@ -1,25 +1,11 @@
-using Photon.Pun;
-using System.Linq;
 using UnityEngine;
-using static PortalSetter;
-using static UIQuestSetter;
 
 
 public abstract class AbsctractGameSession
 {
     #region Portal
-    public virtual void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
-    {
-        if (portalSetter.status == null)
-        {
-            portalSetter.status = new PortalStatus();
-        }
-        portalSetter.status.playersInside.Add(collision.GetInstanceID());
-    }
-    public virtual void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
-    {
-        portalSetter.status.playersInside.Remove(collision.GetInstanceID());
-    }
+    public abstract void OnEnterPortal(PortalSetter portalSetter, Collider2D collision);
+    public abstract void OnExitPortal(PortalSetter portalSetter, Collider2D collision);
     public virtual void MovePlayers(PortalManager portalManager)
     {
         portalManager.gameObject.SetActive(false);
@@ -27,10 +13,7 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region IsNext
-    public virtual void OnEnterAnswer(UIQuestSetter uiQuestSetter)
-    {
-        uiQuestSetter.targetRow.isDone = true;
-    }
+    public abstract void CheckEveryoneIsDone(UINextSetter uiNextSetter);
     #endregion
 
     #region Player

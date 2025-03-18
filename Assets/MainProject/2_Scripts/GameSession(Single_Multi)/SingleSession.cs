@@ -1,17 +1,11 @@
-using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using static PortalSetter;
-using static UIQuestSetter;
 
 public class SingleSession : AbsctractGameSession
 {
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        base.OnEnterPortal(portalSetter, collision);
+        portalSetter.status.playersInside.Add(collision.GetInstanceID());
         if (portalSetter.status.playersInside.Count == 1)
         {
             if (portalSetter.isCutScene)
@@ -27,7 +21,7 @@ public class SingleSession : AbsctractGameSession
     }
     public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        base.OnExitPortal(portalSetter, collision);
+        portalSetter.status.playersInside.Remove(collision.GetInstanceID());
         if (portalSetter.status.playersInside.Count == 0)
         {
             if (portalSetter.isCutScene)
@@ -50,10 +44,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void OnEnterAnswer(UIQuestSetter uiQuestSetter)
+    public override void CheckEveryoneIsDone(UINextSetter uiNextSetter)
     {
-        base.OnEnterAnswer(uiQuestSetter);
-        uiQuestSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
+        uiNextSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
     }
     #endregion
 

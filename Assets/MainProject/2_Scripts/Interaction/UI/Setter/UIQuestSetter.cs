@@ -8,7 +8,7 @@ public class UIQuestSetter : MonoBehaviour
 {
     [SerializeField] public QuestContainer questContainer;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
-    public ManagerConnector managerConnector;
+    public UINextSetter uiNextSetter;
 
     public QuestData targetRow;
 
@@ -23,18 +23,6 @@ public class UIQuestSetter : MonoBehaviour
 
     public Text donePlayerCount;
     public Text doneAnswer;
-
-    [SerializeField] public QuestStatus status = new QuestStatus();
-
-    [System.Serializable]
-    public class QuestStatus
-    {
-        public List<int> playersIsDone = new List<int>();
-    }
-    public void Awake()
-    {
-        managerConnector.uiQuestSetter = this;
-    }
 
     public void SetQuest(string currentObjCode)
     {
@@ -58,7 +46,7 @@ public class UIQuestSetter : MonoBehaviour
     }
     public void SetDonePage()
     {
-        donePlayerCount.text = "완료 인원:" + status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+        donePlayerCount.text = "완료 인원:" + uiNextSetter.status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
         doneAnswer.text = targetRow.answer;
     }
 
@@ -74,8 +62,8 @@ public class UIQuestSetter : MonoBehaviour
     {
         if(answerInput.text == answer)
         {
-            var session = GameManager.Instance.Session;
-            session.OnEnterAnswer(this);
+            targetRow.isDone = true;
+            uiNextSetter.CheckEveryoneIsDone();
         }
         else
         {
