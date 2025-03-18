@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using static UIQuestSetter;
 using static UINextSetter;
 
 public class MultiSession : AbsctractGameSession
@@ -7,7 +8,7 @@ public class MultiSession : AbsctractGameSession
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portalSetter.status.playersInside.Add(collision.GetInstanceID());
+        base.OnEnterPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
             if (portalSetter.isCutScene)
@@ -27,7 +28,7 @@ public class MultiSession : AbsctractGameSession
     }
     public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portalSetter.status.playersInside.Remove(collision.GetInstanceID());
+        base.OnExitPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == 0)
         {
             if (portalSetter.isCutScene)
