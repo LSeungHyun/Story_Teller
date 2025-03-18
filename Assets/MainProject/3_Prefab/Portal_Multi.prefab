@@ -501,10 +501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ddbfd54dee4b74091cd88ce210198e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
-  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   portalManager: {fileID: 0}
-  targetPosition: {fileID: 0}
+  cutsceneManager: {fileID: 0}
+  targetObj: {fileID: 0}
   Enter_None: {fileID: 4035737046941720022}
   Enter_All: {fileID: 7383275434575719655}
   Enter_Wait: {fileID: 20419914988781811}
+  isCutScene: 0

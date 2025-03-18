@@ -2829,6 +2829,7 @@ GameObject:
   - component: {fileID: 207038968}
   - component: {fileID: 207038970}
   - component: {fileID: 207038969}
+  - component: {fileID: 207038971}
   m_Layer: 0
   m_Name: Cam3
   m_TagString: Untagged
@@ -2925,6 +2926,28 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
+--- !u!95 &207038971
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 207038967}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &222467701
 GameObject:
   m_ObjectHideFlags: 0
@@ -6460,7 +6483,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_Sprite: {fileID: -498906366, guid: 5c85c5ad26bda8749b3440070a0b1998, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -7571,7 +7594,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 1.7
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -7887,8 +7910,6 @@ PlayableDirector:
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
-  - key: {fileID: 2623602398646493449, guid: f1200877dc083d4469d3a5383000824c, type: 2}
-    value: {fileID: 1148433939}
   - key: {fileID: -66976761862802763, guid: f1200877dc083d4469d3a5383000824c, type: 2}
     value: {fileID: 1148433947}
   - key: {fileID: 4121143027308191408, guid: f1200877dc083d4469d3a5383000824c, type: 2}
@@ -7897,17 +7918,24 @@ PlayableDirector:
     value: {fileID: 598862036}
   - key: {fileID: 3681468684172086521, guid: f1200877dc083d4469d3a5383000824c, type: 2}
     value: {fileID: 2004947258}
-  - key: {fileID: -836430817684340367, guid: f1200877dc083d4469d3a5383000824c, type: 2}
-    value: {fileID: 1257397253}
   - key: {fileID: -728034880063908543, guid: f1200877dc083d4469d3a5383000824c, type: 2}
     value: {fileID: 1393073800}
   - key: {fileID: 3341570742852711281, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
     value: {fileID: 518024641}
+  - key: {fileID: 2160068127609317581, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
+    value: {fileID: 2056158546}
+  - key: {fileID: -1593834223146784577, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
+    value: {fileID: 598862036}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 629667151}
+    - fa0be5855688d664e964c7448a3b7542: {fileID: 207038970}
+    - 7ca54b91866f868488cf728f687314f6: {fileID: 1691469753}
+    - 484baeb9bc7e7a54a830f0110a1cbb74: {fileID: 1223527131}
+    - 4eff26c227c1bc84a89e6f7765dbdae9: {fileID: 1691469753}
     - b5e3c7f32586f4942950b0474b921094: {fileID: 207038970}
     - 9f7a8005f02c1674cab7f3d6a74c5a56: {fileID: 1691469753}
+    - b79082a7c7e78014c818869db1ce0210: {fileID: 1691469753}
     - 74288d1096cef94439472202833f4c8b: {fileID: 1691469753}
 --- !u!1 &629667148
 GameObject:
@@ -14058,11 +14086,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146979640}
   m_CullTransparentMesh: 1
---- !u!1 &1148433939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1839602670562630100, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
-  m_PrefabInstance: {fileID: 1273243792}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1148433947 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1559352059937034625, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
@@ -22867,7 +22890,7 @@ MonoBehaviour:
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
   TargetOffset: {x: 0, y: 0, z: 0}
-  Damping: {x: 1, y: 1, z: 1}
+  Damping: {x: 0, y: 0, z: 0}
   Lookahead:
     Enabled: 0
     Time: 0
