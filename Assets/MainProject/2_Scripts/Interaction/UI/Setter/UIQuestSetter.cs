@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using Photon.Pun;
 
 public class UIQuestSetter : MonoBehaviour
 {
     [SerializeField] public QuestContainer questContainer;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
+    public ManagerConnector managerConnector;
+
     public QuestData targetRow;
 
     public string answer = "";
@@ -16,6 +20,21 @@ public class UIQuestSetter : MonoBehaviour
     public GameObject isDoneTrueGroup;
     public Text nameDisplay;
     public InputField answerInput;
+
+    public Text donePlayerCount;
+    public Text doneAnswer;
+
+    [SerializeField] public QuestStatus status = new QuestStatus();
+
+    [System.Serializable]
+    public class QuestStatus
+    {
+        public List<int> playersIsDone = new List<int>();
+    }
+    public void Awake()
+    {
+        managerConnector.uiQuestSetter = this;
+    }
 
     public void SetQuest(string currentObjCode)
     {
@@ -30,8 +49,17 @@ public class UIQuestSetter : MonoBehaviour
                 isDone = targetRow.isDone;
                 isDoneFalseGroup.SetActive(!isDone);
                 isDoneTrueGroup.SetActive(isDone);
+                if (isDone)
+                {
+                    SetDonePage();
+                }
             }
         }
+    }
+    public void SetDonePage()
+    {
+        donePlayerCount.text = "완료 인원:" + status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+        doneAnswer.text = targetRow.answer;
     }
 
     public void ClearData()
@@ -46,8 +74,8 @@ public class UIQuestSetter : MonoBehaviour
     {
         if(answerInput.text == answer)
         {
-            uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
-            targetRow.isDone = true;
+            var session = GameManager.Instance.Session;
+            session.OnEnterAnswer(this);
         }
         else
         {

@@ -47,18 +47,18 @@ public class PlayerManager : MonoBehaviour
         //    Destroy(PAV);
         //}
 
-        //session = GameManager.Instance.Session;
+        session = GameManager.Instance.Session;
         managerConnector.playerManager = this;
     }
 
     void Update()
     {
-        //if (session != null)
-        //{
-        //    session.MoveBasic(this);
-        //    session.AnimControllerBasic(this);
-        //}
-        Move();
+        if (session != null)
+        {
+            session.MoveBasic(this);
+            session.AnimControllerBasic(this);
+        }
+        //Move();
     }
     #endregion
 
@@ -206,7 +206,18 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PunRPC
-    public void MoveTransform(Vector3 targetPosition)
+    [PunRPC]
+    public void RPC_AddPlayerToDoneList(int playerID)
+    {
+        if (!managerConnector.uiQuestSetter.status.playersIsDone.Contains(playerID))
+        {
+            managerConnector.uiQuestSetter.status.playersIsDone.Add(playerID);
+            managerConnector.uiQuestSetter.SetDonePage();
+        }
+    }
+
+    [PunRPC]
+    public void RPC_MoveTransform(Vector3 targetPosition)
     {
         transform.position = targetPosition;
     }

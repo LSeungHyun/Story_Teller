@@ -1,5 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
+using static UIQuestSetter;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -38,7 +39,7 @@ public class MultiSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter);
+            portalSetter.status = null;
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
@@ -49,6 +50,34 @@ public class MultiSession : AbsctractGameSession
     {
         portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
         base.MovePlayers(portalManager);
+    }
+    #endregion
+
+    #region IsNext
+    public override void OnEnterAnswer(UIQuestSetter uiQuestSetter)
+    {
+        base.OnEnterAnswer(uiQuestSetter);
+
+        if (uiQuestSetter.status == null)
+        {
+            uiQuestSetter.status = new QuestStatus();
+        }
+
+        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        if (!uiQuestSetter.status.playersIsDone.Contains(playerID))
+        {
+            uiQuestSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
+        }
+
+        if (uiQuestSetter.status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount)
+        {
+            uiQuestSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
+        }
+        else
+        {
+            uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        }
     }
     #endregion
 

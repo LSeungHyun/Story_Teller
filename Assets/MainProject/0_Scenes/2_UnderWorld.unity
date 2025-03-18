@@ -18956,6 +18956,8 @@ MonoBehaviour:
     value: {fileID: 697344672}
   - key: CutScene_Manager
     value: {fileID: 183681312}
+  - key: UnderWorld_SteelHouse_Quest
+    value: {fileID: 58355022}
 --- !u!1 &1248857630
 GameObject:
   m_ObjectHideFlags: 0
@@ -27344,6 +27346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questContainer: {fileID: 11400000, guid: b4e6629173497984fa586aa5bfc719d2, type: 2}
   uiPopUpOnOffManager: {fileID: 1769707345}
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   targetRow:
     objCode: 
     name: 
@@ -27356,6 +27359,10 @@ MonoBehaviour:
   isDoneTrueGroup: {fileID: 1680872373}
   nameDisplay: {fileID: 1219537989}
   answerInput: {fileID: 306410165}
+  donePlayerCount: {fileID: 2001374210}
+  doneAnswer: {fileID: 2115339921}
+  status:
+    playersIsDone: 
 --- !u!114 &1769707345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31953,6 +31960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca30f71f2d14aef4a844815bc4996041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SoundContainer: {fileID: 0}
   shrinkScale: 0.9
   tweenDuration: 0.1
   easeType: 6

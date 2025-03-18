@@ -29,26 +29,20 @@ public class UIPopUpOnOffManager : MonoBehaviour
     }
     public void CheckNextCodeBasic(string currentObjCode)
     {
-        string currentNextObjCode = null;
-        string currentNextdata = null;
+        var matchingDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjCode);
 
-        NextData foundData = nextDataContainer.nextDatas.FirstOrDefault(data => data.objCode == currentObjCode);
-
-        if (foundData != null)
+        foreach (var foundData in matchingDataList)
         {
-            currentNextObjCode = foundData.isNextObj;
-            currentNextdata = foundData.isNextData;
-        }
+            if (!string.IsNullOrEmpty(foundData.isNextObj))
+            {
+                ObjectDictionary.Instance.ToggleObjectActive(foundData.isNextObj);
+            }
 
-        if (!string.IsNullOrEmpty(currentNextObjCode))
-        {
-            ObjectDictionary.Instance.ToggleObjectActive(currentNextObjCode);
+            if (!string.IsNullOrEmpty(foundData.isNextData))
+            {
+                currentObjectManager.SetCurrentObjData(foundData.isNextData);
+            }
         }
-
-        if (!string.IsNullOrEmpty(currentNextdata))
-        {
-            currentObjectManager.SetCurrentObjData(currentNextdata);
-        }
-       currentObjectManager.currentObjCode = null;
+        currentObjectManager.currentObjCode = null;
     }
 }
