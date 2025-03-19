@@ -40,15 +40,18 @@ public class PlayerManager : MonoBehaviour
     #region LifeCycle Methods
     void Awake()
     {
-        //if (!GameManager.Instance.isType)
-        //{
-        //    Destroy(PV);
-        //    Destroy(PTV);
-        //    Destroy(PAV);
-        //}
+        managerConnector.playerManager = this;
+    }
+    void Start()
+    {
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+            Destroy(PTV);
+            Destroy(PAV);
+        }
 
         session = GameManager.Instance.Session;
-        managerConnector.playerManager = this;
     }
 
     void Update()
@@ -206,17 +209,7 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PunRPC
-    [PunRPC]
-    public void RPC_AddPlayerToDoneList(int playerID)
-    {
-        if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
-        {
-            managerConnector.uiNextSetter.status.playersIsDone.Add(playerID);
-        }
-    }
-
-    [PunRPC]
-    public void RPC_MoveTransform(Vector3 targetPosition)
+    public void MoveTransform(Vector3 targetPosition)
     {
         transform.position = targetPosition;
     }

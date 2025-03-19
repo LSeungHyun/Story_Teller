@@ -162,6 +162,7 @@ public class HintData
 
 public class TextDataManager : MonoBehaviour
 {
+    public SoundContainer soundContainer;
     public PhotonView PV;
 
     [SerializeField]
@@ -198,6 +199,7 @@ public class TextDataManager : MonoBehaviour
     {
         StartCoroutine(LoadSheetData());
 
+        soundContainer.soundManager.Play("FIXED FOCUS_ Rainy day");
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);

@@ -55,6 +55,10 @@ public class RoomUIManager : DoTweenManager
         }
     }
 
+    void Start()
+    {
+        SoundContainer.soundManager.Play("달담뮤직_오렌지");
+    }
     /// <summary>
     /// popupName으로 지정한 팝업을 열기
     /// </summary>
@@ -154,6 +158,8 @@ public class RoomUIManager : DoTweenManager
 
             ChatStatusList[1].ShadowObj.SetActive(true);
             ChatStatusList[1].IconObj.SetActive(true);
+
+            SoundContainer.soundManager.Play("chat_Alert_Sound");
         }
         else
         {
