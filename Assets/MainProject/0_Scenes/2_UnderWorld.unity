@@ -20566,6 +20566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectList:
+  - key: UnderWorld_SteelHouse_Quest
+    value: {fileID: 58355022}
   - key: Inv_Sara
     value: {fileID: 631444857}
   - key: Portal_Manager
@@ -28925,8 +28927,8 @@ MonoBehaviour:
   isDoneTrueGroup: {fileID: 1680872373}
   nameDisplay: {fileID: 1219537989}
   answerInput: {fileID: 306410165}
-  donePlayerCount: {fileID: 0}
-  doneAnswer: {fileID: 0}
+  donePlayerCount: {fileID: 2001374210}
+  doneAnswer: {fileID: 2115339921}
 --- !u!114 &1769707345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28943,7 +28945,7 @@ MonoBehaviour:
   currentObjectManager: {fileID: 694023844}
   uiPopupStructure: {fileID: 1769707349}
   uiPopUpManager: {fileID: 1769707346}
-  uiNextSetter: {fileID: 0}
+  uiNextSetter: {fileID: 1769707350}
 --- !u!114 &1769707346
 MonoBehaviour:
   m_ObjectHideFlags: 0
