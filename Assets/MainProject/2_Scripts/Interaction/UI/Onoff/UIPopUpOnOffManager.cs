@@ -21,12 +21,9 @@ public class UIPopUpOnOffManager : MonoBehaviour
         var session = GameManager.Instance.Session;
         session.ClosePopUpBasic(this);
     }
-
     public void CloseAndCheckPopUpWindow()
     {
-        // GameManager에서 현재 세션(IGameSession) 객체를 가져와 팝업 닫기 로직 위임
         var session = GameManager.Instance.Session;
         session.ClosePopUpBasic(this);
-        uiNextSetter.CheckNextCodeBasic();
     }
 }

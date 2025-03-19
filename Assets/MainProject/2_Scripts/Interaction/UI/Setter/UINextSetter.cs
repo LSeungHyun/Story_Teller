@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
+using Photon.Pun;
 
 public class UINextSetter : MonoBehaviour
 {
@@ -39,9 +40,24 @@ public class UINextSetter : MonoBehaviour
         currentObjectManager.currentObjCode = null;
     }
 
-    public void CheckEveryoneIsDone()
+    public bool CheckEveryoneIsDone()
+    {
+        bool isAllDone = status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
+        return isAllDone;
+    }
+
+    public void AddPlayerToDoneList()
+    {
+        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
+
+        if (!status.playersIsDone.Contains(playerID))
+        {
+            managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
+        }
+    }
+    public void CheckDoneAndNext()
     {
         var session = GameManager.Instance.Session;
-        session.CheckEveryoneIsDone(this);
+        session.CheckDoneAndNext(this);
     }
 }

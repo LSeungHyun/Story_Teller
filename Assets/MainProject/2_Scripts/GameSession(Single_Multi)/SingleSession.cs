@@ -50,9 +50,15 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void CheckEveryoneIsDone(UINextSetter uiNextSetter)
+    public override void AfterQuest(UIQuestSetter uiQuestSetter)
     {
-        uiNextSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
+        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
+    }
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
+    {
+        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiNextSetter.CheckNextCodeBasic();
     }
     #endregion
 

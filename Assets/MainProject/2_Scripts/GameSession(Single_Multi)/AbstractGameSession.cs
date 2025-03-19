@@ -27,7 +27,8 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region IsNext
-    public abstract void CheckEveryoneIsDone(UINextSetter uiNextSetter);
+    public abstract void AfterQuest(UIQuestSetter uiQuestSetter);
+    public abstract void CheckDoneAndNext(UINextSetter uiNextSetter);
     #endregion
 
     #region Player

@@ -55,23 +55,21 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void CheckEveryoneIsDone(UINextSetter uiNextSetter)
+    public override void AfterQuest(UIQuestSetter uiQuestSetter)
     {
-        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
-
-        if (!uiNextSetter.status.playersIsDone.Contains(playerID))
+        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiQuestSetter.uiNextSetter.AddPlayerToDoneList();
+        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
+    }
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
+    {
+        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiNextSetter.AddPlayerToDoneList();
+        bool isdone = uiNextSetter.CheckEveryoneIsDone();
+        if (isdone)
         {
-            uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
-        }
-
-        if (uiNextSetter.status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount)
-        {
-            uiNextSetter.uiPopUpOnOffManager.CloseAndCheckPopUpWindow();
             uiNextSetter.status = new DoneStatus();
-        }
-        else
-        {
-            uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+            uiNextSetter.CheckNextCodeBasic();
         }
     }
     #endregion

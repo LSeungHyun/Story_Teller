@@ -63,7 +63,8 @@ public class UIQuestSetter : MonoBehaviour
         if(answerInput.text == answer)
         {
             targetRow.isDone = true;
-            uiNextSetter.CheckEveryoneIsDone();
+            var session = GameManager.Instance.Session;
+            session.AfterQuest(this);
         }
         else
         {
