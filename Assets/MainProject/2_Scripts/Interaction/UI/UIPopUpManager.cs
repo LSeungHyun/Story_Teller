@@ -25,7 +25,7 @@ public abstract class UIPopUpManager : UIContentsManager
         UpdateNavigationButtons(currentPage, totalPages);
     }
 
-    public void UpdateNavigationButtons(int currentPage, int totalPages)
+    public virtual void UpdateNavigationButtons(int currentPage, int totalPages)
     {
         if (backBtn != null)
             backBtn.gameObject.SetActive(currentPage > 1);

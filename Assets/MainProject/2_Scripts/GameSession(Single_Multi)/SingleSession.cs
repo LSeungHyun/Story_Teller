@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using static PortalSetter;
+using static UIQuestSetter;
 
 public class SingleSession : AbsctractGameSession
 {
@@ -38,13 +39,26 @@ public class SingleSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter);
+            portalSetter.status = null;
         }
     }
     public override void MovePlayers(PortalManager portalManager)
     {
         portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
         base.MovePlayers(portalManager);
+    }
+    #endregion
+
+    #region IsNext
+    public override void AfterQuest(UIQuestSetter uiQuestSetter)
+    {
+        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
+    }
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
+    {
+        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiNextSetter.CheckNextCodeBasic();
     }
     #endregion
 

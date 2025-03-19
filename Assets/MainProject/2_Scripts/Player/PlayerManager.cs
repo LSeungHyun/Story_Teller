@@ -209,7 +209,17 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PunRPC
-    public void MoveTransform(Vector3 targetPosition)
+    [PunRPC]
+    public void RPC_AddPlayerToDoneList(int playerID)
+    {
+        if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
+        {
+            managerConnector.uiNextSetter.status.playersIsDone.Add(playerID);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_MoveTransform(Vector3 targetPosition)
     {
         transform.position = targetPosition;
     }

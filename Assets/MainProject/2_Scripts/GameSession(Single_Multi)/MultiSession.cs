@@ -1,5 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
+using static UIQuestSetter;
+using static UINextSetter;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -38,7 +40,7 @@ public class MultiSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter);
+            portalSetter.status = null;
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
@@ -49,6 +51,26 @@ public class MultiSession : AbsctractGameSession
     {
         portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
         base.MovePlayers(portalManager);
+    }
+    #endregion
+
+    #region IsNext
+    public override void AfterQuest(UIQuestSetter uiQuestSetter)
+    {
+        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiQuestSetter.uiNextSetter.AddPlayerToDoneList();
+        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
+    }
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
+    {
+        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiNextSetter.AddPlayerToDoneList();
+        bool isdone = uiNextSetter.CheckEveryoneIsDone();
+        if (isdone)
+        {
+            uiNextSetter.status = new DoneStatus();
+            uiNextSetter.CheckNextCodeBasic();
+        }
     }
     #endregion
 
