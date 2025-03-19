@@ -8,6 +8,6 @@ public class SoundPlayer : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         soundContainer.soundManager.Play(soundName);
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

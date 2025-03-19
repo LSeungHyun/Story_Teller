@@ -18,7 +18,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public RoomUIManager roomUIManager;
     public PhotonView PV;
     // 방 코드 사용되는 영어 대, 소문자 및 숫자
-    private const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    private const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     // 현재 서버 상태를 알려주는 텍스트 및 방 코드를 입력 받는 오브젝트
     public Text StatusText;
