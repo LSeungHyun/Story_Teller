@@ -40,7 +40,6 @@ public class RoomUIManager : DoTweenManager
 
     private void Awake()
     {
-        SoundContainer.soundManager.Play("달담뮤직_오렌지");
         // 리스트를 딕셔너리로 변환
         popupDict = new Dictionary<string, GameObject>();
         foreach (var item in popupList)
@@ -56,6 +55,10 @@ public class RoomUIManager : DoTweenManager
         }
     }
 
+    void Start()
+    {
+        SoundContainer.soundManager.Play("달담뮤직_오렌지");
+    }
     /// <summary>
     /// popupName으로 지정한 팝업을 열기
     /// </summary>
