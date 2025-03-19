@@ -20131,9 +20131,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1769707345}
-        m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
-        m_MethodName: CloseAndCheckPopUpWindow
+      - m_Target: {fileID: 1769707350}
+        m_TargetAssemblyTypeName: UINextSetter, Assembly-CSharp
+        m_MethodName: CheckDoneAndNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28890,6 +28890,7 @@ GameObject:
   - component: {fileID: 1769707346}
   - component: {fileID: 1769707348}
   - component: {fileID: 1769707344}
+  - component: {fileID: 1769707350}
   m_Layer: 5
   m_Name: PopUp_Manager
   m_TagString: Untagged
@@ -28911,6 +28912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questContainer: {fileID: 11400000, guid: b4e6629173497984fa586aa5bfc719d2, type: 2}
   uiPopUpOnOffManager: {fileID: 1769707345}
+  uiNextSetter: {fileID: 0}
   targetRow:
     objCode: 
     name: 
@@ -28923,6 +28925,8 @@ MonoBehaviour:
   isDoneTrueGroup: {fileID: 1680872373}
   nameDisplay: {fileID: 1219537989}
   answerInput: {fileID: 306410165}
+  donePlayerCount: {fileID: 0}
+  doneAnswer: {fileID: 0}
 --- !u!114 &1769707345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28939,6 +28943,7 @@ MonoBehaviour:
   currentObjectManager: {fileID: 694023844}
   uiPopupStructure: {fileID: 1769707349}
   uiPopUpManager: {fileID: 1769707346}
+  uiNextSetter: {fileID: 0}
 --- !u!114 &1769707346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29023,6 +29028,24 @@ MonoBehaviour:
           dialogueGroup: {fileID: 182424651}
           imageGroup: {fileID: 641317478}
         questPopUp: {fileID: 1256443202}
+--- !u!114 &1769707350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769707343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45c05cf6be74dd54da2aa4e2697fdf90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
+  currentObjectManager: {fileID: 694023844}
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  uiPopUpOnOffManager: {fileID: 1769707345}
+  status:
+    playersIsDone: 
 --- !u!1 &1771707907
 GameObject:
   m_ObjectHideFlags: 0
@@ -29856,9 +29879,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1769707345}
-        m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
-        m_MethodName: CloseAndCheckPopUpWindow
+      - m_Target: {fileID: 1769707350}
+        m_TargetAssemblyTypeName: UINextSetter, Assembly-CSharp
+        m_MethodName: CheckDoneAndNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
