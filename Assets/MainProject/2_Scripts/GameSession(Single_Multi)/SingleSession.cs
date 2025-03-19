@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using System.Linq;
 using static PortalSetter;
 using static UIQuestSetter;
 
@@ -59,6 +60,20 @@ public class SingleSession : AbsctractGameSession
     {
         uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
         uiNextSetter.CheckNextCodeBasic();
+    }
+    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode)
+    {
+        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode);
+    }
+    #endregion
+
+    #region Hint
+    public override void SetHintState(HintStateManager hintStateManager, string currentObjCode, string state)
+    {
+        hintStateManager.targetRow = hintStateManager.hintContainer.hintDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (hintStateManager.targetRow == null)
+            return;
+        hintStateManager.targetRow.isUsed = state;
     }
     #endregion
 

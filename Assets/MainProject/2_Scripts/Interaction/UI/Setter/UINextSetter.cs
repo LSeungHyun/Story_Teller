@@ -29,7 +29,10 @@ public class UINextSetter : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(foundData.isNextObj))
             {
-                ObjectDictionary.Instance.ToggleObjectActive(foundData.isNextObj);
+                string nextObjCode = foundData.isNextObj;
+
+                var session = GameManager.Instance.Session;
+                session.ToggleObjectActive(this, nextObjCode);
             }
 
             if (!string.IsNullOrEmpty(foundData.isNextData))

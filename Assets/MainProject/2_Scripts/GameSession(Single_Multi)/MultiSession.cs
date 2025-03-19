@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using static UIQuestSetter;
 using static UINextSetter;
+using System.Linq;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -71,6 +72,17 @@ public class MultiSession : AbsctractGameSession
             uiNextSetter.status = new DoneStatus();
             uiNextSetter.CheckNextCodeBasic();
         }
+    }
+    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode)
+    {
+        uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_SetNextObj", RpcTarget.AllBuffered, nextObjCode);
+    }
+    #endregion
+
+    #region Hint
+    public override void SetHintState(HintStateManager hintStateManager, string currentObjCode, string state)
+    {
+        hintStateManager.managerConnector.playerManager.PV.RPC("RPC_SetHintState", RpcTarget.AllBuffered, currentObjCode, state);
     }
     #endregion
 

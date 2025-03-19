@@ -29,6 +29,11 @@ public abstract class AbsctractGameSession
     #region IsNext
     public abstract void AfterQuest(UIQuestSetter uiQuestSetter);
     public abstract void CheckDoneAndNext(UINextSetter uiNextSetter);
+    public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode);
+    #endregion
+
+    #region Hint
+    public abstract void SetHintState(HintStateManager hintStateManager, string currentObjCode, string state);
     #endregion
 
     #region Player

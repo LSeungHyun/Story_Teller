@@ -210,6 +210,21 @@ public class PlayerManager : MonoBehaviour
 
     #region PunRPC
     [PunRPC]
+    public void RPC_ShowIsMineData(string objCode)
+    {
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
+        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
+
+        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
+    }
+
+    [PunRPC]
+    public void RPC_SetNextObj(string nextObjCode)
+    {
+        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode);
+    }
+
+    [PunRPC]
     public void RPC_AddPlayerToDoneList(int playerID)
     {
         if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
@@ -223,15 +238,13 @@ public class PlayerManager : MonoBehaviour
     {
         transform.position = targetPosition;
     }
-
     [PunRPC]
-    public void RPC_ShowIsMineData(string objCode)
+    public void RPC_SetHintState(string currentObjCode, string state)
     {
-        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
-        CurrentObjectManager.Instance.SetCurrentObjData(objCode);
-
-        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
+        managerConnector.hintStateManager.targetRow = managerConnector.hintStateManager.hintContainer.hintDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (managerConnector.hintStateManager.targetRow == null)
+            return;
+        managerConnector.hintStateManager.targetRow.isUsed = state;
     }
-
     #endregion
 }
