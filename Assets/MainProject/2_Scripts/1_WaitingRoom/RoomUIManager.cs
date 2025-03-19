@@ -40,6 +40,7 @@ public class RoomUIManager : DoTweenManager
 
     private void Awake()
     {
+        SoundContainer.soundManager.Play("´Þ´ã¹ÂÁ÷_¿À·»Áö");
         // ¸®½ºÆ®¸¦ µñ¼Å³Ê¸®·Î º¯È¯
         popupDict = new Dictionary<string, GameObject>();
         foreach (var item in popupList)
@@ -154,6 +155,8 @@ public class RoomUIManager : DoTweenManager
 
             ChatStatusList[1].ShadowObj.SetActive(true);
             ChatStatusList[1].IconObj.SetActive(true);
+
+            SoundContainer.soundManager.Play("chat_Alert_Sound");
         }
         else
         {
