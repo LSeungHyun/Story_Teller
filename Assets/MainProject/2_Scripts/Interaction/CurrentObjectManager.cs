@@ -41,6 +41,14 @@ public class CurrentObjectManager : MonoBehaviour
         else
         {
             currentObjCode = outterCurrentObjCode;
+
+            //이동한다는 센터라벨 출력 시 플레이어 이동 제한 메서드
+            if(currentObjCode == "Enter_Move")
+            {
+                managerConnector.playerManager.isMove = false;
+                Debug.Log("바로되나?");
+                managerConnector.playerManager.anim.SetBool("Walking", false);
+            }
         }
 
         currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);

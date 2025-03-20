@@ -48,14 +48,12 @@ public class UICenterLabelSetter : UIContentsManager
             currentDataPage++;
             DisplayPage(); 
         }
+
         else
         {
             if (uiCenterLabelOnOffManager != null)
             {
                 //플레이어 이동 제한걸기
-                managerConnector.playerManager.isMove = false;
-                Debug.Log("바로되나?");
-                managerConnector.playerManager.anim.SetBool("Walking", false);
                 uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
             }
         }

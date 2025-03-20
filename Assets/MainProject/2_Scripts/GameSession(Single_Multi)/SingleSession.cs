@@ -1,17 +1,14 @@
-using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using System.Linq;
-using static PortalSetter;
-using static UIQuestSetter;
+
 
 public class SingleSession : AbsctractGameSession
 {
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
+        portalSetter.portalManager.isNextMap = false;
+
         base.OnEnterPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == 1)
         {
@@ -40,6 +37,11 @@ public class SingleSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
+            if (!portalSetter.portalManager.isNextMap)
+            {
+                CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
+                portalSetter.portalManager.gameObject.SetActive(false);
+            }
             portalSetter.status = null;
         }
     }
@@ -78,6 +80,10 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Player
+    public override void ChangePlayerisMoved(PlayerManager playerManager)
+    {
+        playerManager.isMove = true;
+    }
     public override void MoveBasic(PlayerManager playerManager)
     {
         //MoveBasic(playerManager);

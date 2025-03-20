@@ -9,6 +9,8 @@ public class MultiSession : AbsctractGameSession
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
+        portalSetter.portalManager.isNextMap = false;
+
         base.OnEnterPortal(portalSetter, collision);
         if (portalSetter.status.playersInside.Count == PhotonNetwork.CurrentRoom.PlayerCount)
         {
@@ -41,6 +43,11 @@ public class MultiSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
+            if (!portalSetter.portalManager.isNextMap)
+            {
+                CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
+                portalSetter.portalManager.gameObject.SetActive(false);
+            }
             portalSetter.status = null;
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
@@ -87,6 +94,10 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region Player
+    public override void ChangePlayerisMoved(PlayerManager playerManager)
+    {
+        playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered);
+    }
     public override void MoveBasic(PlayerManager playerManager)
     {
         if (playerManager.PV.IsMine)
