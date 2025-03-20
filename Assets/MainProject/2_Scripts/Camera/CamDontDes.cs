@@ -47,13 +47,9 @@ public class CamDontDes : MonoBehaviour
         }
     }
     
-    public void SetBound(Collider2D newBound)
+    public void SetCamValue(Collider2D newBound, float lens)
     {
         confinerBound.BoundingShape2D = newBound;
-    }
-
-    public void SetLensSize(float lens)
-    {
         virtualCam.Lens.OrthographicSize = lens;
     }
 }

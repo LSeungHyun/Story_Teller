@@ -37,13 +37,14 @@ public class PlayerManager : MonoBehaviour
 
     public AbsctractGameSession session;
 
+    public bool isMove = true;
     #region LifeCycle Methods
     void Awake()
     {
         managerConnector.playerManager = this;
     }
     void Start()
-    {
+    { 
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
@@ -56,10 +57,20 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (session != null)
+        if (session != null && isMove)
+        {
+            //session.MoveBasic(this);
+            session.AnimControllerBasic(this);
+        }
+        //Move();
+    }
+
+    void FixedUpdate()
+    {
+        if (session != null && isMove)
         {
             session.MoveBasic(this);
-            session.AnimControllerBasic(this);
+            //session.AnimControllerBasic(this);
         }
         //Move();
     }

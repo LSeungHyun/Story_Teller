@@ -7,6 +7,7 @@ public class UICenterLabelSetter : UIContentsManager
     [SerializeField] public CenterLabelContainer centerLabelContainer;
 
     public SoundContainer soundContainer;
+    public ManagerConnector managerConnector;
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
 
     public CenterLabelList[] centerLabelList;
@@ -52,6 +53,9 @@ public class UICenterLabelSetter : UIContentsManager
             if (uiCenterLabelOnOffManager != null)
             {
                 //플레이어 이동 제한걸기
+                managerConnector.playerManager.isMove = false;
+                Debug.Log("바로되나?");
+                managerConnector.playerManager.anim.SetBool("Walking", false);
                 uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
             }
         }

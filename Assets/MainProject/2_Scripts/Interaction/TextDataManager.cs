@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using Photon.Pun;
 
@@ -163,6 +161,7 @@ public class HintData
 public class TextDataManager : MonoBehaviour
 {
     public SoundContainer soundContainer;
+    public ManagerConnector managerConnector;
     public PhotonView PV;
 
     [SerializeField]
@@ -234,6 +233,7 @@ public class TextDataManager : MonoBehaviour
                     if (loadingUI != null)
                     {
                         loadingUI.SetActive(false);
+                        managerConnector.playerManager.isMove = true;
                     }
 
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)

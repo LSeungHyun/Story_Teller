@@ -15,7 +15,6 @@ public class PortalManager : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
         session.MovePlayers(this);
-        CamDontDes.instance.SetBound(camBoundContainer.boundCol);
-        CamDontDes.instance.SetLensSize(camBoundContainer.lensSize);
+        CamDontDes.instance.SetCamValue(camBoundContainer.boundCol, camBoundContainer.lensSize);
     }
 }
