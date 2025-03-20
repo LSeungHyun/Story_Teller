@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerInstantiateManager : MonoBehaviour
@@ -7,7 +8,6 @@ public class PlayerInstantiateManager : MonoBehaviour
     public GameObject singlePlayer;
     public GameObject startPoint;
     public CamDontDes dontDes;
-
 
     public GameObject playerObj;
 

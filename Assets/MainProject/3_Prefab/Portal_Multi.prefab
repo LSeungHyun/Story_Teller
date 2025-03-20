@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 8621072024170991800}
   - component: {fileID: 4745741913036448539}
   - component: {fileID: 7804959822249940089}
+  - component: {fileID: 2661072924064145356}
   m_Layer: 0
   m_Name: Portal_Multi
   m_TagString: Untagged
@@ -508,3 +509,19 @@ MonoBehaviour:
   Enter_All: {fileID: 7383275434575719655}
   Enter_Wait: {fileID: 20419914988781811}
   isCutScene: 0
+  status:
+    playersInside: 
+--- !u!114 &2661072924064145356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727797901449105335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1646ea56fad050342b2b7aed0c40ab56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
+  camBound: {fileID: 0}

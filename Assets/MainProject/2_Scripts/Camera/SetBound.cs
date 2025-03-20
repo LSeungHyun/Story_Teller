@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class SetBound : MonoBehaviour
 {
+    public CamBoundContainer camBoundContainer;
     public Collider2D camBound;
-    public void OnEnterTrigger2D(Collider2D other)
+
+    public float curLensSize;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        CamDontDes.instance.SetBound(camBound);
-        this.gameObject.SetActive(false);
+        camBoundContainer.lensSize = curLensSize;
+        camBoundContainer.boundCol = camBound;
+        Debug.Log("카메라바운드 ㄱㄱ");
+        //this.gameObject.SetActive(false);
     }
 }

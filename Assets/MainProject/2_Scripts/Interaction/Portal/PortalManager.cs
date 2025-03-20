@@ -5,6 +5,7 @@ public class PortalManager : MonoBehaviour
 {
     public ManagerConnector managerConnector;
     public Vector3 spawnAt;
+    public CamBoundContainer camBoundContainer;
 
     private void Awake()
     {
@@ -14,5 +15,7 @@ public class PortalManager : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
         session.MovePlayers(this);
+        CamDontDes.instance.SetBound(camBoundContainer.boundCol);
+        CamDontDes.instance.SetLensSize(camBoundContainer.lensSize);
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class UICenterLabelSetter : UIContentsManager
 {
     [SerializeField] public CenterLabelContainer centerLabelContainer;
+
+    public SoundContainer soundContainer;
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
 
     public CenterLabelList[] centerLabelList;
@@ -49,6 +51,7 @@ public class UICenterLabelSetter : UIContentsManager
         {
             if (uiCenterLabelOnOffManager != null)
             {
+                //플레이어 이동 제한걸기
                 uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
             }
         }

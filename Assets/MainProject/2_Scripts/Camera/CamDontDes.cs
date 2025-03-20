@@ -7,14 +7,10 @@ public class CamDontDes : MonoBehaviour
 {
     public static CamDontDes instance;
 
+    public CamBoundContainer camBoundContainer;
     public CinemachineConfiner2D confinerBound;
     public CinemachineCamera virtualCam;
-    public Collider2D boundingShape;
-    public GameObject thePlayer;
 
-    private bool isTeleporting = false;
-
-    // Start is called before the first frame update
     void Awake()
     {
         if (instance == null)
@@ -41,35 +37,23 @@ public class CamDontDes : MonoBehaviour
             virtualCam.Lens.OrthographicSize = 2.5f;
     }
 
-    private void Update()
-    {
-        if (isTeleporting)
-        {
-            // 순간이동
-            this.transform.position = new Vector3(thePlayer.transform.position.x, thePlayer.transform.position.y, -10f);
-            isTeleporting = false;
-        }
-    }
 
     public void SetFollowCam(GameObject playerObj)
     {
         if (playerObj != null)
         {
-            // 필요한 참조 설정
             virtualCam.Follow = playerObj.transform;
             virtualCam.LookAt = playerObj.transform;
-            Debug.Log("카메라빨로우미");
         }
     }
     
     public void SetBound(Collider2D newBound)
     {
-        //boundingShape = newBound;
         confinerBound.BoundingShape2D = newBound;
     }
 
-    public void Teleport()
+    public void SetLensSize(float lens)
     {
-        isTeleporting = true;
+        virtualCam.Lens.OrthographicSize = lens;
     }
 }
