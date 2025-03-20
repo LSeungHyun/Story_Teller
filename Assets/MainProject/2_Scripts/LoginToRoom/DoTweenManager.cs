@@ -36,7 +36,7 @@ public class DoTweenManager : MonoBehaviour
             return;
         }
 
-        //SoundContainer.soundManager.Play("button_sound");
+        SoundContainer.soundManager.Play("button_sound");
 
         // 3) 이전 트위닝 중단
         rect.DOKill();
