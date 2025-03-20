@@ -209,11 +209,6 @@ public class PlayerManager : MonoBehaviour
     #endregion
 
     #region PunRPC
-    public void MoveTransform(Vector3 targetPosition)
-    {
-        transform.position = targetPosition;
-    }
-
     [PunRPC]
     public void RPC_ShowIsMineData(string objCode)
     {
@@ -223,5 +218,33 @@ public class PlayerManager : MonoBehaviour
         objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
     }
 
+    [PunRPC]
+    public void RPC_SetNextObj(string nextObjCode)
+    {
+        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode);
+    }
+
+    [PunRPC]
+    public void RPC_AddPlayerToDoneList(int playerID)
+    {
+        if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
+        {
+            managerConnector.uiNextSetter.status.playersIsDone.Add(playerID);
+        }
+    }
+
+    [PunRPC]
+    public void RPC_MoveTransform(Vector3 targetPosition)
+    {
+        transform.position = targetPosition;
+    }
+    [PunRPC]
+    public void RPC_SetHintState(string currentObjCode, string state)
+    {
+        managerConnector.hintStateManager.targetRow = managerConnector.hintStateManager.hintContainer.hintDatas.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (managerConnector.hintStateManager.targetRow == null)
+            return;
+        managerConnector.hintStateManager.targetRow.isUsed = state;
+    }
     #endregion
 }

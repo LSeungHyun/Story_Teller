@@ -45,6 +45,13 @@ public class UIDialogueSetter : UIPopUpManager
         DisplayPage();
     }
 
+    public override void UpdateNavigationButtons(int currentPage, int totalPages)
+    {
+        base.UpdateNavigationButtons(currentPage, totalPages);
+        if (closeBtn != null)
+            closeBtn.gameObject.SetActive(currentPage == totalPages);
+    }
+
     public override void DisplayPage()
     {
         if (dialogueList != null && dialogueList.Length > 0)

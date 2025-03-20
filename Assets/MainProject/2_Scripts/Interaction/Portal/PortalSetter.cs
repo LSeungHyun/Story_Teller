@@ -13,20 +13,18 @@ public class PortalSetter : MonoBehaviour
 
     public bool isCutScene = false;
 
+    [SerializeField] public PortalStatus status;
+    [System.Serializable]
+    public class PortalStatus
+    {
+        public List<int> playersInside = new List<int>();
+    }
+
     void Start()
     {
         SetPortalObjects(true, false, false);
     }
 
-    public PortalStatus status;
-
-    public class PortalStatus
-    {
-        public HashSet<int> playersInside = new HashSet<int>();
-        public Coroutine countdownCoroutine = null;
-    }
-
-    public Dictionary<PortalSetter, PortalStatus> portalStatuses = new Dictionary<PortalSetter, PortalStatus>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

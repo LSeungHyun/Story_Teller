@@ -4,7 +4,8 @@ using UnityEngine;
 public class ManagerConnector : ScriptableObject
 {
     public PlayerManager playerManager;
-    public PortalSetter portalSetter;
+    public UINextSetter uiNextSetter;
     public PortalManager portalManager;
+    public HintStateManager hintStateManager;
     public CurrentObjectManager currentObjectManager;
 }

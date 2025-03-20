@@ -27,6 +27,10 @@ public class UIImageSetter : UIPopUpManager
         currentDataPage = 1;
         DisplayPage();
     }
+    public override void UpdateNavigationButtons(int currentPage, int totalPages)
+    {
+        base.UpdateNavigationButtons(currentPage, totalPages);
+    }
 
     public override void DisplayPage()
     {

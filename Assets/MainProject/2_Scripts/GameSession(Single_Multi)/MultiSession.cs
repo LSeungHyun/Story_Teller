@@ -1,5 +1,8 @@
 using UnityEngine;
 using Photon.Pun;
+using static UIQuestSetter;
+using static UINextSetter;
+using System.Linq;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -38,7 +41,7 @@ public class MultiSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalStatuses.Remove(portalSetter);
+            portalSetter.status = null;
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
@@ -49,6 +52,37 @@ public class MultiSession : AbsctractGameSession
     {
         portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
         base.MovePlayers(portalManager);
+    }
+    #endregion
+
+    #region IsNext
+    public override void AfterQuest(UIQuestSetter uiQuestSetter)
+    {
+        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiQuestSetter.uiNextSetter.AddPlayerToDoneList();
+        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
+    }
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
+    {
+        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
+        uiNextSetter.AddPlayerToDoneList();
+        bool isdone = uiNextSetter.CheckEveryoneIsDone();
+        if (isdone)
+        {
+            uiNextSetter.status = new DoneStatus();
+            uiNextSetter.CheckNextCodeBasic();
+        }
+    }
+    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode)
+    {
+        uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_SetNextObj", RpcTarget.AllBuffered, nextObjCode);
+    }
+    #endregion
+
+    #region Hint
+    public override void SetHintState(HintStateManager hintStateManager, string currentObjCode, string state)
+    {
+        hintStateManager.managerConnector.playerManager.PV.RPC("RPC_SetHintState", RpcTarget.AllBuffered, currentObjCode, state);
     }
     #endregion
 
