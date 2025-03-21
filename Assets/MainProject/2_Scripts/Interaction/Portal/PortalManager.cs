@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PortalManager : MonoBehaviour
 {
+    //public PortalSetter portalSetter;
     public ManagerConnector managerConnector;
     public Vector3 spawnAt;
     public CamBoundContainer camBoundContainer;

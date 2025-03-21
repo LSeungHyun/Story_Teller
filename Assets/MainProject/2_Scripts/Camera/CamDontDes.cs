@@ -49,13 +49,13 @@ public class CamDontDes : MonoBehaviour
             Destroy(PV);
         }
     }
-    public void SetFollowCam(GameObject playerObj)
-    {
-        if (playerObj != null)
-        {
-            session.SetCamera(this, playerObj);
-        }
-    }
+    //public void SetFollowCam(GameObject playerObj)
+    //{
+    //    if (playerObj != null)
+    //    {
+    //        session.SetCamera(this, playerObj);
+    //    }
+    //}
     
     public void SetCamValue(Collider2D newBound, float lens)
     {

@@ -57,8 +57,12 @@ public class MultiSession : AbsctractGameSession
     {
         Debug.Log("멀티로 옮기기!");
         base.MovePlayers(portalManager);
-        
-        portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
+
+        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
+        {
+            portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
+        }
+            
     }
     #endregion
 
