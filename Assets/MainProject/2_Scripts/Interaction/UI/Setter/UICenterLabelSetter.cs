@@ -53,7 +53,6 @@ public class UICenterLabelSetter : UIContentsManager
         {
             if (uiCenterLabelOnOffManager != null)
             {
-                //플레이어 이동 제한걸기
                 uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
             }
         }

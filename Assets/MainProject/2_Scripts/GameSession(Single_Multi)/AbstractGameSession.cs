@@ -38,7 +38,7 @@ public abstract class AbsctractGameSession
 
     #region Player
 
-    public abstract void ChangePlayerisMoved(PlayerManager playerManager);
+    public abstract void ChangePlayerisMoved(PlayerManager playerManager,bool isMove, bool isAnim);
     public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");

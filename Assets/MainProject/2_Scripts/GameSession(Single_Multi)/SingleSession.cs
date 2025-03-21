@@ -80,9 +80,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Player
-    public override void ChangePlayerisMoved(PlayerManager playerManager)
+    public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim)
     {
-        playerManager.isMove = true;
+        playerManager.ChangePlayerisMove(isMove, isAnim);
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
