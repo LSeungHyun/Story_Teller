@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -256,6 +257,13 @@ public class PlayerManager : MonoBehaviour
         if (managerConnector.hintStateManager.targetRow == null)
             return;
         managerConnector.hintStateManager.targetRow.isUsed = state;
+    }
+
+    [PunRPC]
+    public void ChangePlayerisMove(bool isMove, bool isAnim)
+    {
+        this.isMove = isMove;
+        anim.SetBool("Walking", isAnim);
     }
     #endregion
 }

@@ -38,7 +38,7 @@ public abstract class AbsctractGameSession
 
     #region Player
 
-    public abstract void ChangePlayerisMoved(PlayerManager playerManager);
+    public abstract void ChangePlayerisMoved(PlayerManager playerManager,bool isMove, bool isAnim);
     public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
@@ -185,5 +185,14 @@ public abstract class AbsctractGameSession
         uiCenterLabelOnOffManager.centerLabelGroup.SetActive(false);
         uiCenterLabelOnOffManager.uiCenterLabelSetter.ClearData();
     }
+    #endregion
+
+    #region Camera
+
+    public virtual void SetCamera(CamDontDes camera, GameObject playerObj) {
+        camera.virtualCam.Follow = playerObj.transform;
+        camera.virtualCam.LookAt = playerObj.transform;
+    }
+
     #endregion
 }

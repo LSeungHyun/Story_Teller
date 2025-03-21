@@ -94,9 +94,9 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region Player
-    public override void ChangePlayerisMoved(PlayerManager playerManager)
+    public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove,bool isAnim)
     {
-        playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered);
+        playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered,isMove,isAnim);
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
@@ -157,6 +157,16 @@ public class MultiSession : AbsctractGameSession
     public override void CloseCenterLabelBasic(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
     {
         base.CloseCenterLabelBasic(uiCenterLabelOnOffManager);
+    }
+    #endregion
+
+    #region Camera
+    public override void SetCamera(CamDontDes camera, GameObject playerObj)
+    {
+        if (camera.PV.IsMine)
+        {
+            base.SetCamera(camera, playerObj);
+        }
     }
     #endregion
 }

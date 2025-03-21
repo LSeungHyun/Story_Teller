@@ -80,9 +80,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Player
-    public override void ChangePlayerisMoved(PlayerManager playerManager)
+    public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim)
     {
-        playerManager.isMove = true;
+        playerManager.ChangePlayerisMove(isMove, isAnim);
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
@@ -126,6 +126,13 @@ public class SingleSession : AbsctractGameSession
     public override void CloseCenterLabelBasic(UICenterLabelOnOffManager uiCenterLabelOnOffManager)
     {
         base.CloseCenterLabelBasic(uiCenterLabelOnOffManager);
+    }
+    #endregion
+
+    #region Camera
+    public override void SetCamera(CamDontDes camera, GameObject playerObj)
+    {
+        base.SetCamera(camera, playerObj);
     }
     #endregion
 }
