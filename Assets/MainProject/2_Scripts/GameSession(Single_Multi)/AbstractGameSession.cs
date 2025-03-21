@@ -22,7 +22,7 @@ public abstract class AbsctractGameSession
     }
     public virtual void MovePlayers(PortalManager portalManager)
     {
-        portalManager.gameObject.SetActive(false);
+
     }
     #endregion
 
@@ -37,6 +37,8 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region Player
+
+    public abstract void ChangePlayerisMoved(PlayerManager playerManager,bool isMove, bool isAnim);
     public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");

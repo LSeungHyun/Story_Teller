@@ -36,17 +36,25 @@ public class CurrentObjectManager : MonoBehaviour
 
     public void SetCurrentObjData(string outterCurrentObjCode)
     {
+        var session = GameManager.Instance.Session;
         if (outterCurrentObjCode == null)
             currentObjCode = objDataTypeContainer.objCode;
         else
         {
             currentObjCode = outterCurrentObjCode;
+
+            //이동한다는 센터라벨 출력 시 플레이어 이동 제한 메서드
+            if(currentObjCode == "Enter_Move")
+            {
+                session.ChangePlayerisMoved(managerConnector.playerManager, false,false);
+                Debug.Log("바로되나?");
+            }
         }
 
         currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null)
             return;
-        var session = GameManager.Instance.Session;
+        
         session.HandleInteractionBasic(this);
     }
 }
