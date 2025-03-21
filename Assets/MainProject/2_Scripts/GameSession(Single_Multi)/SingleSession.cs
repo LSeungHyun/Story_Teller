@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Linq;
 
-
 public class SingleSession : AbsctractGameSession
 {
     #region Portal
@@ -47,7 +46,7 @@ public class SingleSession : AbsctractGameSession
     }
     public override void MovePlayers(PortalManager portalManager)
     {
-        portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
+        Debug.Log("싱글로 옮기기!");
         base.MovePlayers(portalManager);
     }
     #endregion
@@ -133,6 +132,18 @@ public class SingleSession : AbsctractGameSession
     public override void SetCamera(CamDontDes camera, GameObject playerObj)
     {
         base.SetCamera(camera, playerObj);
+    }
+
+    public override void SetBoundLens(SetBound setBound)
+    {
+        base.SetBoundLens(setBound);
+    }
+
+    public override void SetCamValue(CamDontDes camDontDes, Collider2D newBound, float lens)
+    {
+        base.SetCamValue(camDontDes, newBound, lens);
+        Debug.Log("1" + newBound);
+        Debug.Log("2" + lens);
     }
     #endregion
 }

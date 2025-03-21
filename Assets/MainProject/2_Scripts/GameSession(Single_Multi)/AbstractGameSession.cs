@@ -1,8 +1,6 @@
-using Photon.Pun;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using static PortalSetter;
-using static UIQuestSetter;
 
 
 public abstract class AbsctractGameSession
@@ -22,7 +20,7 @@ public abstract class AbsctractGameSession
     }
     public virtual void MovePlayers(PortalManager portalManager)
     {
-
+        portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
     }
     #endregion
 
@@ -189,10 +187,21 @@ public abstract class AbsctractGameSession
 
     #region Camera
 
-    public virtual void SetCamera(CamDontDes camera, GameObject playerObj) {
-        camera.virtualCam.Follow = playerObj.transform;
-        camera.virtualCam.LookAt = playerObj.transform;
+    public virtual void SetCamera(CamDontDes camDontDes, GameObject playerObj) {
+        camDontDes.virtualCam.Follow = playerObj.transform;
+        camDontDes.virtualCam.LookAt = playerObj.transform;
     }
 
+    public virtual void SetBoundLens(SetBound setBound)
+    {
+        setBound.camBoundContainer.lensSize = setBound.curLensSize;
+        setBound.camBoundContainer.boundCol = setBound.camBound;
+    }
+
+    public virtual void SetCamValue(CamDontDes camDontDes, Collider2D newBound, float lens)
+    {
+        camDontDes.confinerBound.BoundingShape2D = newBound;
+        camDontDes.virtualCam.Lens.OrthographicSize = lens;
+    }
     #endregion
 }

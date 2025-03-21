@@ -1,8 +1,6 @@
 using UnityEngine;
 using Photon.Pun;
-using static UIQuestSetter;
 using static UINextSetter;
-using System.Linq;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -57,8 +55,10 @@ public class MultiSession : AbsctractGameSession
     }
     public override void MovePlayers(PortalManager portalManager)
     {
-        portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
+        Debug.Log("멀티로 옮기기!");
         base.MovePlayers(portalManager);
+        
+        portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
     }
     #endregion
 
@@ -163,9 +163,27 @@ public class MultiSession : AbsctractGameSession
     #region Camera
     public override void SetCamera(CamDontDes camera, GameObject playerObj)
     {
-        if (camera.PV.IsMine)
+        if (camera.managerConnector.playerManager.PV.IsMine)
         {
             base.SetCamera(camera, playerObj);
+        }
+    }
+
+    public override void SetBoundLens(SetBound setBound)
+    {
+        base.SetBoundLens(setBound);
+        if (setBound.managerConnector.playerManager.PV.IsMine)
+        {
+            
+        }
+    }
+
+    public override void SetCamValue(CamDontDes camDontDes, Collider2D newBound, float lens)
+    {
+        base.SetCamValue(camDontDes, newBound, lens);
+        if (camDontDes.managerConnector.playerManager.PV.IsMine)
+        {
+            
         }
     }
     #endregion
