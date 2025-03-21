@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerInstantiateManager : MonoBehaviour
@@ -13,20 +14,25 @@ public class PlayerInstantiateManager : MonoBehaviour
     private void Awake()
     {
         var session = GameManager.Instance.Session;
-        
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
         }
 
+
         if (GameManager.Instance.isType == false)
         {
+            //Debug.Log("싱글모드입니다");
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
             session.SetCamera(dontDes, playerObj);
         }
 
         else
         {
+
+            //var session = GameManager.Instance.Session;
+
+            //Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
             // 2) 인덱스별로 다른 프리팹 이름
@@ -59,7 +65,7 @@ public class PlayerInstantiateManager : MonoBehaviour
             playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
             //dontDes.SetFollowCam(playerObj);
 
-            //var session = GameManager.Instance.Session;
+           
             session.SetCamera(dontDes, playerObj);
         }
         //PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
