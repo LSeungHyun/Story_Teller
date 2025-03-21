@@ -28,6 +28,9 @@ public class PlayerInstantiateManager : MonoBehaviour
 
         else
         {
+
+            var session = GameManager.Instance.Session;
+
             //Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
@@ -59,7 +62,10 @@ public class PlayerInstantiateManager : MonoBehaviour
 
             // 4) PhotonNetwork.Instantiate 호출 (프리팹 이름, 위치, 회전)
             playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
-            dontDes.SetFollowCam(playerObj);
+            //dontDes.SetFollowCam(playerObj);
+
+           
+            session.SetCamera(dontDes, playerObj);
         }
         //PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
 

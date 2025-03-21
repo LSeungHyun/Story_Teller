@@ -159,4 +159,14 @@ public class MultiSession : AbsctractGameSession
         base.CloseCenterLabelBasic(uiCenterLabelOnOffManager);
     }
     #endregion
+
+    #region Camera
+    public override void SetCamera(CamDontDes camera, GameObject playerObj)
+    {
+        if (camera.PV.IsMine)
+        {
+            base.SetCamera(camera, playerObj);
+        }
+    }
+    #endregion
 }

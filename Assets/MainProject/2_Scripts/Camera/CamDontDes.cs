@@ -1,4 +1,3 @@
-using System.Collections;
 using Photon.Pun;
 using Unity.Cinemachine;
 using UnityEngine;
@@ -7,12 +6,17 @@ public class CamDontDes : MonoBehaviour
 {
     public static CamDontDes instance;
 
+    public PhotonView PV;
+
     public CamBoundContainer camBoundContainer;
     public CinemachineConfiner2D confinerBound;
     public CinemachineCamera virtualCam;
 
+    public AbsctractGameSession session;
     void Awake()
     {
+        session = GameManager.Instance.Session;
+
         if (instance == null)
         {
             instance = this;
@@ -37,13 +41,18 @@ public class CamDontDes : MonoBehaviour
             virtualCam.Lens.OrthographicSize = 2.5f;
     }
 
-
+    private void Start()
+    {
+        if (!GameManager.Instance.isType)
+        {
+            Destroy(PV);
+        }
+    }
     public void SetFollowCam(GameObject playerObj)
     {
         if (playerObj != null)
         {
-            virtualCam.Follow = playerObj.transform;
-            virtualCam.LookAt = playerObj.transform;
+            session.SetCamera(this, playerObj);
         }
     }
     

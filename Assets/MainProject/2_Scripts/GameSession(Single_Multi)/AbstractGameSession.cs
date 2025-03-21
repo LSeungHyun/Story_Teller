@@ -186,4 +186,13 @@ public abstract class AbsctractGameSession
         uiCenterLabelOnOffManager.uiCenterLabelSetter.ClearData();
     }
     #endregion
+
+    #region Camera
+
+    public virtual void SetCamera(CamDontDes camera, GameObject playerObj) {
+        camera.virtualCam.Follow = playerObj.transform;
+        camera.virtualCam.LookAt = playerObj.transform;
+    }
+
+    #endregion
 }

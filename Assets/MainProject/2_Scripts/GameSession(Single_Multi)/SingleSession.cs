@@ -128,4 +128,11 @@ public class SingleSession : AbsctractGameSession
         base.CloseCenterLabelBasic(uiCenterLabelOnOffManager);
     }
     #endregion
+
+    #region Camera
+    public override void SetCamera(CamDontDes camera, GameObject playerObj)
+    {
+        base.SetCamera(camera, playerObj);
+    }
+    #endregion
 }
