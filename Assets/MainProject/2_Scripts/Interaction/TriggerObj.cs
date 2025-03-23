@@ -4,6 +4,7 @@ public class TriggerObj : MonoBehaviour
 {
     public string objCode;
     public bool isPassiveObject = false;
+    public bool isTouchObject = false;
 
     private void OnEnable()
     {
