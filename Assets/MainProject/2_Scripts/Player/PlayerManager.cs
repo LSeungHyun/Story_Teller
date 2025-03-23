@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
-using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -60,7 +59,6 @@ public class PlayerManager : MonoBehaviour
     {
         if (session != null && isMove)
         {
-            //session.MoveBasic(this);
             session.AnimControllerBasic(this);
         }
         //Move();
@@ -71,7 +69,6 @@ public class PlayerManager : MonoBehaviour
         if (session != null && isMove)
         {
             session.MoveBasic(this);
-            //session.AnimControllerBasic(this);
         }
         //Move();
     }

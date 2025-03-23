@@ -13,6 +13,7 @@ public class PlayerInstantiateManager : MonoBehaviour
 
     private void Awake()
     {
+        var session = GameManager.Instance.Session;
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
@@ -23,13 +24,13 @@ public class PlayerInstantiateManager : MonoBehaviour
         {
             //Debug.Log("싱글모드입니다");
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
-            dontDes.SetFollowCam(playerObj);
+            session.SetCamera(dontDes, playerObj);
         }
 
         else
         {
 
-            var session = GameManager.Instance.Session;
+            //var session = GameManager.Instance.Session;
 
             //Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);

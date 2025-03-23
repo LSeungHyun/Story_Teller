@@ -9,6 +9,7 @@ public class CamDontDes : MonoBehaviour
     public PhotonView PV;
 
     public CamBoundContainer camBoundContainer;
+    public ManagerConnector managerConnector;
     public CinemachineConfiner2D confinerBound;
     public CinemachineCamera virtualCam;
 
@@ -16,7 +17,7 @@ public class CamDontDes : MonoBehaviour
     void Awake()
     {
         session = GameManager.Instance.Session;
-
+        camBoundContainer.camDontDes = this;
         if (instance == null)
         {
             instance = this;
@@ -48,17 +49,23 @@ public class CamDontDes : MonoBehaviour
             Destroy(PV);
         }
     }
-    public void SetFollowCam(GameObject playerObj)
-    {
-        if (playerObj != null)
-        {
-            session.SetCamera(this, playerObj);
-        }
-    }
+    //public void SetFollowCam(GameObject playerObj)
+    //{
+    //    if (playerObj != null)
+    //    {
+    //        session.SetCamera(this, playerObj);
+    //    }
+    //}
     
     public void SetCamValue(Collider2D newBound, float lens)
     {
-        confinerBound.BoundingShape2D = newBound;
-        virtualCam.Lens.OrthographicSize = lens;
+        session.SetCamValue(this, newBound, lens);
+    }
+
+    [PunRPC]
+    public void RPC_SetCamValue()
+    {
+        SetCamValue(camBoundContainer.boundCol, camBoundContainer.lensSize);
+
     }
 }
