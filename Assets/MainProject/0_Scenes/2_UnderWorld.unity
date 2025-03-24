@@ -4413,6 +4413,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 897817388}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &243312049 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6750984227825645562, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
+  m_PrefabInstance: {fileID: 1279488095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243937634
 GameObject:
   m_ObjectHideFlags: 0
@@ -9992,7 +9997,7 @@ Transform:
   m_GameObject: {fileID: 598862031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 179.83998, y: -0.59999996, z: -10}
+  m_LocalPosition: {x: 0.53316945, y: -1.5445828, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11126,7 +11131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PV: {fileID: 686345622}
   singlePlayer: {fileID: 1839602670562630100, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
-  startPoint: {fileID: 31407283}
+  startPoint: {fileID: 76475271}
   dontDes: {fileID: 1922207495}
   playerObj: {fileID: 0}
 --- !u!4 &686345621
@@ -32314,7 +32319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoundingShape2D: {fileID: 739780918}
+  BoundingShape2D: {fileID: 243312049}
   Damping: 0
   SlowingDistance: 0
   OversizeWindow:
