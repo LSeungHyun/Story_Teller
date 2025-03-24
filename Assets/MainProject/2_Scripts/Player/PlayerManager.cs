@@ -5,6 +5,7 @@ using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
+    public float testSpeed = 3f;
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
     public PhotonView PV;
@@ -44,7 +45,8 @@ public class PlayerManager : MonoBehaviour
         managerConnector.playerManager = this;
     }
     void Start()
-    { 
+    {
+        testSpeed = 3f;
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
