@@ -12,5 +12,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ce8d62a138faa4458af9a4d449601d9, type: 3}
   m_Name: NextDataContainer
   m_EditorClassIdentifier: 
-  objCode: 
-  rowDatas: []
+  nextDatas:
+  - objCode: UnderWorld_SteelHouse_Driver_Star
+    isNextData: CutScene_GukHwa
+    isNextObj: 
+  - objCode: UnderWorld_SteelHouse_Quest
+    isNextData: 
+    isNextObj: Inv_Sara
+  - objCode: UnderWorld_SteelHouse_Quest
+    isNextData: 
+    isNextObj: UnderWorld_SteelHouse_Quest
+  - objCode: Enter_Wait
+    isNextData: Enter_Move
+    isNextObj: 
+  - objCode: Enter_Move
+    isNextData: 
+    isNextObj: Portal_Manager
+  - objCode: Enter_Move
+    isNextData: 
+    isNextObj: Arrive
+  - objCode: Enter_CutScene_Wait
+    isNextData: 
+    isNextObj: CutScene_Manager
+  - objCode: CutScene_GukHwa
+    isNextData: 
+    isNextObj: Ghost_CutScene
+  - objCode: UnderWorld_Tutorial_Sara
+    isNextData: 
+    isNextObj: Tutorial_To_Road
+  - objCode: UnderWorld_Tutorial_Sara
+    isNextData: UnderWorld_SteelHouse_Quest
+    isNextObj: 
+  - objCode: 
+    isNextData: 
+    isNextObj: 
+  - objCode: LivingWorld_FlowerShop_In
+    isNextData: 
+    isNextObj: LivingWorld_FlowerShop_In
+  - objCode: LivingWorld_FlowerShop_In
+    isNextData: 
+    isNextObj: Portal_Road_To_Flower
+  - objCode: LivingWorld_FlowerShop_Quest
+    isNextData: LivingWorld_FlowerShop_Answer
+    isNextObj: 
+  - objCode: LivingWorld_FlowerShop_Answer
+    isNextData: 
+    isNextObj: Portal_Flower_To_Road
+  - objCode: LivingWorld_FlowerShop_Answer
+    isNextData: 
+    isNextObj: Portal_Road_To_Bakery
+  - objCode: LivingWorld_FlowerShop_Answer
+    isNextData: Active_Arrow
+    isNextObj: 
+  - objCode: LivingWorld_Bakery_In
+    isNextData: 
+    isNextObj: LivingWorld_Bakery_In
+  - objCode: LivingWorld_Bakery_In
+    isNextData: 
+    isNextObj: Portal_Road_To_Bakery
+  - objCode: LivingWorld_Bakery_Quest
+    isNextData: LivingWorld_Bakery_Answer
+    isNextObj: 
+  - objCode: LivingWorld_Bakery_Girl
+    isNextData: 
+    isNextObj: LivingWorld_Bakery_Man
+  - objCode: LivingWorld_Bakery_Man
+    isNextData: 
+    isNextObj: Portal_Bakery_To_Road
+  - objCode: LivingWorld_Bakery_Man
+    isNextData: 
+    isNextObj: LivingWorld_Road_Dial
+  - objCode: LivingWorld_Bakery_Man
+    isNextData: Active_Arrow
+    isNextObj: 
+  - objCode: LivingWorld_Road_Dial
+    isNextData: LivingWorld_Road_Quest
+    isNextObj: 
+  - objCode: LivingWorld_Road_Quest
+    isNextData: 
+    isNextObj: Portal_Road_To_JungCafe
+  - objCode: LivingWorld_JungCafe_In
+    isNextData: 
+    isNextObj: LivingWorld_JungCafe_In
+  - objCode: LivingWorld_JungCafe_In
+    isNextData: 
+    isNextObj: Portal_Road_To_JungCafe
