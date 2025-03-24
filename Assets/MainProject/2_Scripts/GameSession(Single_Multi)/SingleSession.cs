@@ -36,6 +36,7 @@ public class SingleSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
+            portalSetter.portalManager.gameObject.SetActive(false);
             if (!portalSetter.portalManager.isNextMap)
             {
                 CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
@@ -142,8 +143,8 @@ public class SingleSession : AbsctractGameSession
     public override void SetCamValue(CamDontDes camDontDes, Collider2D newBound, float lens)
     {
         base.SetCamValue(camDontDes, newBound, lens);
-        Debug.Log("1" + newBound);
-        Debug.Log("2" + lens);
+        //Debug.Log("1" + newBound);
+        //Debug.Log("2" + lens);
     }
     #endregion
 }
