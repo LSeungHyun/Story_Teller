@@ -77,9 +77,16 @@ public abstract class AbsctractGameSession
             return;
         }
         playerManager.interactableStack.Remove(collision);
-        playerManager.interactableStack.Add(collision);
-        playerManager.UpdateInteractObject();
-        playerManager.ChangeConfirmOn(true);
+        playerManager.interactableStack.Add(collision); 
+        if (collision.GetComponent<TriggerObj>().isTouchObject)
+        {
+            CurrentObjectManager.Instance.SetCurrentObjData(collision.GetComponent<TriggerObj>().objCode);
+        }
+        else
+        {
+            playerManager.UpdateInteractObject();
+            playerManager.ChangeConfirmOn(true);
+        }
     }
     public virtual void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
