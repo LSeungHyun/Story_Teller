@@ -1,8 +1,6 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using System.Linq;
-
 
 public class BubbleSetter : UIContentsManager
 {
@@ -13,7 +11,7 @@ public class BubbleSetter : UIContentsManager
     public float showTime = 2f;
     private GameObject currentBalloon;
     public Vector3 currentObjOffset;
-    private TextMeshPro textDisplay;
+    private Text textDisplay;
 
     [Header("말풍선 설정")]
     public GameObject balloonPrefab;
@@ -23,8 +21,6 @@ public class BubbleSetter : UIContentsManager
     public float fixedWidth = 1.2f;
     public float minHeight = 0.2f;
     public float lineHeight = 0.15f;
-
-
 
     public override void SetData(string currentObjCode)
     {
@@ -42,7 +38,7 @@ public class BubbleSetter : UIContentsManager
         if (balloonPrefab != null)
         {
             currentBalloon = Instantiate(balloonPrefab, currentObjOffset, Quaternion.identity);
-            textDisplay = currentBalloon.GetComponentInChildren<TextMeshPro>();
+            textDisplay = currentBalloon.GetComponentInChildren<Text>();
             textDisplay.text = textData;
 
             Vector3 newPosition = currentObjOffset + new Vector3(0, offsetY, 0);
@@ -65,15 +61,15 @@ public class BubbleSetter : UIContentsManager
     {
         if (currentBalloon != null)
         {
-            SpriteRenderer balloonRenderer = currentBalloon.GetComponent<SpriteRenderer>();
+            SpriteRenderer balloonRenderer = currentBalloon.GetComponentInChildren<SpriteRenderer>();
             if (balloonRenderer != null && textDisplay != null)
             {
-                textDisplay.ForceMeshUpdate();
-                int lineCount = textDisplay.textInfo.lineCount;
+                // 텍스트의 줄 수를 계산 (줄바꿈 문자 기준)
+                int lineCount = textData.Split('\n').Length;
 
                 float height = Mathf.Max(minHeight, lineCount * lineHeight);
                 balloonRenderer.size = new Vector2(fixedWidth, height);
-                //textDisplay.transform.localPosition = new Vector3(0, height / 2, 0); 나중에 모양 변경할때 쓰일듯
+                // textDisplay.transform.localPosition = new Vector3(0, height / 2, 0); // 나중에 모양 변경 시 참고
             }
         }
     }
@@ -85,7 +81,4 @@ public class BubbleSetter : UIContentsManager
             Destroy(currentBalloon);
         }
     }
-
-
 }
-
