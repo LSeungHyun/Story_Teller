@@ -2932,7 +2932,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2036225044}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SetSFXVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &453183117
 GameObject:
   m_ObjectHideFlags: 0
@@ -11504,7 +11516,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2036225044}
+        m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
+        m_MethodName: SetBGMVolume
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1780483746
 GameObject:
   m_ObjectHideFlags: 0
@@ -13294,7 +13318,7 @@ AudioSource:
   m_GameObject: {fileID: 2036225041}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -390016244778730044, guid: 098952632d9b290469d79dfe319dd562, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -13391,7 +13415,7 @@ AudioSource:
   m_GameObject: {fileID: 2036225041}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 6750828039033167670, guid: 098952632d9b290469d79dfe319dd562, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -13492,6 +13516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
+  AudioSettingsData: {fileID: 11400000, guid: 10f677811aa2f5a4eb0047ec6ac518da, type: 2}
+  masterMixer: {fileID: 24100000, guid: 098952632d9b290469d79dfe319dd562, type: 2}
   bgmSource: {fileID: 2036225043}
   sfxSource: {fileID: 2036225042}
   soundList:

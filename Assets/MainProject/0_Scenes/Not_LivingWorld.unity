@@ -431,6 +431,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
+  soundContainer: {fileID: 0}
+  managerConnector: {fileID: 0}
   uiCenterLabelOnOffManager: {fileID: 29969177}
   centerLabelList: []
   textDisplay: {fileID: 704408789}
@@ -666,6 +668,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: CutScene_GukHwa
   isPassiveObject: 1
+  isTouchObject: 0
 --- !u!4 &34807235
 Transform:
   m_ObjectHideFlags: 0
@@ -1467,6 +1470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Sum
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &73028499
 GameObject:
   m_ObjectHideFlags: 0
@@ -2736,6 +2740,124 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1208074695570962333, guid: 2483b0de72a872141b9941cb855d69a2, type: 3}
   m_PrefabInstance: {fileID: 143246910}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &143750303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 143750304}
+  - component: {fileID: 143750308}
+  - component: {fileID: 143750307}
+  - component: {fileID: 143750306}
+  - component: {fileID: 143750305}
+  m_Layer: 6
+  m_Name: Call
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &143750304
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143750303}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0007, y: 0.0007, z: 0.0007}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1130404995}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.42}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &143750305
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143750303}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &143750306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143750303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 10, y: 10}
+  m_UseGraphicAlpha: 1
+--- !u!114 &143750307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143750303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.9316315, b: 0.8443396, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7b51f0c7141a0be45b4871c65e8f38fd, type: 3}
+    m_FontSize: 170
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 200
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\uC190\uB2D8, \uC9C0\uAE08 \uC624\uC138\uC694 ~"
+--- !u!222 &143750308
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143750303}
+  m_CullTransparentMesh: 1
 --- !u!1 &152257854
 GameObject:
   m_ObjectHideFlags: 0
@@ -3691,7 +3813,7 @@ Transform:
   m_GameObject: {fileID: 194744623}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.65, y: -1.58, z: -10}
+  m_LocalPosition: {x: 59.075554, y: -1.68, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4235,7 +4357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &218661057
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4791,6 +4913,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Quest
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &264467318
 GameObject:
   m_ObjectHideFlags: 0
@@ -5022,6 +5145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
+  managerConnector: {fileID: 0}
   PV: {fileID: 0}
   REDIRECT_URI: https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
@@ -5309,6 +5433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Girl3
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &335964352
 GameObject:
   m_ObjectHideFlags: 0
@@ -6228,6 +6353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Quest
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &388751012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7281,6 +7407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Girl2
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &457015025
 GameObject:
   m_ObjectHideFlags: 0
@@ -7626,6 +7753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Neung
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &466678005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8389,6 +8517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Sae
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &517547884
 GameObject:
   m_ObjectHideFlags: 0
@@ -9015,6 +9144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 545021346}
   - component: {fileID: 545021347}
+  - component: {fileID: 545021348}
   m_Layer: 0
   m_Name: First
   m_TagString: Untagged
@@ -9092,6 +9222,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &545021348
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545021345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &546984407
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,6 +9346,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man3
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &552965832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9573,6 +9726,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Chija
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &573402252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9774,6 +9928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Bal
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &577060131
 GameObject:
   m_ObjectHideFlags: 0
@@ -15960,6 +16115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Pul
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &937445422
 GameObject:
   m_ObjectHideFlags: 0
@@ -17410,6 +17566,7 @@ GameObject:
   - component: {fileID: 1007732822}
   - component: {fileID: 1007732823}
   - component: {fileID: 1007732824}
+  - component: {fileID: 1007732825}
   m_Layer: 0
   m_Name: Staff
   m_TagString: Untagged
@@ -17425,7 +17582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1007732821}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4, y: -0.625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -17502,6 +17659,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Girl
   isPassiveObject: 0
+  isTouchObject: 0
+--- !u!95 &1007732825
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007732821}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1009131484
 GameObject:
   m_ObjectHideFlags: 0
@@ -18212,6 +18392,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Jasmine
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1056568989
 GameObject:
   m_ObjectHideFlags: 0
@@ -19127,6 +19308,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 218661057}
+  - {fileID: 143750304}
   m_Father: {fileID: 1007732822}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -20833,6 +21015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man1
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &1199116948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21798,6 +21981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Girl
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &1266736787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25067,6 +25251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   spawnAt: {x: 0, y: 0, z: 0}
+  camBoundContainer: {fileID: 0}
+  isNextMap: 0
 --- !u!1001 &1433145525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25297,6 +25483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Man
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1451362334
 GameObject:
   m_ObjectHideFlags: 0
@@ -25369,7 +25556,7 @@ Transform:
   m_GameObject: {fileID: 1451362334}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 59.65, y: -1.58, z: -10}
+  m_LocalPosition: {x: 56.615, y: -2.06, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25469,7 +25656,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 4f90c11b176cd0a4b81658103d2eee66, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -25510,6 +25697,8 @@ PlayableDirector:
     value: {fileID: 8374147106429244912}
   - key: {fileID: 4941190852937533589, guid: 4f90c11b176cd0a4b81658103d2eee66, type: 2}
     value: {fileID: 1414464826}
+  - key: {fileID: 7751436808814689513, guid: 4f90c11b176cd0a4b81658103d2eee66, type: 2}
+    value: {fileID: 1998893073}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 0}
@@ -27735,6 +27924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Girl4
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1566965356
 GameObject:
   m_ObjectHideFlags: 0
@@ -29345,6 +29535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Mok
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1684697556
 GameObject:
   m_ObjectHideFlags: 0
@@ -31277,8 +31468,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1425992076}
-  - {fileID: 1998893074}
   - {fileID: 1458073157}
+  - {fileID: 1998893074}
   - {fileID: 52739376}
   - {fileID: 1350179375}
   - {fileID: 56703472}
@@ -31956,6 +32147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Lilac
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &1878874193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32487,6 +32679,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_FlowerShop_Flower_Su
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1913650142
 GameObject:
   m_ObjectHideFlags: 0
@@ -33694,6 +33887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Girl1
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1961402409
 GameObject:
   m_ObjectHideFlags: 0
@@ -33894,12 +34088,12 @@ GameObject:
   - component: {fileID: 1998893074}
   - component: {fileID: 1998893075}
   m_Layer: 0
-  m_Name: Customer_CutScene
+  m_Name: Owner_CutScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1998893074
 Transform:
   m_ObjectHideFlags: 0
@@ -33909,7 +34103,7 @@ Transform:
   m_GameObject: {fileID: 1998893073}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33925,7 +34119,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
-  m_InitialState: 0
+  m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -33966,14 +34160,29 @@ PlayableDirector:
     value: {fileID: 8374147106429244912}
   - key: {fileID: 4941190852937533589, guid: 4f90c11b176cd0a4b81658103d2eee66, type: 2}
     value: {fileID: 1414464826}
-  - key: {fileID: 3345289383012738710, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
-    value: {fileID: 52739377}
-  - key: {fileID: 6630990449279698208, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
-    value: {fileID: 194744625}
+  - key: {fileID: -4357505830648044097, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 227644806}
+  - key: {fileID: 4741468705547000344, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 227644806}
+  - key: {fileID: 7024146035273701655, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 2110325033}
+  - key: {fileID: 4286694679264397238, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 2110325035}
+  - key: {fileID: -2014429035312859959, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 545021348}
+  - key: {fileID: 3179247566893759263, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 8374147105023116496}
+  - key: {fileID: 563640038427569136, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 143750303}
+  - key: {fileID: -3426240849358105216, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 2118321001}
+  - key: {fileID: -3267705584926204090, guid: 2e7af0e234c9631419fd2e6f5e557ad5, type: 2}
+    value: {fileID: 1007732825}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 0}
     - fa0be5855688d664e964c7448a3b7542: {fileID: 0}
+    - 37a6cf42171e3ae47bc2c3a2642d98d8: {fileID: 545021345}
     - 8ba2d4d09fbe2944d8cc56c6835941ec: {fileID: 1510607828}
     - 7ca54b91866f868488cf728f687314f6: {fileID: 0}
     - 484baeb9bc7e7a54a830f0110a1cbb74: {fileID: 0}
@@ -33981,6 +34190,7 @@ PlayableDirector:
     - b5e3c7f32586f4942950b0474b921094: {fileID: 0}
     - 9f7a8005f02c1674cab7f3d6a74c5a56: {fileID: 0}
     - fe7d674ea203b40469a1ad56f9899391: {fileID: 1100342632}
+    - c6cc5c3cf5ff7aa4db6e89e6ee9c7582: {fileID: 227644809}
     - b79082a7c7e78014c818869db1ce0210: {fileID: 0}
     - 74288d1096cef94439472202833f4c8b: {fileID: 0}
 --- !u!1 &2000619045
@@ -34085,6 +34295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man2
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &2005386008
 GameObject:
   m_ObjectHideFlags: 0
@@ -34690,7 +34901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2039150318
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35999,7 +36210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39607844}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -36370,7 +36581,7 @@ Transform:
   m_GameObject: {fileID: 2118321001}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9299927, y: -0.62648, z: 0}
+  m_LocalPosition: {x: -3.9, y: -0.625, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -36445,6 +36656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1001 &2121369342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37040,6 +37252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_JungCafe_Music_Mool
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!212 &478659827100337551
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37290,7 +37503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374147105023116495}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37454,6 +37667,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2648199575471560436}
   - component: {fileID: 478659827100337551}
+  - component: {fileID: 8374147105023116496}
   m_Layer: 0
   m_Name: Second
   m_TagString: Untagged
@@ -37461,6 +37675,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &8374147105023116496
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374147105023116495}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8374147106429244911
 GameObject:
   m_ObjectHideFlags: 0

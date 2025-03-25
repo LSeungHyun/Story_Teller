@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInstantiateManager : MonoBehaviour
 {
+
     public PhotonView PV;
     public GameObject singlePlayer;
     public GameObject startPoint;
@@ -11,8 +12,15 @@ public class PlayerInstantiateManager : MonoBehaviour
 
     public GameObject playerObj;
 
+    public ManagerConnector managerConnector;
+    public FloatingJoystick joystick;
+    public GameObject webglBtn;
+
     private void Awake()
     {
+
+        managerConnector.webglBtn = webglBtn;
+        managerConnector.joystick = joystick;
         var session = GameManager.Instance.Session;
         if (!GameManager.Instance.isType)
         {
@@ -63,15 +71,9 @@ public class PlayerInstantiateManager : MonoBehaviour
 
             // 4) PhotonNetwork.Instantiate 호출 (프리팹 이름, 위치, 회전)
             playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
-            //dontDes.SetFollowCam(playerObj);
 
            
             session.SetCamera(dontDes, playerObj);
         }
-        //PlayerManager playerManager = playerObj.GetComponent<PlayerManager>();
-
-        //필요시 사용
-        //playerManager.joystick = joyStick;
-        //playerManager.webglBtn = webGLbtn;
     }
 }
