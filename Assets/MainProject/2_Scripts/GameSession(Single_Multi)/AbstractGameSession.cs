@@ -43,7 +43,7 @@ public abstract class AbsctractGameSession
         playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
 
         Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
-        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec);
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
     }
     public virtual void AnimControllerBasic(PlayerManager playerManager)
     {
@@ -77,9 +77,16 @@ public abstract class AbsctractGameSession
             return;
         }
         playerManager.interactableStack.Remove(collision);
-        playerManager.interactableStack.Add(collision);
-        playerManager.UpdateInteractObject();
-        playerManager.ChangeConfirmOn(true);
+        playerManager.interactableStack.Add(collision); 
+        if (collision.GetComponent<TriggerObj>().isTouchObject)
+        {
+            CurrentObjectManager.Instance.SetCurrentObjData(collision.GetComponent<TriggerObj>().objCode);
+        }
+        else
+        {
+            playerManager.UpdateInteractObject();
+            playerManager.ChangeConfirmOn(true);
+        }
     }
     public virtual void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {

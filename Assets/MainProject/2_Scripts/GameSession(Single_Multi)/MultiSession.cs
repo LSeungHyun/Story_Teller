@@ -41,6 +41,7 @@ public class MultiSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
+            portalSetter.portalManager.gameObject.SetActive(false);
             if (!portalSetter.portalManager.isNextMap)
             {
                 CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();

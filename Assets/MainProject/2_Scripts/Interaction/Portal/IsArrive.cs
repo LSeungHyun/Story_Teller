@@ -6,5 +6,7 @@ public class IsArrive : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         var session = GameManager.Instance.Session;
         session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
+        Debug.Log("µµÂøÇÔ???");
+        //this.gameObject.SetActive(false);
     }
 }
