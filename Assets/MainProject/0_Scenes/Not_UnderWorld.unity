@@ -486,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Bakery_Note_Nai
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &37539588
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,6 +711,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Driver_Straight
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &42710647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,6 +2118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Wrench
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &127663641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2314,6 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_HappyHair_GukHwa
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &135755424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 20419914988781811, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
@@ -2777,6 +2781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_ScrewList
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &171345578
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,6 +4340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Bakery_Note_Neup
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &266173885
 GameObject:
   m_ObjectHideFlags: 0
@@ -4825,6 +4831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerLabelContainer: {fileID: 11400000, guid: 2c190a632de8f3240ad5a62b063ba301, type: 2}
+  soundContainer: {fileID: 0}
+  managerConnector: {fileID: 0}
   uiCenterLabelOnOffManager: {fileID: 315105274}
   centerLabelList: []
   textDisplay: {fileID: 449774007}
@@ -5027,6 +5035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Bakery_Note_Apnal
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &343850699
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,6 +6166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man2
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!60 &402740813
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8037,6 +8047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_HappyHair_Note_Over
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &514607160
 GameObject:
   m_ObjectHideFlags: 0
@@ -9899,6 +9910,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: CutScene_GukHwa
   isPassiveObject: 1
+  isTouchObject: 0
 --- !u!4 &610137370
 Transform:
   m_ObjectHideFlags: 0
@@ -10506,6 +10518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Cutter
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &651894287
 GameObject:
   m_ObjectHideFlags: 0
@@ -12079,6 +12092,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Bakery_Note_Eia
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &808155264
 GameObject:
   m_ObjectHideFlags: 0
@@ -12295,6 +12309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Direction
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &820015564
 GameObject:
   m_ObjectHideFlags: 0
@@ -15234,6 +15249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Tutorial_Sara
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &994195161
 GameObject:
   m_ObjectHideFlags: 0
@@ -15366,6 +15382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
+  managerConnector: {fileID: 0}
   PV: {fileID: 0}
   REDIRECT_URI: https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
@@ -15506,6 +15523,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Driver_Star
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!60 &1004837228
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -16596,6 +16614,8 @@ PlayableDirector:
     value: {fileID: 2069575580}
   - key: {fileID: -8003255504027504518, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
     value: {fileID: 1630784360}
+  - key: {fileID: 1875534378405728591, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
+    value: {fileID: 1154758306}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 629667151}
@@ -16848,6 +16868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_HappyHair_Note_Under
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1118272041
 GameObject:
   m_ObjectHideFlags: 0
@@ -17441,6 +17462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: LivingWorld_Bakery_Man2
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!60 &1133572600
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -18239,6 +18261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Bakery_Note_Quest
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1162025307
 GameObject:
   m_ObjectHideFlags: 0
@@ -18935,6 +18958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_HappyHair_2ndfloor_Quest
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1201959389
 GameObject:
   m_ObjectHideFlags: 0
@@ -19068,6 +19092,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   spawnAt: {x: 0, y: 0, z: 0}
+  camBoundContainer: {fileID: 0}
+  isNextMap: 0
 --- !u!224 &1204391307 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1208074695570962333, guid: 2483b0de72a872141b9941cb855d69a2, type: 3}
@@ -20118,6 +20144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Tutorial_Board_Hint
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1270504353
 GameObject:
   m_ObjectHideFlags: 0
@@ -25036,6 +25063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Driver_Six
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1545954518
 GameObject:
   m_ObjectHideFlags: 0
@@ -25300,6 +25328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Driver_Star
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1588044018
 GameObject:
   m_ObjectHideFlags: 0
@@ -25875,6 +25904,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_HappyHair_Note_Quest
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1598068203
 GameObject:
   m_ObjectHideFlags: 0
@@ -28500,6 +28530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Driver_Cross
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1809200355
 GameObject:
   m_ObjectHideFlags: 0
@@ -29439,6 +29470,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: UnderWorld_SteelHouse_Screw
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!1 &1874334982
 GameObject:
   m_ObjectHideFlags: 0
@@ -30165,6 +30197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objCode: Move
   isPassiveObject: 0
+  isTouchObject: 0
 --- !u!60 &1921622053
 PolygonCollider2D:
   m_ObjectHideFlags: 0
