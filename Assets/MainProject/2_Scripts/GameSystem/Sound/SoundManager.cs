@@ -6,6 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public SoundContainer SoundContainer;
+    public AudioSettingsData AudioSettingsData;
 
     public AudioMixer masterMixer;
 
@@ -26,7 +27,7 @@ public class SoundManager : MonoBehaviour
     void Awake()
     {
         SoundContainer.soundManager = this;
-
+         
         if (Instance == null)
         {
             Instance = this;
@@ -78,7 +79,7 @@ public class SoundManager : MonoBehaviour
     // 슬라이더로부터 0~1 범위의 볼륨을 전달받아, dB 값으로 변환하여 Mixer에 적용
     public void SetBGMVolume(float volume)
     {
-        // volume이 0~1 범위라고 가정
+        AudioSettingsData.bgmVolume = volume;
         // dB 변환: AudioMixer는 일반적으로 dB 값을 받음
         float dB = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
         masterMixer.SetFloat("BGMVolume", dB);
@@ -86,6 +87,7 @@ public class SoundManager : MonoBehaviour
 
     public void SetSFXVolume(float volume)
     {
+        AudioSettingsData.sfxVolume = volume;
         float dB = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
         masterMixer.SetFloat("SFXVolume", dB);
     }
