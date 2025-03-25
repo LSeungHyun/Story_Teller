@@ -8,4 +8,7 @@ public class ManagerConnector : ScriptableObject
     public PortalManager portalManager;
     public HintStateManager hintStateManager;
     public CurrentObjectManager currentObjectManager;
+
+    public FloatingJoystick joystick;
+    public GameObject webglBtn;
 }

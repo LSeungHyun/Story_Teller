@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     public SpriteRenderer sprite;
 
     [Header("Direct Assignment")]
-    public FixedJoystick joystick;
+    public FloatingJoystick joystick;
     public GameObject webglBtn;
 
     [Header("Input Keys")]
@@ -47,6 +47,11 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         testSpeed = 3f;
+
+        joystick = managerConnector.joystick;
+        webglBtn = managerConnector.webglBtn;
+
+
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
