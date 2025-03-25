@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager Instance;
     public SoundContainer SoundContainer;
+
+    public AudioMixer masterMixer;
 
     // BGM, SFX 재생용 AudioSource
     public AudioSource bgmSource;
@@ -70,5 +73,20 @@ public class SoundManager : MonoBehaviour
     public void StopBGM()
     {
         bgmSource.Stop();
+    }
+
+    // 슬라이더로부터 0~1 범위의 볼륨을 전달받아, dB 값으로 변환하여 Mixer에 적용
+    public void SetBGMVolume(float volume)
+    {
+        // volume이 0~1 범위라고 가정
+        // dB 변환: AudioMixer는 일반적으로 dB 값을 받음
+        float dB = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
+        masterMixer.SetFloat("BGMVolume", dB);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        float dB = Mathf.Log10(Mathf.Max(volume, 0.0001f)) * 20f;
+        masterMixer.SetFloat("SFXVolume", dB);
     }
 }
