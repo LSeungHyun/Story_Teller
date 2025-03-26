@@ -51,7 +51,7 @@ public class PlayerManager : MonoBehaviour
 
         joystick = managerConnector.joystick;
         webglBtn = managerConnector.webglBtn;
-
+        isMobile = managerConnector.isMobile;
 
         if (!GameManager.Instance.isType)
         {

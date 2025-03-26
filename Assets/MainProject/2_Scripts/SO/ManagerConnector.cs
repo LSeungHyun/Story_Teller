@@ -11,4 +11,5 @@ public class ManagerConnector : ScriptableObject
 
     public FloatingJoystick joystick;
     public GameObject webglBtn;
+    public bool isMobile = false;
 }

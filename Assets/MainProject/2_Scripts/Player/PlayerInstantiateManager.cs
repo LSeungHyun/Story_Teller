@@ -18,9 +18,21 @@ public class PlayerInstantiateManager : MonoBehaviour
 
     private void Awake()
     {
-
-        managerConnector.webglBtn = webglBtn;
-        managerConnector.joystick = joystick;
+        if (Application.isMobilePlatform)
+        {
+            managerConnector.webglBtn = webglBtn;
+            managerConnector.joystick = joystick;
+            managerConnector.isMobile = true;
+            Debug.Log("모바일임");
+        }
+        else
+        {
+            webglBtn.gameObject.SetActive(false);
+            joystick.gameObject.SetActive(false);
+            managerConnector.isMobile = false;
+            Debug.Log("모바일아님");
+        }
+        
         var session = GameManager.Instance.Session;
         if (!GameManager.Instance.isType)
         {
