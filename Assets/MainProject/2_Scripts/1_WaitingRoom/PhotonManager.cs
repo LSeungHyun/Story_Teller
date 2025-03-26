@@ -104,7 +104,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        room_Code_Input.text.Trim();
+        room_Code_Input.text = room_Code_Input.text.Trim().ToUpper();
 
         if (room_Code_Input.text == "")
         {
@@ -388,6 +388,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         RoomCodeIsNull();
+        room_Code_Input.text = "";
     }
 
     #endregion

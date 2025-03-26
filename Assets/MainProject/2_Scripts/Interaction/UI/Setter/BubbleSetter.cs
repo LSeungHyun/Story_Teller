@@ -15,13 +15,25 @@ public class BubbleSetter : UIContentsManager
 
     [Header("말풍선 설정")]
     public GameObject balloonPrefab;
-    public float offsetY = 0.3f;
+    public float offsetY;
 
     [Header("크기 설정")]
-    public float fixedWidth = 1.2f;
-    public float minHeight = 0.2f;
-    public float lineHeight = 0.15f;
+    public float fixedWidth;
+    public float minHeight;
+    public float lineHeight;
 
+    private void Start()
+    {
+        SetSizeValue();
+    }
+
+    public void SetSizeValue()
+    {
+        offsetY = 0.5f; // 오브젝트 머리 위의 버블 생성 위치
+        fixedWidth = 1.7f; // 버블 좌우 길이
+        minHeight = 0.4f;
+        lineHeight = 0.2f;
+    }
     public override void SetData(string currentObjCode)
     {
         targetRow = bubbleContainer.bubbleDatas.FirstOrDefault(r => r.objCode == currentObjCode);
