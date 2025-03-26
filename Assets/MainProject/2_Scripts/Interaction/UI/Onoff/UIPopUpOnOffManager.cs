@@ -5,7 +5,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
 {
     [SerializeField] public NextDataContainer nextDataContainer;
     public CurrentObjectManager currentObjectManager;
-
+    public ManagerConnector managerConnector;
     public UIPopUpStructure uiPopupStructure;
     public UIPopUpManager uiPopUpManager;
 

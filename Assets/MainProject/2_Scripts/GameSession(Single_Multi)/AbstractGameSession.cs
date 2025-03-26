@@ -169,6 +169,7 @@ public abstract class AbsctractGameSession
     #region UI On Off
     public virtual void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
     {
+        UIPopUpOnOffManager.managerConnector.playerManager.isMove = false;
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(true);
 
@@ -180,6 +181,8 @@ public abstract class AbsctractGameSession
     }
     public virtual void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager)
     {
+        UIPopUpOnOffManager.managerConnector.playerManager.isMove = true;
+
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(false);
 
