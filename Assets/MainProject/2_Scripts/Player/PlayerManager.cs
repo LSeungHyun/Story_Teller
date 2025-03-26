@@ -76,6 +76,7 @@ public class PlayerManager : MonoBehaviour
         if (session != null && isMove)
         {
             session.MoveBasic(this);
+            session.JoystickMoveBasic(this);
         }
         //Move();
     }

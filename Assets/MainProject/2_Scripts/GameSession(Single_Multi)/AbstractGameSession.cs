@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static PortalSetter;
 
 
@@ -42,6 +43,16 @@ public abstract class AbsctractGameSession
         playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
 
         Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
+    }
+
+    public virtual void JoystickMoveBasic(PlayerManager playerManager)
+    {
+        playerManager.inputVec.x = playerManager.joystick.Horizontal;
+        playerManager.inputVec.y = playerManager.joystick.Vertical;
+
+        Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+
         playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
     }
     public virtual void AnimControllerBasic(PlayerManager playerManager)

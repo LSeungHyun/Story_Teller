@@ -110,6 +110,13 @@ public class MultiSession : AbsctractGameSession
             base.MoveBasic(playerManager);
         }
     }
+    public override void JoystickMoveBasic(PlayerManager playerManager)
+    {
+        if (playerManager.PV.IsMine)
+        {
+            base.JoystickMoveBasic(playerManager);
+        }
+    }
     public override void AnimControllerBasic(PlayerManager playerManager)
     {
         if (playerManager.PV.IsMine)
