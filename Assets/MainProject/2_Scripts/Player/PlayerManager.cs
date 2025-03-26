@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     public AbsctractGameSession session;
 
+    public bool isMobile = false;
     public bool isMove = true;
     #region LifeCycle Methods
     void Awake()
@@ -75,8 +76,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (session != null && isMove)
         {
-            session.MoveBasic(this);
-            session.JoystickMoveBasic(this);
+            if (isMobile)
+            {
+                session.JoystickMoveBasic(this);
+            }
+            else
+            {
+                session.MoveBasic(this);
+            }
         }
         //Move();
     }
