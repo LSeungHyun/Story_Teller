@@ -18,7 +18,7 @@ public class PlayerManager : MonoBehaviour
     public SpriteRenderer sprite;
 
     [Header("Direct Assignment")]
-    public FixedJoystick joystick;
+    public FloatingJoystick joystick;
     public GameObject webglBtn;
 
     [Header("Input Keys")]
@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
 
     public AbsctractGameSession session;
 
+    public bool isMobile = false;
     public bool isMove = true;
     #region LifeCycle Methods
     void Awake()
@@ -47,6 +48,11 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         testSpeed = 3f;
+
+        joystick = managerConnector.joystick;
+        webglBtn = managerConnector.webglBtn;
+        isMobile = managerConnector.isMobile;
+
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
@@ -70,7 +76,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (session != null && isMove)
         {
-            session.MoveBasic(this);
+            if (isMobile)
+            {
+                session.JoystickMoveBasic(this);
+            }
+            else
+            {
+                session.MoveBasic(this);
+            }
         }
         //Move();
     }

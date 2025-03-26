@@ -89,6 +89,10 @@ public class SingleSession : AbsctractGameSession
         //MoveBasic(playerManager);
         base.MoveBasic(playerManager);
     }
+    public override void JoystickMoveBasic(PlayerManager playerManager)
+    {
+        base.JoystickMoveBasic(playerManager);
+    }
     public override void AnimControllerBasic(PlayerManager playerManager)
     {
         base.AnimControllerBasic(playerManager);

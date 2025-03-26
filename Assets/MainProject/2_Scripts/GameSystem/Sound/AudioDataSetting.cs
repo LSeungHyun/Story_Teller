@@ -12,7 +12,7 @@ public class AudioDataSetting : MonoBehaviour
         bgmSlider.value = audioSettingsData.bgmVolume;
         sfxSlider.value = audioSettingsData.sfxVolume;
 
-        Debug.Log(bgmSlider.value);
-        Debug.Log(sfxSlider.value);
+        //Debug.Log(bgmSlider.value);
+        //Debug.Log(sfxSlider.value);
     }
 }

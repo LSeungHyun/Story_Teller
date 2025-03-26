@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using static PortalSetter;
 
 
@@ -42,6 +43,16 @@ public abstract class AbsctractGameSession
         playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
 
         Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
+    }
+
+    public virtual void JoystickMoveBasic(PlayerManager playerManager)
+    {
+        playerManager.inputVec.x = playerManager.joystick.Horizontal;
+        playerManager.inputVec.y = playerManager.joystick.Vertical;
+
+        Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
+
         playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
     }
     public virtual void AnimControllerBasic(PlayerManager playerManager)
@@ -158,6 +169,7 @@ public abstract class AbsctractGameSession
     #region UI On Off
     public virtual void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
     {
+        UIPopUpOnOffManager.managerConnector.playerManager.isMove = false;
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(true);
 
@@ -169,6 +181,8 @@ public abstract class AbsctractGameSession
     }
     public virtual void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager)
     {
+        UIPopUpOnOffManager.managerConnector.playerManager.isMove = true;
+
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(false);
 
