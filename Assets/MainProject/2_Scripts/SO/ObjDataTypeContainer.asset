@@ -13,11 +13,8 @@ MonoBehaviour:
   m_Name: ObjDataTypeContainer
   m_EditorClassIdentifier: 
   objCode: 
-  position: {x: -2.04, y: -0.87, z: 0}
+  position: {x: 180.608, y: 1.786, z: 0}
   objDataType:
-  - objCode: '"GameSystemData ObjCode"'
-    dataType: 
-    isMine: 0
   - objCode: Enter_All
     dataType: centerLabel
     isMine: 0
@@ -33,40 +30,49 @@ MonoBehaviour:
   - objCode: Active_Arrow
     dataType: centerLabel
     isMine: 0
-  - objCode: Enter_CutScene_Area
+  - objCode: Enter_CutScene_All
+    dataType: centerLabel
+    isMine: 0
+  - objCode: Enter_CutScene_Wait
     dataType: centerLabel
     isMine: 0
   - objCode: Pass_Quest
     dataType: centerLabel
     isMine: 0
+  - objCode: Use_Locked_Hint
+    dataType: centerLabel
+    isMine: 1
+  - objCode: Use_Unlocked_Hint
+    dataType: centerLabel
+    isMine: 0
   - objCode: Road_Fog
     dataType: centerLabel
     isMine: 1
-  - objCode: '"PopUpData ObjCode"'
-    dataType: 
-    isMine: 0
   - objCode: UnderWorld_Tutorial_Sara
-    dataType: dialoguedefaulthint
+    dataType: dialogue
     isMine: 1
   - objCode: UnderWorld_Tutorial_Board_Hint
     dataType: dialogue
     isMine: 1
-  - objCode: Road_SteelHouseGhost
+  - objCode: UnderWorld_Road_In
+    dataType: image
+    isMine: 0
+  - objCode: UnderWorld_Road_Ghost
     dataType: bubble
     isMine: 1
-  - objCode: '"UnderWorld_SteelHouse"'
-    dataType: 
-    isMine: 0
   - objCode: UnderWorld_SteelHouse_In
     dataType: image
     isMine: 0
-  - objCode: UnderWorld_SteelHouse_Driver_Cross
+  - objCode: UnderWorld_SteelHouse_Cross
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_SteelHouse_Driver_Six
+  - objCode: UnderWorld_SteelHouse_Six
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_SteelHouse_Driver_Star
+  - objCode: UnderWorld_SteelHouse_Star
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_SteelHouse_Straight
     dataType: image
     isMine: 1
   - objCode: UnderWorld_SteelHouse_Cutter
@@ -81,125 +87,110 @@ MonoBehaviour:
   - objCode: UnderWorld_SteelHouse_Direction
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_SteelHouse_ScrewList
-    dataType: imagequest
-    isMine: 0
+  - objCode: UnderWorld_SteelHouse_Quest
+    dataType: imagequesthint
+    isMine: 1
   - objCode: UnderWorld_SteelHouse_Answer
-    dataType: dialogue
-    isMine: 0
-  - objCode: '"UnderWorld_Bakery"'
-    dataType: 
-    isMine: 0
-  - objCode: UnderWorld_Bakery_InDial
     dataType: dialogue
     isMine: 0
   - objCode: UnderWorld_Bakery_In
     dataType: image
     isMine: 0
-  - objCode: UnderWorld_Bakery_Note_Apnal
+  - objCode: UnderWorld_Bakery_InDial
+    dataType: dialogue
+    isMine: 1
+  - objCode: UnderWorld_Bakery_Apnal
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_Bakery_Note_Eia
+  - objCode: UnderWorld_Bakery_Eia
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_Bakery_Note_Neup
+  - objCode: UnderWorld_Bakery_Neup
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_Bakery_Note_Nai
+  - objCode: UnderWorld_Bakery_Nai
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_Bakery_Note_Quest
-    dataType: quest
+  - objCode: UnderWorld_Bakery_Quest
+    dataType: imagequesthint
     isMine: 1
   - objCode: UnderWorld_Bakery_Answer
-    dataType: dialogue
-    isMine: 0
-  - objCode: '"UnderWorld_JungCafe"'
-    dataType: 
-    isMine: 0
-  - objCode: UnderWorld_JungCafe_InDial
     dataType: dialogue
     isMine: 0
   - objCode: UnderWorld_JungCafe_In
     dataType: image
     isMine: 0
-  - objCode: UnderWorld_JungCafe_Notebook_Gam
+  - objCode: UnderWorld_JungCafe_InDial
+    dataType: dialogue
+    isMine: 1
+  - objCode: UnderWorld_JungCafe_Gam
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_JungCafe_Notebook_Seong
+  - objCode: UnderWorld_JungCafe_Seong
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_JungCafe_Notebook_GGoat
+  - objCode: UnderWorld_JungCafe_GGoat
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_JungCafe_Notebook_Ar
+  - objCode: UnderWorld_JungCafe_Ar
     dataType: image
     isMine: 1
-  - objCode: UnderWorld_JungCafe_Notebook_Quest
-    dataType: quest
+  - objCode: UnderWorld_JungCafe_Quest
+    dataType: imagequesthint
     isMine: 1
   - objCode: UnderWorld_JungCafe_Answer
     dataType: dialogue
     isMine: 0
-  - objCode: '"UnderWorld_HappyHair"'
-    dataType: 
-    isMine: 0
-  - objCode: UnderWorld_HappyHair_In
-    dataType: image
-    isMine: 0
-  - objCode: UnderWorld_HappyHair_GukHwa
-    dataType: dialogue
-    isMine: 1
-  - objCode: UnderWorld_HappyHair_Note_Over
-    dataType: image
-    isMine: 1
-  - objCode: UnderWorld_HappyHair_Note_Under
-    dataType: image
-    isMine: 1
-  - objCode: UnderWorld_HappyHair_Note_Quest
-    dataType: quest
-    isMine: 1
-  - objCode: UnderWorld_HappyHair_Answer
+  - objCode: CutScene_GukHwa
     dataType: dialogue
     isMine: 0
-  - objCode: '"UnderWorld_HappyHair_2ndfloor"'
-    dataType: 
+  - objCode: UnderWorld_HairSalon_In
+    dataType: imagequesthint
     isMine: 0
-  - objCode: UnderWorld_HappyHair_2ndfloor_Quest
-    dataType: quest
+  - objCode: UnderWorld_HairSalon_GukHwa
+    dataType: dialogue
     isMine: 1
-  - objCode: UnderWorld_HappyHair_2ndfloor_Answer
+  - objCode: UnderWorld_HairSalon_Over
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_HairSalon_Under
+    dataType: image
+    isMine: 1
+  - objCode: UnderWorld_HairSalon_Quest
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: UnderWorld_HairSalon_Answer
     dataType: dialogue
     isMine: 0
-  - objCode: '"Boundary"'
-    dataType: 
+  - objCode: UnderWorld_2ndFloor_Quest
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: UnderWorld_2ndFloor_Answer
+    dataType: dialogue
+    isMine: 0
+  - objCode: UnderWorld_Ending
+    dataType: centerLabel
     isMine: 0
   - objCode: Boundary_Sara
     dataType: dialogue
     isMine: 1
-  - objCode: '"LivingWorld_FlowerShop"'
-    dataType: 
-    isMine: 0
   - objCode: LivingWorld_FlowerShop_In
     dataType: image
     isMine: 0
-  - objCode: LivingWorld_FlowerShop_Flower_Lilac
+  - objCode: LivingWorld_FlowerShop_Lilac
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_FlowerShop_Flower_Chija
+  - objCode: LivingWorld_FlowerShop_Chija
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_FlowerShop_Flower_Jasmine
+  - objCode: LivingWorld_FlowerShop_Jasmine
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_FlowerShop_Flower_Su
+  - objCode: LivingWorld_FlowerShop_Su
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_FlowerShop_Flower_Neung
+  - objCode: LivingWorld_FlowerShop_Neung
     dataType: image
-    isMine: 1
-  - objCode: LivingWorld_FlowerShop_Flower_Quest
-    dataType: dialogue
     isMine: 1
   - objCode: LivingWorld_FlowerShop_Man
     dataType: dialogue
@@ -207,18 +198,15 @@ MonoBehaviour:
   - objCode: LivingWorld_FlowerShop_Girl
     dataType: dialogue
     isMine: 1
+  - objCode: LivingWorld_FlowerShop_Quest
+    dataType: imagequesthint
+    isMine: 1
   - objCode: LivingWorld_FlowerShop_Answer
     dataType: dialogue
-    isMine: 1
-  - objCode: '"LivingWorld_Bakery"'
-    dataType: 
     isMine: 0
   - objCode: LivingWorld_Bakery_In
     dataType: image
     isMine: 0
-  - objCode: LivingWorld_Bakery_Cart
-    dataType: bubble
-    isMine: 1
   - objCode: LivingWorld_Bakery_Girl1
     dataType: dialogue
     isMine: 1
@@ -240,48 +228,117 @@ MonoBehaviour:
   - objCode: LivingWorld_Bakery_Girl4
     dataType: bubble
     isMine: 1
+  - objCode: LivingWorld_Bakery_Quest
+    dataType: imagequesthint
+    isMine: 1
   - objCode: LivingWorld_Bakery_Answer
     dataType: dialogue
-    isMine: 1
+    isMine: 0
   - objCode: LivingWorld_Bakery_Girl
     dataType: dialogue
     isMine: 0
   - objCode: LivingWorld_Bakery_Man
     dataType: dialogue
     isMine: 0
-  - objCode: '"LivingWorld_JungCafe"'
-    dataType: 
+  - objCode: LivingWorld_Road_Dial
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_Road_Quest
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Unlocked
+    dataType: centerLabel
     isMine: 0
   - objCode: LivingWorld_JungCafe_In
     dataType: image
     isMine: 0
   - objCode: LivingWorld_JungCafe_InDial
     dataType: dialogue
-    isMine: 0
-  - objCode: LivingWorld_JungCafe_Music_Mool
+    isMine: 1
+  - objCode: LivingWorld_JungCafe_Mool
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Mok
+  - objCode: LivingWorld_JungCafe_Mok
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Bal
+  - objCode: LivingWorld_JungCafe_Bal
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Sae
+  - objCode: LivingWorld_JungCafe_Sae
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Pul
+  - objCode: LivingWorld_JungCafe_Pul
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Sum
+  - objCode: LivingWorld_JungCafe_Sum
     dataType: image
     isMine: 1
-  - objCode: LivingWorld_JungCafe_Music_Quest
-    dataType: imagequest
+  - objCode: LivingWorld_JungCafe_Quest
+    dataType: imagequesthint
     isMine: 1
   - objCode: LivingWorld_JungCafe_Answer
     dataType: dialogue
     isMine: 0
-  - objCode: '"LivingWorld_HairSalon"'
-    dataType: imagedrag
+  - objCode: LivingWorld_HairSalon_In
+    dataType: image
+    isMine: 0
+  - objCode: LivingWorld_HairSalon_InDial
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Girl1
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Girl2
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Man1
+    dataType: bubble
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Plant
+    dataType: image
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Quest1
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Answer1
+    dataType: centerLabel
+    isMine: 0
+  - objCode: LivingWorld_HairSalon_Sara
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Quest2
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_HairSalon_Answer2
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_2ndFloor_Quest1
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_2ndFloor_Answer1
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_2ndFloor_Quest2
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_2ndFloor_Answer2
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_2ndFloor_Quest3
+    dataType: imagequesthint
+    isMine: 1
+  - objCode: LivingWorld_2ndFloor_Answer3
+    dataType: dialogue
+    isMine: 0
+  - objCode: LivingWorld_2ndFloor_KeyBoard
+    dataType: dialogue
+    isMine: 1
+  - objCode: LivingWorld_2ndFloor_Window
+    dataType: dialogue
+    isMine: 1
+  - objCode: Ending_HairSalon_In
+    dataType: dialogue
+    isMine: 0
+  - objCode: Ending_Road_In
+    dataType: dialogue
     isMine: 0

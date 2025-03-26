@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: bd854b9496c51164e92231a23f542c3b
+guid: 6ebe54314f30732429fbc6fa849a22e5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3080893221928130819
-    second: "\uBBF8\uB8281_0"
+      213: 2832043609162384439
+    second: "OBJECT_\uB2EC\uB825_0"
+  - first:
+      213: -1700241481295232560
+    second: "OBJECT_\uB2EC\uB825_1"
+  - first:
+      213: -1347673525962109126
+    second: "OBJECT_\uB2EC\uB825_2"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +52,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -135,30 +141,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uBBF8\uB8281_0"
+      name: "OBJECT_\uB2EC\uB825_0"
       rect:
         serializedVersion: 2
-        x: 418
-        y: 352
-        width: 1266
-        height: 1302
+        x: 369
+        y: 133
+        width: 1356
+        height: 1868
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,8 +160,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3095fe3ef0881ca20800000000000000
-      internalID: 3080893221928130819
+      spriteID: 7340a8068a07d4720800000000000000
+      internalID: 2832043609162384439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "OBJECT_\uB2EC\uB825_1"
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 130
+        width: 287
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d1830b81678768e0800000000000000
+      internalID: -1700241481295232560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "OBJECT_\uB2EC\uB825_2"
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 129
+        width: 500
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3f84d3811a1c4de0800000000000000
+      internalID: -1347673525962109126
       vertices: []
       indices: 
       edges: []
@@ -177,7 +214,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -187,7 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uBBF8\uB8281_0": 3080893221928130819
+      "OBJECT_\uB2EC\uB825_0": 2832043609162384439
+      "OBJECT_\uB2EC\uB825_1": -1700241481295232560
+      "OBJECT_\uB2EC\uB825_2": -1347673525962109126
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

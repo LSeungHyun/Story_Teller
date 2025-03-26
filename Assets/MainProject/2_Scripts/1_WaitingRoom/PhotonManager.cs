@@ -270,7 +270,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             GameManager.Instance.SelectGameMode(true);
             return;
         }
-        SceneManager.LoadScene("2_UnderWorld");
+        SceneManager.LoadScene("4_LivingWorld");
         GameManager.Instance.SelectGameMode(false);
     }
 
