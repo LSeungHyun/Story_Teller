@@ -5,13 +5,16 @@ public class PortalSetter : MonoBehaviour
 {
     public PortalManager portalManager;
     public CutSceneManager cutsceneManager;
+    public ScenePortalManager ScenePortalManager;
 
     public GameObject targetObj;
+    public string worldName;
     [SerializeField] private GameObject Enter_None;
     [SerializeField] private GameObject Enter_All;
     [SerializeField] private GameObject Enter_Wait;
 
     public bool isCutScene = false;
+    public bool isScenePortal = false;
 
     [SerializeField] public PortalStatus status;
     [System.Serializable]

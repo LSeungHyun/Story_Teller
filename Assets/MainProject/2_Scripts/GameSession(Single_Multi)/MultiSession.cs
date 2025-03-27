@@ -16,6 +16,10 @@ public class MultiSession : AbsctractGameSession
             {
                 portalSetter.cutsceneManager.cutSceneTrigger = portalSetter.targetObj;
             }
+            else if (portalSetter.isScenePortal)
+            {
+                portalSetter.ScenePortalManager.worldName = portalSetter.worldName;
+            }
             else
             {
                 portalSetter.portalManager.spawnAt = portalSetter.targetObj.transform.position;
@@ -35,6 +39,10 @@ public class MultiSession : AbsctractGameSession
             if (portalSetter.isCutScene)
             {
                 portalSetter.cutsceneManager.cutSceneTrigger = null;
+            }
+            else if (portalSetter.isScenePortal)
+            {
+                portalSetter.ScenePortalManager.worldName = null;
             }
             else
             {

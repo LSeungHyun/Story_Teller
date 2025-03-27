@@ -262,6 +262,13 @@ public class PlayerManager : MonoBehaviour
     {
         transform.position = targetPosition;
     }
+
+    [PunRPC]
+    public void MoveNextScene(string worldName)
+    {
+        PhotonNetwork.LoadLevel(worldName);
+    }
+
     [PunRPC]
     public void RPC_SetHintState(string currentObjCode, string state)
     {
