@@ -30,9 +30,9 @@ public class BubbleSetter : UIContentsManager
     public void SetSizeValue()
     {
         offsetY = 0.5f; // 오브젝트 머리 위의 버블 생성 위치
-        fixedWidth = 1.7f; // 버블 좌우 길이
-        minHeight = 0.4f;
-        lineHeight = 0.2f;
+        fixedWidth = 0.2f; // 버블 좌우 길이
+        minHeight = 0.35f;
+        lineHeight = minHeight;
     }
     public override void SetData(string currentObjCode)
     {
@@ -78,14 +78,40 @@ public class BubbleSetter : UIContentsManager
             {
                 // 텍스트의 줄 수를 계산 (줄바꿈 문자 기준)
                 int lineCount = textData.Split('\n').Length;
+                string[] lines = textData.Split('\n');
+                int maxLineLength = 0;
 
-                float height = Mathf.Max(minHeight, lineCount * lineHeight);
-                balloonRenderer.size = new Vector2(fixedWidth, height);
+                foreach (string line in lines)
+                {
+                    int length = line.Length;
+                    if (length > maxLineLength)
+                    {
+                        maxLineLength = length;
+                    }
+                }
+                float width = fixedWidth + ( maxLineLength * 0.078f);
+
+                for (int i = 0; i < lineCount-1; i++)
+                {
+                    if (i % 2 == 0)
+                    {
+                        lineHeight += 0.1f;
+                    }
+                    else
+                    {
+                        lineHeight += 0.15f;
+                    }
+                }
+
+                float height = Mathf.Max(minHeight, lineHeight);
+                
+                balloonRenderer.size = new Vector2(width, height);
+                lineHeight = minHeight;
                 // textDisplay.transform.localPosition = new Vector3(0, height / 2, 0); // 나중에 모양 변경 시 참고
             }
         }
     }
-
+    
     public void HideBalloon()
     {
         if (currentBalloon != null)
