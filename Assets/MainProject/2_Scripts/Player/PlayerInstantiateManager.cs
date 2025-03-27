@@ -8,6 +8,7 @@ public class PlayerInstantiateManager : MonoBehaviour
     public PhotonView PV;
     public GameObject singlePlayer;
     public GameObject startPoint;
+    public GameObject ChatBtn;
     public CamDontDes dontDes;
 
     public GameObject playerObj;
@@ -36,6 +37,7 @@ public class PlayerInstantiateManager : MonoBehaviour
         var session = GameManager.Instance.Session;
         if (!GameManager.Instance.isType)
         {
+            ChatBtn.SetActive(false);
             Destroy(PV);
         }
 
