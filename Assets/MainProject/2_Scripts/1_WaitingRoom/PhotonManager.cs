@@ -104,7 +104,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        room_Code_Input.text = room_Code_Input.text.Trim().ToUpper();
+        room_Code_Input.text.Trim();
 
         if (room_Code_Input.text == "")
         {
@@ -270,7 +270,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             GameManager.Instance.SelectGameMode(true);
             return;
         }
-        //SceneManager.LoadScene("4_LivingWorld");
         SceneManager.LoadScene("2_UnderWorld");
         GameManager.Instance.SelectGameMode(false);
     }
@@ -388,7 +387,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
         RoomCodeIsNull();
-        room_Code_Input.text = "";
     }
 
     #endregion

@@ -1966,7 +1966,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.08512196, y: -0.024299562}
+  m_Offset: {x: 0.053331226, y: -0.024299562}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1976,7 +1976,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.530244, y: 0.7602562}
+  m_Size: {x: 0.46666253, y: 0.7602562}
   m_EdgeRadius: 0
 --- !u!60 &137604697
 PolygonCollider2D:
@@ -6763,19 +6763,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_Points.Array.data[32].x
-      value: -2.4742203
+      value: -2.4613094
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_Points.Array.data[32].y
-      value: -0.277843
+      value: -0.12807977
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_Points.Array.data[33].x
-      value: -2.0487556
+      value: -2.046173
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_Points.Array.data[33].y
-      value: -0.2780233
+      value: -0.12826006
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_Points.Array.data[34].x
@@ -6980,8 +6980,16 @@ PrefabInstance:
       value: Tree_S_2 (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8166,6 +8174,14 @@ PrefabInstance:
     - target: {fileID: 4273864458455256884, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981382311781953009, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981382311781953009, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     - target: {fileID: 7097146879729417111, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
       propertyPath: m_Name
@@ -9625,7 +9641,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.07856202, y: 0.0775293}
+  m_Offset: {x: 0.082390696, y: -0.0143671185}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9635,7 +9651,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.91198564, y: 1.0322098}
+  m_Size: {x: 0.919643, y: 0.8484168}
   m_EdgeRadius: 0
 --- !u!1001 &573402252
 PrefabInstance:
@@ -10984,8 +11000,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241087627
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 9221992959028224745, guid: 306875a9ce5c48943b63f058a0d51916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -12848,8 +12864,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13750,6 +13774,14 @@ PrefabInstance:
     - target: {fileID: 4273864458455256884, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981382311781953009, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981382311781953009, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     - target: {fileID: 7097146879729417111, guid: 0e70cf9821de6314e8fef21cb90797f5, type: 3}
       propertyPath: m_Name
@@ -15209,8 +15241,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241087627
+  m_SortingLayer: -4
   m_SortingOrder: 10
   m_Sprite: {fileID: -3413289880006028661, guid: 306875a9ce5c48943b63f058a0d51916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -16844,8 +16876,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241087627
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 5205686079026865219, guid: 306875a9ce5c48943b63f058a0d51916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -20332,15 +20364,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241087627
+  m_SortingLayer: -4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1139238679633103121, guid: 3d7cbc6c5fe59a142abc6804ede8dd2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3d7cbc6c5fe59a142abc6804ede8dd2c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.58}
+  m_Size: {x: 0.32, y: 0.56}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -20395,17 +20427,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.003285408, y: -0.83287966}
+  m_Offset: {x: -0.003285408, y: -0.72591794}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.56}
-    newSize: {x: 0.34, y: 0.58}
+    newSize: {x: 0.32, y: 0.56}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.41856575, y: 0.7078483}
+  m_Size: {x: 0.41856575, y: 0.49392503}
   m_EdgeRadius: 0
 --- !u!1001 &1266736787
 PrefabInstance:
@@ -20781,8 +20813,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5934033556353003201, guid: a3748ee5665b5314eb5ac163994434ab, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -22766,12 +22806,12 @@ SpriteRenderer:
   m_SortingLayerID: -1232989169
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: -5520303885959118285, guid: 06273905408f0d14aa87be40f5811b36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 06273905408f0d14aa87be40f5811b36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.34, y: 0.6}
+  m_Size: {x: 0.32, y: 0.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -22831,7 +22871,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.58}
-    newSize: {x: 0.34, y: 0.6}
+    newSize: {x: 0.32, y: 0.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -22898,7 +22938,7 @@ PolygonCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.58}
-    newSize: {x: 0.34, y: 0.6}
+    newSize: {x: 0.32, y: 0.58}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -25212,6 +25252,10 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4902304303837942944, guid: bfb355ab080807e4d97852744a7f9bb2, type: 3}
+      propertyPath: originalMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -26251,8 +26295,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 241087627
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_Sprite: {fileID: 8560809913388660444, guid: 306875a9ce5c48943b63f058a0d51916, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -34357,8 +34401,16 @@ PrefabInstance:
       value: Tree_S_2
       objectReference: {fileID: 0}
     - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
       propertyPath: m_SortingOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4245483687714212904, guid: 8e3e5cfa6d0636f40b9ba1da6db4b581, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
