@@ -198,7 +198,7 @@ public class TextDataManager : MonoBehaviour
     {
         StartCoroutine(LoadSheetData());
 
-        soundContainer.soundManager.Play("FIXED FOCUS_ Rainy day");
+        //soundContainer.soundManager.Play("FIXED FOCUS_ Rainy day");
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
