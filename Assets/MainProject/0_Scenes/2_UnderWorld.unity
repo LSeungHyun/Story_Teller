@@ -23818,6 +23818,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 241087627
       objectReference: {fileID: 0}
+    - target: {fileID: 2829811924633475440, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
+      propertyPath: objCode
+      value: Enter_Wait_Scene
+      objectReference: {fileID: 0}
     - target: {fileID: 3111521594293032423, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -25240,6 +25244,8 @@ MonoBehaviour:
     value: {fileID: 697344672}
   - key: CutScene_Manager
     value: {fileID: 183681312}
+  - key: Scene_Portal_Manager
+    value: {fileID: 1253358729}
   - key: Portal_Tutorial_To_Road
     value: {fileID: 1661699772}
   - key: Portal_Road_To_SteelHouse
