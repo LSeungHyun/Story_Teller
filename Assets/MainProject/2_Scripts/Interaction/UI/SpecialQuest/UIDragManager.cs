@@ -3,52 +3,61 @@ using UnityEngine.EventSystems;
 
 public class UIDragManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [SerializeField] private RectTransform dragArea; // 드래그할 영역 (보통 캔버스의 RectTransform)
+    [SerializeField] private RectTransform dragArea;
+    private RectTransform myRect;        // 자신을 RectTransform으로 캐시
     private Transform originalParent;
+    private Vector2 pointerOffset;
 
-    // 마우스 클릭(터치) 시 호출: 원래 부모 내에서 맨 뒤로 보내어 화면상 가장 앞에 오게 함
+    private void Awake()
+    {
+        // 미리 RectTransform 캐싱
+        myRect = GetComponent<RectTransform>();
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
-        transform.SetAsLastSibling();
+        myRect.SetAsLastSibling();
     }
 
-    // 드래그 시작 시 호출: 원래 부모(그리드) 정보를 저장하고, 드래그 전용 영역으로 이동
     public void OnBeginDrag(PointerEventData eventData)
     {
-        originalParent = transform.parent;
-        transform.SetParent(dragArea);
+        originalParent = myRect.parent;
+        myRect.SetParent(dragArea);
+
+        // 드래그 영역 좌표계에서 마우스 위치를 얻고, 현재 anchoredPosition과 비교해 오프셋을 계산
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            dragArea, eventData.position, eventData.pressEventCamera, out var pointerLocal
+        );
+        pointerOffset = pointerLocal - myRect.anchoredPosition;
     }
 
-    // 드래그 중: dragArea 좌표계를 기준으로 위치 업데이트
     public void OnDrag(PointerEventData eventData)
     {
-        Vector2 localPoint;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            dragArea, eventData.position, eventData.pressEventCamera, out localPoint
+            dragArea, eventData.position, eventData.pressEventCamera, out var localPoint
         );
 
-        // dragArea의 Rect 내에 있다면 그대로 이동
-        if (dragArea.rect.Contains(localPoint))
+        // 잡은 위치 그대로 이동하기 위해 offset 보정
+        var targetPos = localPoint - pointerOffset;
+
+        // dragArea 범위 내 이동 제한
+        if (dragArea.rect.Contains(targetPos))
         {
-            transform.localPosition = localPoint;
+            myRect.anchoredPosition = targetPos;
         }
-        // x 좌표가 범위를 벗어나고, y 좌표는 범위 내라면 y값만 업데이트
-        else if (dragArea.rect.Contains(new Vector2(dragArea.rect.center.x, localPoint.y)))
+        else if (dragArea.rect.Contains(new Vector2(dragArea.rect.center.x, targetPos.y)))
         {
-            transform.localPosition = new Vector2(transform.localPosition.x, localPoint.y);
+            myRect.anchoredPosition = new Vector2(myRect.anchoredPosition.x, targetPos.y);
         }
-        // y 좌표가 범위를 벗어나고, x 좌표는 범위 내라면 x값만 업데이트
-        else if (dragArea.rect.Contains(new Vector2(localPoint.x, dragArea.rect.center.y)))
+        else if (dragArea.rect.Contains(new Vector2(targetPos.x, dragArea.rect.center.y)))
         {
-            transform.localPosition = new Vector2(localPoint.x, transform.localPosition.y);
+            myRect.anchoredPosition = new Vector2(targetPos.x, myRect.anchoredPosition.y);
         }
     }
 
-
-    // 드래그 종료 시: 원래 부모로 복귀한 후, 원래 부모 내에서 맨 뒤로 설정하여 다른 오브젝트 위에 있도록 함
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.SetParent(originalParent);
-        transform.SetAsLastSibling();
+        myRect.SetParent(originalParent);
+        myRect.SetAsLastSibling();
     }
 }
