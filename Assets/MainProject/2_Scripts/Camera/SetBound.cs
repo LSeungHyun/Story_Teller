@@ -5,7 +5,7 @@ public class SetBound : MonoBehaviour
     public ManagerConnector managerConnector;
     public CamBoundContainer camBoundContainer;
     public Collider2D camBound;
-
+    public Transform spawnPoint;
     public AbsctractGameSession session;
     public float curLensSize;
     private void Start()
@@ -18,5 +18,11 @@ public class SetBound : MonoBehaviour
         //camBoundContainer.lensSize = curLensSize;
         //camBoundContainer.boundCol = camBound;
         Debug.Log("카메라바운드 ㄱㄱ");
+
+        if(spawnPoint != null)
+        {
+            managerConnector.playerManager.gameObject.transform.position = spawnPoint.position;
+            Debug.Log(spawnPoint.position);
+        }
     }
 }

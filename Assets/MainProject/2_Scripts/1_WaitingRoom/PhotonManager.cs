@@ -10,6 +10,7 @@ using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
+    public PhotonManager instance;
     // .jslib에서 정의한 함수명과 동일
     [DllImport("__Internal")]
     private static extern void CopyToClipboard(string text);
@@ -48,6 +49,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
         PhotonNetwork.AutomaticallySyncScene = true;
