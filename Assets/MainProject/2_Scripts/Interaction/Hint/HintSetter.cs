@@ -14,6 +14,7 @@ public class HintSetter : MonoBehaviour
 
     public Text hintCount;
 
+    public GameObject detailAnswerBtn;
     public Text detailTitleName;
     public Text detailAnswer;
     public Text detailHintData;
@@ -109,6 +110,7 @@ public class HintSetter : MonoBehaviour
 
     public void SetHintDetailPopUp(HintData currentRow)
     {
+        detailAnswerBtn.SetActive(true);
         detailTitleName.text = currentRow.name;
         detailHintData.text = currentRow.hintTextData;
         detailAnswer.text = currentRow.answer;
