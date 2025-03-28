@@ -47,7 +47,7 @@ public class SingleSession : AbsctractGameSession
             portalSetter.SetPortalObjects(true, false, false);
             if (portalSetter.portalManager.gameObject.activeSelf)
             {
-                portalSetter.portalManager.gameObject.SetActive(false);
+                //portalSetter.portalManager.gameObject.SetActive(false);
             }
             
             if (!portalSetter.portalManager.isNextMap)

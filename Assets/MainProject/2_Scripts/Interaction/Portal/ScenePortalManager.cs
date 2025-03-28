@@ -8,9 +8,6 @@ public class ScenePortalManager : MonoBehaviour
     public CamBoundContainer camBoundContainer;
     public AbsctractGameSession session;
 
-    //[SerializeField]
-    //private GameObject loadingUI;
-
     public string worldName;
 
     private void Awake()
@@ -28,7 +25,7 @@ public class ScenePortalManager : MonoBehaviour
         }
         SceneManager.LoadScene(worldName);
         managerConnector.playerManager.gameObject.transform.position = new Vector3(-30,0,0);
-        managerConnector.loadingUI.SetActive(true);
+        managerConnector.textDataManager.loadingUI.SetActive(true);
         GameManager.Instance.SelectGameMode(false);
     }
 }

@@ -21,7 +21,6 @@ public class PortalManager : MonoBehaviour
         Debug.Log("3" + camBoundContainer.boundCol);
         Debug.Log("4" + camBoundContainer.lensSize);
         isNextMap = true;
-
         session.MovePlayers(this);
     }
 }
