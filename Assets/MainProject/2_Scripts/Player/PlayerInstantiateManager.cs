@@ -24,14 +24,12 @@ public class PlayerInstantiateManager : MonoBehaviour
             managerConnector.webglBtn = webglBtn;
             managerConnector.joystick = joystick;
             managerConnector.isMobile = true;
-            Debug.Log("모바일임");
         }
         else
         {
             webglBtn.gameObject.SetActive(false);
             joystick.gameObject.SetActive(false);
             managerConnector.isMobile = false;
-            Debug.Log("모바일아님");
         }
         
         var session = GameManager.Instance.Session;
@@ -44,17 +42,12 @@ public class PlayerInstantiateManager : MonoBehaviour
 
         if (GameManager.Instance.isType == false)
         {
-            //Debug.Log("싱글모드입니다");
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
             session.SetCamera(dontDes, playerObj);
         }
 
         else
         {
-
-            //var session = GameManager.Instance.Session;
-
-            //Debug.Log("멀티모드입니다");
             int localIndex = System.Array.IndexOf(PhotonNetwork.PlayerList, PhotonNetwork.LocalPlayer);
 
             // 2) 인덱스별로 다른 프리팹 이름
@@ -86,7 +79,6 @@ public class PlayerInstantiateManager : MonoBehaviour
             // 4) PhotonNetwork.Instantiate 호출 (프리팹 이름, 위치, 회전)
             playerObj = PhotonNetwork.Instantiate(prefabName, spawnPos, spawnRot);
 
-           
             session.SetCamera(dontDes, playerObj);
         }
     }

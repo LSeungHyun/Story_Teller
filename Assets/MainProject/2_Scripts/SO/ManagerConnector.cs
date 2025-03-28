@@ -9,8 +9,9 @@ public class ManagerConnector : ScriptableObject
     public ScenePortalManager scenePortalManager;
     public HintStateManager hintStateManager;
     public CurrentObjectManager currentObjectManager;
-
+    public TextDataManager textDataManager;
     public FloatingJoystick joystick;
     public GameObject webglBtn;
+    public GameObject loadingUI;
     public bool isMobile = false;
 }

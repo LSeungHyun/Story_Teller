@@ -15,9 +15,6 @@ public class SetBound : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         session.SetBoundLens(this);
-        //camBoundContainer.lensSize = curLensSize;
-        //camBoundContainer.boundCol = camBound;
-        Debug.Log("카메라바운드 ㄱㄱ");
 
         if(spawnPoint != null)
         {

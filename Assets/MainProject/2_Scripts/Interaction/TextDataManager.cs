@@ -192,8 +192,12 @@ public class TextDataManager : MonoBehaviour
     [SerializeField]
     private HintContainer hintContainer;
 
-    [SerializeField]
-    private GameObject loadingUI;
+    public GameObject loadingUI;
+
+    private void Awake()
+    {
+        managerConnector.textDataManager = this;
+    }
     private void Start()
     {
         StartCoroutine(LoadSheetData());
