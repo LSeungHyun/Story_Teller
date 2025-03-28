@@ -46,7 +46,14 @@ public class UIQuestSetter : MonoBehaviour
     }
     public void SetDonePage()
     {
-        donePlayerCount.text = "완료 인원:" + uiNextSetter.status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+        if(PhotonNetwork.IsConnected)
+        {
+            donePlayerCount.text = "완료 인원:" + uiNextSetter.status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+        else
+        {
+            donePlayerCount.text = "닫기를 눌러 진행해주세요.";
+        }
         doneAnswer.text = targetRow.answer;
     }
 
@@ -68,7 +75,8 @@ public class UIQuestSetter : MonoBehaviour
         }
         else
         {
-            Debug.Log("nn");
+            CurrentObjectManager.Instance.SetCurrentObjData("Wrong_Answer");
+            answerInput.text = "";
         }
     }
     public void onCloseBtn()
