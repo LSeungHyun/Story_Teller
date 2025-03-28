@@ -27,7 +27,7 @@ public abstract class AbsctractGameSession
     #region IsNext
     public abstract void AfterQuest(UIQuestSetter uiQuestSetter);
     public abstract void CheckDoneAndNext(UINextSetter uiNextSetter);
-    public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode);
+    public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete);
     #endregion
 
     #region Hint
@@ -86,11 +86,20 @@ public abstract class AbsctractGameSession
         {
             return;
         }
-        playerManager.interactableStack.Remove(collision);
-        playerManager.interactableStack.Add(collision); 
-        if (collision.GetComponent<TriggerObj>().isTouchObject)
+
+        var triggerObj = collision.GetComponent<TriggerObj>();
+        if (triggerObj == null)
         {
-            CurrentObjectManager.Instance.SetCurrentObjData(collision.GetComponent<TriggerObj>().objCode);
+            Debug.LogWarning($"TriggerObj 컴포넌트가 {collision.name}에 없습니다.");
+            return;
+        }
+
+        playerManager.interactableStack.Remove(collision);
+        playerManager.interactableStack.Add(collision);
+
+        if (triggerObj.isTouchObject)
+        {
+            CurrentObjectManager.Instance.SetCurrentObjData(triggerObj.objCode);
         }
         else
         {
@@ -98,6 +107,7 @@ public abstract class AbsctractGameSession
             playerManager.ChangeConfirmOn(true);
         }
     }
+
     public virtual void TriggerExitBasic(PlayerManager playerManager, Collider2D collision)
     {
         if (!collision.CompareTag("Interaction"))

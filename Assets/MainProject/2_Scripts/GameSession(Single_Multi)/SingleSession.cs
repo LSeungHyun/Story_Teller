@@ -47,7 +47,7 @@ public class SingleSession : AbsctractGameSession
             portalSetter.SetPortalObjects(true, false, false);
             if (portalSetter.portalManager.gameObject.activeSelf)
             {
-                //portalSetter.portalManager.gameObject.SetActive(false);
+                portalSetter.portalManager.gameObject.SetActive(false);
             }
             
             if (!portalSetter.portalManager.isNextMap)
@@ -76,9 +76,9 @@ public class SingleSession : AbsctractGameSession
         uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
         uiNextSetter.CheckNextCodeBasic();
     }
-    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode)
+    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
     {
-        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode);
+        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode, isDelete);
     }
     #endregion
 

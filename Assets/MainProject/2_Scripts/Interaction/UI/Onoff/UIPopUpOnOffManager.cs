@@ -9,19 +9,12 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public UIPopUpStructure uiPopupStructure;
     public UIPopUpManager uiPopUpManager;
 
-    public UINextSetter uiNextSetter;
-
     public void OpenWindow(bool isQuest, bool isDial)
     {
         var session = GameManager.Instance.Session;
         session.OpenPopUpBasic(this, isQuest, isDial);
     }
     public void ClosePopUpWindow()
-    {
-        var session = GameManager.Instance.Session;
-        session.ClosePopUpBasic(this);
-    }
-    public void CloseAndCheckPopUpWindow()
     {
         var session = GameManager.Instance.Session;
         session.ClosePopUpBasic(this);

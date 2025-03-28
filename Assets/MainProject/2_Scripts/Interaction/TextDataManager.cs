@@ -44,6 +44,7 @@ public class NextData
     public string objCode;
     public string isNextData;
     public string isNextObj;
+    public bool deleteObj;
 }
 
 #region CenterLabel Data

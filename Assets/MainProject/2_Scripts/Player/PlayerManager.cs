@@ -254,9 +254,9 @@ public class PlayerManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_SetNextObj(string nextObjCode)
+    public void RPC_SetNextObj(string nextObjCode, bool isDelete)
     {
-        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode);
+        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode, isDelete);
     }
 
     [PunRPC]

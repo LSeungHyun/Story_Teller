@@ -93,9 +93,9 @@ public class MultiSession : AbsctractGameSession
             uiNextSetter.CheckNextCodeBasic();
         }
     }
-    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode)
+    public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
     {
-        uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_SetNextObj", RpcTarget.AllBuffered, nextObjCode);
+        uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_SetNextObj", RpcTarget.AllBuffered, nextObjCode, isDelete);
     }
     #endregion
 

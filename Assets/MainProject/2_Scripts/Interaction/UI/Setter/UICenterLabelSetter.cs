@@ -9,6 +9,7 @@ public class UICenterLabelSetter : UIContentsManager
     public SoundContainer soundContainer;
     public ManagerConnector managerConnector;
     public UICenterLabelOnOffManager uiCenterLabelOnOffManager;
+    public UINextSetter uiNextSetter;
 
     public CenterLabelList[] centerLabelList;
     public Text textDisplay;
@@ -53,7 +54,8 @@ public class UICenterLabelSetter : UIContentsManager
         {
             if (uiCenterLabelOnOffManager != null)
             {
-                uiCenterLabelOnOffManager.CloseAndCheckCenterLabelWindow();
+                uiCenterLabelOnOffManager.CloseCenterLabelWindow();
+                uiNextSetter.CheckNextCodeBasic();
             }
         }
     }

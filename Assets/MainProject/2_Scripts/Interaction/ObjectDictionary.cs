@@ -43,13 +43,13 @@ public class ObjectDictionary : MonoBehaviour
         }
     }
 
-    public void ToggleObjectActive(string key)
+    public void ToggleObjectActive(string key, bool isDelete)
     {
         if (objectDictionary.ContainsKey(key))
         {
             Debug.Log(key);
             GameObject obj = objectDictionary[key];
-            obj.SetActive(!obj.activeSelf);
+            obj.SetActive(!isDelete);
         }
     }
 }

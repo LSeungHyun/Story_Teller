@@ -13,27 +13,59 @@ MonoBehaviour:
   m_Name: QuestContainer
   m_EditorClassIdentifier: 
   questDatas:
-  - objCode: UnderWorld_SteelHouse_ScrewList
-    name: "\uCCA0\uBB3C\uC810\uC758 \uB098\uC0AC\uB4E4"
+  - objCode: UnderWorld_SteelHouse_Quest
+    name: "\uB69D\uB531\uB69D\uB531"
     answer: "\uC870\uC6A9\uD558\uAC8C"
     isDone: 1
-  - objCode: LivingWorld_JungCafe_Music_Quest
-    name: "\u3139"
+  - objCode: UnderWorld_Bakery_Quest
+    name: "\uCABD\uC9C0"
     answer: "\uD30C\uC778\uC560\uD50C"
     isDone: 0
-  - objCode: UnderWorld_Bakery_Note_Quest
-    name: "\u3139"
+  - objCode: UnderWorld_JungCafe_Quest
+    name: "\uB178\uD2B8\uBD81"
     answer: "\uBAA8\uC2B5"
     isDone: 0
-  - objCode: UnderWorld_JungCafe_Notebook_Quest
-    name: "\u3139"
+  - objCode: UnderWorld_HairSalon_Quest
+    name: "\uAD6D\uD654"
     answer: "\uADF8\uB824\uB0B4\uB2E4"
     isDone: 0
-  - objCode: UnderWorld_HappyHair_Note_Quest
-    name: "\u3139"
+  - objCode: UnderWorld_2ndFloor_Quest
+    name: "\uAC00\uC871\uC0AC\uC9C4"
     answer: "\uBBF8\uB828"
     isDone: 0
-  - objCode: UnderWorld_HappyHair_2ndfloor_Quest
-    name: "\u314E"
+  - objCode: LivingWorld_FlowerShop_Quest
+    name: "\uAF43\uB9D0"
     answer: "\uC790\uC0C1\uD568"
+    isDone: 0
+  - objCode: LivingWorld_Bakery_Quest
+    name: "\uB808\uC2DC\uD53C"
+    answer: "\uBBFC\uD2B8\uCD08\uCF54\uB9DB"
+    isDone: 0
+  - objCode: LivingWorld_Road_Quest
+    name: "\uCE74\uD398"
+    answer: "\uC18C\uB9AC"
+    isDone: 0
+  - objCode: LivingWorld_JungCafe_Quest
+    name: "\uB3C4\uB780\uB3C4\uB780"
+    answer: "\uBAA9\uC228"
+    isDone: 0
+  - objCode: LivingWorld_HairSalon_Quest1
+    name: "\uAE30\uB150\uC77C"
+    answer: "\uAC00\uC871"
+    isDone: 0
+  - objCode: LivingWorld_HairSalon_Quest2
+    name: "\uD3B8\uC9C0\uBD09\uD22C"
+    answer: "\uC9C0\uAE08"
+    isDone: 0
+  - objCode: LivingWorld_2ndFloor_Quest1
+    name: "\uADF8\uB9BC\uC77C\uAE30"
+    answer: "\uAFC8\uAFB8\uB2E4"
+    isDone: 0
+  - objCode: LivingWorld_2ndFloor_Quest2
+    name: "\uD0C0\uB2E5\uD0C0\uB2E5"
+    answer: "\uAC00\uC704"
+    isDone: 0
+  - objCode: LivingWorld_2ndFloor_Quest3
+    name: "\uD669\uD63C"
+    answer: "\uBC24"
     isDone: 0

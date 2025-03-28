@@ -13,87 +13,347 @@ MonoBehaviour:
   m_Name: NextDataContainer
   m_EditorClassIdentifier: 
   nextDatas:
-  - objCode: UnderWorld_SteelHouse_Driver_Star
-    isNextData: CutScene_GukHwa
-    isNextObj: 
-  - objCode: UnderWorld_SteelHouse_Quest
-    isNextData: 
-    isNextObj: Inv_Sara
-  - objCode: UnderWorld_SteelHouse_Quest
-    isNextData: 
-    isNextObj: UnderWorld_SteelHouse_Quest
   - objCode: Enter_Wait
     isNextData: Enter_Move
     isNextObj: 
+    deleteObj: 0
+  - objCode: Enter_Wait_Scene
+    isNextData: Enter_Move_Scene
+    isNextObj: 
+    deleteObj: 0
   - objCode: Enter_Move
     isNextData: 
     isNextObj: Portal_Manager
+    deleteObj: 0
   - objCode: Enter_Move
     isNextData: 
     isNextObj: Arrive
+    deleteObj: 0
   - objCode: Enter_CutScene_Wait
     isNextData: 
     isNextObj: CutScene_Manager
+    deleteObj: 0
+  - objCode: Enter_Move_Scene
+    isNextData: 
+    isNextObj: Scene_Portal_Manager
+    deleteObj: 0
+  - objCode: UnderWorld_Tutorial_Sara
+    isNextData: 
+    isNextObj: Portal_Tutorial_To_Road
+    deleteObj: 0
+  - objCode: UnderWorld_Tutorial_Sara
+    isNextData: 
+    isNextObj: Portal_Road_To_SteelHouse
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_In
+    isNextData: 
+    isNextObj: Portal_Road_To_SteelHouse
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_Quest
+    isNextData: UnderWorld_SteelHouse_Answer
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_Answer
+    isNextData: 
+    isNextObj: Portal_SteelHouse_To_Road
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_Answer
+    isNextData: 
+    isNextObj: Fog1
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_Answer
+    isNextData: 
+    isNextObj: Portal_Road_To_Bakery
+    deleteObj: 0
+  - objCode: UnderWorld_SteelHouse_Answer
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_In
+    isNextData: 
+    isNextObj: Portal_Road_To_Bakery
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_In
+    isNextData: UnderWorld_Bakery_InDial
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Quest
+    isNextData: 
+    isNextObj: UnderWorld_Bakery_Quest_Ex
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Quest
+    isNextData: UnderWorld_Bakery_Answer
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Answer
+    isNextData: 
+    isNextObj: Portal_Bakery_To_Road
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Answer
+    isNextData: 
+    isNextObj: Fog2
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Answer
+    isNextData: 
+    isNextObj: Portal_Road_To_JungCafe
+    deleteObj: 0
+  - objCode: UnderWorld_Bakery_Answer
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_In
+    isNextData: 
+    isNextObj: Portal_Road_To_JungCafe
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_In
+    isNextData: UnderWorld_JungCafe_InDial
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Quest
+    isNextData: 
+    isNextObj: UnderWorld_JungCafe_Quest_Ex
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Quest
+    isNextData: UnderWorld_JungCafe_Answer
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Answer
+    isNextData: 
+    isNextObj: Portal_JungCafe_To_Road
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Answer
+    isNextData: 
+    isNextObj: Fog3
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Answer
+    isNextData: 
+    isNextObj: CutScene_Area_GukHwa
+    deleteObj: 0
+  - objCode: UnderWorld_JungCafe_Answer
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
   - objCode: CutScene_GukHwa
     isNextData: 
     isNextObj: Ghost_CutScene
-  - objCode: UnderWorld_Tutorial_Sara
+    deleteObj: 0
+  - objCode: UnderWorld_HairSalon_Quest
     isNextData: 
-    isNextObj: Tutorial_To_Road
-  - objCode: UnderWorld_Tutorial_Sara
-    isNextData: UnderWorld_SteelHouse_Quest
+    isNextObj: UnderWorld_HairSalon_Quest_Ex
+    deleteObj: 0
+  - objCode: UnderWorld_HairSalon_Quest
+    isNextData: UnderWorld_HairSalon_Answer
     isNextObj: 
-  - objCode: 
+    deleteObj: 0
+  - objCode: UnderWorld_HairSalon_Answer
     isNextData: 
+    isNextObj: Portal_HairSalon_To_2ndFloor
+    deleteObj: 0
+  - objCode: UnderWorld_HairSalon_Answer
+    isNextData: 
+    isNextObj: UnderWorld_HairSalon_Door
+    deleteObj: 0
+  - objCode: UnderWorld_HairSalon_Answer
+    isNextData: Active_Arrow
     isNextObj: 
-  - objCode: LivingWorld_FlowerShop_In
+    deleteObj: 0
+  - objCode: UnderWorld_2ndFloor_Quest
     isNextData: 
-    isNextObj: LivingWorld_FlowerShop_In
+    isNextObj: UnderWorld_2ndFloor_Quest_Ex
+    deleteObj: 0
+  - objCode: UnderWorld_2ndFloor_Quest
+    isNextData: UnderWorld_2ndFloor_Answer
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_2ndFloor_Answer
+    isNextData: UnderWorld_Ending
+    isNextObj: 
+    deleteObj: 0
+  - objCode: UnderWorld_Ending
+    isNextData: 
+    isNextObj: Portal_To_Boundary
+    deleteObj: 0
+  - objCode: Boundary_Sara
+    isNextData: 
+    isNextObj: Portal_To_LivingWorld
+    deleteObj: 0
   - objCode: LivingWorld_FlowerShop_In
     isNextData: 
     isNextObj: Portal_Road_To_Flower
+    deleteObj: 0
   - objCode: LivingWorld_FlowerShop_Quest
     isNextData: LivingWorld_FlowerShop_Answer
     isNextObj: 
+    deleteObj: 0
   - objCode: LivingWorld_FlowerShop_Answer
     isNextData: 
     isNextObj: Portal_Flower_To_Road
+    deleteObj: 0
   - objCode: LivingWorld_FlowerShop_Answer
     isNextData: 
     isNextObj: Portal_Road_To_Bakery
+    deleteObj: 0
   - objCode: LivingWorld_FlowerShop_Answer
     isNextData: Active_Arrow
     isNextObj: 
-  - objCode: LivingWorld_Bakery_In
-    isNextData: 
-    isNextObj: LivingWorld_Bakery_In
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_In
     isNextData: 
     isNextObj: Portal_Road_To_Bakery
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_Quest
     isNextData: LivingWorld_Bakery_Answer
     isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_Bakery_Answer
+    isNextData: 
+    isNextObj: CutScene_Area_MintChoco
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_Girl
     isNextData: 
-    isNextObj: LivingWorld_Bakery_Man
+    isNextObj: Owner_CutScene
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_Man
     isNextData: 
     isNextObj: Portal_Bakery_To_Road
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_Man
     isNextData: 
     isNextObj: LivingWorld_Road_Dial
+    deleteObj: 0
   - objCode: LivingWorld_Bakery_Man
     isNextData: Active_Arrow
     isNextObj: 
+    deleteObj: 0
   - objCode: LivingWorld_Road_Dial
     isNextData: LivingWorld_Road_Quest
     isNextObj: 
+    deleteObj: 0
   - objCode: LivingWorld_Road_Quest
     isNextData: 
     isNextObj: Portal_Road_To_JungCafe
-  - objCode: LivingWorld_JungCafe_In
-    isNextData: 
-    isNextObj: LivingWorld_JungCafe_In
+    deleteObj: 0
+  - objCode: LivingWorld_Road_Quest
+    isNextData: LivingWorld_JungCafe_Unlocked
+    isNextObj: 
+    deleteObj: 0
   - objCode: LivingWorld_JungCafe_In
     isNextData: 
     isNextObj: Portal_Road_To_JungCafe
+    deleteObj: 0
+  - objCode: LivingWorld_JungCafe_In
+    isNextData: LivingWorld_JungCafe_InDial
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_JungCafe_Quest
+    isNextData: LivingWorld_JungCafe_Answer
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_JungCafe_Answer
+    isNextData: 
+    isNextObj: Portal_JungCafe_To_Road
+    deleteObj: 0
+  - objCode: LivingWorld_JungCafe_Answer
+    isNextData: 
+    isNextObj: Portal_Road_To_HairSalon
+    deleteObj: 0
+  - objCode: LivingWorld_JungCafe_Answer
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_In
+    isNextData: 
+    isNextObj: Portal_Road_To_HairSalon
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_In
+    isNextData: LivingWorld_HairSalon_InDial
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Quest1
+    isNextData: 
+    isNextObj: LivingWorld_HairSalon_Sara
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Quest1
+    isNextData: LivingWorld_HairSalon_Answer1
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Sara
+    isNextData: LivingWorld_HairSalon_Quest2
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Quest2
+    isNextData: LivingWorld_HairSalon_Answer2
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Answer2
+    isNextData: 
+    isNextObj: Portal_HairSalon_To_2ndFloor
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Answer2
+    isNextData: 
+    isNextObj: LivingWorld_HairSalon_CantGo
+    deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Answer2
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Quest1
+    isNextData: 
+    isNextObj: Portal_HairSalon_To_2ndFloor
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Quest1
+    isNextData: LivingWorld_2ndFloor_Ansewer1
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer1
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_KeyBoard
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer1
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Quest2
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Quest2
+    isNextData: LivingWorld_2ndFloor_Ansewer2
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer2
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Window
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer2
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Quest3
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Quest3
+    isNextData: LivingWorld_2ndFloor_Ansewer3
+    isNextObj: 
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer3
+    isNextData: 
+    isNextObj: Portal_2ndFloor_To_HairSalon
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer3
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Girl1
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer3
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Girl1Smile
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer3
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Ghost
+    deleteObj: 0
+  - objCode: LivingWorld_2ndFloor_Ansewer3
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
+  - objCode: Ending_HairSalon_In
+    isNextData: 
+    isNextObj: Portal_HairSalon_To_Road
+    deleteObj: 0
+  - objCode: Ending_Road_In
+    isNextData: Ending
+    isNextObj: 
+    deleteObj: 0
