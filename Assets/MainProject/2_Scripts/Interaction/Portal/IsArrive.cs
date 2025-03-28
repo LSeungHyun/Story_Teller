@@ -7,12 +7,15 @@ public class IsArrive : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         var session = GameManager.Instance.Session;
         session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
-        if(camBoundContainer != null)
+        if (managerConnector != null)
+        {
+            managerConnector.textDataManager.loadingUI.SetActive(false);
+        }
+
+        if (camBoundContainer != null)
         {
             session.SetCamValue(camBoundContainer.camDontDes, camBoundContainer.boundCol, camBoundContainer.lensSize);
         }
-        if(managerConnector != null) {
-            managerConnector.textDataManager.loadingUI.SetActive(false);
-        }
+        
     }
 }
