@@ -16,7 +16,7 @@ public class KeyInputManager : MonoBehaviour
         }
     }
 
-    private void HandleFKey()
+    public void HandleFKey()
     {
         CurrentObjectManager.Instance.SetCurrentObjData(null);
     }
