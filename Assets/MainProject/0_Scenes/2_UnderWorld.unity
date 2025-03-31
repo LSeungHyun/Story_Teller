@@ -20405,9 +20405,10 @@ GameObject:
   m_Component:
   - component: {fileID: 992003488}
   - component: {fileID: 992003489}
+  - component: {fileID: 992003493}
+  - component: {fileID: 992003491}
   - component: {fileID: 992003492}
   - component: {fileID: 992003490}
-  - component: {fileID: 992003491}
   m_Layer: 0
   m_Name: Tutorial_Sara
   m_TagString: Interaction
@@ -20471,8 +20472,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1232989169
+  m_SortingLayer: 1
   m_SortingOrder: 10
   m_Sprite: {fileID: 1031471482, guid: db38bc4b489157b448985c34df97fc17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -20609,6 +20610,27 @@ PolygonCollider2D:
       - {x: -0.0018610358, y: -0.13462925}
       - {x: 0.10770879, y: -0.09174216}
   m_UseDelaunayMesh: 0
+--- !u!114 &992003493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992003487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  thePlayer: {fileID: 0}
+  spriteRenderer: {fileID: 992003489}
+  childSpriteGroup: []
+  basicLayer: 
+  currentSortingLayer: 
+  underObjectLayer: UnderObject
+  aboveObjectLayer: AboveObject
+  isColliding: 0
 --- !u!1 &994195161
 GameObject:
   m_ObjectHideFlags: 0
@@ -21527,7 +21549,7 @@ PrefabInstance:
       objectReference: {fileID: 1722196785, guid: db38bc4b489157b448985c34df97fc17, type: 3}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingOrder
@@ -21535,7 +21557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1274686295
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25216,7 +25238,7 @@ PrefabInstance:
       objectReference: {fileID: 1722196785, guid: db38bc4b489157b448985c34df97fc17, type: 3}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingOrder
@@ -25224,7 +25246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8221106684163733366, guid: 1bc98ce557488d04890753da6ed7aa0a, type: 3}
       propertyPath: m_SortingLayerID
-      value: -1274686295
+      value: -1232989169
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26523,8 +26545,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1264149762}
   - component: {fileID: 1264149763}
-  - component: {fileID: 1264149764}
+  - component: {fileID: 1264149767}
   - component: {fileID: 1264149765}
+  - component: {fileID: 1264149764}
   - component: {fileID: 1264149766}
   m_Layer: 0
   m_Name: Board_Hint
@@ -26589,8 +26612,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1232989169
+  m_SortingLayer: 1
   m_SortingOrder: 10
   m_Sprite: {fileID: -963620840, guid: db38bc4b489157b448985c34df97fc17, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -26729,6 +26752,27 @@ PolygonCollider2D:
       - {x: -0.38163066, y: -0.14896333}
       - {x: 0.37678707, y: -0.152699}
   m_UseDelaunayMesh: 0
+--- !u!114 &1264149767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1264149761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  thePlayer: {fileID: 0}
+  spriteRenderer: {fileID: 1264149763}
+  childSpriteGroup: []
+  basicLayer: 
+  currentSortingLayer: 
+  underObjectLayer: UnderObject
+  aboveObjectLayer: AboveObject
+  isColliding: 0
 --- !u!1 &1267008182
 GameObject:
   m_ObjectHideFlags: 0
