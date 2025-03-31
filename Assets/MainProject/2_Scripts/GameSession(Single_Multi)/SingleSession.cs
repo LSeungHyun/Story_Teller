@@ -160,8 +160,6 @@ public class SingleSession : AbsctractGameSession
     public override void SetCamValue(CamDontDes camDontDes, Collider2D newBound, float lens)
     {
         base.SetCamValue(camDontDes, newBound, lens);
-        //Debug.Log("1" + newBound);
-        //Debug.Log("2" + lens);
     }
     #endregion
 }
