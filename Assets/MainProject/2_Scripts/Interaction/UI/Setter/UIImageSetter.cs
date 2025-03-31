@@ -6,61 +6,95 @@ public class UIImageSetter : UIPopUpManager
 {
     [SerializeField] private ImageContainer imageContainer;
 
-    public ImageList[] imageList;
-    public Sprite[] spriteData;
-
     public Image defaultSpriteDisplay;
+    public RectTransform backgroundRect;
+    public RectTransform closeButtonRect;
+    public ImageList[] imageLists;
 
     public override void SetData(string currentObjCode)
     {
-        if (imageContainer != null && imageContainer.imageDatas != null)
-        {
-            var imageData = imageContainer.imageDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-            if (imageData != null)
-            {
-                imageList = imageData.dataList;
-                spriteData = SetImage(imageList);
-                totalDataPage = spriteData.Length;
-            }
-        }
+        imageLists = imageContainer?.imageDatas?.FirstOrDefault(data => data.objCode == currentObjCode)?.dataList;
         currentDataPage = 1;
+        totalDataPage = imageLists?.Length ?? 0;
         DisplayPage();
     }
+
+    public override void DisplayPage()
+    {
+        if (imageLists == null || imageLists.Length == 0) return;
+
+        Sprite currentSprite = LoadSprite(imageLists[currentDataPage - 1]);
+        defaultSpriteDisplay.sprite = currentSprite;
+
+        ResizeImageAndBackground(currentSprite);
+
+        StartOnPageChanged(currentDataPage, totalDataPage);
+    }
+
     public override void UpdateNavigationButtons(int currentPage, int totalPages)
     {
         base.UpdateNavigationButtons(currentPage, totalPages);
     }
 
-    public override void DisplayPage()
-    {
-        if (spriteData != null && spriteData.Length > 0)
-        {
-            defaultSpriteDisplay.sprite = spriteData[currentDataPage - 1];
-        }
-        StartOnPageChanged(currentDataPage, totalDataPage);
-        Debug.Log(currentDataPage + "," + totalDataPage);
-    }
-
     public override void ClearData()
     {
-        imageList = new ImageList[0];
-        spriteData = new Sprite[0];
+        imageLists = null;
         if (defaultSpriteDisplay != null)
             defaultSpriteDisplay.sprite = null;
     }
 
-    Sprite[] SetImage(ImageList[] imageList)
+    private Sprite LoadSprite(ImageList imageInfo)
     {
-        Sprite[] sprites = new Sprite[imageList.Length];
-        for (int i = 0; i < imageList.Length; i++)
+        if (imageInfo == null || string.IsNullOrEmpty(imageInfo.imageData)) return null;
+
+        Sprite sprite = Resources.Load<Sprite>(imageInfo.imageData);
+        if (sprite == null)
+            Debug.LogWarning($"Failed to load sprite: {imageInfo.imageData}");
+        return sprite;
+    }
+
+    private void ResizeImageAndBackground(Sprite sprite)
+    {
+        if (sprite == null) return;
+
+        RectTransform imageRect = defaultSpriteDisplay.GetComponent<RectTransform>();
+
+        float originalWidth = sprite.rect.width;
+        float originalHeight = sprite.rect.height;
+
+        const float maxWidth = 1024f;
+        const float maxHeight = 720f;
+
+        float widthScale = maxWidth / originalWidth;
+        float heightScale = maxHeight / originalHeight;
+        float scale = Mathf.Min(1f, Mathf.Min(widthScale, heightScale));
+
+        float scaledWidth = originalWidth * scale;
+        float scaledHeight = originalHeight * scale;
+
+        imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, scaledWidth);
+        imageRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, scaledHeight);
+
+        if (backgroundRect != null)
         {
-            Sprite sprite = Resources.Load<Sprite>(imageList[i].imageData);
-            if (sprite == null)
+            float bgWidth = scaledWidth + 60f;
+            float bgHeight = scaledHeight + 132f;
+
+            backgroundRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, bgWidth);
+            backgroundRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, bgHeight);
+
+            imageRect.SetParent(backgroundRect);
+            imageRect.anchorMin = imageRect.anchorMax = new Vector2(0.5f, 0.5f);
+            imageRect.pivot = new Vector2(0.5f, 0.5f);
+            imageRect.anchoredPosition = new Vector2(0f, 36f);
+
+            if (closeButtonRect != null)
             {
-                Debug.LogWarning("Failed to load sprite: " + imageList[i].imageData);
+                closeButtonRect.SetParent(backgroundRect);
+                closeButtonRect.anchorMin = closeButtonRect.anchorMax = new Vector2(0.5f, 0f);
+                closeButtonRect.pivot = new Vector2(0.5f, 0.5f);
+                closeButtonRect.anchoredPosition = Vector2.zero;
             }
-            sprites[i] = sprite;
         }
-        return sprites;
     }
 }

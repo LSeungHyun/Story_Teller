@@ -13622,10 +13622,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 231898430}
-  - {fileID: 1843223411}
   - {fileID: 1223736913}
   - {fileID: 792609400}
   - {fileID: 2003394837}
+  - {fileID: 1843223411}
   m_Father: {fileID: 1131083724}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -35429,6 +35429,8 @@ MonoBehaviour:
   imageList: []
   spriteData: []
   defaultSpriteDisplay: {fileID: 2003394838}
+  backgroundRect: {fileID: 231898430}
+  closeButtonRect: {fileID: 1843223411}
 --- !u!114 &1769707349
 MonoBehaviour:
   m_ObjectHideFlags: 0
