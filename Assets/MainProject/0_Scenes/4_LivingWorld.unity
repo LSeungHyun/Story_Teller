@@ -3554,6 +3554,12 @@ MonoBehaviour:
     value: {fileID: 460581520}
   - key: Portal_2ndFloor_To_HairSalon
     value: {fileID: 1653094564}
+  - key: Ending_HairSalon_Girl1
+    value: {fileID: 477211278}
+  - key: Ending_HairSalon_Girl1Smile
+    value: {fileID: 1056568989}
+  - key: Ending_HairSalon_Ghost
+    value: {fileID: 1171793029}
   - key: Portal_HairSalon_To_Road
     value: {fileID: 1421908723}
 --- !u!4 &250438963
@@ -4028,6 +4034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!1001 &267811752
 PrefabInstance:
@@ -5626,6 +5633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!114 &368840006
 MonoBehaviour:
@@ -7776,7 +7784,7 @@ GameObject:
   - component: {fileID: 477211282}
   - component: {fileID: 477211281}
   m_Layer: 0
-  m_Name: Girl1
+  m_Name: Ending_HairSalon_Girl1
   m_TagString: Interaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11868,6 +11876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!1001 &688997171
 PrefabInstance:
@@ -16912,7 +16921,7 @@ GameObject:
   - component: {fileID: 1056568991}
   - component: {fileID: 1056568993}
   m_Layer: 0
-  m_Name: Girl1Smile
+  m_Name: Ending_HairSalon_Girl1Smile
   m_TagString: Interaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19065,7 +19074,7 @@ GameObject:
   - component: {fileID: 1171793030}
   - component: {fileID: 1171793031}
   m_Layer: 0
-  m_Name: Ghost
+  m_Name: Ending_HairSalon_Ghost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35936,6 +35945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!61 &6381043560147572695
 BoxCollider2D:
@@ -36148,6 +36158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!4 &7212091777913765481
 Transform:
@@ -36176,6 +36187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!4 &7228108164763096180
 Transform:
@@ -36204,6 +36216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!1 &8053289509367650498
 GameObject:
@@ -36236,6 +36249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!114 &8053289509367650500
 MonoBehaviour:
@@ -36412,6 +36426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!114 &9199404949964653633
 MonoBehaviour:
@@ -36425,6 +36440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce65fdc6d00010d4cb7c593cad7ff152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!114 &9199404949964653634
 MonoBehaviour:
