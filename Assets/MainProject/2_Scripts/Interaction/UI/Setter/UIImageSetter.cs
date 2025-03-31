@@ -10,7 +10,6 @@ public class UIImageSetter : UIPopUpManager
     public Sprite[] spriteData;
 
     public Image defaultSpriteDisplay;
-    public Image questSpriteDisplay;
 
     public override void SetData(string currentObjCode)
     {
@@ -37,7 +36,6 @@ public class UIImageSetter : UIPopUpManager
         if (spriteData != null && spriteData.Length > 0)
         {
             defaultSpriteDisplay.sprite = spriteData[currentDataPage - 1];
-            questSpriteDisplay.sprite = spriteData[currentDataPage - 1];
         }
         StartOnPageChanged(currentDataPage, totalDataPage);
         Debug.Log(currentDataPage + "," + totalDataPage);
@@ -49,8 +47,6 @@ public class UIImageSetter : UIPopUpManager
         spriteData = new Sprite[0];
         if (defaultSpriteDisplay != null)
             defaultSpriteDisplay.sprite = null;
-        if (questSpriteDisplay != null)
-            questSpriteDisplay.sprite = null;
     }
 
     Sprite[] SetImage(ImageList[] imageList)

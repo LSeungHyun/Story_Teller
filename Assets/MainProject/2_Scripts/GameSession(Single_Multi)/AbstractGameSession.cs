@@ -138,17 +138,12 @@ public abstract class AbsctractGameSession
         string currentObjCode = currentObjectManager.currentRow.objCode;
 
         string currentObjType = currentObjectManager.currentRow.dataType.ToLower();
-        bool hasHint = currentObjType.Contains("hint");
         bool hasDialogue = currentObjType.Contains("dialogue");
         bool hasQuest = currentObjType.Contains("quest");
         bool hasBubble = currentObjType.Contains("bubble");
         bool hasCenterLabel = currentObjType.Contains("centerlabel");
         bool hasImage = currentObjType.Contains("image");
 
-        if (hasHint)
-        {
-            currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
-        }
         if (hasBubble)
         {
             currentObjectManager.bubbleSetter.currentObjOffset = currentObjectManager.objDataTypeContainer.position;
@@ -171,7 +166,9 @@ public abstract class AbsctractGameSession
         }
         if (hasQuest)
         {
-            currentObjectManager.uiQuestSetter.SetQuest(currentObjCode);
+            currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
+            currentObjectManager.uiQuestSetter.SetQuestBg(currentObjCode);
+            currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
         }
     }
     #endregion

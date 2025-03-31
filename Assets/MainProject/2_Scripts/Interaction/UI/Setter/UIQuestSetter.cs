@@ -3,12 +3,15 @@ using System.Linq;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Photon.Pun;
+using UnityEngine.InputSystem;
+
 
 public class UIQuestSetter : MonoBehaviour
 {
     [SerializeField] public QuestContainer questContainer;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UINextSetter uiNextSetter;
+    public QuestDictionary questDictionary;
 
     public QuestData targetRow;
 
@@ -19,12 +22,16 @@ public class UIQuestSetter : MonoBehaviour
     public GameObject isDoneFalseGroup;
     public GameObject isDoneTrueGroup;
     public Text nameDisplay;
-    public InputField answerInput;
+    public InputField answerInput; 
+    
+    public Transform pageDisplayParent;
+    private GameObject currentPageDisplayInstance;
 
     public Text donePlayerCount;
     public Text doneAnswer;
 
-    public void SetQuest(string currentObjCode)
+
+    public void SetQuestBg(string currentObjCode)
     {
         ClearData();
         if (questContainer != null && questContainer.questDatas != null)
@@ -37,6 +44,7 @@ public class UIQuestSetter : MonoBehaviour
                 isDone = targetRow.isDone;
                 isDoneFalseGroup.SetActive(!isDone);
                 isDoneTrueGroup.SetActive(isDone);
+                SetQuestQuiz(targetRow.objCode);
                 if (isDone)
                 {
                     SetDonePage();
@@ -44,6 +52,29 @@ public class UIQuestSetter : MonoBehaviour
             }
         }
     }
+
+    public void SetQuestQuiz(string objCode)
+    {
+        foreach (var kvp in questDictionary.preFabDictionary)
+        {
+            Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value.name}");
+        }
+        if (questDictionary.preFabDictionary.ContainsKey(objCode))
+        {
+            Debug.Log($"Key: {objCode}");
+            GameObject prefab = questDictionary.preFabDictionary[objCode];
+            if (currentPageDisplayInstance != null)
+            {
+                Destroy(currentPageDisplayInstance);
+            }
+
+            currentPageDisplayInstance = Instantiate(prefab, pageDisplayParent);
+        }
+    }
+
+
+
+
     public void SetDonePage()
     {
         if(PhotonNetwork.IsConnected)
