@@ -23,12 +23,17 @@ public class DynamicSortingLayer : MonoBehaviour
     void Start()
     {
         basicLayer = spriteRenderer.sortingLayerName;
-        thePlayer = managerConnector.playerManager;
+        //thePlayer = managerConnector.playerManager;
     }
 
 
     void Update()
     {
+        if (thePlayer == null && managerConnector.playerManager != null)
+        {
+            thePlayer = managerConnector.playerManager;
+        }
+
         if (thePlayer && isColliding)
         {
             string newSortingLayer = (transform.position.y > thePlayer.transform.position.y) ? underObjectLayer : aboveObjectLayer;
