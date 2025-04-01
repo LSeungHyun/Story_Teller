@@ -99,7 +99,6 @@ public class SingleSession : AbsctractGameSession
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
-        //MoveBasic(playerManager);
         base.MoveBasic(playerManager);
     }
     public override void JoystickMoveBasic(PlayerManager playerManager)
@@ -146,6 +145,15 @@ public class SingleSession : AbsctractGameSession
     }
     #endregion
 
+    public override void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
+    {
+        base.OnOffPlayerBtnGroup(managerConnector, isActive);
+    }
+
+    public override void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
+    {
+        base.CheckIsMobile(player, managerConnector);
+    }
     #region Camera
     public override void SetCamera(CamDontDes camera, GameObject playerObj)
     {

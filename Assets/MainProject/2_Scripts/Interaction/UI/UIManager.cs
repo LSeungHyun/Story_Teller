@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
+using System.Collections;
 
 public class UIManager : DoTweenManager
 {
@@ -34,6 +36,9 @@ public class UIManager : DoTweenManager
 
     [Header("Panel List")]
     [SerializeField]
+    private GameObject Master_Panel;
+
+    [SerializeField]
     private List<Panel_Group> Panel_List;
 
     [Header("OnOffChat List")]
@@ -42,13 +47,18 @@ public class UIManager : DoTweenManager
 
     [Header("Blur Object")]
     [SerializeField]
-    private GameObject blurObject;
+    private GameObject DarkObject;
+    [SerializeField]
+    private GameObject BlurObject;
 
     public Dictionary<string, PopUp_Group> popUpDict;
     public Dictionary<string, Panel_Group> panelDict;
 
     public bool blurAble = true;
     public bool chatOn = false;
+
+    [SerializeField]
+    private bool NotEvent = false;
 
     void Awake()
     {
@@ -59,6 +69,13 @@ public class UIManager : DoTweenManager
     void Start()
     {
 
+    }
+
+
+    public void BlurOnOff(bool active)
+    {
+        DarkObject.SetActive(active);
+        BlurObject.SetActive(active);
     }
 
     #region 딕셔너리 정보값 세팅 / 팝업, 패널
@@ -108,6 +125,23 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void OpenPopUp(string popUp_Name)
     {
+        if (!NotEvent)
+        {
+            ClickAnim();
+            StartCoroutine(PopUpCoroutine(popUp_Name));
+        }
+    }
+
+    IEnumerator PopUpCoroutine(string popUp_Name)
+    {
+        NotEvent = true;
+
+        CloseAllPopUps();
+
+        yield return new WaitForSeconds(0.25f);
+
+        BlurOnOff(true);
+
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
             if (popUp.isAnim)
@@ -123,10 +157,12 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
+
+        NotEvent = false;
     }
 
     /// <summary>
-    /// popUp_Name으로 지정한 팝업을 닫기
+    /// panel_Name으로 지정한 팝업을 닫기
     /// </summary>
     public void ClosePopUp(string popUp_Name)
     {
@@ -145,11 +181,78 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
-    } 
+
+        BlurOnOff(false);
+    }
 
     public void CloseAllPopUps()
     {
         foreach (var kvp in popUpDict)
+        {
+            ClosePopUp(kvp.Key);
+        }
+    }
+
+    #endregion
+
+    #region 패널 관련된 기능
+
+    /// <summary>
+    /// panel_Name으로 지정한 팝업을 열기
+    /// </summary>
+    public void OpenPanel(string panel_Name)
+    {
+        CloseAllPanels();
+
+        Master_Panel.SetActive(true);
+        BlurObject.SetActive(true);
+        DarkObject.SetActive(false);
+
+        if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
+        {
+            if (panel.isAnim)
+            {
+                ShowUI(panel.Panel_Obj);
+            }
+            else
+            {
+                panel.Panel_Obj.SetActive(true);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {panel_Name}");
+        }
+    }
+
+    /// <summary>
+    /// panel_Name으로 지정한 팝업을 닫기
+    /// </summary>
+    public void ClosePanel(string panel_Name)
+    {
+        if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
+        {
+            if (panel.isAnim)
+            {
+                HideUI(panel.Panel_Obj);
+            }
+            else
+            {
+                panel.Panel_Obj.SetActive(false);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {panel_Name}");
+        }
+
+        Master_Panel.SetActive(false);
+        DarkObject.SetActive(true);
+    }
+
+    public void CloseAllPanels()
+    {
+        foreach (var kvp in panelDict)
         {
             ClosePopUp(kvp.Key);
         }

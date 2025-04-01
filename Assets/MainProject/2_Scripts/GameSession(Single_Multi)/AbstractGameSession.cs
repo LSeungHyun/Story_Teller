@@ -171,7 +171,6 @@ public abstract class AbsctractGameSession
     #region UI On Off
     public virtual void OpenPopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager, bool isQuest, bool isDial)
     {
-        UIPopUpOnOffManager.managerConnector.playerManager.isMove = false;
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(true);
 
@@ -183,8 +182,6 @@ public abstract class AbsctractGameSession
     }
     public virtual void ClosePopUpBasic(UIPopUpOnOffManager UIPopUpOnOffManager)
     {
-        UIPopUpOnOffManager.managerConnector.playerManager.isMove = true;
-
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUp.SetActive(true);
         UIPopUpOnOffManager.uiPopupStructure.canvas.popUpGroup.windowPopUp.SetActive(false);
 
@@ -204,6 +201,31 @@ public abstract class AbsctractGameSession
     {
         uiCenterLabelOnOffManager.centerLabelGroup.SetActive(false);
         uiCenterLabelOnOffManager.uiCenterLabelSetter.ClearData();
+    }
+
+    public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector,bool isActive)
+    {
+        if (managerConnector.playerManager.isMobile)
+        {
+            managerConnector.joystick.gameObject.SetActive(isActive);
+            managerConnector.webglBtn.gameObject.SetActive(isActive);
+        }
+    }
+
+    public virtual void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
+    {
+        if (Application.isMobilePlatform)
+        {
+            managerConnector.webglBtn = player.webglBtn;
+            managerConnector.joystick = player.joystick;
+            managerConnector.isMobile = true;
+        }
+        else
+        {
+            player.webglBtn.gameObject.SetActive(false);
+            player.joystick.gameObject.SetActive(false);
+            managerConnector.isMobile = false;
+        }
     }
     #endregion
 

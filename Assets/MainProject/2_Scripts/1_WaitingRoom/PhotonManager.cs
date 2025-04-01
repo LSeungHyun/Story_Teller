@@ -10,7 +10,7 @@ using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
-    public PhotonManager instance;
+    public static PhotonManager instance;
     // .jslib에서 정의한 함수명과 동일
     [DllImport("__Internal")]
     private static extern void CopyToClipboard(string text);
@@ -32,12 +32,23 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public List<GameObject> OutLineList;
     public List<Text> NameTextList;
 
-    public InputField Message_InputField;
-    public ScrollRect chatScrollRect;
-    public GameObject newMessageNotification;
-    public GameObject myMessage;
-    public GameObject otherMessage;
-    public GameObject Content;
+
+    [System.Serializable]
+
+    public class Chating_Group
+    {
+        public InputField Send_Message;
+        public ScrollRect Chat_Scroll_View;
+        public GameObject New_Chat_Notice;
+        public GameObject My_Msg;
+        public GameObject Other_Msg;
+        public GameObject Content;
+    }
+
+    [Header("Chating Group")]
+    [SerializeField]
+    private Chating_Group chating_Group;
+    
     public bool OneCheck = false;
 
     private Color[] localPlayerColors = new Color[4];
@@ -139,7 +150,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void SendMessage()
     {
-        string trimmedMessage = Message_InputField.text.Trim();
+        string trimmedMessage = chating_Group.Send_Message.text.Trim();
 
         if (string.IsNullOrEmpty(trimmedMessage))
         {
@@ -147,15 +158,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        GameObject myMessageBox = Instantiate(myMessage, Vector3.zero, Quaternion.identity, Content.transform);
-        myMessageBox.GetComponent<Message>().MyMessage.text = Message_InputField.text;
+        GameObject myMessageBox = Instantiate(chating_Group.My_Msg, Vector3.zero, Quaternion.identity, chating_Group.Content.transform);
+        myMessageBox.GetComponent<Message>().MyMessage.text = chating_Group.Send_Message.text;
 
 
-        PV.RPC("GetMessage", RpcTarget.Others, Message_InputField.text, PhotonNetwork.NickName);
+        PV.RPC("GetMessage", RpcTarget.Others, chating_Group.Send_Message.text, PhotonNetwork.NickName);
 
         ScrollToBottom();
 
-        Message_InputField.text = null;
+        chating_Group.Send_Message.text = null;
     }
 
     public Color CheckNickNameColor(string name)
@@ -171,7 +182,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void GetMessage(string receiveMessage, string senderName)
     {
-        GameObject messageBox = Instantiate(otherMessage, Vector3.zero, Quaternion.identity, Content.transform);
+        GameObject messageBox = Instantiate(chating_Group.Other_Msg, Vector3.zero, Quaternion.identity, chating_Group.Content.transform);
 
         Text myMsg = messageBox.GetComponent<Message>().MyMessage;
         Text myName = messageBox.GetComponent<Message>().MyName;
@@ -200,31 +211,31 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (!IsScrolledToBottom_Size())
         {
-            newMessageNotification.SetActive(true);
+            chating_Group.New_Chat_Notice.SetActive(true);
         }
     }
     private bool IsScrolledToBottom_Size()
     {
-        return chatScrollRect.verticalScrollbar.size == 1;
+        return chating_Group.Chat_Scroll_View.verticalScrollbar.size == 1;
     }
 
     private bool IsScrolledToBottom()
     {
-        return chatScrollRect.verticalNormalizedPosition <= 0.01f;
+        return chating_Group.Chat_Scroll_View.verticalNormalizedPosition <= 0.01f;
     }
 
     public void OnScrollChanged()
     {
         if (IsScrolledToBottom())
         {
-            newMessageNotification.SetActive(false);
+            chating_Group.New_Chat_Notice.SetActive(false);
         }
     }
 
     public void OnNewMessageNotificationClicked()
     {
         ScrollToBottom();
-        newMessageNotification.SetActive(false);
+        chating_Group.New_Chat_Notice.SetActive(false);
     }
 
     public void ScrollToBottom()
@@ -236,12 +247,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         yield return new WaitForEndOfFrame();
         Canvas.ForceUpdateCanvases();
-        chatScrollRect.verticalNormalizedPosition = 0f;
+        chating_Group.Chat_Scroll_View.verticalNormalizedPosition = 0f;
     }
 
     public void ClearChatMessage()
     {
-        RectTransform Chat = Content.GetComponent<RectTransform>();
+        RectTransform Chat = chating_Group.Content.GetComponent<RectTransform>();
 
         for (int i = Chat.childCount - 1; i >= 0; i--)
         {
@@ -277,8 +288,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
+            PV.RPC("SelectGameModeRPC", RpcTarget.AllBuffered);
             PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
-            GameManager.Instance.SelectGameMode(true);
+
             return;
         }
         SceneManager.LoadScene("2_UnderWorld");
@@ -291,7 +303,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("2_UnderWorld");
     }
 
-    
+    [PunRPC]
+    public void SelectGameModeRPC()
+    {
+        GameManager.Instance.SelectGameMode(true);
+    }
+
 
     private void ResetPlayerRoomInfo()
     {

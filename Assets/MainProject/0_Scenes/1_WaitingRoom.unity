@@ -7457,7 +7457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92ddde3a6f7e7c24dbd6f35d56fe898c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isType: 1
+  StateText: {fileID: 0}
+  isType: 0
 --- !u!1 &1049141033
 GameObject:
   m_ObjectHideFlags: 0
@@ -10394,7 +10395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a82ea777f4056c04fb143c597402d651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   roomUIManager: {fileID: 1701386609}
   PV: {fileID: 1678940258}
   StatusText: {fileID: 1839503581}
@@ -10411,12 +10411,13 @@ MonoBehaviour:
   - {fileID: 482607596}
   - {fileID: 111971765}
   - {fileID: 1607848977}
-  Message_InputField: {fileID: 2006820164}
-  chatScrollRect: {fileID: 859273052}
-  newMessageNotification: {fileID: 173823174}
-  myMessage: {fileID: 424147091597990619, guid: 087184c2b1429804db58691e3af866f8, type: 3}
-  otherMessage: {fileID: 1771803889969175639, guid: debf16a86fd45f0478eefb2f9b49922a, type: 3}
-  Content: {fileID: 1744293199}
+  chating_Group:
+    Send_Message: {fileID: 2006820164}
+    Chat_Scroll_View: {fileID: 859273052}
+    New_Chat_Notice: {fileID: 173823174}
+    My_Msg: {fileID: 424147091597990619, guid: 087184c2b1429804db58691e3af866f8, type: 3}
+    Other_Msg: {fileID: 1771803889969175639, guid: debf16a86fd45f0478eefb2f9b49922a, type: 3}
+    Content: {fileID: 1744293199}
   OneCheck: 0
   roomCode: 
 --- !u!4 &1678940257

@@ -5,7 +5,7 @@ using System.Linq;
 
 public class PlayerManager : MonoBehaviour
 {
-    public PlayerManager instance;
+    //public static PlayerManager instance;
 
     public float testSpeed = 3f;
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
@@ -46,23 +46,16 @@ public class PlayerManager : MonoBehaviour
     void Awake()
     {
         managerConnector.playerManager = this;
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-    void Start()
-    {
-        testSpeed = 3f;
+
+        DontDestroyOnLoad(gameObject);
 
         joystick = managerConnector.joystick;
         webglBtn = managerConnector.webglBtn;
         isMobile = managerConnector.isMobile;
+    }
+    void Start()
+    {
+        testSpeed = 3f;
 
         if (!GameManager.Instance.isType)
         {
