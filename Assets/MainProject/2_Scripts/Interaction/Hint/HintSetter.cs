@@ -64,7 +64,7 @@ public class HintSetter : MonoBehaviour
     public void GetDetail(GameObject childObj, int hintDepth, string hintName)
     {
         Image displayImage = childObj.transform.GetChild(0).GetComponent<Image>();
-        Text displayText = childObj.transform.GetChild(1).GetComponent<Text>();
+        Text displayText = displayImage.transform.GetChild(0).GetComponent<Text>();
 
         if (hintDepth > 0)
         {
