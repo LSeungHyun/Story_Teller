@@ -390,11 +390,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portalManager: {fileID: 0}
   cutsceneManager: {fileID: 0}
+  ScenePortalManager: {fileID: 0}
   targetObj: {fileID: 0}
+  worldName: 
   Enter_None: {fileID: 4035737046941720022}
   Enter_All: {fileID: 7383275434575719655}
   Enter_Wait: {fileID: 20419914988781811}
   isCutScene: 0
+  isScenePortal: 0
   status:
     playersInside: 
 --- !u!114 &2661072924064145356

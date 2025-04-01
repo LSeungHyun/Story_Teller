@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DG.Tweening;
 
 public class UIManager : DoTweenManager
 {
@@ -108,6 +109,8 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void OpenPopUp(string popUp_Name)
     {
+        CloseAllPopUps();
+
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
             if (popUp.isAnim)
@@ -126,7 +129,7 @@ public class UIManager : DoTweenManager
     }
 
     /// <summary>
-    /// popUp_Name으로 지정한 팝업을 닫기
+    /// panel_Name으로 지정한 팝업을 닫기
     /// </summary>
     public void ClosePopUp(string popUp_Name)
     {
@@ -145,7 +148,7 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
-    } 
+    }
 
     public void CloseAllPopUps()
     {
@@ -153,6 +156,64 @@ public class UIManager : DoTweenManager
         {
             ClosePopUp(kvp.Key);
         }
+    }
+
+    #endregion
+
+    #region 패널 관련된 기능
+
+    /// <summary>
+    /// panel_Name으로 지정한 팝업을 열기
+    /// </summary>
+    public void OpenPanel(string panel_Name)
+    {
+        if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
+        {
+            if (panel.isAnim)
+            {
+                ShowUI(panel.Panel_Obj);
+            }
+            else
+            {
+                panel.Panel_Obj.SetActive(true);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {panel_Name}");
+        }
+    }
+
+    /// <summary>
+    /// panel_Name으로 지정한 팝업을 닫기
+    /// </summary>
+    public void ClosePanel(string panel_Name)
+    {
+        if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
+        {
+            if (panel.isAnim)
+            {
+                HideUI(panel.Panel_Obj);
+            }
+            else
+            {
+                panel.Panel_Obj.SetActive(false);
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"No popup found with name: {panel_Name}");
+        }
+    }
+
+    public void CloseAllPanels()
+    {
+        foreach (var kvp in panelDict)
+        {
+            ClosePopUp(kvp.Key);
+        }
+
+
     }
 
     #endregion
