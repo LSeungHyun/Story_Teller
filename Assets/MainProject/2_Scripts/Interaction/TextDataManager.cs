@@ -240,7 +240,6 @@ public class TextDataManager : MonoBehaviour
                         loadingUI.SetActive(false);
                         var session = GameManager.Instance.Session;
                         session.ChangePlayerisMoved(managerConnector.playerManager,true,false);
-                        //다녀와서 안에 매개변수 Player로 채우기
                     }
 
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
