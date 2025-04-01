@@ -8,8 +8,8 @@ public class CurrentObjectManager : MonoBehaviour
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
 
-    public ObjDataType currentRow;
     public string currentObjCode;
+    public string nextObjDataCode;
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UIPopUpManager uiPopUpManager;
@@ -43,18 +43,14 @@ public class CurrentObjectManager : MonoBehaviour
         {
             currentObjCode = outterCurrentObjCode;
 
-            //이동한다는 센터라벨 출력 시 플레이어 이동 제한 메서드
             if(currentObjCode == "Enter_Move")
             {
                 session.ChangePlayerisMoved(managerConnector.playerManager, false,false);
-                Debug.Log("바로되나?");
             }
         }
-
-        currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+        ObjDataType currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null)
             return;
-        
-        session.HandleInteractionBasic(this);
+        session.HandleInteractionBasic(this, currentRow);
     }
 }

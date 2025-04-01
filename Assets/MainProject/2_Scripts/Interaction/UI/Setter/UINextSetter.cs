@@ -38,7 +38,8 @@ public class UINextSetter : MonoBehaviour
 
             if (!string.IsNullOrEmpty(foundData.isNextData))
             {
-                currentObjectManager.SetCurrentObjData(foundData.isNextData);
+                currentObjectManager.nextObjDataCode = foundData.isNextData;
+                currentObjectManager.SetCurrentObjData(currentObjectManager.nextObjDataCode);
             }
         }
         currentObjectManager.currentObjCode = null;

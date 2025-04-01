@@ -121,9 +121,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Interaction
-    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager)
+    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
     {
-        base.HandleInteractionBasic(currentObjectManager);
+        base.HandleInteractionBasic(currentObjectManager, currentRow);
     }
     #endregion
 

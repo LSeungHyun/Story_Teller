@@ -149,15 +149,15 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region Interaction
-    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager)
+    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
     {
-        string currentObjCode = currentObjectManager.currentRow.objCode;
-        bool currentIsMine = currentObjectManager.currentRow.isMine;
+        string currentObjCode = currentRow.objCode;
+        bool currentIsMine = currentRow.isMine;
         if (!currentIsMine)
         {
             currentObjectManager.managerConnector.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
         }
-        base.HandleInteractionBasic(currentObjectManager);
+        base.HandleInteractionBasic(currentObjectManager, currentRow);
     }
     #endregion
 

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 using static PortalSetter;
 
 
@@ -127,17 +126,13 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region Interaction
-    public virtual void HandleInteractionBasic(CurrentObjectManager currentObjectManager)
+    public virtual void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
     {
-        if (currentObjectManager.currentRow == null)
+        string currentObjCode = currentRow.objCode;
+        if (string.IsNullOrEmpty(currentRow.dataType))
             return;
 
-        if (string.IsNullOrEmpty(currentObjectManager.currentRow.dataType))
-            return;
-
-        string currentObjCode = currentObjectManager.currentRow.objCode;
-
-        string currentObjType = currentObjectManager.currentRow.dataType.ToLower();
+        string currentObjType = currentRow.dataType.ToLower();
         bool hasDialogue = currentObjType.Contains("dialogue");
         bool hasQuest = currentObjType.Contains("quest");
         bool hasBubble = currentObjType.Contains("bubble");
