@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 public class UIPopUpOnOffManager : MonoBehaviour
@@ -13,10 +12,12 @@ public class UIPopUpOnOffManager : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
         session.OpenPopUpBasic(this, isQuest, isDial);
+        session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
     }
     public void ClosePopUpWindow()
     {
         var session = GameManager.Instance.Session;
         session.ClosePopUpBasic(this);
+        session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
     }
 }

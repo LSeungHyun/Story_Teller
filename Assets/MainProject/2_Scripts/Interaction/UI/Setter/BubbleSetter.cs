@@ -22,6 +22,8 @@ public class BubbleSetter : UIContentsManager
     public float minHeight;
     public float lineHeight;
 
+    public bool isBubble;
+
     private void Start()
     {
         SetSizeValue();
@@ -47,7 +49,7 @@ public class BubbleSetter : UIContentsManager
 
     public override void DisplayPage()
     {
-        if (balloonPrefab != null)
+        if (balloonPrefab != null && isBubble == false)
         {
             currentBalloon = Instantiate(balloonPrefab, currentObjOffset, Quaternion.identity);
             textDisplay = currentBalloon.GetComponentInChildren<Text>();
@@ -56,6 +58,7 @@ public class BubbleSetter : UIContentsManager
             Vector3 newPosition = currentObjOffset + new Vector3(0, offsetY, 0);
             currentBalloon.transform.position = newPosition;
 
+            isBubble = true;
             AdjustBalloonSize();
             Invoke(nameof(HideBalloon), showTime);
         }
@@ -116,6 +119,7 @@ public class BubbleSetter : UIContentsManager
     {
         if (currentBalloon != null)
         {
+            isBubble = false;
             Destroy(currentBalloon);
         }
     }
