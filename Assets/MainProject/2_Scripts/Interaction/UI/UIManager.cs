@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using System.Collections;
 
 public class UIManager : DoTweenManager
 {
@@ -35,6 +36,9 @@ public class UIManager : DoTweenManager
 
     [Header("Panel List")]
     [SerializeField]
+    private GameObject Master_Panel;
+
+    [SerializeField]
     private List<Panel_Group> Panel_List;
 
     [Header("OnOffChat List")]
@@ -50,6 +54,9 @@ public class UIManager : DoTweenManager
 
     public bool blurAble = true;
     public bool chatOn = false;
+
+    [SerializeField]
+    private bool NotEvent = false;
 
     void Awake()
     {
@@ -109,7 +116,20 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void OpenPopUp(string popUp_Name)
     {
+        if (!NotEvent)
+        {
+            ClickAnim();
+            StartCoroutine(PopUpCoroutine(popUp_Name));
+        }
+    }
+
+    IEnumerator PopUpCoroutine(string popUp_Name)
+    {
+        NotEvent = true;
+
         CloseAllPopUps();
+
+        yield return new WaitForSeconds(0.25f);
 
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
@@ -126,6 +146,8 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
+
+        NotEvent = false;
     }
 
     /// <summary>
@@ -167,6 +189,8 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void OpenPanel(string panel_Name)
     {
+        CloseAllPanels();
+
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
         {
             if (panel.isAnim)
@@ -212,8 +236,6 @@ public class UIManager : DoTweenManager
         {
             ClosePopUp(kvp.Key);
         }
-
-
     }
 
     #endregion
