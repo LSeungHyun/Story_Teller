@@ -178,6 +178,19 @@ public class MultiSession : AbsctractGameSession
     {
         base.CloseCenterLabelBasic(uiCenterLabelOnOffManager);
     }
+
+    public override void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
+    {
+        if (managerConnector.playerManager.PV.IsMine)
+        {
+            base.OnOffPlayerBtnGroup(managerConnector, isActive);
+        }
+    }
+
+    public override void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
+    {
+        base.CheckIsMobile(player, managerConnector);
+    }
     #endregion
 
     #region Camera

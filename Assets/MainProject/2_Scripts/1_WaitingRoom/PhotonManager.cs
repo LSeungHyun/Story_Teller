@@ -288,8 +288,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
+            PV.RPC("SelectGameModeRPC", RpcTarget.AllBuffered);
             PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
-            GameManager.Instance.SelectGameMode(true);
+
             return;
         }
         SceneManager.LoadScene("2_UnderWorld");
@@ -302,7 +303,12 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LoadLevel("2_UnderWorld");
     }
 
-    
+    [PunRPC]
+    public void SelectGameModeRPC()
+    {
+        GameManager.Instance.SelectGameMode(true);
+    }
+
 
     private void ResetPlayerRoomInfo()
     {

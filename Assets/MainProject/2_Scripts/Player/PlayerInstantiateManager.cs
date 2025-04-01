@@ -1,5 +1,4 @@
 using Photon.Pun;
-using Unity.Cinemachine;
 using UnityEngine;
 
 public class PlayerInstantiateManager : MonoBehaviour
@@ -17,31 +16,16 @@ public class PlayerInstantiateManager : MonoBehaviour
     public FloatingJoystick joystick;
     public GameObject webglBtn;
 
-    private void Awake()
-    {
-        if (Application.isMobilePlatform)
-        {
-            managerConnector.webglBtn = webglBtn;
-            managerConnector.joystick = joystick;
-            managerConnector.isMobile = true;
-        }
-        else
-        {
-            webglBtn.gameObject.SetActive(false);
-            joystick.gameObject.SetActive(false);
-            managerConnector.isMobile = false;
-        }
-        
+    private void Start()
+    {        
         var session = GameManager.Instance.Session;
-        if (!GameManager.Instance.isType)
+
+        session.CheckIsMobile(this, managerConnector);
+        if (GameManager.Instance.isType == false)
         {
             ChatBtn.SetActive(false);
             Destroy(PV);
-        }
 
-
-        if (GameManager.Instance.isType == false)
-        {
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);
             session.SetCamera(dontDes, playerObj);
         }
@@ -68,7 +52,7 @@ public class PlayerInstantiateManager : MonoBehaviour
                     break;
                 default:
                     // 혹시 범위를 벗어나면 안전장치
-                    prefabName = "MasterPlayer_Yellow";
+                    prefabName = "GuestPlayer_Red";
                     break;
             }
 

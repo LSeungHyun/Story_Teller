@@ -3,7 +3,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
     [SerializeField]
     private AbsctractGameSession currentSession;
 
@@ -23,8 +22,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        SelectGameMode(isType);
     }
 
     public void SelectGameMode(bool isMulti)

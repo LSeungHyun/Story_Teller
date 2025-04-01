@@ -207,6 +207,31 @@ public abstract class AbsctractGameSession
         uiCenterLabelOnOffManager.centerLabelGroup.SetActive(false);
         uiCenterLabelOnOffManager.uiCenterLabelSetter.ClearData();
     }
+
+    public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector,bool isActive)
+    {
+        if (managerConnector.playerManager.isMobile)
+        {
+            managerConnector.joystick.gameObject.SetActive(isActive);
+            managerConnector.webglBtn.gameObject.SetActive(isActive);
+        }
+    }
+
+    public virtual void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
+    {
+        if (Application.isMobilePlatform)
+        {
+            managerConnector.webglBtn = player.webglBtn;
+            managerConnector.joystick = player.joystick;
+            managerConnector.isMobile = true;
+        }
+        else
+        {
+            player.webglBtn.gameObject.SetActive(false);
+            player.joystick.gameObject.SetActive(false);
+            managerConnector.isMobile = false;
+        }
+    }
     #endregion
 
     #region Camera
