@@ -47,7 +47,9 @@ public class UIManager : DoTweenManager
 
     [Header("Blur Object")]
     [SerializeField]
-    private GameObject blurObject;
+    private GameObject DarkObject;
+    [SerializeField]
+    private GameObject BlurObject;
 
     public Dictionary<string, PopUp_Group> popUpDict;
     public Dictionary<string, Panel_Group> panelDict;
@@ -67,6 +69,13 @@ public class UIManager : DoTweenManager
     void Start()
     {
 
+    }
+
+
+    public void BlurOnOff(bool active)
+    {
+        DarkObject.SetActive(active);
+        BlurObject.SetActive(active);
     }
 
     #region µñ¼Å³Ê¸® Á¤º¸°ª ¼¼ÆÃ / ÆË¾÷, ÆÐ³Î
@@ -131,6 +140,8 @@ public class UIManager : DoTweenManager
 
         yield return new WaitForSeconds(0.25f);
 
+        BlurOnOff(true);
+
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
             if (popUp.isAnim)
@@ -170,6 +181,8 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
+
+        BlurOnOff(false);
     }
 
     public void CloseAllPopUps()
@@ -190,6 +203,10 @@ public class UIManager : DoTweenManager
     public void OpenPanel(string panel_Name)
     {
         CloseAllPanels();
+
+        Master_Panel.SetActive(true);
+        BlurObject.SetActive(true);
+        DarkObject.SetActive(false);
 
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
         {
@@ -228,6 +245,9 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {panel_Name}");
         }
+
+        Master_Panel.SetActive(false);
+        DarkObject.SetActive(true);
     }
 
     public void CloseAllPanels()
