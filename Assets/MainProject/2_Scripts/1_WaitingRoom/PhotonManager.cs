@@ -18,6 +18,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 
     public RoomUIManager roomUIManager;
+    public UIManager UIManager = null;
     public PhotonView PV;
     // 방 코드 사용되는 영어 대, 소문자 및 숫자
     private const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -195,7 +196,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         myName.text = senderName;
         myName.color = color;
 
-        roomUIManager.ChatUIStatus();
+        if(UIManager == null)
+        {
+            roomUIManager.ChatUIStatus();
+        }
+        else
+        {
+            UIManager.ChatUIStatus();
+        }
 
         if (OneCheck)
         {
