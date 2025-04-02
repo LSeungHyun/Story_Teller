@@ -162,7 +162,7 @@ public class UIManager : DoTweenManager
     }
 
     /// <summary>
-    /// panel_Name으로 지정한 팝업을 닫기
+    /// PopUp_Name으로 지정한 팝업을 닫기
     /// </summary>
     public void ClosePopUp(string popUp_Name)
     {
@@ -183,6 +183,8 @@ public class UIManager : DoTweenManager
         }
 
         BlurOnOff(false);
+
+        Debug.Log("이게 왜 지금 ?");
     }
 
     public void CloseAllPopUps()
@@ -202,10 +204,22 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void OpenPanel(string panel_Name)
     {
+        if (!NotEvent)
+        {
+            ClickAnim();
+            StartCoroutine(PanelCoroutine(panel_Name));
+        }
+    }
+
+    IEnumerator PanelCoroutine(string panel_Name)
+    {
+        NotEvent = true;
+
         CloseAllPanels();
 
+        yield return new WaitForSeconds(0.25f);
+
         Master_Panel.SetActive(true);
-        BlurObject.SetActive(true);
         DarkObject.SetActive(false);
 
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
@@ -223,6 +237,8 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {panel_Name}");
         }
+
+        NotEvent = false;
     }
 
     /// <summary>
@@ -254,7 +270,7 @@ public class UIManager : DoTweenManager
     {
         foreach (var kvp in panelDict)
         {
-            ClosePopUp(kvp.Key);
+            ClosePanel(kvp.Key);
         }
     }
 
