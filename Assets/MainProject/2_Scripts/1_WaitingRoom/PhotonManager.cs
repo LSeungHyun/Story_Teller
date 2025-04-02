@@ -46,9 +46,13 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         public GameObject Content;
     }
 
+    public class Chating_Btn_Event
+    {
+        public Button Send_Btn;
+    }
+
     [Header("Chating Group")]
-    [SerializeField]
-    private Chating_Group chating_Group;
+    public Chating_Group chating_Group;
     
     public bool OneCheck = false;
 
