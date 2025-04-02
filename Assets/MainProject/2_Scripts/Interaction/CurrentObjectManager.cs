@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Linq;
 
 public class CurrentObjectManager : MonoBehaviour
 {
@@ -8,8 +7,7 @@ public class CurrentObjectManager : MonoBehaviour
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
 
-    public string currentObjCode;
-    public string nextObjDataCode;
+    public UIContentsManager uiContentsManager;
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public UIPopUpManager uiPopUpManager;
@@ -34,18 +32,15 @@ public class CurrentObjectManager : MonoBehaviour
         Instance = this;
     }
 
-    public void SetCurrentObjData(string outterCurrentObjCode)
+    public void SetCurrentObjData(string currentObjCode)
     {
         var session = GameManager.Instance.Session;
-        if (outterCurrentObjCode == null)
-            currentObjCode = objDataTypeContainer.objCode;
-        else
+
+        if (currentObjCode == "Enter_Move")
         {
-            currentObjCode = outterCurrentObjCode;
+            session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
         }
-        ObjDataType currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (currentRow == null)
-            return;
-        session.HandleInteractionBasic(this, currentRow);
+        UINextSetter.Instance.SetNextCode(currentObjCode);
+        session.HandleInteractionBasic(this, currentObjCode);
     }
 }

@@ -22,6 +22,8 @@ public class UIDialogueSetter : UIPopUpManager
     public Image spriteDisplay;
     public Image closeBtn;
 
+    public string currentObjCode;
+
     void ManualCacheSprites()
     {
         bgTypeSpritesCache[BgType.±âº»] = defaultImg;
@@ -71,7 +73,6 @@ public class UIDialogueSetter : UIPopUpManager
             }
         }
         StartOnPageChanged(currentDataPage, totalDataPage);
-        Debug.Log(currentDataPage + "," + totalDataPage);
     }
 
     public override void ClearData()
@@ -79,5 +80,11 @@ public class UIDialogueSetter : UIPopUpManager
         dialogueList = new DialogueList[0];
         if (textDisplay != null)
             textDisplay.text = "";
+    }
+
+    public void onCloseBtnForDone()
+    {
+        UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+        UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
     }
 }

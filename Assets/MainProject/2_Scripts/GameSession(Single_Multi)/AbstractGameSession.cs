@@ -1,6 +1,5 @@
 using UnityEngine;
-using static PortalSetter;
-
+using System.Linq;
 
 public abstract class AbsctractGameSession
 {
@@ -9,7 +8,7 @@ public abstract class AbsctractGameSession
     {
         if (portalSetter.status == null)
         {
-            portalSetter.status = new PortalStatus();
+            portalSetter.status = new PortalSetter.PortalStatus();
         }
         portalSetter.status.playersInside.Add(collision.GetInstanceID());
     }
@@ -24,8 +23,8 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region IsNext
-    public abstract void AfterQuest(UIQuestSetter uiQuestSetter);
-    public abstract void CheckDoneAndNext(UINextSetter uiNextSetter);
+    public abstract void CheckDoneAndNext(UINextSetter uiNextSetter, string CurrentObjCode);
+    public abstract void AddPlayerToDoneList(UINextSetter uiNextSetter, string CurrentObjCode);
     public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete);
     #endregion
 
@@ -35,7 +34,7 @@ public abstract class AbsctractGameSession
 
     #region Player
 
-    public abstract void ChangePlayerisMoved(PlayerManager playerManager,bool isMove, bool isAnim);
+    public abstract void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim);
     public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");
@@ -126,48 +125,48 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region Interaction
-    public virtual void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
+    public virtual void HandleInteractionBasic(CurrentObjectManager currentObjectManager, string currentObjCode)
     {
-        string currentObjCode = currentRow.objCode;
+        ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+
         if (string.IsNullOrEmpty(currentRow.dataType))
             return;
 
         string currentObjType = currentRow.dataType.ToLower();
-        bool hasDialogue = currentObjType.Contains("dialogue");
-        bool hasQuest = currentObjType.Contains("quest");
-        bool hasBubble = currentObjType.Contains("bubble");
-        bool hasCenterLabel = currentObjType.Contains("centerlabel");
-        bool hasImage = currentObjType.Contains("image");
 
-        if (hasBubble)
+        switch (currentObjType)
         {
-            currentObjectManager.bubbleSetter.currentObjOffset = currentObjectManager.objDataTypeContainer.position;
-            currentObjectManager.bubbleSetter.SetData(currentObjCode);
-        }
-        if (hasCenterLabel)
-        {
-            if (currentObjCode == "Enter_Move")
-            {
-                ChangePlayerisMoved(currentObjectManager.managerConnector.playerManager, false, false);
-            }
-            currentObjectManager.uiCenterLabelSetter.SetData(currentObjCode);
-            currentObjectManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
-        }
-        if (hasDialogue)
-        {
-            currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
-            currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
-        }
-        if (hasImage)
-        {
-            currentObjectManager.uiImageSetter.SetData(currentObjCode);
-            currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
-        }
-        if (hasQuest)
-        {
-            currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
-            currentObjectManager.uiQuestSetter.SetQuestBg(currentObjCode);
-            currentObjectManager.uiPopUpOnOffManager.OpenWindow(hasQuest, hasDialogue);
+            case "bubble":
+                currentObjectManager.bubbleSetter.currentObjOffset = currentObjectManager.objDataTypeContainer.position;
+                currentObjectManager.bubbleSetter.SetData(currentObjCode);
+                break;
+
+
+            case "centerlabel":
+                currentObjectManager.uiCenterLabelSetter.SetData(currentObjCode);
+                currentObjectManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
+                currentObjectManager.uiCenterLabelSetter.currentObjCode = currentObjCode;
+                break;
+
+            case "dialogue":
+                currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
+                currentObjectManager.uiDialogueSetter.currentObjCode = currentObjCode;
+                Debug.Log(currentObjCode);
+                break;
+
+            case "image":
+                currentObjectManager.uiImageSetter.SetData(currentObjCode);
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
+                currentObjectManager.uiImageSetter.currentObjCode = currentObjCode;
+                break;
+
+            case "quest":
+                currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
+                currentObjectManager.uiQuestSetter.SetQuestBg(currentObjCode);
+                currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
+                currentObjectManager.uiQuestSetter.currentObjCode = currentObjCode;
+                break;
         }
     }
     #endregion
@@ -207,7 +206,7 @@ public abstract class AbsctractGameSession
         uiCenterLabelOnOffManager.uiCenterLabelSetter.ClearData();
     }
 
-    public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector,bool isActive)
+    public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
     {
         if (managerConnector.playerManager.isMobile)
         {
@@ -235,7 +234,8 @@ public abstract class AbsctractGameSession
 
     #region Camera
 
-    public virtual void SetCamera(CamDontDes camDontDes, GameObject playerObj) {
+    public virtual void SetCamera(CamDontDes camDontDes, GameObject playerObj)
+    {
         camDontDes.virtualCam.Follow = playerObj.transform;
         camDontDes.virtualCam.LookAt = playerObj.transform;
     }

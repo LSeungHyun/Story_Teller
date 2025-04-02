@@ -10,7 +10,6 @@ public class UIQuestSetter : MonoBehaviour
 {
     [SerializeField] public QuestContainer questContainer;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
-    public UINextSetter uiNextSetter;
     public QuestDictionary questDictionary;
 
     public QuestData targetRow;
@@ -29,6 +28,7 @@ public class UIQuestSetter : MonoBehaviour
 
     public Text donePlayerCount;
     public Text doneAnswer;
+    public string currentObjCode;
 
 
     public void SetQuestBg(string currentObjCode)
@@ -55,13 +55,8 @@ public class UIQuestSetter : MonoBehaviour
 
     public void SetQuestQuiz(string objCode)
     {
-        foreach (var kvp in questDictionary.preFabDictionary)
-        {
-            Debug.Log($"Key: {kvp.Key}, Value: {kvp.Value.name}");
-        }
         if (questDictionary.preFabDictionary.ContainsKey(objCode))
         {
-            Debug.Log($"Key: {objCode}");
             GameObject prefab = questDictionary.preFabDictionary[objCode];
             if (currentPageDisplayInstance != null)
             {
@@ -79,7 +74,7 @@ public class UIQuestSetter : MonoBehaviour
     {
         if(PhotonNetwork.IsConnected)
         {
-            donePlayerCount.text = "완료 인원:" + uiNextSetter.status.playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+            donePlayerCount.text = "완료 인원:" + UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
         }
         else
         {
@@ -101,17 +96,14 @@ public class UIQuestSetter : MonoBehaviour
         if(answerInput.text == answer)
         {
             targetRow.isDone = true;
-            var session = GameManager.Instance.Session;
-            session.AfterQuest(this);
+            uiPopUpOnOffManager.ClosePopUpWindow();
+            UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+            UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
         }
         else
         {
             CurrentObjectManager.Instance.SetCurrentObjData("Wrong_Answer");
             answerInput.text = "";
         }
-    }
-    public void onCloseBtn()
-    {
-        uiPopUpOnOffManager.ClosePopUpWindow();
     }
 }

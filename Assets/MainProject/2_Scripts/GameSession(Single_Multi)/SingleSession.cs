@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Linq;
+using Unity.Collections;
+using Unity.VisualScripting;
+using Photon.Pun;
 
 public class SingleSession : AbsctractGameSession
 {
@@ -25,6 +28,9 @@ public class SingleSession : AbsctractGameSession
             }
             portalSetter.SetPortalObjects(false, false, true);
         }
+    }
+    public override void AddPlayerToDoneList(UINextSetter uiNextSetter, string currentObjCode)
+    {
     }
     public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
@@ -66,15 +72,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void AfterQuest(UIQuestSetter uiQuestSetter)
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter, string currentObjCode)
     {
-        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
-        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
-    }
-    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
-    {
-        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
-        uiNextSetter.CheckNextCodeBasic();
+        uiNextSetter.ProcessNextCode(currentObjCode);
     }
     public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
     {
@@ -120,9 +120,9 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Interaction
-    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
+    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, string currentObjCode)
     {
-        base.HandleInteractionBasic(currentObjectManager, currentRow);
+        base.HandleInteractionBasic(currentObjectManager, currentObjCode);
     }
     #endregion
 

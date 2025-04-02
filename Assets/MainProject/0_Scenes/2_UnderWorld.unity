@@ -1641,7 +1641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questContainer: {fileID: 11400000, guid: b4e6629173497984fa586aa5bfc719d2, type: 2}
   uiPopUpOnOffManager: {fileID: 1769707345}
-  uiNextSetter: {fileID: 1769707350}
   questDictionary: {fileID: 62861758}
   targetRow:
     objCode: 
@@ -1658,6 +1657,7 @@ MonoBehaviour:
   pageDisplayParent: {fileID: 1777512500}
   donePlayerCount: {fileID: 2001374210}
   doneAnswer: {fileID: 2115339921}
+  currentObjCode: 
 --- !u!114 &62861758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4157,7 +4157,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4203,7 +4203,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6593,6 +6593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiPopUpOnOffManager: {fileID: 1769707345}
+  objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
 --- !u!1 &266173885
 GameObject:
   m_ObjectHideFlags: 0
@@ -8024,7 +8025,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -8085,7 +8086,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9100,7 +9101,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9216,7 +9217,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11013,7 +11014,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11064,7 +11065,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11225,7 +11226,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.26, y: 2.16}
+    oldSize: {x: 3.26, y: 2.1600113}
     newSize: {x: 3.26, y: 2.1600113}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13324,9 +13325,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 62861757}
-        m_TargetAssemblyTypeName: UIQuestSetter, Assembly-CSharp
-        m_MethodName: onCloseBtn
+      - m_Target: {fileID: 1769707345}
+        m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
+        m_MethodName: ClosePopUpWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13839,7 +13840,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.4, y: 2.86}
+    oldSize: {x: 3.3999999, y: 2.860015}
     newSize: {x: 3.3999999, y: 2.860015}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -15166,8 +15167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  currentObjCode: 
-  nextObjDataCode: 
+  uiContentsManager: {fileID: 0}
   uiPopUpOnOffManager: {fileID: 1769707345}
   uiPopUpManager: {fileID: 1769707346}
   uiDialogueSetter: {fileID: 1769707346}
@@ -16156,7 +16156,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.59}
+    oldSize: {x: 0.33999997, y: 0.5900031}
     newSize: {x: 0.33999997, y: 0.5900031}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -17627,6 +17627,7 @@ MonoBehaviour:
   centerLabelList: []
   textDisplay: {fileID: 432303178}
   closeTime: 0
+  currentObjCode: 
 --- !u!114 &810537330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18019,7 +18020,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.98, y: 2.27}
+    oldSize: {x: 2.9799998, y: 2.2700117}
     newSize: {x: 2.9799998, y: 2.2700117}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -24407,7 +24408,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -24468,7 +24469,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25397,7 +25398,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.1, y: 2.97}
+    oldSize: {x: 3.1, y: 2.9700153}
     newSize: {x: 3.1, y: 2.9700153}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -26682,9 +26683,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1769707350}
-        m_TargetAssemblyTypeName: UINextSetter, Assembly-CSharp
-        m_MethodName: CheckDoneAndNext
+      - m_Target: {fileID: 1769707345}
+        m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
+        m_MethodName: ClosePopUpWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1769707346}
+        m_TargetAssemblyTypeName: UIDialogueSetter, Assembly-CSharp
+        m_MethodName: onCloseBtnForDone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27469,7 +27482,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -27515,7 +27528,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -34513,7 +34526,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.28, y: 8.211719}
+    oldSize: {x: 18.28, y: 8.18}
     newSize: {x: 18.28, y: 8.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -38392,6 +38405,7 @@ MonoBehaviour:
   textDisplay: {fileID: 770611206}
   spriteDisplay: {fileID: 1926331303}
   closeBtn: {fileID: 1213553382}
+  currentObjCode: 
 --- !u!4 &1769707347
 Transform:
   m_ObjectHideFlags: 0
@@ -38429,6 +38443,7 @@ MonoBehaviour:
   backgroundRect: {fileID: 231898430}
   closeButtonRect: {fileID: 1843223411}
   imageLists: []
+  currentObjCode: 
 --- !u!114 &1769707349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38464,11 +38479,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextDataContainer: {fileID: 11400000, guid: 15f52f6fce7d0f74ab91713a3a19ba00, type: 2}
-  currentObjectManager: {fileID: 694023844}
+  objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   uiPopUpOnOffManager: {fileID: 1769707345}
-  status:
-    playersIsDone: 
+  currentObjCodeDict:
+  - key: dialogue
+    value: 
+    status:
+      playersIsDone: 
+  - key: image
+    value: 
+    status:
+      playersIsDone: 
+  - key: quest
+    value: 
+    status:
+      playersIsDone: 
+  - key: centerlabel
+    value: 
+    status:
+      playersIsDone: 
 --- !u!1 &1777512499
 GameObject:
   m_ObjectHideFlags: 0
@@ -40287,9 +40317,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1769707350}
-        m_TargetAssemblyTypeName: UINextSetter, Assembly-CSharp
-        m_MethodName: CheckDoneAndNext
+      - m_Target: {fileID: 1769707345}
+        m_TargetAssemblyTypeName: UIPopUpOnOffManager, Assembly-CSharp
+        m_MethodName: ClosePopUpWindow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1769707348}
+        m_TargetAssemblyTypeName: UIImageSetter, Assembly-CSharp
+        m_MethodName: onCloseBtnForDone
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40658,7 +40700,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -40704,7 +40746,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -41316,7 +41358,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -41376,7 +41418,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -41585,7 +41627,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.98, y: 2.27}
+    oldSize: {x: 2.9799998, y: 2.2700117}
     newSize: {x: 2.9799998, y: 2.2700117}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -43008,7 +43050,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -43054,7 +43096,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -44101,7 +44143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -44147,7 +44189,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

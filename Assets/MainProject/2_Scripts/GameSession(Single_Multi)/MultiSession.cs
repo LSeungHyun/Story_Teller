@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using static UINextSetter;
+using System.Linq;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -76,23 +77,29 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region IsNext
-    public override void AfterQuest(UIQuestSetter uiQuestSetter)
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter, string currentObjCode)
     {
-        uiQuestSetter.uiPopUpOnOffManager.ClosePopUpWindow();
-        uiQuestSetter.uiNextSetter.AddPlayerToDoneList();
-        uiQuestSetter.uiNextSetter.CheckDoneAndNext();
-    }
-    public override void CheckDoneAndNext(UINextSetter uiNextSetter)
-    {
-        uiNextSetter.uiPopUpOnOffManager.ClosePopUpWindow();
-        uiNextSetter.AddPlayerToDoneList();
-        bool isdone = uiNextSetter.CheckEveryoneIsDone();
+        bool isdone = uiNextSetter.CheckEveryoneIsDone(currentObjCode);
         if (isdone)
         {
-            uiNextSetter.status = new DoneStatus();
-            uiNextSetter.CheckNextCodeBasic();
+            var foundItem = uiNextSetter.currentObjCodeDict.Find(x => x.value == currentObjCode);
+            if (foundItem != null)
+            {
+                foundItem.value = "";
+                foundItem.playersIsDone.Clear();
+            }
+            uiNextSetter.ProcessNextCode(currentObjCode);
         }
     }
+    public override void AddPlayerToDoneList(UINextSetter uiNextSetter, string currentObjCode)
+    {
+        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
+        if (!uiNextSetter.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Contains(playerID))
+        {
+            uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID, currentObjCode);
+        }
+    }
+
     public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
     {
         uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_SetNextObj", RpcTarget.AllBuffered, nextObjCode, isDelete);
@@ -152,15 +159,15 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region Interaction
-    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, ObjDataType currentRow)
+    public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, string currentObjCode)
     {
-        string currentObjCode = currentRow.objCode;
+        ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         bool currentIsMine = currentRow.isMine;
         if (!currentIsMine)
         {
             currentObjectManager.managerConnector.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
         }
-        base.HandleInteractionBasic(currentObjectManager, currentRow);
+        base.HandleInteractionBasic(currentObjectManager, currentObjCode);
     }
     #endregion
 
