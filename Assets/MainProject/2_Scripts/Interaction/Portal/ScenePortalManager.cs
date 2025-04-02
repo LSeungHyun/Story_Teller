@@ -20,12 +20,10 @@ public class ScenePortalManager : MonoBehaviour
         if (PhotonNetwork.IsConnected)
         {
             managerConnector.playerManager.PV.RPC("MoveNextScene", RpcTarget.AllBuffered, worldName);
-            GameManager.Instance.SelectGameMode(true);
             return;
         }
         SceneManager.LoadScene(worldName);
         managerConnector.playerManager.gameObject.transform.position = new Vector3(-30,0,0);
         managerConnector.textDataManager.loadingUI.SetActive(true);
-        GameManager.Instance.SelectGameMode(false);
     }
 }

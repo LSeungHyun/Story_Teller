@@ -146,6 +146,10 @@ public abstract class AbsctractGameSession
         }
         if (hasCenterLabel)
         {
+            if (currentObjCode == "Enter_Move")
+            {
+                ChangePlayerisMoved(currentObjectManager.managerConnector.playerManager, false, false);
+            }
             currentObjectManager.uiCenterLabelSetter.SetData(currentObjCode);
             currentObjectManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
         }

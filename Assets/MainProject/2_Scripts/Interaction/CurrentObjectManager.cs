@@ -42,11 +42,6 @@ public class CurrentObjectManager : MonoBehaviour
         else
         {
             currentObjCode = outterCurrentObjCode;
-
-            if(currentObjCode == "Enter_Move")
-            {
-                session.ChangePlayerisMoved(managerConnector.playerManager, false,false);
-            }
         }
         ObjDataType currentRow = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null)
