@@ -10,7 +10,7 @@ using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
-    //public static PhotonManager instance;
+    public static PhotonManager instance;
 
     // .jslib에서 정의한 함수명과 동일
     [DllImport("__Internal")]
@@ -47,9 +47,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
     [Header("Chating Group")]
-    [SerializeField]
-    private Chating_Group chating_Group;
-    
+    public Chating_Group chating_Group;
+
     public bool OneCheck = false;
 
     private Color[] localPlayerColors = new Color[4];
@@ -61,15 +60,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
