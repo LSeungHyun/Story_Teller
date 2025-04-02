@@ -275,4 +275,36 @@ public class UIManager : DoTweenManager
     }
 
     #endregion
+
+    public void ChatBool(bool chatStatus)
+    {
+        chatOn = chatStatus;
+        if (chatOn)
+        {
+            ChatUIStatus();
+        }
+    }
+
+    public void ChatUIStatus()
+    {
+        if (!chatOn)
+        {
+            ChatStatusList[0].ShadowObj.SetActive(false);
+            ChatStatusList[0].IconObj.SetActive(false);
+
+            ChatStatusList[1].ShadowObj.SetActive(true);
+            ChatStatusList[1].IconObj.SetActive(true);
+
+            SoundContainer.soundManager.Play("chat_Alert_Sound");
+        }
+        else
+        {
+            ChatStatusList[0].ShadowObj.SetActive(true);
+            ChatStatusList[0].IconObj.SetActive(true);
+
+            ChatStatusList[1].ShadowObj.SetActive(false);
+            ChatStatusList[1].IconObj.SetActive(false);
+        }
+    }
+
 }
