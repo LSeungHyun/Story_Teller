@@ -15,6 +15,7 @@ public class UICenterLabelSetter : UIContentsManager
     public Text textDisplay;
 
     public int closeTime = 0;
+    public string currentObjCode;
 
     public override void SetData(string currentObjCode)
     {
@@ -47,7 +48,7 @@ public class UICenterLabelSetter : UIContentsManager
         if (currentDataPage < totalDataPage)
         {
             currentDataPage++;
-            DisplayPage(); 
+            DisplayPage();
         }
 
         else
@@ -55,7 +56,8 @@ public class UICenterLabelSetter : UIContentsManager
             if (uiCenterLabelOnOffManager != null)
             {
                 uiCenterLabelOnOffManager.CloseCenterLabelWindow();
-                uiNextSetter.CheckNextCodeBasic();
+                UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+                UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
             }
         }
     }

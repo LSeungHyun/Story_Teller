@@ -2,67 +2,121 @@ using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
 using Photon.Pun;
+using System.Collections;
+using static UINextSetter;
+using Unity.VisualScripting;
+using WebSocketSharp;
+
+
 
 public class UINextSetter : MonoBehaviour
 {
+    public static UINextSetter Instance { get; private set; }
+
     [SerializeField] public NextDataContainer nextDataContainer;
-    public CurrentObjectManager currentObjectManager;
+    [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
 
-    [SerializeField] public DoneStatus status = new DoneStatus();
     [System.Serializable]
-    public class DoneStatus
+    public class CurrentObjCodeList
     {
-        public List<int> playersIsDone = new List<int>();
+        public string key;
+        public string value;
+        public List<int> playersIsDone;
     }
+
+    [SerializeField]
+    public List<CurrentObjCodeList> currentObjCodeDict = new List<CurrentObjCodeList>()
+{
+    new CurrentObjCodeList { key = "dialogue", value = "" ,playersIsDone = new List<int>()},
+    new CurrentObjCodeList { key = "image", value = "" ,playersIsDone = new List<int>()},
+    new CurrentObjCodeList { key = "quest", value = "" ,playersIsDone = new List<int>()},
+    new CurrentObjCodeList { key = "centerlabel", value = "" ,playersIsDone = new List<int>()}
+};
+
     public void Awake()
     {
         managerConnector.uiNextSetter = this;
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
-    public void CheckNextCodeBasic()
+    public void SetNextCode(string currentObjCode)
     {
-        var matchingDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjectManager.currentObjCode);
+        if (string.IsNullOrEmpty(currentObjCode)) return;
 
-        foreach (var foundData in matchingDataList)
+        var matchingDataList = nextDataContainer?.nextDatas?.Where(data => data.objCode == currentObjCode);
+        if (matchingDataList == null || !matchingDataList.Any()) return;
+
+        if (objDataTypeContainer?.objDataType == null) return;
+
+        ObjDataType objectDataType = objDataTypeContainer.objDataType.FirstOrDefault(data => data.objCode == currentObjCode);
+        if (objectDataType == null) return;
+
+        var foundItem = currentObjCodeDict?.Find(x => x.key == objectDataType.dataType);
+        if (foundItem == null) return;
+
+        foundItem.value = currentObjCode;
+    }
+
+
+    public void CleanNextCode(string currentObjCode)
+    {
+        var matchingDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjCode);
+
+        if (!matchingDataList.Any())
+            return;
+
+        ObjDataType objectDataType = objDataTypeContainer.objDataType.FirstOrDefault(data => data.objCode == currentObjCode);
+        currentObjCodeDict.Find(x => x.key == objectDataType.dataType).value = "";
+    }
+
+    public void ProcessNextCode(string currentObjCode)
+    {
+        var foundItem = currentObjCodeDict.Find(x => x.value == currentObjCode);
+        if (foundItem == null || string.IsNullOrEmpty(foundItem.value))
+            return;
+
+        var matchedDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjCode);
+
+        foreach (var data in matchedDataList)
         {
-            if (!string.IsNullOrEmpty(foundData.isNextObj))
+            CleanNextCode(currentObjCode);
+            if (!string.IsNullOrEmpty(data.isNextObj))
             {
-                string nextObjCode = foundData.isNextObj;
-                bool isDelete = foundData.deleteObj;
-
                 var session = GameManager.Instance.Session;
-                session.ToggleObjectActive(this, nextObjCode, isDelete);
+                session.ToggleObjectActive(this, data.isNextObj, data.deleteObj);
             }
 
-            if (!string.IsNullOrEmpty(foundData.isNextData))
+            if (!string.IsNullOrEmpty(data.isNextData))
             {
-                currentObjectManager.nextObjDataCode = foundData.isNextData;
-                currentObjectManager.SetCurrentObjData(currentObjectManager.nextObjDataCode);
+                CurrentObjectManager.Instance.SetCurrentObjData(data.isNextData);
             }
         }
-        currentObjectManager.currentObjCode = null;
+
+
     }
 
-    public bool CheckEveryoneIsDone()
+    public bool CheckEveryoneIsDone(string currentObjCode)
     {
-        bool isAllDone = status.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
+        bool isAllDone = currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
         return isAllDone;
     }
 
-    public void AddPlayerToDoneList()
-    {
-        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
-
-        if (!status.playersIsDone.Contains(playerID))
-        {
-            managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID);
-        }
-    }
-    public void CheckDoneAndNext()
+    public void AddPlayerToDoneList(string currentObjCode)
     {
         var session = GameManager.Instance.Session;
-        session.CheckDoneAndNext(this);
+        session.AddPlayerToDoneList(this, currentObjCode);
+    }
+
+    public void CheckDoneAndNext(string currentObjCode)
+    {
+        var session = GameManager.Instance.Session;
+        session.CheckDoneAndNext(this, currentObjCode);
     }
 }

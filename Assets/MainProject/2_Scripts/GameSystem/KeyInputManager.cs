@@ -4,6 +4,7 @@ using System.Linq;
 public class KeyInputManager : MonoBehaviour
 {
     public UIPopUpOnOffManager uiPopUpOnOffManager;
+    public ObjDataTypeContainer objDataTypeContainer;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -18,6 +19,6 @@ public class KeyInputManager : MonoBehaviour
 
     public void HandleFKey()
     {
-        CurrentObjectManager.Instance.SetCurrentObjData(null);
+        CurrentObjectManager.Instance.SetCurrentObjData(objDataTypeContainer.objCode);
     }
 }

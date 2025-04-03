@@ -10,6 +10,8 @@ public class UIPopUpOnOffManager : MonoBehaviour
 
     public void OpenWindow(bool isQuest, bool isDial)
     {
+        Debug.Log("dddddddddddddddddddd");
+
         var session = GameManager.Instance.Session;
         session.OpenPopUpBasic(this, isQuest, isDial);
 
@@ -20,6 +22,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public void ClosePopUpWindow()
     {
         var session = GameManager.Instance.Session;
+
         session.ClosePopUpBasic(this);
 
         session.ChangePlayerisMoved(managerConnector.playerManager, true, false);

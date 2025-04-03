@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         testSpeed = 3f;
-
+        isMove = false;
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
@@ -253,11 +253,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_AddPlayerToDoneList(int playerID)
+    public void RPC_AddPlayerToDoneList(int playerID, string currentObjCode)
     {
-        if (!managerConnector.uiNextSetter.status.playersIsDone.Contains(playerID))
+        if (!UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Contains(playerID))
         {
-            managerConnector.uiNextSetter.status.playersIsDone.Add(playerID);
+            UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Add(playerID);
         }
     }
 

@@ -11,6 +11,8 @@ public class UIImageSetter : UIPopUpManager
     public RectTransform closeButtonRect;
     public ImageList[] imageLists;
 
+    public string currentObjCode;
+
     public override void SetData(string currentObjCode)
     {
         imageLists = imageContainer?.imageDatas?.FirstOrDefault(data => data.objCode == currentObjCode)?.dataList;
@@ -96,5 +98,11 @@ public class UIImageSetter : UIPopUpManager
                 closeButtonRect.anchoredPosition = Vector2.zero;
             }
         }
+    }
+
+    public void onCloseBtnForDone()
+    {
+        UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+        UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
     }
 }
