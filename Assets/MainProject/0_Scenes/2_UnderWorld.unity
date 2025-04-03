@@ -3993,13 +3993,13 @@ MonoBehaviour:
           m_StringArgument: Chat_PopUp_Group
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 336051547}
+      - m_Target: {fileID: 336051549}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_MethodName: ChatBool
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -7555,6 +7555,7 @@ MonoBehaviour:
   scaleDuration: 0.3
   fadeEase: 1
   scaleEase: 27
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   PopUp_List:
   - PopUp_Name: Hint_PopUp_Group
     PopUp_Obj: {fileID: 1623491916}

@@ -5,6 +5,9 @@ using System.Collections;
 
 public class UIManager : DoTweenManager
 {
+    public ManagerConnector managerConnector;
+    public AbsctractGameSession session;
+
     [System.Serializable]
 
     public class PopUp_Group
@@ -70,7 +73,7 @@ public class UIManager : DoTweenManager
 
     void Start()
     {
-
+        session = GameManager.Instance.Session;
     }
 
 
@@ -78,6 +81,19 @@ public class UIManager : DoTweenManager
     {
         DarkObject.SetActive(active);
         BlurObject.SetActive(active);
+    }
+
+    public void PlayerMovementControl(bool isMove)
+    {
+        if (isMove)
+        {
+            session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
+        }
+        else
+        {
+            session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
+        }
+        
     }
 
     #region 딕셔너리 정보값 세팅 / 팝업, 패널
@@ -150,10 +166,11 @@ public class UIManager : DoTweenManager
         NotEvent = true;
 
         CloseAllPopUps();
-
+        
         yield return new WaitForSeconds(0.25f);
 
         BlurOnOff(true);
+        PlayerMovementControl(false);
 
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
@@ -200,8 +217,7 @@ public class UIManager : DoTweenManager
         }
 
         BlurOnOff(false);
-
-        Debug.Log("이게 왜 지금 ?");
+        PlayerMovementControl(true);
     }
 
     public void CloseAllPopUps()
