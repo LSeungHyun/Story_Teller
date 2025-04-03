@@ -116,10 +116,7 @@ public class MultiSession : AbsctractGameSession
     #region Player
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove,bool isAnim)
     {
-        if (playerManager.PV.IsMine)
-        {
-            playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
-        }
+        playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
