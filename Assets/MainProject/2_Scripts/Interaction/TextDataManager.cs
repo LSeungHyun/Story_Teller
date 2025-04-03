@@ -195,12 +195,14 @@ public class TextDataManager : MonoBehaviour
 
     public GameObject loadingUI;
 
+    public AbsctractGameSession session;
     private void Awake()
     {
         managerConnector.textDataManager = this;
     }
     private void Start()
     {
+        session = GameManager.Instance.Session;
         StartCoroutine(LoadSheetData());
 
         //soundContainer.soundManager.Play("FIXED FOCUS_ Rainy day");
@@ -233,12 +235,12 @@ public class TextDataManager : MonoBehaviour
 
                 if (resp != null && resp.data != null)
                 {
-                    Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
+                    //Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
 
                     if (loadingUI != null)
                     {
                         loadingUI.SetActive(false);
-                        var session = GameManager.Instance.Session;
+
                         session.ChangePlayerisMoved(managerConnector.playerManager,true,false);
                     }
 

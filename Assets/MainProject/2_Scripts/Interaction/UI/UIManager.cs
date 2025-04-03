@@ -366,27 +366,28 @@ public class UIManager : DoTweenManager
 
     public void SceneMove(string sceneName)
     {
-        ExitGame();
+        //ExitGame();
         SceneManager.LoadScene(sceneName);
     }
 
     public void ExitGame()
     {
-#if UNITY_EDITOR
-        // 에디터에서는 플레이 모드 종료
-        EditorApplication.isPlaying = false;
-#elif UNITY_WEBGL && !UNITY_EDITOR
-            // WebGL에서는 창 닫기를 시도합니다.
-            // 주의: 대부분의 브라우저는 스크립트로 열린 창만 window.close()를 허용합니다.
-            QuitWebGL();
-#else
-            // 빌드된 게임에서는 일반적으로 Application.Quit() 사용
-            Application.Quit();
-#endif
-    }
+        //#if UNITY_EDITOR
+        //        // 에디터에서는 플레이 모드 종료
+        //        EditorApplication.isPlaying = false;
+        //#elif UNITY_WEBGL && !UNITY_EDITOR
+        //            // WebGL에서는 창 닫기를 시도합니다.
+        //            // 주의: 대부분의 브라우저는 스크립트로 열린 창만 window.close()를 허용합니다.
+        //            QuitWebGL();
+        //#else
+        //            // 빌드된 게임에서는 일반적으로 Application.Quit() 사용
+        //            Application.Quit();
+        //#endif
+        //    }
 
-#if UNITY_WEBGL && !UNITY_EDITOR
-    [DllImport("__Internal")]
-    private static extern void QuitWebGL();
-#endif
+        //#if UNITY_WEBGL && !UNITY_EDITOR
+        //    [DllImport("__Internal")]
+        //    private static extern void QuitWebGL();
+        //#endif
+    }
 }
