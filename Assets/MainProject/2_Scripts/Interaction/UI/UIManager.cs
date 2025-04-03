@@ -65,6 +65,9 @@ public class UIManager : DoTweenManager
     [SerializeField]
     private bool NotEvent = false;
 
+    [SerializeField]
+    private bool isMove = false;
+
     void Awake()
     {
         SetPopUpDict();
@@ -151,10 +154,12 @@ public class UIManager : DoTweenManager
             {
                 if (popUp.isActive)
                 {
+                    isMove = true;
                     ClosePopUp(popUp_Name);
                 }
                 else
                 {
+                    isMove = false;
                     StartCoroutine(PopUpCoroutine(popUp_Name));
                 }
             }
@@ -166,11 +171,11 @@ public class UIManager : DoTweenManager
         NotEvent = true;
 
         CloseAllPopUps();
-        
+        PlayerMovementControl(false);
+
         yield return new WaitForSeconds(0.25f);
 
         BlurOnOff(true);
-        PlayerMovementControl(false);
 
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
@@ -216,8 +221,12 @@ public class UIManager : DoTweenManager
             Debug.LogWarning($"No popup found with name: {popUp_Name}");
         }
 
+        if (isMove)
+        {
+            PlayerMovementControl(true);
+        }
+
         BlurOnOff(false);
-        PlayerMovementControl(true);
     }
 
     public void CloseAllPopUps()
@@ -226,6 +235,8 @@ public class UIManager : DoTweenManager
         {
             ClosePopUp(kvp.Key);
         }
+
+        isMove = true;
     }
 
     #endregion
