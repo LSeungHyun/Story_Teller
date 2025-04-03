@@ -127,9 +127,11 @@ public abstract class AbsctractGameSession
     #region Interaction
     public virtual void HandleInteractionBasic(CurrentObjectManager currentObjectManager, string currentObjCode)
     {
-        ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (currentObjectManager?.objDataTypeContainer?.objDataType == null)
+            return;
 
-        if (string.IsNullOrEmpty(currentRow.dataType))
+        ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+        if (currentRow == null || string.IsNullOrEmpty(currentRow.dataType))
             return;
 
         string currentObjType = currentRow.dataType.ToLower();
@@ -137,31 +139,34 @@ public abstract class AbsctractGameSession
         switch (currentObjType)
         {
             case "bubble":
+                if (currentObjectManager.bubbleSetter == null) return;
                 currentObjectManager.bubbleSetter.currentObjOffset = currentObjectManager.objDataTypeContainer.position;
                 currentObjectManager.bubbleSetter.SetData(currentObjCode);
                 break;
 
-
             case "centerlabel":
+                if (currentObjectManager.uiCenterLabelSetter == null || currentObjectManager.uiCenterLabelOnOffManager == null) return;
                 currentObjectManager.uiCenterLabelSetter.SetData(currentObjCode);
                 currentObjectManager.uiCenterLabelOnOffManager.OpenCenterLabelWindow();
                 currentObjectManager.uiCenterLabelSetter.currentObjCode = currentObjCode;
                 break;
 
             case "dialogue":
+                if (currentObjectManager.uiDialogueSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
                 currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
                 currentObjectManager.uiDialogueSetter.currentObjCode = currentObjCode;
-                Debug.Log(currentObjCode);
                 break;
 
             case "image":
+                if (currentObjectManager.uiImageSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
                 currentObjectManager.uiImageSetter.SetData(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
                 currentObjectManager.uiImageSetter.currentObjCode = currentObjCode;
                 break;
 
             case "quest":
+                if (currentObjectManager.hintStateManager == null || currentObjectManager.uiQuestSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
                 currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
                 currentObjectManager.uiQuestSetter.SetQuestBg(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
