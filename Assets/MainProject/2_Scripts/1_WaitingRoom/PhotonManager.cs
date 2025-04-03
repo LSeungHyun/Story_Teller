@@ -12,6 +12,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager instance;
 
+    public float inactivityLimit = 30f; // 비활성 시간 제한 (초)
+    public float inactivityTimer = 0f;
+
     // .jslib에서 정의한 함수명과 동일
     [DllImport("__Internal")]
     private static extern void CopyToClipboard(string text);
@@ -51,12 +54,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public Chating_Group chating_Group;
 
     public bool OneCheck = false;
-
+    [SerializeField]
+    private bool isConnect = false;
     private Color[] localPlayerColors = new Color[4];
 
     // 방 코드
     [SerializeField]
     public string roomCode;
+
 
 
     void Awake()
@@ -80,6 +85,44 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         ColorUtility.TryParseHtmlString("#929ebe", out localPlayerColors[1]); // 파랑
         ColorUtility.TryParseHtmlString("#d07e7e", out localPlayerColors[2]); // 빨강
         ColorUtility.TryParseHtmlString("#aebe9c", out localPlayerColors[3]); // 초록
+    }
+
+    void Update()
+    {
+        if(isConnect)
+        {
+            if (Input.anyKeyDown) // 입력이 있을 때마다 타이머 초기화
+            {
+                inactivityTimer = 0f;
+            }
+            else
+            {
+                inactivityTimer += Time.deltaTime;
+            }
+
+            if (inactivityTimer >= inactivityLimit && isConnect)
+            {
+                //대기실 잠수처리
+                if(roomUIManager != null)
+                {
+                    roomUIManager.CloseAllPopUps();
+                    roomUIManager.OpenPopUpNotDot("Room_Connect_Error");
+                }
+
+                //인게임 잠수처리
+                if (UIManager != null)
+                {
+                    UIManager.CloseAllPopUps();
+                    UIManager.CloseAllPanels();
+                    UIManager.OpenPopUp("Room_Connect_Error");
+                }
+                isConnect = false;
+                PhotonNetwork.Disconnect();
+                inactivityTimer = 0f;
+                //SceneManager.LoadScene("1_WaitingRoom");
+            }
+        }
+        
     }
     #region 자체 함수 모음
 
@@ -343,9 +386,9 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     #endregion
 
     #region 콜백 함수 모음
-    public override void OnConnectedToMaster()
+    public override void OnConnected()
     {
-        //Debug.Log("접속 콜백 완료");
+        isConnect = true;
 
         roomUIManager.popupDict["Title_Btn_Group"].SetActive(false);
         roomUIManager.ClosePopUp("Single_Multi_Select");
@@ -357,12 +400,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
-        //Debug.Log("접속 끊기 콜백 완료");
-
         roomUIManager.popupDict["Title_Btn_Group"].SetActive(true);
         roomUIManager.ClosePopUp("Lobby_Group");
-
-        roomUIManager.OpenPopUp("Single_Multi_Select");
 
         roomUIManager.BlurBoolStatus(true);
 
