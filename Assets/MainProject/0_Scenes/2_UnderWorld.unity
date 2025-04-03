@@ -31453,6 +31453,8 @@ PlayableDirector:
     value: {fileID: 1613273496}
   - key: {fileID: -6457743893399693710, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
     value: {fileID: 1606634863}
+  - key: {fileID: 5512011890992178260, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
+    value: {fileID: 1289076335}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 889525879}
@@ -45350,6 +45352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2058709917}
   - component: {fileID: 2058709918}
+  - component: {fileID: 2058709919}
   m_Layer: 5
   m_Name: Window_PopUp_Group
   m_TagString: Untagged
@@ -45386,6 +45389,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058709916}
   m_CullTransparentMesh: 1
+--- !u!114 &2058709919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058709916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.39215687}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &2064885211
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47071,7 +47104,7 @@ PlayableDirector:
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: f1200877dc083d4469d3a5383000824c, type: 2}
   m_InitialState: 0
-  m_WrapMode: 2
+  m_WrapMode: 0
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
   m_SceneBindings:
@@ -47101,6 +47134,10 @@ PlayableDirector:
     value: {fileID: 1606634863}
   - key: {fileID: -1666125979213969476, guid: f1200877dc083d4469d3a5383000824c, type: 2}
     value: {fileID: 492574460}
+  - key: {fileID: 3176162987455340603, guid: f1200877dc083d4469d3a5383000824c, type: 2}
+    value: {fileID: 1289076335}
+  - key: {fileID: -395497644852974925, guid: f1200877dc083d4469d3a5383000824c, type: 2}
+    value: {fileID: 1569732072}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 889525879}

@@ -122,6 +122,18 @@ public abstract class AbsctractGameSession
             renderOfCurrentCollision.material = playerManager.originalMaterial;
         }
     }
+
+    public virtual void CutSceneEnter(PlayerManager playerManager, Collider2D collision)
+    {
+        if (!collision.CompareTag("CutScene"))
+        {
+            playerManager.isCutScene = false;
+            return;
+        }
+
+        playerManager.isCutScene = true;
+        playerManager.CutSceneOnOff();
+    }
     #endregion
 
     #region Interaction

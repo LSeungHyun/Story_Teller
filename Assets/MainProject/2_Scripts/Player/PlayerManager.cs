@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
 
+    public SpriteRenderer playerSprite;
+
     [Header("Player Components")]
     public Rigidbody2D rigid;
     public Animator anim;
@@ -42,6 +44,8 @@ public class PlayerManager : MonoBehaviour
 
     public bool isMobile = false;
     public bool isMove = true;
+    public bool isCutScene = false;
+
     #region LifeCycle Methods
     void Awake()
     {
@@ -232,6 +236,18 @@ public class PlayerManager : MonoBehaviour
         else
         {
             confirmOn.sprite = null;
+        }
+    }
+
+    public void CutSceneOnOff()
+    {
+        if (isCutScene)
+        {
+            playerSprite.enabled = false;
+        }
+        else
+        {
+            playerSprite.enabled = true;
         }
     }
     #endregion
