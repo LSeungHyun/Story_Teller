@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         testSpeed = 3f;
-
+        isMove = false;
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
