@@ -156,6 +156,14 @@ public class MultiSession : AbsctractGameSession
             base.TriggerExitBasic(playerManager, collision);
         }
     }
+
+    public override void CutSceneEnter(PlayerManager playerManager, Collider2D collision)
+    {
+        if (playerManager.PV.IsMine)
+        {
+            base.CutSceneEnter(playerManager, collision);
+        }
+    }
     #endregion
 
     #region Interaction
