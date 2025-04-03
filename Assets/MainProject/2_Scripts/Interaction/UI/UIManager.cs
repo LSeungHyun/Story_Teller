@@ -21,6 +21,7 @@ public class UIManager : DoTweenManager
         public string Panel_Name;
         public GameObject Panel_Obj;
         public bool isAnim;
+        public bool isActive;
     }
 
     [System.Serializable]
@@ -164,6 +165,8 @@ public class UIManager : DoTweenManager
             {
                 popUp.PopUp_Obj.SetActive(true);
             }
+
+            popUp.isActive = true;
         }
         else
         {
@@ -188,6 +191,8 @@ public class UIManager : DoTweenManager
             {
                 popUp.PopUp_Obj.SetActive(false);
             }
+
+            popUp.isActive = false;
         }
         else
         {
@@ -220,15 +225,15 @@ public class UIManager : DoTweenManager
         {
             ClickAnim();
 
-            if (popUpDict.TryGetValue(panel_Name, out PopUp_Group Panel))
+            if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
             {
-                if (Panel.isActive)
+                if (panel.isActive)
                 {
                     ClosePopUp(panel_Name);
                 }
                 else
                 {
-                    StartCoroutine(PopUpCoroutine(panel_Name));
+                    StartCoroutine(PanelCoroutine(panel_Name));
                 }
             }
         }

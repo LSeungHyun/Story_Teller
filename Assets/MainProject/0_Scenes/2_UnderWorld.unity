@@ -7559,21 +7559,32 @@ MonoBehaviour:
   - PopUp_Name: Hint_PopUp_Group
     PopUp_Obj: {fileID: 1623491916}
     isAnim: 1
+    isActive: 0
   - PopUp_Name: Chat_PopUp_Group
     PopUp_Obj: {fileID: 875904903}
     isAnim: 1
+    isActive: 0
   - PopUp_Name: Help_PopUp
     PopUp_Obj: {fileID: 1446842850}
     isAnim: 1
+    isActive: 0
   - PopUp_Name: Audio_Setting_PopUp
     PopUp_Obj: {fileID: 1724541538}
     isAnim: 1
+    isActive: 0
   Master_Panel: {fileID: 1098188929}
   Panel_List:
   - Panel_Name: Hint_Detail_Panel
     Panel_Obj: {fileID: 1016331251}
     isAnim: 1
-  ChatStatusList: []
+    isActive: 0
+  ChatStatusList:
+  - Status: Normal
+    ShadowObj: {fileID: 1397523354}
+    IconObj: {fileID: 1213731112}
+  - Status: RedDot
+    ShadowObj: {fileID: 1536493713}
+    IconObj: {fileID: 990149569}
   DarkObject: {fileID: 220100312}
   BlurObject: {fileID: 1533339714}
   blurAble: 1
@@ -9510,7 +9521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -16138,7 +16149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -37813,7 +37824,7 @@ RectTransform:
   m_GameObject: {fileID: 1724541538}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 84017024}
