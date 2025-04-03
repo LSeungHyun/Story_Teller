@@ -339,9 +339,16 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.IsConnected)
         {
-            PV.RPC("SelectGameModeRPC", RpcTarget.AllBuffered);
-            PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
-
+            if (PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+            {
+                PV.RPC("SelectGameModeRPC", RpcTarget.AllBuffered);
+                PV.RPC("MoveNextScene", RpcTarget.AllBuffered);
+            }
+            else
+            {
+                // 플레이어가 1명일 때 예외 처리
+                roomUIManager.OpenPopUp("Room_Start_Error");
+            }
             return;
         }
         SceneManager.LoadScene("2_UnderWorld");
