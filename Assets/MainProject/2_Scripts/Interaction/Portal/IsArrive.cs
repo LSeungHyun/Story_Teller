@@ -8,7 +8,7 @@ public class IsArrive : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
 
-        if (managerConnector != null)
+        if (managerConnector != null && managerConnector.textDataManager.loadingUI.activeSelf)
         {
             managerConnector.textDataManager.loadingUI.SetActive(false);
         }

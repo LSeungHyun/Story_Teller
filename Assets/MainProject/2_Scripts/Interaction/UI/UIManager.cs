@@ -5,6 +5,9 @@ using System.Collections;
 
 public class UIManager : DoTweenManager
 {
+    public ManagerConnector managerConnector;
+    public AbsctractGameSession session;
+
     [System.Serializable]
 
     public class PopUp_Group
@@ -12,6 +15,7 @@ public class UIManager : DoTweenManager
         public string PopUp_Name;
         public GameObject PopUp_Obj;
         public bool isAnim;
+        public bool isActive;
     }
 
     [System.Serializable]
@@ -20,6 +24,7 @@ public class UIManager : DoTweenManager
         public string Panel_Name;
         public GameObject Panel_Obj;
         public bool isAnim;
+        public bool isActive;
     }
 
     [System.Serializable]
@@ -68,7 +73,7 @@ public class UIManager : DoTweenManager
 
     void Start()
     {
-
+        session = GameManager.Instance.Session;
     }
 
 
@@ -76,6 +81,19 @@ public class UIManager : DoTweenManager
     {
         DarkObject.SetActive(active);
         BlurObject.SetActive(active);
+    }
+
+    public void PlayerMovementControl(bool isMove)
+    {
+        if (isMove)
+        {
+            session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
+        }
+        else
+        {
+            session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
+        }
+        
     }
 
     #region 딕셔너리 정보값 세팅 / 팝업, 패널
@@ -128,7 +146,18 @@ public class UIManager : DoTweenManager
         if (!NotEvent)
         {
             ClickAnim();
-            StartCoroutine(PopUpCoroutine(popUp_Name));
+
+            if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
+            {
+                if (popUp.isActive)
+                {
+                    ClosePopUp(popUp_Name);
+                }
+                else
+                {
+                    StartCoroutine(PopUpCoroutine(popUp_Name));
+                }
+            }
         }
     }
 
@@ -137,10 +166,11 @@ public class UIManager : DoTweenManager
         NotEvent = true;
 
         CloseAllPopUps();
-
+        
         yield return new WaitForSeconds(0.25f);
 
         BlurOnOff(true);
+        PlayerMovementControl(false);
 
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
@@ -152,6 +182,8 @@ public class UIManager : DoTweenManager
             {
                 popUp.PopUp_Obj.SetActive(true);
             }
+
+            popUp.isActive = true;
         }
         else
         {
@@ -176,6 +208,8 @@ public class UIManager : DoTweenManager
             {
                 popUp.PopUp_Obj.SetActive(false);
             }
+
+            popUp.isActive = false;
         }
         else
         {
@@ -183,8 +217,7 @@ public class UIManager : DoTweenManager
         }
 
         BlurOnOff(false);
-
-        Debug.Log("이게 왜 지금 ?");
+        PlayerMovementControl(true);
     }
 
     public void CloseAllPopUps()
@@ -207,7 +240,18 @@ public class UIManager : DoTweenManager
         if (!NotEvent)
         {
             ClickAnim();
-            StartCoroutine(PanelCoroutine(panel_Name));
+
+            if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
+            {
+                if (panel.isActive)
+                {
+                    ClosePopUp(panel_Name);
+                }
+                else
+                {
+                    StartCoroutine(PanelCoroutine(panel_Name));
+                }
+            }
         }
     }
 

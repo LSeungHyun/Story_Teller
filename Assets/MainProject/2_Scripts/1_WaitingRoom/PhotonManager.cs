@@ -10,7 +10,7 @@ using System.Collections;
 
 public class PhotonManager : MonoBehaviourPunCallbacks
 {
-    //public static PhotonManager instance;
+    public static PhotonManager instance;
 
     // .jslib에서 정의한 함수명과 동일
     [DllImport("__Internal")]
@@ -18,6 +18,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 
     public RoomUIManager roomUIManager;
+    public UIManager UIManager = null;
     public PhotonView PV;
     // 방 코드 사용되는 영어 대, 소문자 및 숫자
     private const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -47,9 +48,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     }
 
     [Header("Chating Group")]
-    [SerializeField]
-    private Chating_Group chating_Group;
-    
+    public Chating_Group chating_Group;
+
     public bool OneCheck = false;
 
     private Color[] localPlayerColors = new Color[4];
@@ -61,15 +61,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     void Awake()
     {
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //    DontDestroyOnLoad(gameObject);
-        //}
-        //else
-        //{
-        //    Destroy(gameObject);
-        //}
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
@@ -196,7 +196,14 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         myName.text = senderName;
         myName.color = color;
 
-        roomUIManager.ChatUIStatus();
+        if(UIManager == null)
+        {
+            roomUIManager.ChatUIStatus();
+        }
+        else
+        {
+            UIManager.ChatUIStatus();
+        }
 
         if (OneCheck)
         {
