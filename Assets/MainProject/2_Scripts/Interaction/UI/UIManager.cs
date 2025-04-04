@@ -70,6 +70,8 @@ public class UIManager : DoTweenManager
     [SerializeField]
     private bool isMove = false;
 
+    public bool rapidClose = false;
+
     void Awake()
     {
         SetPopUpDict();
@@ -171,6 +173,7 @@ public class UIManager : DoTweenManager
     IEnumerator PopUpCoroutine(string popUp_Name)
     {
         NotEvent = true;
+        rapidClose = false;
 
         CloseAllPopUps();
         PlayerMovementControl(false);
@@ -200,6 +203,14 @@ public class UIManager : DoTweenManager
         NotEvent = false;
     }
 
+    public void RapidCloseAllUI(bool isRapid)
+    {
+        rapidClose = isRapid;
+
+        CloseAllPopUps();
+        CloseAllPanels();
+    }
+
     /// <summary>
     /// PopUp_NameÀ¸·Î ÁöÁ¤ÇÑ ÆË¾÷À» ´Ý±â
     /// </summary>
@@ -207,7 +218,7 @@ public class UIManager : DoTweenManager
     {
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
-            if (popUp.isAnim)
+            if (popUp.isAnim && !rapidClose)
             {
                 HideUI(popUp.PopUp_Obj);
             }
@@ -271,6 +282,7 @@ public class UIManager : DoTweenManager
     IEnumerator PanelCoroutine(string panel_Name)
     {
         NotEvent = true;
+        rapidClose = false;
 
         CloseAllPanels();
 
@@ -281,7 +293,7 @@ public class UIManager : DoTweenManager
 
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
         {
-            if (panel.isAnim)
+            if (panel.isAnim && !rapidClose)
             {
                 ShowUI(panel.Panel_Obj);
             }
