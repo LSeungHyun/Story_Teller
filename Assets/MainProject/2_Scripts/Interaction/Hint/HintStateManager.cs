@@ -21,8 +21,9 @@ public class HintStateManager : MonoBehaviour
     public void HIntUnlocked(string currentObjCode)
     {
         targetRow = hintContainer.hintDatas.FirstOrDefault(r => r.objCode == currentObjCode);
-        if (targetRow == null)
+        if (targetRow == null || targetRow.isUsed == "used")
             return;
+        
         targetRow.isUsed = "unlocked";
     }
     public void HIntUsed(string currentObjCode)

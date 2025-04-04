@@ -8,6 +8,7 @@ public class HintSetter : MonoBehaviour
     public HintContainer hintContainer;
     public HintOnOffManager hintOnOffManager;
     public HintStateManager hintStateManager;
+    public UIManager uiManager;
 
     public Transform parentObject;
     public List<Transform> childList = new List<Transform>();
@@ -94,13 +95,15 @@ public class HintSetter : MonoBehaviour
                 break;
             case "unlocked":
                 SetHintDetailPopUp(currentRow);
-                hintOnOffManager.HintDetailPopUpOn();
+                //hintOnOffManager.HintDetailPopUpOn();
+                uiManager.OpenPanel("Hint_Detail_Panel");
                 hintStateManager.HIntUsed(hintCode);
                 CurrentObjectManager.Instance.SetCurrentObjData("Use_Unlocked_Hint");
                 break;
             case "used":
                 SetHintDetailPopUp(currentRow);
-                hintOnOffManager.HintDetailPopUpOn();
+                //hintOnOffManager.HintDetailPopUpOn();
+                uiManager.OpenPanel("Hint_Detail_Panel");
                 break;
             default:
                 CurrentObjectManager.Instance.SetCurrentObjData("Use_Locked_Hint");
