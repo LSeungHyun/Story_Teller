@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 1059488979524981701}
   - component: {fileID: 8105807717463705933}
   - component: {fileID: 2300600632987402517}
-  - component: {fileID: 6747232902827630537}
-  - component: {fileID: 8419742327578883130}
+  - component: {fileID: 4488163788041646873}
   m_Layer: 0
-  m_Name: UnderWorld_2ndFloor_Quest
+  m_Name: "UnderWorld_2ndFloor_Quest(\uC644)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,45 +78,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!111 &6747232902827630537
-Animation:
+--- !u!114 &4488163788041646873
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498864559956419859}
   m_Enabled: 1
-  serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: 73abf2f4b67947f4fb2cfc9080575ca5, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: 73abf2f4b67947f4fb2cfc9080575ca5, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_UpdateMode: 0
-  m_CullingType: 0
---- !u!95 &8419742327578883130
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1498864559956419859}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 78da20e86e6ea2f44a99ef67f16cc050, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f11dbc5aaffbe449abab67a6d4f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 21300000, guid: bd854b9496c51164e92231a23f542c3b, type: 3}
+  - {fileID: 21300000, guid: 182c922cde0366f478df2ef20d4a99a3, type: 3}
+  - {fileID: 21300000, guid: 6fa7de1843c3ee142b11421cb7adf4ef, type: 3}
+  - {fileID: 21300000, guid: c6c62d89f463bc84b92388c4c641e1e2, type: 3}
+  displayImage: {fileID: 2300600632987402517}
 --- !u!1001 &1697787346693338231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,19 +114,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8419742327578883130}
+      objectReference: {fileID: 4488163788041646873}
     - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: onNextBtn
       objectReference: {fileID: 0}
     - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      value: ImageSwitcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -262,19 +240,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 8419742327578883130}
+      objectReference: {fileID: 4488163788041646873}
     - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
+      value: onPrevBtn
       objectReference: {fileID: 0}
     - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Animator, UnityEngine
+      value: ImageSwitcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6081352849207959586
+--- !u!1 &2113135084285788230
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 972061200973697444}
-  - component: {fileID: 7606819153024891927}
-  - component: {fileID: 7534548761081566122}
+  - component: {fileID: 1468684581574356735}
+  - component: {fileID: 8388112333155268162}
+  - component: {fileID: 844165118195361516}
   m_Layer: 0
-  m_Name: UnderWorld_SteelHouse_Quest
+  m_Name: "UnderWorld_HairSalon_Quest(\uC644)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &972061200973697444
+--- !u!224 &1468684581574356735
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6081352849207959586}
+  m_GameObject: {fileID: 2113135084285788230}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -67427.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -37,21 +37,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 2048, y: 2048}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &7606819153024891927
+--- !u!222 &8388112333155268162
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6081352849207959586}
+  m_GameObject: {fileID: 2113135084285788230}
   m_CullTransparentMesh: 1
---- !u!114 &7534548761081566122
+--- !u!114 &844165118195361516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6081352849207959586}
+  m_GameObject: {fileID: 2113135084285788230}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5dedd0a239ea51c4eb670036a22234ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d443d15f2b0d994a8185b011044d892, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

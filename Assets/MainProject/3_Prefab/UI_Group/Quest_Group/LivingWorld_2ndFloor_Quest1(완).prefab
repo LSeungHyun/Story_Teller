@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 83769887041713436}
   - component: {fileID: 7128191990603176798}
   - component: {fileID: 1128614548702492175}
+  - component: {fileID: 5498003123458088599}
   m_Layer: 0
-  m_Name: LivingWorld_2ndFloor_Quest1
+  m_Name: "LivingWorld_2ndFloor_Quest1(\uC644)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,6 +78,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5498003123458088599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6305137277377435794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f11dbc5aaffbe449abab67a6d4f61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  images:
+  - {fileID: 21300000, guid: f939fb9a06a552e4fa2b1411743d458d, type: 3}
+  - {fileID: 21300000, guid: baa7827a7ce066142bd248c0d46dd89a, type: 3}
+  - {fileID: 21300000, guid: 47ea0aef7fd5f5c46849501b8af79d35, type: 3}
+  - {fileID: 21300000, guid: 4fff53784aec71241b92d8ca41da84b8, type: 3}
+  - {fileID: 21300000, guid: 3909e8247b417294f9583485c0541a4d, type: 3}
+  displayImage: {fileID: 1128614548702492175}
 --- !u!1001 &2813394993114509202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92,6 +112,18 @@ PrefabInstance:
     - target: {fileID: 2917203785382025488, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5498003123458088599}
+    - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onNextBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709738637788190892, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ImageSwitcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8631625677360596753, guid: 5e2db6dd7866079458d3b3e7a14002f8, type: 3}
       propertyPath: m_Pivot.x
@@ -198,6 +230,18 @@ PrefabInstance:
     - target: {fileID: 1707163908816838565, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5498003123458088599}
+    - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onPrevBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2021283688333091665, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ImageSwitcher, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6336472460496810422, guid: 0189526d5a9c9e7469b9259fd06e6a3d, type: 3}
       propertyPath: m_Pivot.x
