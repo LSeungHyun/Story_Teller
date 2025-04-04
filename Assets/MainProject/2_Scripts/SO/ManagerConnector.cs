@@ -6,6 +6,7 @@ public class ManagerConnector : ScriptableObject
     public PhotonManager photonManager;
     public PlayerManager playerManager;
     public UINextSetter uiNextSetter;
+    public UIManager uiManager;
     public PortalManager portalManager;
     public ScenePortalManager scenePortalManager;
     public HintStateManager hintStateManager;

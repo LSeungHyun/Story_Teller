@@ -120,8 +120,8 @@ public class UINextSetter : MonoBehaviour
         if (currentObj == null)
             return;
 
-           managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode);
-        
+        if (!managerConnector.playerManager.PV) return;
+        managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode);
     }
 
     public void CheckDoneAndNext(string currentObjCode)

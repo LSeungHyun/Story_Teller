@@ -74,6 +74,7 @@ public class UIManager : DoTweenManager
 
     void Awake()
     {
+        managerConnector.uiManager = this;
         SetPopUpDict();
         SetPanelDict();
     }
@@ -203,12 +204,13 @@ public class UIManager : DoTweenManager
         NotEvent = false;
     }
 
-    public void RapidCloseAllUI(bool isRapid)
+    public void RapidCloseAllUI()
     {
-        rapidClose = isRapid;
+        rapidClose = true;
 
-        CloseAllPopUps();
         CloseAllPanels();
+        CloseAllPopUps();
+        BlurOnOff(false);
     }
 
     /// <summary>

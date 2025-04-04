@@ -18,11 +18,18 @@ public class PortalManager : MonoBehaviour
     {
         session = GameManager.Instance.Session;
         managerConnector.portalManager = this;
+        if (uiManager != null) return;
+        uiManager = managerConnector.uiManager;
+
+    }
+
+    private void Start()
+    {
+        
     }
     public void OnEnable()
     {
-        uiManager.CloseAllPanels();
-        uiManager.CloseAllPopUpsNotAnim();
+        uiManager.RapidCloseAllUI();
 
         session.SetCamValue(camBoundContainer.camDontDes, camBoundContainer.boundCol, camBoundContainer.lensSize);
 

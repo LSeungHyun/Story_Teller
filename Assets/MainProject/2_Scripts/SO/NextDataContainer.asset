@@ -45,10 +45,18 @@ MonoBehaviour:
     isNextData: 
     isNextObj: Portal_Road_To_SteelHouse
     deleteObj: 0
+  - objCode: UnderWorld_Tutorial_Sara
+    isNextData: Active_Arrow
+    isNextObj: 
+    deleteObj: 0
   - objCode: UnderWorld_SteelHouse_In
     isNextData: 
     isNextObj: Portal_Road_To_SteelHouse
-    deleteObj: 0
+    deleteObj: 1
+  - objCode: UnderWorld_SteelHouse_Quest
+    isNextData: 
+    isNextObj: UnderWorld_SteelHouse_Quest_Ex
+    deleteObj: 1
   - objCode: UnderWorld_SteelHouse_Quest
     isNextData: UnderWorld_SteelHouse_Answer
     isNextObj: 
@@ -60,7 +68,7 @@ MonoBehaviour:
   - objCode: UnderWorld_SteelHouse_Answer
     isNextData: 
     isNextObj: Fog1
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_SteelHouse_Answer
     isNextData: 
     isNextObj: Portal_Road_To_Bakery
@@ -72,7 +80,7 @@ MonoBehaviour:
   - objCode: UnderWorld_Bakery_In
     isNextData: 
     isNextObj: Portal_Road_To_Bakery
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_Bakery_In
     isNextData: UnderWorld_Bakery_InDial
     isNextObj: 
@@ -80,7 +88,7 @@ MonoBehaviour:
   - objCode: UnderWorld_Bakery_Quest
     isNextData: 
     isNextObj: UnderWorld_Bakery_Quest_Ex
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_Bakery_Quest
     isNextData: UnderWorld_Bakery_Answer
     isNextObj: 
@@ -92,7 +100,7 @@ MonoBehaviour:
   - objCode: UnderWorld_Bakery_Answer
     isNextData: 
     isNextObj: Fog2
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_Bakery_Answer
     isNextData: 
     isNextObj: Portal_Road_To_JungCafe
@@ -104,7 +112,7 @@ MonoBehaviour:
   - objCode: UnderWorld_JungCafe_In
     isNextData: 
     isNextObj: Portal_Road_To_JungCafe
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_JungCafe_In
     isNextData: UnderWorld_JungCafe_InDial
     isNextObj: 
@@ -112,7 +120,7 @@ MonoBehaviour:
   - objCode: UnderWorld_JungCafe_Quest
     isNextData: 
     isNextObj: UnderWorld_JungCafe_Quest_Ex
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_JungCafe_Quest
     isNextData: UnderWorld_JungCafe_Answer
     isNextObj: 
@@ -124,7 +132,7 @@ MonoBehaviour:
   - objCode: UnderWorld_JungCafe_Answer
     isNextData: 
     isNextObj: Fog3
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_JungCafe_Answer
     isNextData: 
     isNextObj: CutScene_Area_GukHwa
@@ -140,7 +148,7 @@ MonoBehaviour:
   - objCode: UnderWorld_HairSalon_Quest
     isNextData: 
     isNextObj: UnderWorld_HairSalon_Quest_Ex
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_HairSalon_Quest
     isNextData: UnderWorld_HairSalon_Answer
     isNextObj: 
@@ -152,7 +160,7 @@ MonoBehaviour:
   - objCode: UnderWorld_HairSalon_Answer
     isNextData: 
     isNextObj: UnderWorld_HairSalon_Door
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_HairSalon_Answer
     isNextData: Active_Arrow
     isNextObj: 
@@ -160,7 +168,7 @@ MonoBehaviour:
   - objCode: UnderWorld_2ndFloor_Quest
     isNextData: 
     isNextObj: UnderWorld_2ndFloor_Quest_Ex
-    deleteObj: 0
+    deleteObj: 1
   - objCode: UnderWorld_2ndFloor_Quest
     isNextData: UnderWorld_2ndFloor_Answer
     isNextObj: 
@@ -180,7 +188,11 @@ MonoBehaviour:
   - objCode: LivingWorld_FlowerShop_In
     isNextData: 
     isNextObj: Portal_Road_To_Flower
-    deleteObj: 0
+    deleteObj: 1
+  - objCode: LivingWorld_FlowerShop_Quest
+    isNextData: 
+    isNextObj: LivingWorld_FlowerShop_Quest_Ex
+    deleteObj: 1
   - objCode: LivingWorld_FlowerShop_Quest
     isNextData: LivingWorld_FlowerShop_Answer
     isNextObj: 
@@ -200,7 +212,11 @@ MonoBehaviour:
   - objCode: LivingWorld_Bakery_In
     isNextData: 
     isNextObj: Portal_Road_To_Bakery
-    deleteObj: 0
+    deleteObj: 1
+  - objCode: LivingWorld_Bakery_Quest
+    isNextData: 
+    isNextObj: LivingWorld_Bakery_Quest_Ex
+    deleteObj: 1
   - objCode: LivingWorld_Bakery_Quest
     isNextData: LivingWorld_Bakery_Answer
     isNextObj: 
@@ -231,8 +247,16 @@ MonoBehaviour:
     deleteObj: 0
   - objCode: LivingWorld_Road_Quest
     isNextData: 
+    isNextObj: LivingWorld_Road_Dial
+    deleteObj: 1
+  - objCode: LivingWorld_Road_Quest
+    isNextData: 
     isNextObj: Portal_Road_To_JungCafe
     deleteObj: 0
+  - objCode: LivingWorld_Road_Quest
+    isNextData: 
+    isNextObj: LivingWorld_Road_Quest_Ex
+    deleteObj: 1
   - objCode: LivingWorld_Road_Quest
     isNextData: LivingWorld_JungCafe_Unlocked
     isNextObj: 
@@ -240,11 +264,15 @@ MonoBehaviour:
   - objCode: LivingWorld_JungCafe_In
     isNextData: 
     isNextObj: Portal_Road_To_JungCafe
-    deleteObj: 0
+    deleteObj: 1
   - objCode: LivingWorld_JungCafe_In
     isNextData: LivingWorld_JungCafe_InDial
     isNextObj: 
     deleteObj: 0
+  - objCode: LivingWorld_JungCafe_Quest
+    isNextData: 
+    isNextObj: LivingWorld_JungCafe_Quest_Ex
+    deleteObj: 1
   - objCode: LivingWorld_JungCafe_Quest
     isNextData: LivingWorld_JungCafe_Answer
     isNextObj: 
@@ -264,7 +292,7 @@ MonoBehaviour:
   - objCode: LivingWorld_HairSalon_In
     isNextData: 
     isNextObj: Portal_Road_To_HairSalon
-    deleteObj: 0
+    deleteObj: 1
   - objCode: LivingWorld_HairSalon_In
     isNextData: LivingWorld_HairSalon_InDial
     isNextObj: 
@@ -274,6 +302,10 @@ MonoBehaviour:
     isNextObj: LivingWorld_HairSalon_Sara
     deleteObj: 0
   - objCode: LivingWorld_HairSalon_Quest1
+    isNextData: 
+    isNextObj: LivingWorld_HairSalon_Quest1_Ex
+    deleteObj: 1
+  - objCode: LivingWorld_HairSalon_Quest1
     isNextData: LivingWorld_HairSalon_Answer1
     isNextObj: 
     deleteObj: 0
@@ -281,6 +313,10 @@ MonoBehaviour:
     isNextData: LivingWorld_HairSalon_Quest2
     isNextObj: 
     deleteObj: 0
+  - objCode: LivingWorld_HairSalon_Quest2
+    isNextData: 
+    isNextObj: LivingWorld_HairSalon_Quest2_Ex
+    deleteObj: 1
   - objCode: LivingWorld_HairSalon_Quest2
     isNextData: LivingWorld_HairSalon_Answer2
     isNextObj: 
@@ -292,7 +328,7 @@ MonoBehaviour:
   - objCode: LivingWorld_HairSalon_Answer2
     isNextData: 
     isNextObj: LivingWorld_HairSalon_CantGo
-    deleteObj: 0
+    deleteObj: 1
   - objCode: LivingWorld_HairSalon_Answer2
     isNextData: Active_Arrow
     isNextObj: 
@@ -300,58 +336,86 @@ MonoBehaviour:
   - objCode: LivingWorld_2ndFloor_Quest1
     isNextData: 
     isNextObj: Portal_HairSalon_To_2ndFloor
-    deleteObj: 0
+    deleteObj: 1
   - objCode: LivingWorld_2ndFloor_Quest1
-    isNextData: LivingWorld_2ndFloor_Ansewer1
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Quest1_Ex
+    deleteObj: 1
+  - objCode: LivingWorld_2ndFloor_Quest1
+    isNextData: LivingWorld_2ndFloor_Answer1
     isNextObj: 
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer1
+  - objCode: LivingWorld_2ndFloor_Answer1
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_KeyBoard
-    deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer1
+    deleteObj: 1
+  - objCode: LivingWorld_2ndFloor_Answer1
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Quest2
     deleteObj: 0
   - objCode: LivingWorld_2ndFloor_Quest2
-    isNextData: LivingWorld_2ndFloor_Ansewer2
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Quest2_Ex
+    deleteObj: 1
+  - objCode: LivingWorld_2ndFloor_Quest2
+    isNextData: LivingWorld_2ndFloor_Answer2
     isNextObj: 
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer2
+  - objCode: LivingWorld_2ndFloor_Answer2
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Window
-    deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer2
+    deleteObj: 1
+  - objCode: LivingWorld_2ndFloor_Answer2
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Quest3
     deleteObj: 0
   - objCode: LivingWorld_2ndFloor_Quest3
-    isNextData: LivingWorld_2ndFloor_Ansewer3
+    isNextData: 
+    isNextObj: LivingWorld_2ndFloor_Quest3_Ex
+    deleteObj: 1
+  - objCode: LivingWorld_2ndFloor_Quest3
+    isNextData: LivingWorld_2ndFloor_Answer3
     isNextObj: 
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer3
+  - objCode: LivingWorld_2ndFloor_Answer3
     isNextData: 
     isNextObj: Portal_2ndFloor_To_HairSalon
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer3
+  - objCode: LivingWorld_2ndFloor_Answer3
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Girl1
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer3
+  - objCode: LivingWorld_2ndFloor_Answer3
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Girl1Smile
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer3
+  - objCode: LivingWorld_2ndFloor_Answer3
     isNextData: 
     isNextObj: LivingWorld_2ndFloor_Ghost
     deleteObj: 0
-  - objCode: LivingWorld_2ndFloor_Ansewer3
+  - objCode: LivingWorld_2ndFloor_Answer3
     isNextData: Active_Arrow
     isNextObj: 
     deleteObj: 0
   - objCode: Ending_HairSalon_In
     isNextData: 
     isNextObj: Portal_HairSalon_To_Road
+    deleteObj: 0
+  - objCode: Ending_HairSalon_In
+    isNextData: 
+    isNextObj: Ending_HairSalon_Girl1
+    deleteObj: 1
+  - objCode: Ending_HairSalon_In
+    isNextData: 
+    isNextObj: LivingWorld_HairSalon_Sara
+    deleteObj: 1
+  - objCode: Ending_HairSalon_In
+    isNextData: 
+    isNextObj: Ending_HairSalon_Girl1Smile
+    deleteObj: 0
+  - objCode: Ending_HairSalon_In
+    isNextData: 
+    isNextObj: Ending_HairSalon_Ghost
     deleteObj: 0
   - objCode: Ending_Road_In
     isNextData: Ending
