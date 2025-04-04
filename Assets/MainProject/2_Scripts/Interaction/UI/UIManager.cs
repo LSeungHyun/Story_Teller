@@ -258,7 +258,7 @@ public class UIManager : DoTweenManager
             {
                 if (panel.isActive)
                 {
-                    ClosePopUp(panel_Name);
+                    ClosePanel(panel_Name);
                 }
                 else
                 {
@@ -303,6 +303,11 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void ClosePanel(string panel_Name)
     {
+        StartCoroutine(PanelCloseCoroutine(panel_Name));
+    }
+
+    IEnumerator PanelCloseCoroutine(string panel_Name)
+    {
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
         {
             if (panel.isAnim)
@@ -318,6 +323,8 @@ public class UIManager : DoTweenManager
         {
             Debug.LogWarning($"No popup found with name: {panel_Name}");
         }
+
+        yield return new WaitForSeconds(0.25f);
 
         Master_Panel.SetActive(false);
         DarkObject.SetActive(true);
