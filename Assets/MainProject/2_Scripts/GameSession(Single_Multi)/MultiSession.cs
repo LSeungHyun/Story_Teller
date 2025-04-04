@@ -82,21 +82,7 @@ public class MultiSession : AbsctractGameSession
         bool isdone = uiNextSetter.CheckEveryoneIsDone(currentObjCode);
         if (isdone)
         {
-            var foundItem = uiNextSetter.currentObjCodeDict.Find(x => x.value == currentObjCode);
-            if (foundItem != null)
-            {
-                foundItem.value = "";
-                foundItem.playersIsDone.Clear();
-            }
             uiNextSetter.ProcessNextCode(currentObjCode);
-        }
-    }
-    public override void AddPlayerToDoneList(UINextSetter uiNextSetter, string currentObjCode)
-    {
-        int playerID = PhotonNetwork.LocalPlayer.ActorNumber;
-        if (!uiNextSetter.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Contains(playerID))
-        {
-            uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, playerID, currentObjCode);
         }
     }
 

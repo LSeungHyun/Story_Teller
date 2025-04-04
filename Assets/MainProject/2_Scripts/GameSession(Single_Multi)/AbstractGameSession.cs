@@ -24,7 +24,6 @@ public abstract class AbsctractGameSession
 
     #region IsNext
     public abstract void CheckDoneAndNext(UINextSetter uiNextSetter, string CurrentObjCode);
-    public abstract void AddPlayerToDoneList(UINextSetter uiNextSetter, string CurrentObjCode);
     public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete);
     #endregion
 

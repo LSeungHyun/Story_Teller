@@ -269,12 +269,12 @@ public class PlayerManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void RPC_AddPlayerToDoneList(int playerID, string currentObjCode)
+    public void RPC_AddPlayerToDoneList(string currentObjCode)
     {
-        if (!UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Contains(playerID))
-        {
-            UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Add(playerID);
-        }
+        string playerID = PhotonNetwork.LocalPlayer.UserId;
+        UINextSetter.Instance.SetNextCode(currentObjCode);
+        var currentObj = UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode);
+        currentObj.playersIsDone.Add(playerID);
     }
 
     [PunRPC]

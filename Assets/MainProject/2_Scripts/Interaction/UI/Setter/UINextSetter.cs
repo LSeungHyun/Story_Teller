@@ -20,16 +20,16 @@ public class UINextSetter : MonoBehaviour
     {
         public string key;
         public string value;
-        public List<int> playersIsDone;
+        public List<string> playersIsDone;
     }
 
     [SerializeField]
     public List<CurrentObjCodeList> currentObjCodeDict = new List<CurrentObjCodeList>()
 {
-    new CurrentObjCodeList { key = "dialogue", value = "" ,playersIsDone = new List<int>()},
-    new CurrentObjCodeList { key = "image", value = "" ,playersIsDone = new List<int>()},
-    new CurrentObjCodeList { key = "quest", value = "" ,playersIsDone = new List<int>()},
-    new CurrentObjCodeList { key = "centerlabel", value = "" ,playersIsDone = new List<int>()}
+    new CurrentObjCodeList { key = "dialogue", value = "" ,playersIsDone = new List<string>()},
+    new CurrentObjCodeList { key = "image", value = "" ,playersIsDone = new List<string>()},
+    new CurrentObjCodeList { key = "quest", value = "" ,playersIsDone = new List<string>()},
+    new CurrentObjCodeList { key = "centerlabel", value = "" ,playersIsDone = new List<string>()}
 };
 
     public void Awake()
@@ -45,6 +45,7 @@ public class UINextSetter : MonoBehaviour
 
     public void SetNextCode(string currentObjCode)
     {
+        Debug.Log("SetNextCode"+currentObjCode);
         if (string.IsNullOrEmpty(currentObjCode)) return;
 
         var matchingDataList = nextDataContainer?.nextDatas?.Where(data => data.objCode == currentObjCode);
@@ -75,6 +76,7 @@ public class UINextSetter : MonoBehaviour
 
     public void ProcessNextCode(string currentObjCode)
     {
+        Debug.Log("ProcessNextCode"+currentObjCode);
         var foundItem = currentObjCodeDict.Find(x => x.value == currentObjCode);
         if (foundItem == null || string.IsNullOrEmpty(foundItem.value))
             return;
@@ -101,14 +103,24 @@ public class UINextSetter : MonoBehaviour
 
     public bool CheckEveryoneIsDone(string currentObjCode)
     {
-        bool isAllDone = currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
+        var currentObj = currentObjCodeDict.Find(x => x.value == currentObjCode);
+        if (currentObj == null)
+        {
+            return false;
+        }
+        bool isAllDone = currentObj.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
         return isAllDone;
     }
 
     public void AddPlayerToDoneList(string currentObjCode)
     {
-        var session = GameManager.Instance.Session;
-        session.AddPlayerToDoneList(this, currentObjCode);
+        var currentObj = currentObjCodeDict.Find(x => x.value == currentObjCode);
+
+        if (currentObj == null)
+            return;
+
+           managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode);
+        
     }
 
     public void CheckDoneAndNext(string currentObjCode)

@@ -29,9 +29,7 @@ public class SingleSession : AbsctractGameSession
             portalSetter.SetPortalObjects(false, false, true);
         }
     }
-    public override void AddPlayerToDoneList(UINextSetter uiNextSetter, string currentObjCode)
-    {
-    }
+
     public override void OnExitPortal(PortalSetter portalSetter, Collider2D collision)
     {
         base.OnExitPortal(portalSetter, collision);
