@@ -24,6 +24,7 @@ public class PlayerInstantiateManager : MonoBehaviour
         if (GameManager.Instance.isType == false)
         {
             ChatBtn.SetActive(false);
+            managerConnector.photonManager.gameObject.SetActive(false);
             Destroy(PV);
 
             playerObj = Instantiate(singlePlayer, startPoint.transform.position, Quaternion.identity);

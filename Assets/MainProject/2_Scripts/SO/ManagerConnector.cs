@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ManagerConnector", menuName = "Scriptable Objects/ManagerConnector")]
 public class ManagerConnector : ScriptableObject
 {
+    public PhotonManager photonManager;
     public PlayerManager playerManager;
     public UINextSetter uiNextSetter;
     public PortalManager portalManager;

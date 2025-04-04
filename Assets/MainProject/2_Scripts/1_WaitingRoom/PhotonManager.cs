@@ -12,6 +12,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 {
     public static PhotonManager instance;
 
+    public ManagerConnector managerConnector;
     public float inactivityLimit = 30f; // 비활성 시간 제한 (초)
     public float inactivityTimer = 0f;
 
@@ -75,6 +76,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         {
             Destroy(gameObject);
         }
+
+        managerConnector.photonManager = this;
 
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
