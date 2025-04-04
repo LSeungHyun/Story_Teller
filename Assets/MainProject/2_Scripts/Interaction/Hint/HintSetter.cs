@@ -95,14 +95,14 @@ public class HintSetter : MonoBehaviour
                 break;
             case "unlocked":
                 SetHintDetailPopUp(currentRow);
-                //hintOnOffManager.HintDetailPopUpOn();
+
                 uiManager.OpenPanel("Hint_Detail_Panel");
                 hintStateManager.HIntUsed(hintCode);
                 CurrentObjectManager.Instance.SetCurrentObjData("Use_Unlocked_Hint");
                 break;
             case "used":
                 SetHintDetailPopUp(currentRow);
-                //hintOnOffManager.HintDetailPopUpOn();
+
                 uiManager.OpenPanel("Hint_Detail_Panel");
                 break;
             default:

@@ -21,6 +21,8 @@ public class CurrentObjectManager : MonoBehaviour
     public HintStateManager hintStateManager;
     public BubbleSetter bubbleSetter;
 
+    public string newObjCode;
+
     private void Awake()
     {
         managerConnector.currentObjectManager = this;
@@ -32,6 +34,7 @@ public class CurrentObjectManager : MonoBehaviour
         Instance = this;
     }
 
+    
     public void SetCurrentObjData(string currentObjCode)
     {
         var session = GameManager.Instance.Session;
@@ -40,6 +43,14 @@ public class CurrentObjectManager : MonoBehaviour
         {
             session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
         }
+
+        if ((newObjCode == "Enter_Wait" || newObjCode == "Enter_Move") && (currentObjCode != "Enter_Wait" && currentObjCode != "Enter_Move"))
+        {
+            return;
+        }
+
+
+        newObjCode = currentObjCode;
         UINextSetter.Instance.SetNextCode(currentObjCode);
         session.HandleInteractionBasic(this, currentObjCode);
     }

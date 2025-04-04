@@ -30,6 +30,11 @@ public class UICenterLabelSetter : UIContentsManager
         centerLabelList = new CenterLabelList[0];
         if (textDisplay != null)
             textDisplay.text = "";
+        if(CurrentObjectManager.Instance.newObjCode != null)
+        {
+            CurrentObjectManager.Instance.newObjCode = "";
+        }
+        
         CancelInvoke("AdvancePageOrClose");
     }
 
