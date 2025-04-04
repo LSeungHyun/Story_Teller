@@ -4,6 +4,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using Unity.VisualScripting;
 
 public class UIManager : DoTweenManager
 {
@@ -53,10 +54,8 @@ public class UIManager : DoTweenManager
     private List<ChatStatus> ChatStatusList;
 
     [Header("Blur Object")]
-    [SerializeField]
-    private GameObject DarkObject;
-    [SerializeField]
-    private GameObject BlurObject;
+    public GameObject DarkObject;
+    public GameObject BlurObject;
 
     public Dictionary<string, PopUp_Group> popUpDict;
     public Dictionary<string, Panel_Group> panelDict;
@@ -211,6 +210,7 @@ public class UIManager : DoTweenManager
         CloseAllPanels();
         CloseAllPopUps();
         BlurOnOff(false);
+        Master_Panel.SetActive(false);
     }
 
     /// <summary>
@@ -227,9 +227,16 @@ public class UIManager : DoTweenManager
             else
             {
                 popUp.PopUp_Obj.SetActive(false);
+
+                
             }
 
             popUp.isActive = false;
+
+            if (rapidClose)
+            {
+                return;
+            }
         }
         else
         {
@@ -324,13 +331,18 @@ public class UIManager : DoTweenManager
     {
         if (panelDict.TryGetValue(panel_Name, out Panel_Group panel))
         {
-            if (panel.isAnim)
+            if (panel.isAnim && !rapidClose)
             {
                 HideUI(panel.Panel_Obj);
             }
             else
             {
                 panel.Panel_Obj.SetActive(false);
+
+                if (rapidClose)
+                {
+                    yield break;
+                }
             }
         }
         else
