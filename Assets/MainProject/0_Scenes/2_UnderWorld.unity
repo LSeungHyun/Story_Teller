@@ -15569,6 +15569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  uiManager: {fileID: 336051549}
   uiContentsManager: {fileID: 0}
   uiPopUpOnOffManager: {fileID: 1769707345}
   uiPopUpManager: {fileID: 1769707346}
@@ -15579,6 +15580,7 @@ MonoBehaviour:
   uiCenterLabelSetter: {fileID: 810537329}
   hintStateManager: {fileID: 1995057779}
   bubbleSetter: {fileID: 1148156094}
+  newObjCode: 
 --- !u!4 &694023845
 Transform:
   m_ObjectHideFlags: 0
@@ -15805,6 +15807,7 @@ MonoBehaviour:
   spawnAt: {x: 0, y: 0, z: 0}
   camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
   isNextMap: 0
+  uiManager: {fileID: 336051549}
 --- !u!114 &697344675
 MonoBehaviour:
   m_ObjectHideFlags: 0
