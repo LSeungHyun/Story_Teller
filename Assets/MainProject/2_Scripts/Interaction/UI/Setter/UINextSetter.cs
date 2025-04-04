@@ -72,6 +72,7 @@ public class UINextSetter : MonoBehaviour
 
         ObjDataType objectDataType = objDataTypeContainer.objDataType.FirstOrDefault(data => data.objCode == currentObjCode);
         currentObjCodeDict.Find(x => x.key == objectDataType.dataType).value = "";
+        currentObjCodeDict.Find(x => x.key == objectDataType.dataType).playersIsDone = new List<string>();
     }
 
     public void ProcessNextCode(string currentObjCode)
@@ -85,7 +86,8 @@ public class UINextSetter : MonoBehaviour
 
         foreach (var data in matchedDataList)
         {
-            CleanNextCode(currentObjCode);
+
+            //CleanNextCode(currentObjCode);
             if (!string.IsNullOrEmpty(data.isNextObj))
             {
                 var session = GameManager.Instance.Session;
@@ -97,7 +99,6 @@ public class UINextSetter : MonoBehaviour
                 CurrentObjectManager.Instance.SetCurrentObjData(data.isNextData);
             }
         }
-
 
     }
 

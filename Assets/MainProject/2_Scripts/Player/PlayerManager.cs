@@ -271,7 +271,7 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void RPC_AddPlayerToDoneList(string currentObjCode)
     {
-        string playerID = PhotonNetwork.LocalPlayer.UserId;
+        string playerID = PhotonNetwork.LocalPlayer.NickName;
         UINextSetter.Instance.SetNextCode(currentObjCode);
         var currentObj = UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode);
         currentObj.playersIsDone.Add(playerID);
