@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 
 public class CurrentObjectManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class CurrentObjectManager : MonoBehaviour
     public HintStateManager hintStateManager;
     public BubbleSetter bubbleSetter;
 
+    string[] validCodes = { "Enter_Wait", "Enter_Move", "Enter_Wait_Scene", "Enter_Move_Scene" };
+    string[] moveCodes = { "Enter_Move", "Enter_Move_Scene" };
+
     public string newObjCode;
 
     private void Awake()
@@ -39,16 +43,16 @@ public class CurrentObjectManager : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
 
-        if (currentObjCode == "Enter_Move")
+        if (moveCodes.Contains(currentObjCode))
         {
             session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
         }
 
-        if ((newObjCode == "Enter_Wait" || newObjCode == "Enter_Move") && (currentObjCode != "Enter_Wait" && currentObjCode != "Enter_Move"))
+        // newObjCode가 validCodes에 속하지만 currentObjCode가 validCodes에 속하지 않는 경우 return
+        if (validCodes.Contains(newObjCode) && !validCodes.Contains(currentObjCode))
         {
             return;
         }
-
 
         newObjCode = currentObjCode;
         UINextSetter.Instance.SetNextCode(currentObjCode);
