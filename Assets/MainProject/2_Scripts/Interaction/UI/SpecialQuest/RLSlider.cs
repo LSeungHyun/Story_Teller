@@ -7,22 +7,26 @@ public class ImageSwitcher : MonoBehaviour
     public Image displayImage;
     private int currentIndex = 0;
 
+    public Text indexDisplay;
+
     void Start()
     {
         if (images != null && images.Length > 0)
         {
             displayImage.sprite = images[currentIndex];
+            indexDisplay.text = "1";
         }
     }
 
     public void onNextBtn()
     {
-            currentIndex++;
-            if (currentIndex >= images.Length)
-            {
-                currentIndex = 0;
-            }
-            displayImage.sprite = images[currentIndex];
+        currentIndex++;
+        if (currentIndex >= images.Length)
+        {
+            currentIndex = 0;
+        }
+        displayImage.sprite = images[currentIndex];
+        indexDisplay.text = $"{currentIndex + 1}";
     }
     public void onPrevBtn()
     {
@@ -32,6 +36,7 @@ public class ImageSwitcher : MonoBehaviour
             currentIndex = images.Length - 1;
         }
         displayImage.sprite = images[currentIndex];
+        indexDisplay.text = $"{currentIndex + 1}";
     }
 
 }
