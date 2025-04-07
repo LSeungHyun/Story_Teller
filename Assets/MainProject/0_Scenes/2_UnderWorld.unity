@@ -1593,7 +1593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e1c51ff3570fd4eb604d4721bb9498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   player: {fileID: 0}
+  UIManager: {fileID: 336051549}
 --- !u!4 &69041613
 Transform:
   m_ObjectHideFlags: 0
@@ -6952,7 +6954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &492574461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22379,7 +22381,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.025, y: -2.46}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -22414,6 +22416,8 @@ MonoBehaviour:
   cutsceneDirector: {fileID: 2125403277}
   cutScenePlayer: {fileID: 69041612}
   UIManager: {fileID: 336051549}
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  player: {fileID: 0}
   CutScene_Fade: {fileID: 426889891}
 --- !u!4 &1569732075
 Transform:
@@ -22424,7 +22428,7 @@ Transform:
   m_GameObject: {fileID: 1569732072}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0.19, z: 0}
+  m_LocalPosition: {x: -0.2, y: 2.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -32360,6 +32364,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3217019972762576262, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217019972762576262, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3217019972762576262, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -32404,6 +32416,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3692449925923517399, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692449925923517399, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3692449925923517399, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -32421,6 +32441,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4229349246460070753, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229349246460070753, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4229349246460070753, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4229349246460070753, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
@@ -32493,6 +32521,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6997323821137284841, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997323821137284841, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6997323821137284841, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6997323821137284841, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
