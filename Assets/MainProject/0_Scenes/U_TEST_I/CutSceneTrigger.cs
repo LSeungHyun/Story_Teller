@@ -50,6 +50,7 @@ public class CutsceneTrigger : DoTweenManager
         yield return new WaitForSeconds(0.3f);
 
         player.transform.position = this.transform.position;
+        player.anim.SetFloat("DirX", 0);
         player.anim.SetFloat("DirY", 1);
         cutsceneDirector.Play();
 
