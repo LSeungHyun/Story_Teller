@@ -57,6 +57,9 @@ public class UIManager : DoTweenManager
     public GameObject DarkObject;
     public GameObject BlurObject;
 
+    [Header("UI Button Group")]
+    public GameObject UI_Button_Group;
+
     public Dictionary<string, PopUp_Group> popUpDict;
     public Dictionary<string, Panel_Group> panelDict;
 
@@ -101,6 +104,11 @@ public class UIManager : DoTweenManager
             session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
         }
         
+    }
+
+    public void CutSceneOnOff(bool active)
+    {
+        UI_Button_Group.SetActive(active);
     }
 
     #region µñ¼Å³Ê¸® Á¤º¸°ª ¼¼ÆÃ / ÆË¾÷, ÆÐ³Î

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 using System.Linq;
 
@@ -10,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     public float testSpeed = 3f;
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
+    public UIManager UIManager;
     public PhotonView PV;
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
@@ -29,7 +31,6 @@ public class PlayerManager : MonoBehaviour
     public readonly KeyCode[] horizontalKeys = { KeyCode.LeftArrow, KeyCode.RightArrow, KeyCode.A, KeyCode.D };
     public readonly KeyCode[] verticalKeys = { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.W, KeyCode.S };
     public Vector2 inputVec;
-
 
     [Header("Interaction Objects")]
     public List<Collider2D> interactableStack = new List<Collider2D>();
@@ -244,10 +245,12 @@ public class PlayerManager : MonoBehaviour
         if (isCutScene)
         {
             playerSprite.enabled = false;
+            UIManager.CutSceneOnOff(false);
         }
         else
         {
             playerSprite.enabled = true;
+            UIManager.CutSceneOnOff(true);
         }
     }
     #endregion
