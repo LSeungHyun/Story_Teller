@@ -7,13 +7,14 @@ public class OnOffPrefabs : MonoBehaviour
     public PhotonView PV;
     void OnTriggerEnter2D()
     {
-        if (PV != null && PV.IsMine)
+        if (PhotonNetwork.LocalPlayer == PV.Owner)
         {
+            Debug.Log("≥ª≤®¿”");
             uIManager.OpenPopUp("Help_PopUp");
         }
-        else
-        {
-            uIManager.OpenPopUp("Help_PopUp");
-        }
+        //else
+        //{
+        //    uIManager.OpenPopUp("Help_PopUp");
+        //}
     }
 }
