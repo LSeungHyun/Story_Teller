@@ -241,7 +241,7 @@ public class TextDataManager : MonoBehaviour
                     {
                         loadingUI.SetActive(false);
 
-                        session.ChangePlayerisMoved(managerConnector.playerManager,true,false);
+                        session.ChangePlayerisMovedAll(managerConnector.playerManager,true,false);
                     }
 
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)

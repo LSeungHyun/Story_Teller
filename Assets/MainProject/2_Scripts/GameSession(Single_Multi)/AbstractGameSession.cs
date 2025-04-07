@@ -33,7 +33,10 @@ public abstract class AbsctractGameSession
 
     #region Player
 
+  
     public abstract void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim);
+
+    public abstract void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim);
 
     public virtual void PlayerMovementControl(PlayerManager playerManager,bool isMove)
     {

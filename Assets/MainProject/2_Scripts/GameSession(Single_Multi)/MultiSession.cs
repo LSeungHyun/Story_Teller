@@ -106,7 +106,12 @@ public class MultiSession : AbsctractGameSession
         {
             playerManager.ChangePlayerisMove(isMove, isAnim);
         }
-            //playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
+    }
+
+    public override void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim)
+    {
+        Debug.Log("다켜라제발");
+        playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
     }
     public override void PlayerMovementControl(PlayerManager playerManager, bool isMove)
     {
