@@ -19,7 +19,7 @@ public class KeyInputManager : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
-            uiPopUpOnOffManager.ClosePopUpWindow();
+            //uiPopUpOnOffManager.ClosePopUpWindow();
         }
     }
 
