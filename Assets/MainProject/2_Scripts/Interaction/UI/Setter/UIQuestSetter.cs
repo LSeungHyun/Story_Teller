@@ -11,6 +11,7 @@ public class UIQuestSetter : MonoBehaviour
     [SerializeField] public QuestContainer questContainer;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public QuestDictionary questDictionary;
+    public UIQuestDetailSetter uiQuestDetailSetter;
 
     public QuestData targetRow;
 
@@ -62,6 +63,8 @@ public class UIQuestSetter : MonoBehaviour
             {
                 Destroy(currentPageDisplayInstance);
             }
+
+            uiQuestDetailSetter.SetQuestDetail(prefab);
 
             currentPageDisplayInstance = Instantiate(prefab, pageDisplayParent);
         }
