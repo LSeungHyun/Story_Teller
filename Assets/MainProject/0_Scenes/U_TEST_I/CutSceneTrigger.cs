@@ -7,6 +7,7 @@ using System.Collections;
 public class CutsceneTrigger : DoTweenManager
 {
     public PlayableDirector cutsceneDirector;
+    public CutScenePlayer cutScenePlayer;
     public UIManager UIManager;
 
     public Image CutScene_Fade;
@@ -18,6 +19,7 @@ public class CutsceneTrigger : DoTweenManager
             if (cutsceneDirector != null)
             {
                 PlayerManager playerManager = other.GetComponent<PlayerManager>();
+                cutScenePlayer.playerManager = playerManager;
 
                 playerManager.UIManager = UIManager;
                 StartCoroutine(FadeInOut());

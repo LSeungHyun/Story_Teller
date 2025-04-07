@@ -151,6 +151,7 @@ public class PlayerManager : MonoBehaviour
         if (session != null)
         {
             session.TriggerEnterBasic(this, collision);
+            session.CutSceneEnter(this, collision);
         }
 
         //// "Back" 태그인지 확인
@@ -238,6 +239,13 @@ public class PlayerManager : MonoBehaviour
         {
             confirmOn.sprite = null;
         }
+    }
+
+    public void CutSceneUseAble(bool able)
+    {
+        isCutScene = able;
+
+        CutSceneOnOff();
     }
 
     public void CutSceneOnOff()
