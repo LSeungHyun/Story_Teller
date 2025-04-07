@@ -7,12 +7,14 @@ public class RLTextSlider : MonoBehaviour
     public string[] texts;
     public Text displayText;
     private int currentIndex = 0;
+    public Text indexDisplay;
 
     void Start()
     {
         if (texts != null && texts.Length > 0)
         {
             displayText.text = texts[currentIndex];
+            indexDisplay.text = "1";
         }
     }
 
@@ -24,6 +26,7 @@ public class RLTextSlider : MonoBehaviour
             currentIndex = 0;
         }
         displayText.text = texts[currentIndex];
+    indexDisplay.text = $"{currentIndex + 1}";
     }
 
     public void OnPrevBtn()
@@ -34,5 +37,6 @@ public class RLTextSlider : MonoBehaviour
             currentIndex = texts.Length - 1;
         }
         displayText.text = texts[currentIndex];
+        indexDisplay.text = $"{currentIndex + 1}";
     }
 }
