@@ -19,9 +19,11 @@ public class CutsceneTrigger : DoTweenManager
             if (cutsceneDirector != null)
             {
                 PlayerManager playerManager = other.GetComponent<PlayerManager>();
-                cutScenePlayer.playerManager = playerManager;
+                cutScenePlayer.player = playerManager;
+                cutScenePlayer.UIManager = UIManager;
 
-                playerManager.UIManager = UIManager;
+                UIManager.CutSceneOnOff(false);
+
                 StartCoroutine(FadeInOut());
             }
             else

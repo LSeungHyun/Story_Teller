@@ -11,12 +11,12 @@ public class PlayerManager : MonoBehaviour
     public float testSpeed = 3f;
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
-    public UIManager UIManager;
     public PhotonView PV;
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
 
     public SpriteRenderer playerSprite;
+    public GameObject playerNickname;
 
     [Header("Player Components")]
     public Rigidbody2D rigid;
@@ -253,12 +253,14 @@ public class PlayerManager : MonoBehaviour
         if (isCutScene)
         {
             playerSprite.enabled = false;
-            UIManager.CutSceneOnOff(false);
+            playerNickname.SetActive(false);
+            isMove = false;
         }
         else
         {
             playerSprite.enabled = true;
-            UIManager.CutSceneOnOff(true);
+            playerNickname.SetActive(true);
+            isMove = true;
         }
     }
     #endregion

@@ -309,6 +309,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1569732075}
+  - {fileID: 69041613}
   - {fileID: 2125403278}
   - {fileID: 657182903}
   - {fileID: 1386151692}
@@ -1563,6 +1564,51 @@ MonoBehaviour:
     preFab: {fileID: 3335474873374902685, guid: a754cc961ef027e438e7f8cc6bde3789, type: 3}
   - objCode: LivingWorld_2ndFloor_Quest3
     preFab: {fileID: 8111303898974141055, guid: 7dcf99bfb13da7f448e84ad49092e1e0, type: 3}
+--- !u!1 &69041611
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 69041613}
+  - component: {fileID: 69041612}
+  m_Layer: 0
+  m_Name: PlayerActiveObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &69041612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69041611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e1c51ff3570fd4eb604d4721bb9498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!4 &69041613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69041611}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.2, y: 2.33, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 18191662}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76475271
 GameObject:
   m_ObjectHideFlags: 0
@@ -4984,7 +5030,7 @@ MonoBehaviour:
     IconObj: {fileID: 990149569}
   DarkObject: {fileID: 220100312}
   BlurObject: {fileID: 1533339714}
-  UI_Button_Group: {fileID: 0}
+  UI_Button_Group: {fileID: 1289076335}
   blurAble: 1
   chatOn: 0
   NotEvent: 0
@@ -20535,6 +20581,8 @@ PlayableDirector:
     value: {fileID: 1606634863}
   - key: {fileID: 5512011890992178260, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
     value: {fileID: 1289076335}
+  - key: {fileID: -814864623032094973, guid: 769d80eedc60f4a4b9e220bdcd758d7f, type: 2}
+    value: {fileID: 69041611}
   m_ExposedReferences:
     m_References:
     - 1c6ea1491d69d434aa74038423a51352: {fileID: 889525879}
@@ -22292,7 +22340,7 @@ GameObject:
   - component: {fileID: 1569732073}
   m_Layer: 0
   m_Name: Cut_Scene_Trigger
-  m_TagString: Untagged
+  m_TagString: CutScene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -22364,7 +22412,8 @@ MonoBehaviour:
   fadeEase: 1
   scaleEase: 27
   cutsceneDirector: {fileID: 2125403277}
-  UIManager: {fileID: 0}
+  cutScenePlayer: {fileID: 69041612}
+  UIManager: {fileID: 336051549}
   CutScene_Fade: {fileID: 426889891}
 --- !u!4 &1569732075
 Transform:

@@ -97,6 +97,7 @@ public abstract class AbsctractGameSession
         if (triggerObj.isTouchObject)
         {
             CurrentObjectManager.Instance.SetCurrentObjData(triggerObj.objCode);
+            playerManager.interactableStack.Remove(collision);
         }
         else
         {
