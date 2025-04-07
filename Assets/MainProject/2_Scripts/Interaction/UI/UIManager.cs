@@ -93,18 +93,18 @@ public class UIManager : DoTweenManager
         BlurObject.SetActive(active);
     }
 
-    public void PlayerMovementControl(bool isMove)
-    {
-        if (isMove)
-        {
-            session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
-        }
-        else
-        {
-            session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
-        }
+    //public void PlayerMovementControl(bool isMove)
+    //{
+    //    if (isMove)
+    //    {
+    //        session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
+    //    }
+    //    else
+    //    {
+    //        session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
+    //    }
         
-    }
+    //}
 
     public void CutSceneOnOff(bool active)
     {
@@ -184,7 +184,8 @@ public class UIManager : DoTweenManager
         rapidClose = false;
 
         CloseAllPopUps();
-        PlayerMovementControl(false);
+        session.PlayerMovementControl(managerConnector.playerManager, false);
+        //PlayerMovementControl(false);
 
         yield return new WaitForSeconds(0.25f);
 
@@ -253,7 +254,8 @@ public class UIManager : DoTweenManager
 
         if (isMove)
         {
-            PlayerMovementControl(true);
+            session.PlayerMovementControl(managerConnector.playerManager, true);
+            //PlayerMovementControl(true);
         }
 
         BlurOnOff(false);
