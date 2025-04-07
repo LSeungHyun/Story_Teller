@@ -252,8 +252,8 @@ public class PlayerManager : MonoBehaviour
     {
         if (isCutScene)
         {
-            playerSprite.enabled = false;
-            playerNickname.SetActive(false);
+            //playerSprite.enabled = false;
+            //playerNickname.SetActive(false);
             isMove = false;
         }
         else

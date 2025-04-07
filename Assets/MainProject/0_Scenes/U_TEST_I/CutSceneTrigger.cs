@@ -10,16 +10,19 @@ public class CutsceneTrigger : DoTweenManager
     public CutScenePlayer cutScenePlayer;
     public UIManager UIManager;
 
+    public ManagerConnector managerConnector;
+    public PlayerManager player;
+
     public Image CutScene_Fade;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            player = managerConnector.playerManager;
             if (cutsceneDirector != null)
             {
-                PlayerManager playerManager = other.GetComponent<PlayerManager>();
-                cutScenePlayer.player = playerManager;
+                cutScenePlayer.player = player;
                 cutScenePlayer.UIManager = UIManager;
 
                 UIManager.CutSceneOnOff(false);
@@ -41,8 +44,12 @@ public class CutsceneTrigger : DoTweenManager
                                   .SetEase(fadeEase)
                                   .WaitForCompletion();
 
+        player.playerSprite.enabled = false;
+        player.playerNickname.SetActive(false);
+
         yield return new WaitForSeconds(0.3f);
 
+        player.transform.position = this.transform.position;
         cutsceneDirector.Play();
 
         yield return CutScene_Fade.DOFade(0f, fadeDuration)
