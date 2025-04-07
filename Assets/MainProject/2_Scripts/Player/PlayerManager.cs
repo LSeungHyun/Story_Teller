@@ -314,8 +314,11 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void ChangePlayerisMove(bool isMove, bool isAnim)
     {
-        this.isMove = isMove;
-        anim.SetBool("Walking", isAnim);
+        if (!isCutScene)
+        {
+            this.isMove = isMove;
+            anim.SetBool("Walking", isAnim);
+        }
     }
     #endregion
 }

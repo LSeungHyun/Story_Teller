@@ -194,13 +194,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e11405174d9324f82888efa271b270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 0}
   testSpeed: 3
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   PV: {fileID: 4507779827862953659}
   PTV: {fileID: 3695983434335586103}
   PAV: {fileID: 4306972491748636140}
+  playerSprite: {fileID: 6431437664122903807}
+  playerNickname: {fileID: 7074982878405394791}
   rigid: {fileID: 760193480370583864}
   anim: {fileID: 1559352059937034625}
   sprite: {fileID: 6431437664122903807}
@@ -215,6 +216,7 @@ MonoBehaviour:
   confirmOn_Mob: {fileID: 8806777409404198092, guid: c9b0e878c8fe0d040a6d6e7f29f902fa, type: 3}
   isMobile: 0
   isMove: 1
+  isCutScene: 0
 --- !u!114 &4507779827862953659
 MonoBehaviour:
   m_ObjectHideFlags: 0
