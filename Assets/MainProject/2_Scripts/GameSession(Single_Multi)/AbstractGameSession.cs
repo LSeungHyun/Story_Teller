@@ -126,12 +126,10 @@ public abstract class AbsctractGameSession
     {
         if (!collision.CompareTag("CutScene"))
         {
-            playerManager.isCutScene = false;
             return;
         }
 
-        playerManager.isCutScene = true;
-        playerManager.CutSceneOnOff();
+        playerManager.CutSceneUseAble(true);
     }
     #endregion
 
