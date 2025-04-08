@@ -54,13 +54,10 @@ public class MultiSession : AbsctractGameSession
             }
             portalSetter.status = null;
         }
-        else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
+        else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount && !portalSetter.portalManager.isNextMap)
         {
             CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
-            if (!portalSetter.portalManager.isNextMap)
-            {
-                portalSetter.SetPortalObjects(false, true, false);
-            }   
+            portalSetter.SetPortalObjects(false, true, false);
         }
     }
     public override void MovePlayers(PortalManager portalManager)
