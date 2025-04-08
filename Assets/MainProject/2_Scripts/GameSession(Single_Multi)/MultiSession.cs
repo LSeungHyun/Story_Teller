@@ -1,6 +1,5 @@
 using UnityEngine;
 using Photon.Pun;
-using static UINextSetter;
 using System.Linq;
 
 public class MultiSession : AbsctractGameSession
@@ -45,10 +44,7 @@ public class MultiSession : AbsctractGameSession
             {
                 portalSetter.ScenePortalManager.worldName = null;
             }
-            else
-            {
-                portalSetter.portalManager.spawnAt = Vector3.zero;
-            }
+
             portalSetter.SetPortalObjects(true, false, false);
             portalSetter.portalManager.gameObject.SetActive(false);
             if (!portalSetter.portalManager.isNextMap)
@@ -60,19 +56,13 @@ public class MultiSession : AbsctractGameSession
         }
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
+            CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
             portalSetter.SetPortalObjects(false, true, false);
         }
     }
     public override void MovePlayers(PortalManager portalManager)
     {
-        Debug.Log("멀티로 옮기기!");
-        base.MovePlayers(portalManager);
-
-        if (PhotonNetwork.CurrentRoom.PlayerCount > 1)
-        {
-            portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
-        }
-            
+        portalManager.managerConnector.playerManager.PV.RPC("RPC_MoveTransform", RpcTarget.AllBuffered, portalManager.spawnAt);
     }
     #endregion
 

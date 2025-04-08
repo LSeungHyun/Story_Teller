@@ -16,10 +16,7 @@ public abstract class AbsctractGameSession
     {
         portalSetter.status.playersInside.Remove(collision.GetInstanceID());
     }
-    public virtual void MovePlayers(PortalManager portalManager)
-    {
-        portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
-    }
+    public abstract void MovePlayers(PortalManager portalManager);
     #endregion
 
     #region IsNext

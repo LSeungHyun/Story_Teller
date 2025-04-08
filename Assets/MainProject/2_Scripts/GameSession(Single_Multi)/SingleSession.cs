@@ -64,8 +64,7 @@ public class SingleSession : AbsctractGameSession
     }
     public override void MovePlayers(PortalManager portalManager)
     {
-        Debug.Log("싱글로 옮기기!");
-        base.MovePlayers(portalManager);
+        portalManager.managerConnector.playerManager.gameObject.transform.position = portalManager.spawnAt;
     }
     #endregion
 
