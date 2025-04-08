@@ -19,6 +19,8 @@ public class CutsceneTrigger : DoTweenManager
     {
         if (other.CompareTag("Player"))
         {
+            UIManager = managerConnector.uiManager;
+
             player = managerConnector.playerManager;
             if (cutsceneDirector != null)
             {
