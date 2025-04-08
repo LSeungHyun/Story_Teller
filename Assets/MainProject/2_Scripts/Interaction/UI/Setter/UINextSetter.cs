@@ -15,6 +15,7 @@ public class UINextSetter : MonoBehaviour
     public ManagerConnector managerConnector;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
 
+    public bool isTest = false;
     [System.Serializable]
     public class CurrentObjCodeList
     {
@@ -33,8 +34,7 @@ public class UINextSetter : MonoBehaviour
 };
 
     public void Awake()
-    {
-        managerConnector.uiNextSetter = this;
+    {        
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -43,6 +43,14 @@ public class UINextSetter : MonoBehaviour
         Instance = this;
     }
 
+    public void Update()
+    {
+        if (managerConnector.playerManager != null && managerConnector.playerManager.PV.IsMine && !isTest)
+        {
+            managerConnector.uiNextSetter = this;
+            isTest = true;
+        }
+    }
     public void SetNextCode(string currentObjCode)
     {
         Debug.Log("SetNextCode"+currentObjCode);
@@ -77,7 +85,7 @@ public class UINextSetter : MonoBehaviour
 
     public void ProcessNextCode(string currentObjCode)
     {
-        Debug.Log("ProcessNextCode"+currentObjCode);
+        Debug.Log("ProcessNextCode" + currentObjCode);
         var foundItem = currentObjCodeDict.Find(x => x.value == currentObjCode);
         if (foundItem == null || string.IsNullOrEmpty(foundItem.value))
             return;
@@ -86,8 +94,6 @@ public class UINextSetter : MonoBehaviour
 
         foreach (var data in matchedDataList)
         {
-
-            //CleanNextCode(currentObjCode);
             if (!string.IsNullOrEmpty(data.isNextObj))
             {
                 var session = GameManager.Instance.Session;
@@ -100,6 +106,10 @@ public class UINextSetter : MonoBehaviour
             }
         }
 
+        // ProcessNextCode 실행 후 playersIsDone 리스트를 초기화하여 다음 진행 시 중복 체크를 방지합니다.
+
+        // 모든 클라이언트에서 리스트 초기화
+        managerConnector.playerManager.PV.RPC("ClearPlayerisDone", RpcTarget.AllBuffered, currentObjCode);
     }
 
     public bool CheckEveryoneIsDone(string currentObjCode)

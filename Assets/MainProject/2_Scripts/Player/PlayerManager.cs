@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using System.Linq;
+using static UINextSetter;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -337,6 +338,14 @@ public class PlayerManager : MonoBehaviour
             this.isMove = isMove;
             anim.SetBool("Walking", isAnim);
         }
+    }
+
+    [PunRPC]
+    public void ClearPlayerisDone(string currentObjCode)
+    {
+        var item = managerConnector.uiNextSetter.currentObjCodeDict.Find(x => x.value == currentObjCode);
+        if (item != null)
+            item.playersIsDone.Clear();
     }
     #endregion
 }
