@@ -57,7 +57,10 @@ public class MultiSession : AbsctractGameSession
         else if (portalSetter.status.playersInside.Count < PhotonNetwork.CurrentRoom.PlayerCount)
         {
             CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
-            portalSetter.SetPortalObjects(false, true, false);
+            if (!portalSetter.portalManager.isNextMap)
+            {
+                portalSetter.SetPortalObjects(false, true, false);
+            }   
         }
     }
     public override void MovePlayers(PortalManager portalManager)
@@ -163,7 +166,7 @@ public class MultiSession : AbsctractGameSession
         bool currentIsMine = currentRow.isMine;
         if (!currentIsMine)
         {
-            currentObjectManager.managerConnector.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.AllBuffered, currentObjCode);
+            currentObjectManager.managerConnector.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.OthersBuffered, currentObjCode);
         }
         base.HandleInteractionBasic(currentObjectManager, currentObjCode);
     }
