@@ -99,10 +99,7 @@ public class SingleSession : AbsctractGameSession
     {
         playerManager.ChangePlayerisMove(isMove, isAnim);
     }
-    public override void PlayerMovementControl(PlayerManager playerManager, bool isMove)
-    {
-        base.PlayerMovementControl(playerManager, isMove);
-    }
+
     public override void MoveBasic(PlayerManager playerManager)
     {
         base.MoveBasic(playerManager);

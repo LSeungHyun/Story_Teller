@@ -35,17 +35,6 @@ public abstract class AbsctractGameSession
 
     public abstract void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim);
 
-    public virtual void PlayerMovementControl(PlayerManager playerManager,bool isMove)
-    {
-        if (isMove)
-        {
-            ChangePlayerisMoved(playerManager, true, false);
-        }
-        else
-        {
-            ChangePlayerisMoved(playerManager, false, false);
-        }
-    }
     public virtual void MoveBasic(PlayerManager playerManager)
     {
         playerManager.inputVec.x = Input.GetAxisRaw("Horizontal");

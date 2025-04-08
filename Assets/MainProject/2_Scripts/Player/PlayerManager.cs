@@ -50,13 +50,15 @@ public class PlayerManager : MonoBehaviour
     #region LifeCycle Methods
     void Awake()
     {
-        managerConnector.playerManager = this;
+        if (PV.IsMine)
+        {
+            managerConnector.playerManager = this;
+            DontDestroyOnLoad(gameObject);
 
-        DontDestroyOnLoad(gameObject);
-
-        joystick = managerConnector.joystick;
-        webglBtn = managerConnector.webglBtn;
-        isMobile = managerConnector.isMobile;
+            joystick = managerConnector.joystick;
+            webglBtn = managerConnector.webglBtn;
+            isMobile = managerConnector.isMobile;
+        }
     }
     void Start()
     {
@@ -335,16 +337,6 @@ public class PlayerManager : MonoBehaviour
             this.isMove = isMove;
             anim.SetBool("Walking", isAnim);
         }
-    }
-
-    public void TestChangeMove(bool isMove, bool isAnim)
-    {
-        session.ChangePlayerisMoved(this, isMove, isAnim);
-    }
-
-    public bool IsMineCheck()
-    {
-        return PV.IsMine;
     }
     #endregion
 }

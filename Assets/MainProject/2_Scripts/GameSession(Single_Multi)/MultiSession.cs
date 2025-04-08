@@ -92,17 +92,9 @@ public class MultiSession : AbsctractGameSession
     #region Player
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove,bool isAnim)
     {
-        Debug.Log("너 되긴하는거니?" + playerManager.IsMineCheck());
-        if (playerManager.IsMineCheck())
+        if (playerManager.PV.IsMine)
         {
-            Debug.Log("멀티이동제한 실행dasdfasdfasdfasdfasdf");
             playerManager.ChangePlayerisMove(isMove, isAnim);
-            Debug.Log("멀티이동제한 실행");
-        }
-        else
-        {
-            
-            Debug.Log("나는 isMine안되는중" + playerManager.IsMineCheck());
         }
     }
 
@@ -110,13 +102,6 @@ public class MultiSession : AbsctractGameSession
     {
         Debug.Log("다켜라제발");
         playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
-    }
-    public override void PlayerMovementControl(PlayerManager playerManager, bool isMove)
-    {
-        if (playerManager.PV.IsMine)
-        {
-            base.PlayerMovementControl(playerManager, isMove);
-        }
     }
     public override void MoveBasic(PlayerManager playerManager)
     {
