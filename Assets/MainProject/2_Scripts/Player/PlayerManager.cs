@@ -49,25 +49,15 @@ public class PlayerManager : MonoBehaviour
     public bool isCutScene = false;
 
     #region LifeCycle Methods
-    void Awake()
-    {
-        if (PV.IsMine)
-        {
-            managerConnector.playerManager = this;
-            DontDestroyOnLoad(gameObject);
 
-            joystick = managerConnector.joystick;
-            webglBtn = managerConnector.webglBtn;
-            isMobile = managerConnector.isMobile;
-        }
-    }
-    void Start()
+    void Awake()
     {
         testSpeed = 3f;
         isMove = false;
         if (!GameManager.Instance.isType)
         {
             Destroy(PV);
+            PV = null;
             Destroy(PTV);
             Destroy(PAV);
         }
@@ -75,6 +65,45 @@ public class PlayerManager : MonoBehaviour
         session = GameManager.Instance.Session;
     }
 
+    void Start()
+    {
+        session.SetPlayerValue(this);
+        //if (PV != null)
+        //{
+        //    if (PV.IsMine)
+        //    {
+        //        // PV가 존재하고 로컬 소유인 경우
+        //        managerConnector.playerManager = this;
+        //        DontDestroyOnLoad(gameObject);
+
+        //        joystick = managerConnector.joystick;
+        //        webglBtn = managerConnector.webglBtn;
+        //        isMobile = managerConnector.isMobile;
+        //    }
+        //    else
+        //    {
+        //        // PV가 존재하지만 로컬 소유가 아닌 경우 (원격 플레이어)
+        //        Debug.Log("이 인스턴스는 로컬 소유가 아닙니다.");
+        //        //managerConnector.playerManager = this;
+        //        //DontDestroyOnLoad(gameObject);
+
+        //        //joystick = managerConnector.joystick;
+        //        //webglBtn = managerConnector.webglBtn;
+        //        //isMobile = managerConnector.isMobile;
+        //        //// 필요한 경우 원격 플레이어에 대한 처리 로직 추가
+        //    }
+        //}
+        //else
+        //{
+        //    // PV가 존재하지 않는 경우 (네트워크 없이 실행되는 경우 등)
+        //    managerConnector.playerManager = this;
+        //    DontDestroyOnLoad(gameObject);
+
+        //    joystick = managerConnector.joystick;
+        //    webglBtn = managerConnector.webglBtn;
+        //    isMobile = managerConnector.isMobile;
+        //}
+    }
     void Update()
     {
         if (session != null && isMove)

@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Linq;
+using static UnityEngine.AudioSettings;
+using UnityEngine.InputSystem;
 
 public abstract class AbsctractGameSession
 {
@@ -30,7 +32,14 @@ public abstract class AbsctractGameSession
 
     #region Player
 
-  
+    public virtual void SetPlayerValue(PlayerManager playerManager)
+    {
+        playerManager.managerConnector.playerManager = playerManager;
+
+        playerManager.joystick = playerManager.managerConnector.joystick;
+        playerManager.webglBtn = playerManager.managerConnector.webglBtn;
+        playerManager.isMobile = playerManager.managerConnector.isMobile;
+    }
     public abstract void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim);
 
     public abstract void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim);
@@ -267,5 +276,19 @@ public abstract class AbsctractGameSession
         camDontDes.confinerBound.BoundingShape2D = newBound;
         camDontDes.virtualCam.Lens.OrthographicSize = lens;
     }
+    #endregion
+
+    #region UINextSetter
+    public virtual void SetValueUINextSetter(UINextSetter uINextSetter)
+    {
+        uINextSetter.managerConnector.uiNextSetter = uINextSetter;
+        uINextSetter.isTest = true;
+    }
+
+    public abstract void ClearPlayerisDone(UINextSetter uIINextSetter);
+    #endregion
+    
+    #region CutScene
+
     #endregion
 }

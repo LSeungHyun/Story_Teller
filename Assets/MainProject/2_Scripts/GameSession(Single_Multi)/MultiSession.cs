@@ -90,6 +90,14 @@ public class MultiSession : AbsctractGameSession
     #endregion
 
     #region Player
+    public override void SetPlayerValue(PlayerManager playerManager)
+    {
+        if (playerManager.PV.IsMine)
+        {
+            base.SetPlayerValue(playerManager);
+        }
+    }
+
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove,bool isAnim)
     {
         if (playerManager.PV.IsMine)
@@ -205,5 +213,24 @@ public class MultiSession : AbsctractGameSession
     {
         base.SetCamValue(camDontDes, newBound, lens);
     }
+    #endregion
+
+    #region UINextSetter
+    public override void SetValueUINextSetter(UINextSetter uINextSetter)
+    {
+        if (uINextSetter.managerConnector.playerManager != null && uINextSetter.managerConnector.playerManager.PV.IsMine && !uINextSetter.isTest)
+        {
+           base.SetValueUINextSetter(uINextSetter);
+        }
+    }
+
+    public override void ClearPlayerisDone(UINextSetter uINextSetter)
+    {
+        uINextSetter.managerConnector.playerManager.PV.RPC("ClearPlayerisDone", RpcTarget.AllBuffered, uINextSetter.curObjCode);
+    }
+    #endregion
+
+    #region CutScene
+
     #endregion
 }

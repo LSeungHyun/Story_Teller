@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using Photon.Pun;
 
 
-
-
 public class UINextSetter : MonoBehaviour
 {
     public static UINextSetter Instance { get; private set; }
@@ -15,7 +13,11 @@ public class UINextSetter : MonoBehaviour
     public ManagerConnector managerConnector;
     public UIPopUpOnOffManager uiPopUpOnOffManager;
 
+    public AbsctractGameSession session;
+
     public bool isTest = false;
+
+    public string curObjCode = "";
     [System.Serializable]
     public class CurrentObjCodeList
     {
@@ -41,15 +43,13 @@ public class UINextSetter : MonoBehaviour
             return;
         }
         Instance = this;
+
+        session = GameManager.Instance.Session;
     }
 
     public void Update()
     {
-        if (managerConnector.playerManager != null && managerConnector.playerManager.PV.IsMine && !isTest)
-        {
-            managerConnector.uiNextSetter = this;
-            isTest = true;
-        }
+        session.SetValueUINextSetter(this);
     }
     public void SetNextCode(string currentObjCode)
     {
@@ -92,6 +92,7 @@ public class UINextSetter : MonoBehaviour
 
         var matchedDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjCode);
 
+        curObjCode = currentObjCode;
         foreach (var data in matchedDataList)
         {
             if (!string.IsNullOrEmpty(data.isNextObj))
@@ -106,10 +107,9 @@ public class UINextSetter : MonoBehaviour
             }
         }
 
-        // ProcessNextCode 실행 후 playersIsDone 리스트를 초기화하여 다음 진행 시 중복 체크를 방지합니다.
 
         // 모든 클라이언트에서 리스트 초기화
-        managerConnector.playerManager.PV.RPC("ClearPlayerisDone", RpcTarget.AllBuffered, currentObjCode);
+        session.ClearPlayerisDone(this);
     }
 
     public bool CheckEveryoneIsDone(string currentObjCode)

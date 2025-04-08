@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Linq;
-using Unity.Collections;
-using Unity.VisualScripting;
 using Photon.Pun;
 
 public class SingleSession : AbsctractGameSession
@@ -90,6 +88,11 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region Player
+    public override void SetPlayerValue(PlayerManager playerManager)
+    {
+        base.SetPlayerValue(playerManager);
+    }
+
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim)
     {
         playerManager.ChangePlayerisMove(isMove, isAnim);
@@ -97,7 +100,8 @@ public class SingleSession : AbsctractGameSession
 
     public override void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim)
     {
-        playerManager.ChangePlayerisMove(isMove, isAnim);
+        ChangePlayerisMoved(playerManager, isMove,isAnim);
+        //playerManager.ChangePlayerisMove(isMove, isAnim);
     }
 
     public override void MoveBasic(PlayerManager playerManager)
@@ -177,5 +181,21 @@ public class SingleSession : AbsctractGameSession
     {
         base.SetCamValue(camDontDes, newBound, lens);
     }
+    #endregion
+
+    #region UINextSetter
+    public override void SetValueUINextSetter(UINextSetter uINextSetter)
+    {
+        base.SetValueUINextSetter(uINextSetter);
+    }
+
+    public override void ClearPlayerisDone(UINextSetter uINextSetter)
+    {
+        uINextSetter.managerConnector.playerManager.ClearPlayerisDone(uINextSetter.curObjCode);
+    }
+    #endregion
+
+    #region CutScene
+
     #endregion
 }
