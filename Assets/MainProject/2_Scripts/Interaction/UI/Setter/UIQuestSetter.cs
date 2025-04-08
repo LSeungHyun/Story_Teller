@@ -67,10 +67,40 @@ public class UIQuestSetter : MonoBehaviour
             uiQuestDetailSetter.SetQuestDetail(prefab);
 
             currentPageDisplayInstance = Instantiate(prefab, pageDisplayParent);
+
+            RectTransform rect = currentPageDisplayInstance.GetComponent<RectTransform>();
+            if (rect != null)
+            {
+                Canvas.ForceUpdateCanvases();
+
+                float width = rect.rect.width;
+                float height = rect.rect.height;
+
+                float maxWidth = 1700f;
+                float maxHeight = 1400f;
+
+                float scaleFactor = 1f;
+
+                bool tooWide = width > maxWidth;
+                bool tooTall = height > maxHeight;
+
+                if (tooWide || tooTall)
+                {
+                    float widthRatio = maxWidth / width;
+                    float heightRatio = maxHeight / height;
+                    scaleFactor = Mathf.Min(widthRatio, heightRatio);
+                }
+                else
+                {
+                    float widthRatio = maxWidth / width;
+                    float heightRatio = maxHeight / height;
+                    scaleFactor = Mathf.Min(widthRatio, heightRatio);
+                }
+
+                rect.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
+            }
         }
     }
-
-
 
 
     public void SetDonePage()
