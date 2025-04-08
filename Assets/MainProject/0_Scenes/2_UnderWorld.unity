@@ -33290,6 +33290,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 336051549}
+    - target: {fileID: 5877192334844359136, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: bgmSlider
+      value: 
+      objectReference: {fileID: 6502074548903324703}
+    - target: {fileID: 5877192334844359136, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: sfxSlider
+      value: 
+      objectReference: {fileID: 6502074548903324702}
     - target: {fileID: 5919945352901666593, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -34004,6 +34012,28 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3511114698870721044, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
   m_PrefabInstance: {fileID: 6502074548903324697}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6502074548903324702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6303119876654265950, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+  m_PrefabInstance: {fileID: 6502074548903324697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6502074548903324703 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 794765313241505893, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+  m_PrefabInstance: {fileID: 6502074548903324697}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6614985662918836016
 PrefabInstance:
   m_ObjectHideFlags: 0
