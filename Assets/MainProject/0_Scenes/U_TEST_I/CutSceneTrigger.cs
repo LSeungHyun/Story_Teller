@@ -53,6 +53,7 @@ public class CutsceneTrigger : DoTweenManager
         player.anim.SetFloat("DirX", 0);
         player.anim.SetFloat("DirY", 1);
         cutsceneDirector.Play();
+        SoundManager.Instance.Play("FIXED FOCUS_dry flower");
 
         yield return CutScene_Fade.DOFade(0f, fadeDuration)
                                   .SetEase(fadeEase)
