@@ -121,7 +121,8 @@ public class UINextSetter : MonoBehaviour
             return;
 
         if (!managerConnector.playerManager.PV) return;
-        managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode);
+        managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode, PhotonNetwork.LocalPlayer.NickName);
+
     }
 
     public void CheckDoneAndNext(string currentObjCode)
