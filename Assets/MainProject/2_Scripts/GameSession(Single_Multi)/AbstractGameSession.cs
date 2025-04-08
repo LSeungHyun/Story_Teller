@@ -194,6 +194,17 @@ public abstract class AbsctractGameSession
                 break;
         }
     }
+
+    public virtual void SortingLayerIsCollision(DynamicSortingLayer layer, bool isCol)
+    {
+        layer.isColliding = isCol;
+    }
+
+    public virtual void SortingLayerName(DynamicSortingLayer layer)
+    {
+        layer.spriteRenderer.sortingLayerName = layer.basicLayer;
+        layer.SetLayerName(layer.basicLayer);
+    }
     #endregion
 
     #region UI On Off

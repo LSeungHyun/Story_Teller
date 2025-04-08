@@ -17,13 +17,14 @@ public class DynamicSortingLayer : MonoBehaviour
     public string aboveObjectLayer;
 
     // 기준이 될 다른 오브젝트 (예: 플레이어)
-    
+    public AbsctractGameSession session;
 
     public bool isColliding;
     void Start()
     {
         basicLayer = spriteRenderer.sortingLayerName;
         //thePlayer = managerConnector.playerManager;
+        session = GameManager.Instance.Session;
     }
 
 
@@ -49,14 +50,16 @@ public class DynamicSortingLayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isColliding = true;
+        session.SortingLayerIsCollision(this,true);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isColliding = false;
-        spriteRenderer.sortingLayerName = basicLayer;
-        SetLayerName(basicLayer);
+        session.SortingLayerIsCollision(this, false);
+
+        session.SortingLayerName(this);
+        //spriteRenderer.sortingLayerName = basicLayer;
+        //SetLayerName(basicLayer);
     }
 
     public void SetLayerName(string layerName)

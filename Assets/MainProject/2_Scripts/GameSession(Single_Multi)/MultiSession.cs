@@ -167,6 +167,21 @@ public class MultiSession : AbsctractGameSession
         }
         base.HandleInteractionBasic(currentObjectManager, currentObjCode);
     }
+
+    public override void SortingLayerIsCollision(DynamicSortingLayer layer, bool isCol)
+    {
+        if (layer.managerConnector.playerManager.PV.IsMine)
+        {
+            base.SortingLayerIsCollision(layer, isCol);
+        }
+    }
+    public override void SortingLayerName(DynamicSortingLayer layer)
+    {
+        if(layer.managerConnector.playerManager.PV.IsMine)
+        {
+            base.SortingLayerName(layer);
+        }
+    }
     #endregion
 
     #region UI On Off

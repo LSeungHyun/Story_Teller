@@ -136,6 +136,16 @@ public class SingleSession : AbsctractGameSession
     {
         base.HandleInteractionBasic(currentObjectManager, currentObjCode);
     }
+
+    public override void SortingLayerIsCollision(DynamicSortingLayer layer, bool isCol)
+    {
+        base.SortingLayerIsCollision(layer,isCol);
+    }
+
+    public override void SortingLayerName(DynamicSortingLayer layer)
+    {
+        base.SortingLayerName(layer);
+    }
     #endregion
 
     #region UI On Off
