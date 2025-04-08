@@ -336,5 +336,15 @@ public class PlayerManager : MonoBehaviour
             anim.SetBool("Walking", isAnim);
         }
     }
+
+    public void TestChangeMove(bool isMove, bool isAnim)
+    {
+        session.ChangePlayerisMoved(this, isMove, isAnim);
+    }
+
+    public bool IsMineCheck()
+    {
+        return PV.IsMine;
+    }
     #endregion
 }

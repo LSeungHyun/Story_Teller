@@ -55,8 +55,6 @@ public class ChatButtonSetting : MonoBehaviour
         chating_Btn_Event_Group.Send_Btn.onClick.AddListener(instance.SendMessage);
         chating_Btn_Event_Group.Scrollbar_Vertical.onValueChanged.AddListener(OnScrollChanged);
         chating_Btn_Event_Group.New_Chat_Notice.onClick.AddListener(instance.OnNewMessageNotificationClicked);
-
-        Debug.Log("Hello");
     }
 
     private void OnScrollChanged(float value)
