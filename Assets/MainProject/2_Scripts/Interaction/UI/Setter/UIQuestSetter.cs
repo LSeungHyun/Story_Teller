@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using Photon.Pun;
-using UnityEngine.InputSystem;
 
 
 public class UIQuestSetter : MonoBehaviour
@@ -22,7 +20,8 @@ public class UIQuestSetter : MonoBehaviour
     public GameObject isDoneFalseGroup;
     public GameObject isDoneTrueGroup;
     public Text nameDisplay;
-    public InputField answerInput; 
+    public InputField answerInput;
+    public GameObject dark_Obj;
     
     public Transform pageDisplayParent;
     private GameObject currentPageDisplayInstance;
@@ -129,6 +128,7 @@ public class UIQuestSetter : MonoBehaviour
         if(answerInput.text == answer)
         {
             targetRow.isDone = true;
+            dark_Obj.SetActive(false);
             uiPopUpOnOffManager.ClosePopUpWindow();
             UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
             UINextSetter.Instance.CheckDoneAndNext(currentObjCode);

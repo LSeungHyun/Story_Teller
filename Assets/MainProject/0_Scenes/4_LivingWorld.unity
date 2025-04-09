@@ -9695,6 +9695,7 @@ GameObject:
   - component: {fileID: 569080404}
   - component: {fileID: 569080406}
   - component: {fileID: 569080407}
+  - component: {fileID: 569080408}
   m_Layer: 0
   m_Name: Man
   m_TagString: Interaction
@@ -9743,8 +9744,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1232989169
+  m_SortingLayer: 1
   m_SortingOrder: 20
   m_Sprite: {fileID: -5922192293321870380, guid: 4d40389f1bd0ec44983ab803f024ab7a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9833,6 +9834,27 @@ MonoBehaviour:
   objCode: LivingWorld_Ending_Man2
   isPassiveObject: 0
   isTouchObject: 0
+--- !u!114 &569080408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569080403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  thePlayer: {fileID: 0}
+  spriteRenderer: {fileID: 569080404}
+  childSpriteGroup: []
+  basicLayer: 
+  currentSortingLayer: 
+  underObjectLayer: UnderObject
+  aboveObjectLayer: AboveObject
+  isColliding: 0
 --- !u!1 &572689614
 GameObject:
   m_ObjectHideFlags: 0
@@ -36641,7 +36663,6 @@ GameObject:
   - component: {fileID: 7126715185168336181}
   - component: {fileID: 3132025086951831066}
   - component: {fileID: 7126715185168336182}
-  - component: {fileID: 7126715185168336183}
   - component: {fileID: 7126715185168336184}
   m_Layer: 0
   m_Name: ArrivePopUp
@@ -37552,19 +37573,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
-  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
---- !u!114 &7126715185168336183
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810086708746181456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87e8b00048272494fae820079bdec97c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!114 &7126715185168336184
 MonoBehaviour:
