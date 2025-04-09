@@ -1,7 +1,5 @@
 using UnityEngine;
 using System.Linq;
-using static UnityEngine.AudioSettings;
-using UnityEngine.InputSystem;
 
 public abstract class AbsctractGameSession
 {
@@ -35,7 +33,7 @@ public abstract class AbsctractGameSession
     public virtual void SetPlayerValue(PlayerManager playerManager)
     {
         playerManager.managerConnector.playerManager = playerManager;
-        playerManager.managerConnector.PV = playerManager.PV;
+
         playerManager.joystick = playerManager.managerConnector.joystick;
         playerManager.webglBtn = playerManager.managerConnector.webglBtn;
         playerManager.isMobile = playerManager.managerConnector.isMobile;
@@ -203,6 +201,8 @@ public abstract class AbsctractGameSession
         layer.spriteRenderer.sortingLayerName = layer.basicLayer;
         layer.SetLayerName(layer.basicLayer);
     }
+
+    public abstract void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision);
     #endregion
 
     #region UI On Off
