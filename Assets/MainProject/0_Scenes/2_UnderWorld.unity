@@ -1235,8 +1235,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Straight
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &40146326
-BoxCollider2D:
+--- !u!60 &40146326
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1269,7 +1269,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.67047966}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1279,8 +1279,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.23495913}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.23722473, y: -0.31564865}
+      - {x: -0.22811523, y: -0.31753466}
+      - {x: -0.17028823, y: -0.3590348}
+      - {x: 0.16806808, y: -0.35799876}
+  m_UseDelaunayMesh: 0
 --- !u!1 &42710647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2108,7 +2113,7 @@ Transform:
   m_GameObject: {fileID: 124459971}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3107109, y: 0.45124093, z: 0}
+  m_LocalPosition: {x: -1.496, y: 0.432, z: 0}
   m_LocalScale: {x: 0.81438, y: 0.81438, z: 0.81438}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2184,8 +2189,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Wrench
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &124459975
-BoxCollider2D:
+--- !u!60 &124459975
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2218,7 +2223,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.13932703, y: 0.20899168}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2228,8 +2233,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.811978, y: 0.40999323}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.36173272, y: 0.33306518}
+      - {x: -0.39222854, y: 0.28524455}
+      - {x: -0.3931374, y: -0.005895601}
+      - {x: -0.35450974, y: -0.07352017}
+      - {x: -0.35349172, y: 0.29477146}
+      - {x: 0.20778778, y: 0.29282185}
+      - {x: 0.17211002, y: 0.32902837}
+  m_UseDelaunayMesh: 0
 --- !u!1 &127663641
 GameObject:
   m_ObjectHideFlags: 0
@@ -2891,7 +2904,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2937,7 +2950,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -3171,8 +3184,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Quest
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &170425805
-BoxCollider2D:
+--- !u!60 &170425805
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3205,7 +3218,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.3488903, y: -0.035394683}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3215,8 +3228,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.36157608, y: 0.37078938}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.22431503, y: 0.13239396}
+      - {x: -0.22549042, y: -0.20846969}
+      - {x: -0.15587083, y: -0.25520575}
+      - {x: -0.15430084, y: 0.18380792}
+  m_UseDelaunayMesh: 0
 --- !u!1 &173626104
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,7 +5525,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5568,7 +5586,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6169,7 +6187,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -6285,7 +6303,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.87, y: 7.11}
+    oldSize: {x: 1.8699999, y: 7.110037}
     newSize: {x: 1.87, y: 7.11}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7208,7 +7226,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7259,7 +7277,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -7420,7 +7438,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.26, y: 2.16}
+    oldSize: {x: 3.26, y: 2.1600113}
     newSize: {x: 3.26, y: 2.1600113}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9273,7 +9291,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.4, y: 2.86}
+    oldSize: {x: 3.3999999, y: 2.860015}
     newSize: {x: 3.3999999, y: 2.860015}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -9550,13 +9568,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647158618}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.2630005, y: -0.142, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.36263815, w: 0.9319301}
+  m_LocalPosition: {x: -1.214, y: -0.153, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1637074647}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 42.525}
 --- !u!212 &647158620
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9627,8 +9645,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Cutter
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &647158622
-BoxCollider2D:
+--- !u!60 &647158622
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -9661,7 +9679,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.0049591064, y: -0.88787663}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -9671,8 +9689,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.68546295, y: 0.4886465}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.45671752, y: -0.13091902}
+      - {x: -0.51878875, y: -0.251621}
+      - {x: -0.16383329, y: -0.57580936}
+      - {x: -0.04874444, y: -0.50522745}
+  m_UseDelaunayMesh: 0
 --- !u!60 &655712077 stripped
 PolygonCollider2D:
   m_CorrespondingSourceObject: {fileID: 6750984227825645562, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
@@ -10653,7 +10676,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.34, y: 0.59}
+    oldSize: {x: 0.33999997, y: 0.5900031}
     newSize: {x: 0.33999997, y: 0.5900031}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -11170,7 +11193,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &769298801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11722,7 +11745,7 @@ Transform:
   m_GameObject: {fileID: 814913554}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.018156052, y: 0.434, z: 0}
+  m_LocalPosition: {x: 0.314, y: 0.389, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11798,8 +11821,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Direction
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &814913558
-BoxCollider2D:
+--- !u!60 &814913558
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -11832,7 +11855,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0398407, y: 0.19968513}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -11842,8 +11865,16 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.644783, y: 0.31539786}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.084966734, y: 0.3240041}
+      - {x: -0.13236938, y: 0.23931718}
+      - {x: 0.2765497, y: 0.24032338}
+      - {x: 0.2780037, y: -0.19857311}
+      - {x: 0.34615266, y: -0.14840662}
+      - {x: 0.3456688, y: 0.2666278}
+      - {x: 0.29135117, y: 0.32400417}
+  m_UseDelaunayMesh: 0
 --- !u!1 &820015564
 GameObject:
   m_ObjectHideFlags: 0
@@ -11995,7 +12026,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.98, y: 2.27}
+    oldSize: {x: 2.9799998, y: 2.2700117}
     newSize: {x: 2.9799998, y: 2.2700117}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16176,7 +16207,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -16237,7 +16268,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -17012,7 +17043,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.1, y: 2.97}
+    oldSize: {x: 3.1, y: 2.9700153}
     newSize: {x: 3.1, y: 2.9700153}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -17842,7 +17873,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -17888,7 +17919,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -22153,8 +22184,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Six
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &1539248763
-BoxCollider2D:
+--- !u!60 &1539248763
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22187,7 +22218,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.58795923}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22197,8 +22228,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.4}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.34496704, y: -0.103977166}
+      - {x: -0.22031036, y: -0.10424909}
+      - {x: -0.15855423, y: -0.27126065}
+      - {x: 0.2554666, y: -0.27090707}
+  m_UseDelaunayMesh: 0
 --- !u!1001 &1556428024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22390,8 +22426,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Star
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &1569596194
-BoxCollider2D:
+--- !u!60 &1569596194
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -22424,7 +22460,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.3765002}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -22434,8 +22470,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.4}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.32449356, y: 0.08934752}
+      - {x: -0.27927244, y: 0.08337367}
+      - {x: -0.20722976, y: -0.29516843}
+      - {x: 0.23055282, y: -0.29507643}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1569732072
 GameObject:
   m_ObjectHideFlags: 0
@@ -22901,7 +22942,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.28, y: 8.211719}
+    oldSize: {x: 18.28, y: 8.18}
     newSize: {x: 18.28, y: 8.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -25750,8 +25791,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Cross
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &1808222805
-BoxCollider2D:
+--- !u!60 &1808222805
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -25784,7 +25825,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0055446625, y: -0.44781613}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -25794,8 +25835,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4, y: 0.19755352}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.15576187, y: -0.2682278}
+      - {x: 0.23116457, y: -0.09381815}
+      - {x: -0.25418106, y: -0.09258279}
+      - {x: -0.17411438, y: -0.26828164}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1821008131
 GameObject:
   m_ObjectHideFlags: 0
@@ -27367,7 +27413,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -27413,7 +27459,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -27496,7 +27542,7 @@ GameObject:
   - component: {fileID: 1872569688}
   - component: {fileID: 1872569689}
   m_Layer: 0
-  m_Name: Screw
+  m_Name: Nails
   m_TagString: Interaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27511,7 +27557,7 @@ Transform:
   m_GameObject: {fileID: 1872569685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.21699905, y: -0.129, z: 0}
+  m_LocalPosition: {x: -0.211, y: -0.097, z: 0}
   m_LocalScale: {x: 0.74367, y: 0.74367, z: 0.74367}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27587,8 +27633,8 @@ MonoBehaviour:
   objCode: UnderWorld_SteelHouse_Screw
   isPassiveObject: 0
   isTouchObject: 0
---- !u!61 &1872569689
-BoxCollider2D:
+--- !u!60 &1872569689
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -27621,7 +27667,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -1.2344742}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -27631,8 +27677,13 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7, y: 0.7}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.2850552, y: -0.78088516}
+      - {x: 0.299321, y: -0.7808851}
+      - {x: 0.37874144, y: -0.6260287}
+      - {x: -0.3785504, y: -0.6295295}
+  m_UseDelaunayMesh: 0
 --- !u!1 &1874334982
 GameObject:
   m_ObjectHideFlags: 0
@@ -27950,7 +28001,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -28010,7 +28061,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.84, y: 13.7}
+    oldSize: {x: 12.839999, y: 13.700072}
     newSize: {x: 12.84, y: 13.7}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -28144,7 +28195,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.98, y: 2.27}
+    oldSize: {x: 2.9799998, y: 2.2700117}
     newSize: {x: 2.9799998, y: 2.2700117}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -29264,7 +29315,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -29310,7 +29361,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -30150,7 +30201,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -30196,7 +30247,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.01, y: 5.02}
+    oldSize: {x: 2.0099998, y: 5.020026}
     newSize: {x: 2.01, y: 5.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
