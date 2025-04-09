@@ -20,22 +20,33 @@ public class UIQuestDetailSetter : MonoBehaviour
     private void ResizeImageAndBackground(RectTransform contentRect)
     {
         if (contentRect == null) return;
+
+        Canvas.ForceUpdateCanvases();
+
         float originalWidth = contentRect.rect.width;
         float originalHeight = contentRect.rect.height;
 
         if (originalHeight <= 0f) return;
 
-        const float maxHeight = 854f;
+        float maxWidth = 1500f;
+        float maxHeight = 854f;
 
-        float scale = Mathf.Min(1f, maxHeight / originalHeight);
-        float scaledHeight = originalHeight * scale;
-        float scaledWidth = originalWidth * scale;
+        float scaleFactor = 1f;
 
-        contentRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, scaledWidth);
-        contentRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, scaledHeight);
+        bool tooWide = originalWidth > maxWidth;
+        bool tooTall = originalHeight > maxHeight;
 
-        float bgWidth = scaledWidth + 360f;
-        float bgHeight = scaledHeight + 120f;
+        if (tooWide || tooTall)
+        {
+            float widthRatio = maxWidth / originalWidth;
+            float heightRatio = maxHeight / originalHeight;
+            scaleFactor = Mathf.Min(widthRatio, heightRatio);
+        }
+
+        contentRect.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
+
+        float bgWidth = originalWidth * scaleFactor + 360f;
+        float bgHeight = originalHeight * scaleFactor + 120f;
 
         backgroundRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, bgWidth);
         backgroundRect.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, bgHeight);
@@ -44,9 +55,8 @@ public class UIQuestDetailSetter : MonoBehaviour
         {
             closeButtonRect.SetParent(backgroundRect);
             closeButtonRect.anchorMin = closeButtonRect.anchorMax = new Vector2(1f, 1f);
-            closeButtonRect.pivot = new Vector2(1f, 1f); 
+            closeButtonRect.pivot = new Vector2(1f, 1f);
             closeButtonRect.anchoredPosition = new Vector2(-20f, -20f);
         }
-
     }
 }
