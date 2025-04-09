@@ -1,20 +1,14 @@
-using Photon.Pun;
 using UnityEngine;
 
 public class OnOffPrefabs : MonoBehaviour
 {
     public UIManager uIManager;
-    public PhotonView PV;
+    public ManagerConnector managerConnector;
     void OnTriggerEnter2D()
     {
-        if (PhotonNetwork.LocalPlayer == PV.Owner)
+        if (managerConnector.PV.IsMine)
         {
-            Debug.Log("≥ª≤®¿”");
             uIManager.OpenPopUp("Help_PopUp");
         }
-        //else
-        //{
-        //    uIManager.OpenPopUp("Help_PopUp");
-        //}
     }
 }

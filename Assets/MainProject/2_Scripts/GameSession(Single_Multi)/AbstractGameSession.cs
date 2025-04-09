@@ -35,7 +35,7 @@ public abstract class AbsctractGameSession
     public virtual void SetPlayerValue(PlayerManager playerManager)
     {
         playerManager.managerConnector.playerManager = playerManager;
-
+        playerManager.managerConnector.PV = playerManager.PV;
         playerManager.joystick = playerManager.managerConnector.joystick;
         playerManager.webglBtn = playerManager.managerConnector.webglBtn;
         playerManager.isMobile = playerManager.managerConnector.isMobile;
