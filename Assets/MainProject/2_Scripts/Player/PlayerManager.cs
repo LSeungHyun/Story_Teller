@@ -248,6 +248,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 objDataTypeContainer.objCode = null;
+                ChangeConfirmOn(false);
             }
         }
         for (int i = 0; i < interactableStack.Count; i++)
@@ -264,6 +265,7 @@ public class PlayerManager : MonoBehaviour
             if (i == interactableStack.Count - 1)
             {
                 rend.material = outlineMaterial;
+                ChangeConfirmOn(true);
             }
             else
             {
