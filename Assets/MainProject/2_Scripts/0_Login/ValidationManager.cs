@@ -167,7 +167,10 @@ public class ValidationManager : MonoBehaviour
             case "ERROR":
                 loginUIManager.ActiveCodeErrorGroup();
                 break;
-
+            case "OVERRIDE":
+                loginUIManager.ActiveCodeErrorGroup();
+                loginUIManager.ActiveCodeAccessGroup();
+                break;
             default:
                 //resultText.text = $" 알 수 없는 응답: {response.message}";
                 break;
