@@ -1,10 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
-using UnityEngine.Windows;
 
 public class ValidationManager : MonoBehaviour
 {

@@ -69,7 +69,7 @@ public class LoginUIManager : DoTweenManager
 
         // 5) Start UI È°¼ºÈ­
         Start_Group.SetActive(true);
-        SoundContainer.soundManager.Play("´Ş´ã¹ÂÁ÷_¿À·»Áö");
+        //SoundContainer.soundManager.Play("´Ş´ã¹ÂÁ÷_¿À·»Áö");
         // 6) ¹öÆ° ±ôºıÀÓ ÄÚ·çÆ¾
         StartCoroutine(SmoothBlink());
     }
