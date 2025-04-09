@@ -27,6 +27,8 @@ public class LoginUIManager : DoTweenManager
     public GameObject codeCheckGroup;
     public GameObject codeErrorGroup;
     public GameObject accessCompleted;
+
+    public GameObject overrideErrorGroup;
     public Text codeCheckText;
     #endregion
 
@@ -142,6 +144,10 @@ public class LoginUIManager : DoTweenManager
         ShowUI(codeErrorGroup);
     }
 
+    public void ActiveOverrideErrorGroup()
+    {
+        ShowUI(overrideErrorGroup);
+    }
     public IEnumerator DotAnimation(string text)
     {
         int dotCount = 0;
