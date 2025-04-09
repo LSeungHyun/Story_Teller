@@ -182,6 +182,15 @@ public class MultiSession : AbsctractGameSession
             base.SortingLayerName(layer);
         }
     }
+
+    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision)
+    {
+        PhotonView pv = collision.transform.GetComponent<PhotonView>();
+        if (pv.IsMine)
+        {
+            onOffPrefabs.uIManager.OpenPopUp("Help_PopUp");
+        }
+    }
     #endregion
 
     #region UI On Off

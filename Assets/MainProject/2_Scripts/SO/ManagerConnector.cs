@@ -1,4 +1,3 @@
-using Photon.Pun;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ManagerConnector", menuName = "Scriptable Objects/ManagerConnector")]
@@ -6,7 +5,7 @@ public class ManagerConnector : ScriptableObject
 {
     public PhotonManager photonManager;
     public PlayerManager playerManager;
-    public PhotonView PV;
+
     public UINextSetter uiNextSetter;
     public UIManager uiManager;
     public PortalManager portalManager;

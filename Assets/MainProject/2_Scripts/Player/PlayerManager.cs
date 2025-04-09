@@ -157,16 +157,6 @@ public class PlayerManager : MonoBehaviour
             // 첫 번째 Back 트리거에 들어간 시점 혹은 이미 들어있는 상황에서도 계속 "BackPlayer" 유지
             sprite.sortingLayerName = "BackPlayer";
         }
-
-
-        //플레이어쪽에서 기능 테스트 완료
-        //if (PV.IsMine)
-        //{
-        //    if (collision.CompareTag("Menual"))
-        //    {
-        //        managerConnector.uiManager.OpenPopUp("Help_PopUp");
-        //    }
-        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

@@ -235,7 +235,6 @@ public class TextDataManager : MonoBehaviour
 
                 if (resp != null && resp.data != null)
                 {
-                    //Debug.Log("Status: " + resp.status + ", Msg: " + resp.message);
 
                     if (loadingUI != null)
                     {
@@ -247,56 +246,41 @@ public class TextDataManager : MonoBehaviour
                     if (centerLabelContainer != null && resp.data.centerLabelData != null)
                     {
                         centerLabelContainer.centerLabelDatas = GroupCenterLabelData(resp.data.centerLabelData);
-                        //Debug.Log("CenterLabelData loaded: " + resp.data.centerLabelData.Length);
                     }
 
                     if (centerLabelContainer != null && resp.data.textData != null)
                     {
                         nextDataContainer.nextDatas = resp.data.textData;
-                        //Debug.Log("NextData loaded: " + resp.data.textData.Length);
                     }
 
-
-                    // 3) DialogueData
                     if (dialogueContainer != null && resp.data.dialogueData != null)
                     {
                         dialogueContainer.dialogueDatas = GroupDialogueData(resp.data.dialogueData);
-                        //Debug.Log("DialogueData loaded: " + resp.data.dialogueData.Length);
                     }
 
-                    // 4) ObjDataType
                     if (objDataTypeContainer != null && resp.data.objDataType != null)
                     {
                         objDataTypeContainer.objDataType = resp.data.objDataType;
-                        //Debug.Log("ObjDataType loaded: " + resp.data.objDataType.Length);
                     }
 
-                    // 5) BubbleData
                     if (bubbleContainer != null && resp.data.bubbleData != null)
                     {
                         bubbleContainer.bubbleDatas = resp.data.bubbleData;
-                        //Debug.Log("BubbleData loaded: " + resp.data.bubbleData.Length);
                     }
 
-                    // 6) ImageData
                     if (imageContainer != null && resp.data.imageData != null)
                     {
                         imageContainer.imageDatas = GroupImageData(resp.data.imageData); 
-                        //Debug.Log("ImageData loaded: " + resp.data.imageData.Length);
                     }
 
-                    // 7) QuestData
                     if (questContainer != null && resp.data.questData != null)
                     {
                         questContainer.questDatas = resp.data.questData;
-                        //Debug.Log("QuestData loaded: " + resp.data.questData.Length);
                     }
 
-                    // 8) HintData
                     if (hintContainer != null && resp.data.hintData != null)
                     {
                         hintContainer.hintDatas = resp.data.hintData;
-                        //Debug.Log("HintData loaded: " + resp.data.hintData.Length);
                     }
                 }
                 else
@@ -407,4 +391,9 @@ public class TextDataManager : MonoBehaviour
         return imageDataList.ToArray();
     }
 
+    //로딩페이지2초 켜주고 끄기 기능
+    public void ActiveLoadingUI()
+    {
+
+    }
 }
