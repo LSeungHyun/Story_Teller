@@ -20,13 +20,8 @@ public class PortalManager : MonoBehaviour
         managerConnector.portalManager = this;
         if (uiManager != null) return;
         uiManager = managerConnector.uiManager;
-
     }
 
-    private void Start()
-    {
-        
-    }
     public void OnEnable()
     {
         uiManager.RapidCloseAllUI();
