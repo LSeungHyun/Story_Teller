@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using System.Collections;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -265,17 +266,42 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void RPC_ShowIsMineData(string objCode)
     {
-        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = true;
+        StartCoroutine(WaitAndApply_ShowIsMineData(objCode));
+    }
+
+    private IEnumerator WaitAndApply_ShowIsMineData(string objCode)
+    {
+        yield return new WaitUntil(() =>
+            CurrentObjectManager.Instance != null &&
+            GameManager.Instance?.Session != null
+        );
+
+        var data = objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode);
+        if (data != null)
+        {
+            data.isMine = true;
+        }
+
         CurrentObjectManager.Instance.SetCurrentObjData(objCode);
 
-        objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == objCode).isMine = false;
+        if (data != null)
+        {
+            data.isMine = false;
+        }
     }
 
     [PunRPC]
     public void RPC_SetNextObj(string nextObjCode, bool isDelete)
     {
-        ObjectDictionary.Instance.ToggleObjectActive(nextObjCode, isDelete);
+        StartCoroutine(WaitAndApply_SetNextObj(nextObjCode, isDelete));
     }
+
+    private IEnumerator WaitAndApply_SetNextObj(string code, bool isDelete)
+    {
+        yield return new WaitUntil(() => ObjectDictionary.Instance != null);
+        ObjectDictionary.Instance.ToggleObjectActive(code, isDelete);
+    }
+
 
     [PunRPC]
     public void RPC_AddPlayerToDoneList(string currentObjCode, string playerID)
