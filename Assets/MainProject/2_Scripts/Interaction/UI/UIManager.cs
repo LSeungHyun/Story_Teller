@@ -377,7 +377,7 @@ public class UIManager : DoTweenManager
 
         chatOn = popUp.isActive;
 
-        if (!chatOn)
+        if (chatOn)
         {
             ChatStatusList[0].ShadowObj.SetActive(false);
             ChatStatusList[0].IconObj.SetActive(false);
