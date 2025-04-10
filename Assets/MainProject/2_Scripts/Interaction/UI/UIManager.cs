@@ -188,6 +188,11 @@ public class UIManager : DoTweenManager
                 popUp.PopUp_Obj.SetActive(true);
             }
 
+            if (popUp_Name == "Chat_PopUp_Group")
+            {
+                ChatBool(true);
+            }
+
             popUp.isActive = true;
         }
         else
@@ -222,11 +227,12 @@ public class UIManager : DoTweenManager
             else
             {
                 popUp.PopUp_Obj.SetActive(false);
-
-                
             }
 
             popUp.isActive = false;
+
+            if (popUp_Name == "Chat_PopUp_Group")
+                chatOn = false;
 
             if (rapidClose)
             {
