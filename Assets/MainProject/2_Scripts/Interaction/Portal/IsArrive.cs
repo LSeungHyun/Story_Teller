@@ -5,12 +5,9 @@ public class IsArrive : MonoBehaviour
     public CamBoundContainer camBoundContainer;
     public ManagerConnector managerConnector;
 
-    public GameObject portalManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         var session = GameManager.Instance.Session;
-
-        portalManager.SetActive(false);
 
         if (managerConnector != null && managerConnector.textDataManager.loadingUI.activeSelf)
         {
