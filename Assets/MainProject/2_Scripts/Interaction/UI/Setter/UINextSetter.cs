@@ -121,12 +121,7 @@ public class UINextSetter : MonoBehaviour
         if (currentObj == null)
             return;
 
-        if (!managerConnector.playerManager.PV) return;
-        managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode, PhotonNetwork.LocalPlayer.NickName);
-
-        if (!CheckEveryoneIsDone(currentObjCode)) return;
-        
-        ProcessNextCode(currentObjCode);
+        session.CheckDoneAndNext(this,currentObjCode);
     }
 
     public bool CheckEveryoneIsDone(string currentObjCode)

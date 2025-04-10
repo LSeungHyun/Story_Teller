@@ -68,6 +68,11 @@ public class SingleSession : AbsctractGameSession
     #endregion
 
     #region IsNext
+
+    public override void CheckDoneAndNext(UINextSetter uiNextSetter, string currentObjCode)
+    {
+        uiNextSetter.ProcessNextCode(currentObjCode);
+    }
     public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
     {
         ObjectDictionary.Instance.ToggleObjectActive(nextObjCode, isDelete);

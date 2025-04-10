@@ -20,6 +20,7 @@ public abstract class AbsctractGameSession
     #endregion
 
     #region IsNext
+    public abstract void CheckDoneAndNext(UINextSetter uiNextSetter,string currentObjCode);
     public abstract void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete);
     #endregion
 
