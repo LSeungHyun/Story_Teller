@@ -100,6 +100,8 @@ public class SingleSession : AbsctractGameSession
         scenePortalManager.managerConnector.playerManager.gameObject.transform.position = new Vector3(-30, 0, 0);
         scenePortalManager.managerConnector.textDataManager.loadingUI.SetActive(true);
     }
+
+
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim)
     {
         playerManager.ChangePlayerisMove(isMove, isAnim);

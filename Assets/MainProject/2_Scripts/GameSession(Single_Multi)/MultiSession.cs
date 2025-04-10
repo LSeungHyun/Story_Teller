@@ -97,7 +97,6 @@ public class MultiSession : AbsctractGameSession
             base.SetPlayerValue(playerManager);
         }
     }
-
     public override void MovedPlayerScene(ScenePortalManager scenePortalManager, string world)
     {
         scenePortalManager.managerConnector.playerManager.PV.RPC("MoveNextScene", RpcTarget.AllBuffered, scenePortalManager.worldName);
