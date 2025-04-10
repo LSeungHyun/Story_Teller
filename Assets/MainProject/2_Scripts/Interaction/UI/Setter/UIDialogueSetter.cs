@@ -86,11 +86,5 @@ public class UIDialogueSetter : UIPopUpManager
     public void onCloseBtnForDone()
     {
         UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
-        //StartCoroutine(DelayedCheckDoneAndNext(currentObjCode));
-    }
-    private IEnumerator DelayedCheckDoneAndNext(string currentObjCode)
-    {
-        yield return null;
-        //UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
     }
 }

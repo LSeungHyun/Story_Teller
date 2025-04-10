@@ -53,7 +53,7 @@ public class UINextSetter : MonoBehaviour
     }
     public void SetNextCode(string currentObjCode)
     {
-        //Debug.Log("SetNextCode"+currentObjCode);
+        Debug.Log("SetNextCode"+currentObjCode);
         if (string.IsNullOrEmpty(currentObjCode)) return;
 
         var matchingDataList = nextDataContainer?.nextDatas?.Where(data => data.objCode == currentObjCode);
@@ -139,10 +139,4 @@ public class UINextSetter : MonoBehaviour
         bool isAllDone = currentObj.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
         return isAllDone;
     }
-
-    //public void CheckDoneAndNext(string currentObjCode)
-    //{
-    //    var session = GameManager.Instance.Session;
-    //    session.CheckDoneAndNext(this, currentObjCode);
-    //}
 }
