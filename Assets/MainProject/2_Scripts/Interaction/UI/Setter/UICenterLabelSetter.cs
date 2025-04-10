@@ -62,7 +62,7 @@ public class UICenterLabelSetter : UIContentsManager
             {
                 uiCenterLabelOnOffManager.CloseCenterLabelWindow();
                 UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
-                UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
+                //UINextSetter.Instance.CheckDoneAndNext(currentObjCode);
             }
         }
     }

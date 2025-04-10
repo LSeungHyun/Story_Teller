@@ -69,11 +69,11 @@ public class MultiSession : AbsctractGameSession
     #region IsNext
     public override void CheckDoneAndNext(UINextSetter uiNextSetter, string currentObjCode)
     {
-        bool isdone = uiNextSetter.CheckEveryoneIsDone(currentObjCode);
-        if (isdone)
-        {
-            uiNextSetter.ProcessNextCode(currentObjCode);
-        }
+        //bool isdone = uiNextSetter.CheckEveryoneIsDone(currentObjCode);
+        //if (isdone)
+        //{
+        //    uiNextSetter.ProcessNextCode(currentObjCode);
+        //}
     }
 
     public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
@@ -166,7 +166,10 @@ public class MultiSession : AbsctractGameSession
     public override void HandleInteractionBasic(CurrentObjectManager currentObjectManager, string currentObjCode)
     {
         ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
+
+        if (currentRow == null) return;
         bool currentIsMine = currentRow.isMine;
+
         if (!currentIsMine)
         {
             currentObjectManager.managerConnector.playerManager.PV.RPC("RPC_ShowIsMineData", RpcTarget.OthersBuffered, currentObjCode);

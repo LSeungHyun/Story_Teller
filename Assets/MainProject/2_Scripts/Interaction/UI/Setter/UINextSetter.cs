@@ -112,16 +112,7 @@ public class UINextSetter : MonoBehaviour
         session.ClearPlayerisDone(this);
     }
 
-    public bool CheckEveryoneIsDone(string currentObjCode)
-    {
-        var currentObj = currentObjCodeDict.Find(x => x.value == currentObjCode);
-        if (currentObj == null)
-        {
-            return false;
-        }
-        bool isAllDone = currentObj.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
-        return isAllDone;
-    }
+
 
     public void AddPlayerToDoneList(string currentObjCode)
     {
@@ -133,11 +124,25 @@ public class UINextSetter : MonoBehaviour
         if (!managerConnector.playerManager.PV) return;
         managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode, PhotonNetwork.LocalPlayer.NickName);
 
+        if (!CheckEveryoneIsDone(currentObjCode)) return;
+        
+        ProcessNextCode(currentObjCode);
     }
 
-    public void CheckDoneAndNext(string currentObjCode)
+    public bool CheckEveryoneIsDone(string currentObjCode)
     {
-        var session = GameManager.Instance.Session;
-        session.CheckDoneAndNext(this, currentObjCode);
+        var currentObj = currentObjCodeDict.Find(x => x.value == currentObjCode);
+        if (currentObj == null)
+        {
+            return false;
+        }
+        bool isAllDone = currentObj.playersIsDone.Count == PhotonNetwork.CurrentRoom.PlayerCount;
+        return isAllDone;
     }
+
+    //public void CheckDoneAndNext(string currentObjCode)
+    //{
+    //    var session = GameManager.Instance.Session;
+    //    session.CheckDoneAndNext(this, currentObjCode);
+    //}
 }
