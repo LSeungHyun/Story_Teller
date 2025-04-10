@@ -222,8 +222,6 @@ public class UIManager : DoTweenManager
             else
             {
                 popUp.PopUp_Obj.SetActive(false);
-
-                
             }
 
             popUp.isActive = false;
@@ -361,9 +359,12 @@ public class UIManager : DoTweenManager
 
     #endregion
 
-    public void ChatBool(bool chatStatus)
+    public void ChatBool()
     {
-        chatOn = chatStatus;
+        popUpDict.TryGetValue("Chat_PopUp_Group", out PopUp_Group popUp);
+
+        chatOn = popUp.isActive;
+        
         if (chatOn)
         {
             ChatUIStatus();
