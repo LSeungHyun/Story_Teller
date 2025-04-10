@@ -522,7 +522,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 0}
 --- !u!61 &31407286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32829,7 +32828,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!61 &5666721374383214309
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -33717,6 +33715,10 @@ PrefabInstance:
       propertyPath: UI_Manager
       value: 
       objectReference: {fileID: 336051549}
+    - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -34707,7 +34709,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -34730,12 +34740,32 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClosePopUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ClickAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ClickAnim
       objectReference: {fileID: 0}
     - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DoTweenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: DoTweenManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Chat_PopUp_Group
+      objectReference: {fileID: 0}
+    - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8578173912073249100, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -35059,7 +35089,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!61 &7148563503462325107
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -35120,7 +35149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!114 &7148563503462325109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35255,7 +35283,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!114 &7245595300413405652
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35333,7 +35360,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!4 &7689122110810443431
 Transform:
   m_ObjectHideFlags: 0
@@ -35378,7 +35404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!1 &7727797900242526197
 GameObject:
   m_ObjectHideFlags: 0
@@ -35454,7 +35479,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!114 &7993058899111273393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35516,7 +35540,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camBoundContainer: {fileID: 0}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  portalManager: {fileID: 697344672}
 --- !u!114 &8656265805158655679
 MonoBehaviour:
   m_ObjectHideFlags: 0
