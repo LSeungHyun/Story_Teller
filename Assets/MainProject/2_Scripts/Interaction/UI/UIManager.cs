@@ -373,10 +373,6 @@ public class UIManager : DoTweenManager
 
     public void ChatUIStatus()
     {
-        popUpDict.TryGetValue("Chat_PopUp_Group", out PopUp_Group popUp);
-
-        chatOn = popUp.isActive;
-
         if (!chatOn)
         {
             ChatStatusList[0].ShadowObj.SetActive(false);
