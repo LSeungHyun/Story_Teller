@@ -23,7 +23,7 @@ public class CurrentObjectManager : MonoBehaviour
     public BubbleSetter bubbleSetter;
 
     string[] validCodes = { "Enter_Wait", "Enter_Move", "Enter_Wait_Scene", "Enter_Move_Scene" };
-    string[] moveCodes = { "Enter_Move", "Enter_Move_Scene", "Enter_All" };
+    string[] moveCodes = { "Enter_Move", "Enter_Move_Scene" };
 
     public string newObjCode;
 
