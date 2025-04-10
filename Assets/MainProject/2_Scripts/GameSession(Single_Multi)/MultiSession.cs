@@ -7,7 +7,6 @@ public class MultiSession : AbsctractGameSession
     #region Portal
     public override void OnEnterPortal(PortalSetter portalSetter, Collider2D collision)
     {
-        portalSetter.status = null;
         portalSetter.portalManager.isNextMap = false;
         portalSetter.portalManager.gameObject.SetActive(false);
 
@@ -48,8 +47,7 @@ public class MultiSession : AbsctractGameSession
             }
 
             portalSetter.SetPortalObjects(true, false, false);
-            portalSetter.portalManager.managerConnector.uICenterLabelSetter.centerLabelList = null;
-            Debug.Log("센터라벨 리스트 : " + portalSetter.portalManager.managerConnector.uICenterLabelSetter.centerLabelList);
+
             if (!portalSetter.portalManager.isNextMap)
             {
                 CurrentObjectManager.Instance.uiCenterLabelOnOffManager.CloseCenterLabelWindow();
