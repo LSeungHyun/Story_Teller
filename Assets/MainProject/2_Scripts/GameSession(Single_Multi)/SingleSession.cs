@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Linq;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class SingleSession : AbsctractGameSession
 {
@@ -93,6 +94,12 @@ public class SingleSession : AbsctractGameSession
         base.SetPlayerValue(playerManager);
     }
 
+    public override void MovedPlayerScene(ScenePortalManager scenePortalManager, string world)
+    {
+        SceneManager.LoadScene(scenePortalManager.worldName);
+        scenePortalManager.managerConnector.playerManager.gameObject.transform.position = new Vector3(-30, 0, 0);
+        scenePortalManager.managerConnector.textDataManager.loadingUI.SetActive(true);
+    }
     public override void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim)
     {
         playerManager.ChangePlayerisMove(isMove, isAnim);
