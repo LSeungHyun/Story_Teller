@@ -38,6 +38,8 @@ public abstract class AbsctractGameSession
         playerManager.webglBtn = playerManager.managerConnector.webglBtn;
         playerManager.isMobile = playerManager.managerConnector.isMobile;
     }
+    public abstract void MovedPlayerScene(ScenePortalManager scenePortalManager, string world);
+
     public abstract void ChangePlayerisMoved(PlayerManager playerManager, bool isMove, bool isAnim);
 
     public abstract void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim);

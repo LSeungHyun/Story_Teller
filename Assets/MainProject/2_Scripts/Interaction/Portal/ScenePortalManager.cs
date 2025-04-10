@@ -23,14 +23,14 @@ public class ScenePortalManager : MonoBehaviour
     {
         uiManager.RapidCloseAllUI();
 
-        if (PhotonNetwork.IsConnected)
-        {
-            managerConnector.playerManager.PV.RPC("MoveNextScene", RpcTarget.AllBuffered, worldName);
-            return;
-        }
-
-        SceneManager.LoadScene(worldName);
-        managerConnector.playerManager.gameObject.transform.position = new Vector3(-30,0,0);
-        managerConnector.textDataManager.loadingUI.SetActive(true);
+        session.MovedPlayerScene(this, worldName);
+        //if (PhotonNetwork.IsConnected)
+        //{
+        //    managerConnector.playerManager.PV.RPC("MoveNextScene", RpcTarget.AllBuffered, worldName);
+        //    return;
+        //}
+        //SceneManager.LoadScene(worldName);
+        //managerConnector.playerManager.gameObject.transform.position = new Vector3(-30,0,0);
+        //managerConnector.textDataManager.loadingUI.SetActive(true);
     }
 }
