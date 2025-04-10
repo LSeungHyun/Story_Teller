@@ -21,7 +21,9 @@ public class CutsceneTrigger : DoTweenManager
         {
             UIManager = managerConnector.uiManager;
 
-            player = managerConnector.playerManager;
+            
+            player = other.gameObject.GetComponent<PlayerManager>();
+
             if (cutsceneDirector != null)
             {
                 cutScenePlayer.player = player;
