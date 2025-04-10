@@ -33720,8 +33720,12 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -33732,8 +33736,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 336051549}
     - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ChatBool
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OpenPopUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Chat_PopUp_Group
       objectReference: {fileID: 0}
     - target: {fileID: 3584621569302628720, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
