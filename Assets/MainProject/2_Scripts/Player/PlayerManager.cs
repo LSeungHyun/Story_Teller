@@ -328,6 +328,8 @@ public class PlayerManager : MonoBehaviour
     public void MoveNextScene(string worldName)
     {
         PhotonNetwork.LoadLevel(worldName);
+        this.gameObject.transform.position = new Vector3(-30, 0, 0);
+        managerConnector.textDataManager.loadingUI.SetActive(true);
     }
 
     [PunRPC]
