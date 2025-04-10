@@ -102,6 +102,6 @@ public class UIImageSetter : UIPopUpManager
 
     public void onCloseBtnForDone()
     {
-        UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+        UINextSetter.Instance.ProcessNextCode(currentObjCode);
     }
 }

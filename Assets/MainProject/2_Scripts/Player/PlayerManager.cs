@@ -317,6 +317,10 @@ public class PlayerManager : MonoBehaviour
         {
             Debug.Log($"플레이어 {playerID}는 이미 추가되어 있습니다.");
         }
+
+        if (!UINextSetter.Instance.CheckEveryoneIsDone(currentObjCode)) return;
+
+        UINextSetter.Instance.ProcessNextCode(currentObjCode);
     }
 
     [PunRPC]

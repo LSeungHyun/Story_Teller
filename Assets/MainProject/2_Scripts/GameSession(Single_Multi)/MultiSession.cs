@@ -71,10 +71,6 @@ public class MultiSession : AbsctractGameSession
     public override void CheckDoneAndNext(UINextSetter uiNextSetter, string currentObjCode)
     {
         uiNextSetter.managerConnector.playerManager.PV.RPC("RPC_AddPlayerToDoneList", RpcTarget.AllBuffered, currentObjCode, PhotonNetwork.LocalPlayer.NickName);
-
-        if (!uiNextSetter.CheckEveryoneIsDone(currentObjCode)) return;
-
-        uiNextSetter.ProcessNextCode(currentObjCode);
     }
 
     public override void ToggleObjectActive(UINextSetter uiNextSetter, string nextObjCode, bool isDelete)
