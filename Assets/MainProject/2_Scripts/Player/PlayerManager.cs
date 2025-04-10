@@ -306,6 +306,7 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void RPC_AddPlayerToDoneList(string currentObjCode, string playerID)
     {
+        Debug.Log("1 : 플레이어 추가 RPC");
         UINextSetter.Instance.SetNextCode(currentObjCode);
         var currentObj = UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode);
         if (!currentObj.playersIsDone.Contains(playerID))
