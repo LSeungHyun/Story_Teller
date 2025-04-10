@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Linq;
+using Unity.VisualScripting;
 
 public class KeyInputManager : MonoBehaviour
 {
@@ -13,13 +14,11 @@ public class KeyInputManager : MonoBehaviour
     }
     private void Update()
     {
-        if (managerConnector.playerManager.isMove && Input.GetKeyDown(KeyCode.F))
+        if (managerConnector.playerManager == null) return;
+
+        if (managerConnector.playerManager != null && managerConnector.playerManager.isMove && Input.GetKeyDown(KeyCode.F))
         {
             HandleFKey();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            //uiPopUpOnOffManager.ClosePopUpWindow();
         }
     }
 
