@@ -137,6 +137,7 @@ public class UIQuestSetter : MonoBehaviour
             dark_Obj.SetActive(false);
             uiPopUpOnOffManager.ClosePopUpWindow();
             UINextSetter.Instance.AddPlayerToDoneList(currentObjCode);
+            CurrentObjectManager.Instance.SetCurrentObjData("Correct_Answer");
         }
         else
         {
