@@ -8,8 +8,11 @@ public class CutScenePlayer : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void OnEnable()
     {
+        var session = GameManager.Instance.Session;
         SoundManager.Instance.Play("50meru-constellations");
-        player.CutSceneUseAble(false);
+        //player.CutSceneUseAble(false);
+
+        session.CutSceneEnter(player, false);
         UIManager.CutSceneOnOff(true);
         this.gameObject.SetActive(false);
     }

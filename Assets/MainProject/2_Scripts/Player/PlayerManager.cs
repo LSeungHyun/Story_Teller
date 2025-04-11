@@ -238,6 +238,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    [PunRPC]
     public void CutSceneUseAble(bool able)
     {
         isCutScene = able;
@@ -249,15 +250,17 @@ public class PlayerManager : MonoBehaviour
     {
         if (isCutScene)
         {
-            //playerSprite.enabled = false;
-            //playerNickname.SetActive(false);
+            playerSprite.enabled = false;
+            playerNickname.SetActive(false);
             isMove = false;
+            session.OnOffPlayerBtnGroup(managerConnector, false);
         }
         else
         {
             playerSprite.enabled = true;
             playerNickname.SetActive(true);
             isMove = true;
+            session.OnOffPlayerBtnGroup(managerConnector, true);
         }
     }
     #endregion

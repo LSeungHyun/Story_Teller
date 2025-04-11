@@ -135,9 +135,9 @@ public class SingleSession : AbsctractGameSession
         base.TriggerExitBasic(playerManager, collision);
     }
 
-    public override void CutSceneEnter(PlayerManager playerManager, Collider2D collision)
+    public override void CutSceneEnter(PlayerManager playerManager, bool isCutScene)
     {
-        base.CutSceneEnter(playerManager, collision);
+        playerManager.CutSceneUseAble(isCutScene);
     }
     #endregion
 
