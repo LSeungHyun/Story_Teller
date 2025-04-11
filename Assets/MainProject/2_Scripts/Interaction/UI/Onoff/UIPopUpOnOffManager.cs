@@ -7,6 +7,7 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public ManagerConnector managerConnector;
     public UIPopUpStructure uiPopupStructure;
     public UIPopUpManager uiPopUpManager;
+    //포탈세터에 있는 isCutScene받아와서 조이스틱 처리 추가
 
     public void OpenWindow(bool isQuest, bool isDial)
     {
@@ -16,6 +17,10 @@ public class UIPopUpOnOffManager : MonoBehaviour
         session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
 
         session.OnOffPlayerBtnGroup(managerConnector, false);
+        //if (!managerConnector.portalSetter.isCutScene)
+        //{
+            
+        //}
     }
     public void ClosePopUpWindow()
     {
@@ -26,5 +31,9 @@ public class UIPopUpOnOffManager : MonoBehaviour
         session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
 
         session.OnOffPlayerBtnGroup(managerConnector, true);
+        //if (!managerConnector.portalSetter.isCutScene)
+        //{
+            
+        //}
     }
 }

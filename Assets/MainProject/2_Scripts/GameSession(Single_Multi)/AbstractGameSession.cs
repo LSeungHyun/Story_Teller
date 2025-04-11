@@ -68,16 +68,29 @@ public abstract class AbsctractGameSession
         if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
         {
             playerManager.anim.SetBool("Walking", true);
-
-            if (playerManager.inputVec.x != 0)
+            if (!Application.isMobilePlatform)
             {
-                playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
-                playerManager.anim.SetFloat("DirY", 0);
+                if (playerManager.inputVec.x != 0)
+                {
+                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                }
+                if (playerManager.inputVec.y != 0)
+                {
+                    playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+                }
             }
-            else if (playerManager.inputVec.y != 0)
+            else
             {
-                playerManager.anim.SetFloat("DirX", 0);
-                playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+                if (playerManager.inputVec.x != 0)
+                {
+                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                    playerManager.anim.SetFloat("DirY", 0);
+                }
+                if (playerManager.inputVec.y != 0)
+                {
+                    playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+                    playerManager.anim.SetFloat("DirX", 0);
+                }
             }
         }
         else
@@ -147,6 +160,8 @@ public abstract class AbsctractGameSession
     {
         if (currentObjectManager?.objDataTypeContainer?.objDataType == null)
             return;
+
+        OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
 
         ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null || string.IsNullOrEmpty(currentRow.dataType))
