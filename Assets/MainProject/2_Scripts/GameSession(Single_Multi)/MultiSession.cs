@@ -195,6 +195,7 @@ public class MultiSession : AbsctractGameSession
         if (pv.IsMine)
         {
             onOffPrefabs.uIManager.OpenPopUp("Help_PopUp");
+            OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
         }
     }
     #endregion
@@ -219,7 +220,10 @@ public class MultiSession : AbsctractGameSession
 
     public override void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
     {
-        base.OnOffPlayerBtnGroup(managerConnector, isActive);
+        if (managerConnector.playerManager.PV.IsMine)
+        {
+            base.OnOffPlayerBtnGroup(managerConnector, isActive);
+        }
     }
 
     public override void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)

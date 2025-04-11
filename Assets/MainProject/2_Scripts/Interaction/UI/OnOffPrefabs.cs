@@ -4,6 +4,7 @@ using UnityEngine;
 public class OnOffPrefabs : MonoBehaviour
 {
     public UIManager uIManager;
+    public ManagerConnector managerConnector;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
