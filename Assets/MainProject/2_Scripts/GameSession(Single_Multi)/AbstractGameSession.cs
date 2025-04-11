@@ -68,7 +68,7 @@ public abstract class AbsctractGameSession
         if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
         {
             playerManager.anim.SetBool("Walking", true);
-            if (!Application.isMobilePlatform)
+            if (Application.isMobilePlatform)
             {
                 if (playerManager.inputVec.x != 0)
                 {
@@ -272,7 +272,7 @@ public abstract class AbsctractGameSession
 
     public virtual void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
     {
-        if (!Application.isMobilePlatform)
+        if (Application.isMobilePlatform)
         {
             managerConnector.webglBtn = player.webglBtn;
             managerConnector.joystick = player.joystick;
