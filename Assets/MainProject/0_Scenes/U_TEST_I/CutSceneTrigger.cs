@@ -16,8 +16,9 @@ public class CutsceneTrigger : DoTweenManager
     public Image CutScene_Fade;
     public AbsctractGameSession session;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnEnable()
     {
+        managerConnector.cutSceneTransform = this.gameObject.transform;
         session = GameManager.Instance.Session;
         UIManager = managerConnector.uiManager;
 
@@ -48,7 +49,7 @@ public class CutsceneTrigger : DoTweenManager
 
         yield return new WaitForSeconds(0.3f);
 
-        session.CutScenePlayerValue(this.transform, managerConnector.playerManager, true);
+        session.CutScenePlayerValue(managerConnector.playerManager, true);
 
         cutsceneDirector.Play();
         SoundManager.Instance.Play("FIXED FOCUS_dry flower");

@@ -251,9 +251,9 @@ public class PlayerManager : MonoBehaviour
     }
 
     [PunRPC]
-    public void CutScenePlayerSetValue(Transform cutsceneTrigger, bool isCutScene)
+    public void CutScenePlayerSetValue(bool isCutScene)
     {
-        this.transform.position = cutsceneTrigger.gameObject.transform.position;
+        this.transform.position = managerConnector.cutSceneTransform.position;
         anim.SetFloat("DirX", 0);
         anim.SetFloat("DirY", 1);
         anim.SetBool("Walking", isCutScene);

@@ -146,7 +146,7 @@ public abstract class AbsctractGameSession
 
     public abstract void CutSceneEnter(PlayerManager playerManager, bool isCutScene);
 
-    public abstract void CutScenePlayerValue(Transform cutsceneTrigger,PlayerManager playerManager, bool isCutScene);
+    public abstract void CutScenePlayerValue(PlayerManager playerManager, bool isCutScene);
     #endregion
 
     #region Interaction

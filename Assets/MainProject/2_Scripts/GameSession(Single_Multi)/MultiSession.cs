@@ -156,9 +156,9 @@ public class MultiSession : AbsctractGameSession
         playerManager.PV.RPC("CutSceneUseAble", RpcTarget.AllBuffered, isCutScene);
     }
 
-    public override void CutScenePlayerValue(Transform cutsceneTrigger, PlayerManager playerManager, bool isCutScene)
+    public override void CutScenePlayerValue(PlayerManager playerManager, bool isCutScene)
     {
-        playerManager.PV.RPC("CutScenePlayerSetValue", RpcTarget.AllBuffered, cutsceneTrigger, isCutScene);
+        playerManager.PV.RPC("CutScenePlayerSetValue", RpcTarget.AllBuffered, isCutScene);
     }
     #endregion
 
