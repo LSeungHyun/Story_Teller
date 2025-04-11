@@ -171,6 +171,8 @@ public class UIManager : DoTweenManager
         rapidClose = false;
 
         CloseAllPopUps();
+
+        session.OnOffPlayerBtnGroup(managerConnector, false);
         session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
 
         yield return new WaitForSeconds(0.25f);
@@ -218,6 +220,8 @@ public class UIManager : DoTweenManager
     /// </summary>
     public void ClosePopUp(string popUp_Name)
     {
+        session.OnOffPlayerBtnGroup(managerConnector, true);
+
         if (popUpDict.TryGetValue(popUp_Name, out PopUp_Group popUp))
         {
             if (popUp.isAnim && !rapidClose)

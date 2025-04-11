@@ -244,7 +244,7 @@ public abstract class AbsctractGameSession
 
     public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
     {
-        if (managerConnector.playerManager.isMobile)
+        if (managerConnector.isMobile)
         {
             managerConnector.joystick.gameObject.SetActive(isActive);
             managerConnector.webglBtn.gameObject.SetActive(isActive);
@@ -253,7 +253,7 @@ public abstract class AbsctractGameSession
 
     public virtual void CheckIsMobile(PlayerInstantiateManager player, ManagerConnector managerConnector)
     {
-        if (Application.isMobilePlatform)
+        if (!Application.isMobilePlatform)
         {
             managerConnector.webglBtn = player.webglBtn;
             managerConnector.joystick = player.joystick;

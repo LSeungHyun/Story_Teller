@@ -160,6 +160,7 @@ public class SingleSession : AbsctractGameSession
     public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision)
     {
         onOffPrefabs.uIManager.OpenPopUp("Help_PopUp");
+        OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
     }
     #endregion
 
