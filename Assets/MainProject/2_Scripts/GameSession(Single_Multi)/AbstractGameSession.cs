@@ -161,8 +161,6 @@ public abstract class AbsctractGameSession
         if (currentObjectManager?.objDataTypeContainer?.objDataType == null)
             return;
 
-        OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
-
         ObjDataType currentRow = currentObjectManager.objDataTypeContainer.objDataType.FirstOrDefault(r => r.objCode == currentObjCode);
         if (currentRow == null || string.IsNullOrEmpty(currentRow.dataType))
             return;
@@ -186,6 +184,8 @@ public abstract class AbsctractGameSession
 
             case "dialogue":
                 if (currentObjectManager.uiDialogueSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
+                OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
+
                 currentObjectManager.uiDialogueSetter.SetData(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, true);
                 currentObjectManager.uiDialogueSetter.currentObjCode = currentObjCode;
@@ -193,6 +193,8 @@ public abstract class AbsctractGameSession
 
             case "image":
                 if (currentObjectManager.uiImageSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
+                OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
+
                 currentObjectManager.uiImageSetter.SetData(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(false, false);
                 currentObjectManager.uiImageSetter.currentObjCode = currentObjCode;
@@ -200,6 +202,8 @@ public abstract class AbsctractGameSession
 
             case "quest":
                 if (currentObjectManager.hintStateManager == null || currentObjectManager.uiQuestSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
+                OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
+
                 currentObjectManager.hintStateManager.HIntUnlocked(currentObjCode);
                 currentObjectManager.uiQuestSetter.SetQuestBg(currentObjCode);
                 currentObjectManager.uiPopUpOnOffManager.OpenWindow(true, false);
