@@ -3,6 +3,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Linq;
 using System.Collections;
+using Photon.Pun.Demo.PunBasics;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -244,6 +245,15 @@ public class PlayerManager : MonoBehaviour
         isCutScene = able;
 
         CutSceneOnOff();
+    }
+
+    [PunRPC]
+    public void CutScenePlayerSetValue(Transform cutsceneTrigger, bool isCutScene)
+    {
+        this.transform.position = cutsceneTrigger.gameObject.transform.position;
+        anim.SetFloat("DirX", 0);
+        anim.SetFloat("DirY", 1);
+        anim.SetBool("Walking", isCutScene);
     }
 
     public void CutSceneOnOff()

@@ -139,6 +139,11 @@ public class SingleSession : AbsctractGameSession
     {
         playerManager.CutSceneUseAble(isCutScene);
     }
+
+    public override void CutScenePlayerValue(Transform cutsceneTrigger, PlayerManager playerManager, bool isCutScene)
+    {
+        playerManager.CutScenePlayerSetValue(cutsceneTrigger, isCutScene);
+    }
     #endregion
 
     #region Interaction
