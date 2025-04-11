@@ -106,7 +106,13 @@ public class UIQuestSetter : MonoBehaviour
     {
         if(PhotonNetwork.IsConnected)
         {
-            donePlayerCount.text = "완료 인원:" + UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Count + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+            int donePlayerNum = UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode).playersIsDone.Count;
+            if (donePlayerNum > 0)
+            donePlayerCount.text = "완료 인원:" + donePlayerNum + "/" + PhotonNetwork.CurrentRoom.PlayerCount;
+            else
+            {
+                donePlayerCount.text = "닫기를 눌러 진행해주세요.";
+            }
         }
         else
         {
