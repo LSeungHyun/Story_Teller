@@ -144,15 +144,9 @@ public abstract class AbsctractGameSession
         }
     }
 
-    public virtual void CutSceneEnter(PlayerManager playerManager, Collider2D collision)
-    {
-        if (!collision.CompareTag("CutScene"))
-        {
-            return;
-        }
+    public abstract void CutSceneEnter(PlayerManager playerManager, bool isCutScene);
 
-        playerManager.CutSceneUseAble(true);
-    }
+    public abstract void CutScenePlayerValue(PlayerManager playerManager, bool isCutScene);
     #endregion
 
     #region Interaction

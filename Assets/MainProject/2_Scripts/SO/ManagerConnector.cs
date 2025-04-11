@@ -14,6 +14,7 @@ public class ManagerConnector : ScriptableObject
     public CurrentObjectManager currentObjectManager;
     public KeyInputManager keyInputManager;
 
+    public Transform cutSceneTransform;
     public FloatingJoystick joystick;
     public GameObject webglBtn;
 

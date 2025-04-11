@@ -1,6 +1,7 @@
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using Photon.Realtime;
 
 public class MultiSession : AbsctractGameSession
 {
@@ -150,12 +151,14 @@ public class MultiSession : AbsctractGameSession
         }
     }
 
-    public override void CutSceneEnter(PlayerManager playerManager, Collider2D collision)
+    public override void CutSceneEnter(PlayerManager playerManager, bool isCutScene)
     {
-        if (playerManager.PV.IsMine)
-        {
-            base.CutSceneEnter(playerManager, collision);
-        }
+        playerManager.PV.RPC("CutSceneUseAble", RpcTarget.AllBuffered, isCutScene);
+    }
+
+    public override void CutScenePlayerValue(PlayerManager playerManager, bool isCutScene)
+    {
+        playerManager.PV.RPC("CutScenePlayerSetValue", RpcTarget.AllBuffered, isCutScene);
     }
     #endregion
 

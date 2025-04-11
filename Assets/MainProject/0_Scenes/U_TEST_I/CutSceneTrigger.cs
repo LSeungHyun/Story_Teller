@@ -14,28 +14,26 @@ public class CutsceneTrigger : DoTweenManager
     public PlayerManager player;
 
     public Image CutScene_Fade;
+    public AbsctractGameSession session;
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnEnable()
     {
-        if (other.CompareTag("Player"))
+        managerConnector.cutSceneTransform = this.gameObject.transform;
+        session = GameManager.Instance.Session;
+        UIManager = managerConnector.uiManager;
+
+        if (cutsceneDirector != null)
         {
-            UIManager = managerConnector.uiManager;
+            cutScenePlayer.player = managerConnector.playerManager;
+            cutScenePlayer.UIManager = UIManager;
 
-            player = other.gameObject.GetComponent<PlayerManager>();
+            UIManager.CutSceneOnOff(false);
 
-            if (cutsceneDirector != null)
-            {
-                cutScenePlayer.player = player;
-                cutScenePlayer.UIManager = UIManager;
-
-                UIManager.CutSceneOnOff(false);
-
-                StartCoroutine(FadeInOut());
-            }
-            else
-            {
-                Debug.LogError("PlayableDirector가 할당되지 않았습니다.");
-            }
+            StartCoroutine(FadeInOut());
+        }
+        else
+        {
+            Debug.LogError("PlayableDirector가 할당되지 않았습니다.");
         }
     }
 
@@ -47,14 +45,12 @@ public class CutsceneTrigger : DoTweenManager
                                   .SetEase(fadeEase)
                                   .WaitForCompletion();
 
-        player.playerSprite.enabled = false;
-        player.playerNickname.SetActive(false);
+        session.CutSceneEnter(managerConnector.playerManager, true);
 
         yield return new WaitForSeconds(0.3f);
 
-        player.transform.position = this.transform.position;
-        player.anim.SetFloat("DirX", 0);
-        player.anim.SetFloat("DirY", 1);
+        session.CutScenePlayerValue(managerConnector.playerManager, true);
+
         cutsceneDirector.Play();
         SoundManager.Instance.Play("FIXED FOCUS_dry flower");
 
