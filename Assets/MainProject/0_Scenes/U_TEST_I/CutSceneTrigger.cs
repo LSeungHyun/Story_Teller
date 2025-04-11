@@ -16,7 +16,7 @@ public class CutsceneTrigger : DoTweenManager
     public Image CutScene_Fade;
     public AbsctractGameSession session;
 
-    private void OnEnable()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         session = GameManager.Instance.Session;
         UIManager = managerConnector.uiManager;

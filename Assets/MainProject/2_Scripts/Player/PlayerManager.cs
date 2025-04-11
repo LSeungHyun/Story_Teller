@@ -14,7 +14,6 @@ public class PlayerManager : MonoBehaviour
     public PhotonTransformView PTV;
     public PhotonAnimatorView PAV;
 
-    public SpriteRenderer playerSprite;
     public GameObject playerNickname;
 
     [Header("Player Components")]
@@ -147,6 +146,10 @@ public class PlayerManager : MonoBehaviour
         if (session != null)
         {
             session.TriggerEnterBasic(this, collision);
+        }
+
+        if (collision.CompareTag("CutScene"))
+        {
             session.CutSceneEnter(this, collision);
         }
 
@@ -260,14 +263,14 @@ public class PlayerManager : MonoBehaviour
     {
         if (isCutScene)
         {
-            playerSprite.enabled = false;
+            sprite.enabled = false;
             playerNickname.SetActive(false);
             isMove = false;
             session.OnOffPlayerBtnGroup(managerConnector, false);
         }
         else
         {
-            playerSprite.enabled = true;
+            sprite.enabled = true;
             playerNickname.SetActive(true);
             isMove = true;
             session.OnOffPlayerBtnGroup(managerConnector, true);
