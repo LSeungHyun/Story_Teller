@@ -31,6 +31,7 @@ public class SoundManager : MonoBehaviour
     private AudioSource activeBgmSource;
     private AudioSource inactiveBgmSource;
 
+    private Coroutine currentCrossfade;
     void Awake()
     {
         SoundContainer.soundManager = this;
@@ -52,6 +53,8 @@ public class SoundManager : MonoBehaviour
     /// <summary>
     /// 외부에서 사운드 이름으로 재생 요청
     /// </summary>
+
+
     public void Play(string soundName)
     {
         // soundList에서 이름이 일치하는 SoundData 찾기
@@ -63,12 +66,22 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // loop 여부에 따라 BGM 또는 SFX로 재생
+        // loop 여부에 따라 BGM 또는 SFX 재생
         if (data.loop)
         {
-            // 이미 같은 클립이 활성 AudioSource에서 재생중이면 크로스페이드를 진행하지 않습니다.
-            if (activeBgmSource.clip == data.clip)
-                return;
+            // (원래 같은 클립 재생 중이면 중단하는 조건을 넣을 수도 있음)
+            // if (activeBgmSource.clip == data.clip)
+            //    return;
+
+            // 만약 이미 진행 중인 crossfade가 있다면 중단합니다.
+            if (currentCrossfade != null)
+            {
+                StopCoroutine(currentCrossfade);
+                currentCrossfade = null;
+
+                // 이전 crossfade로 인해 변경된 activeBgmSource 볼륨 복원
+                activeBgmSource.volume = AudioSettingsData.bgmVolume;
+            }
 
             // 새로운 BGM 재생을 위해 inactive AudioSource에 할당
             inactiveBgmSource.clip = data.clip;
@@ -77,7 +90,7 @@ public class SoundManager : MonoBehaviour
             inactiveBgmSource.Play();
 
             // 두 BGM AudioSource 사이에 크로스페이드 진행
-            StartCoroutine(CrossfadeBGM());
+            currentCrossfade = StartCoroutine(CrossfadeBGM());
         }
         else
         {
@@ -87,16 +100,14 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// 크로스페이드 코루틴 : activeBgmSource의 볼륨을 서서히 줄이고, inactiveBgmSource의 볼륨을 동시에 올립니다.
-    /// 전환이 완료되면 두 AudioSource의 역할을 교체합니다.
+    /// 크로스페이드 코루틴: activeBgmSource의 볼륨을 서서히 줄이고,
+    /// inactiveBgmSource의 볼륨을 동시에 올립니다. 전환이 완료되면 두 AudioSource의 역할을 교체합니다.
     /// </summary>
     private IEnumerator CrossfadeBGM()
     {
         float timer = 0f;
-        // 기본 볼륨값은 AudioSettingsData에 설정된 값 (보통 1.0f 정도)
-        float initialVolume = AudioSettingsData.bgmVolume;
+        float initialVolume = AudioSettingsData.bgmVolume; // 기본 볼륨값
 
-        // 크로스페이드 진행
         while (timer < crossfadeDuration)
         {
             timer += Time.deltaTime;
@@ -108,14 +119,17 @@ public class SoundManager : MonoBehaviour
             yield return null;
         }
 
-        // 전환 완료 후, 기존 AudioSource를 정지
+        // 전환 완료 후 activeBgmSource를 정지하고, 기본 볼륨 복원
         activeBgmSource.Stop();
-        activeBgmSource.volume = initialVolume; // 다음번 사용을 위해 기본 볼륨 복원
+        activeBgmSource.volume = initialVolume;
 
         // 역할 교체: inactive AudioSource가 새로운 active 소스가 됩니다.
         AudioSource temp = activeBgmSource;
         activeBgmSource = inactiveBgmSource;
         inactiveBgmSource = temp;
+
+        // 코루틴 참조 초기화
+        currentCrossfade = null;
     }
     /// <summary>
     /// 현재 재생중인 BGM을 멈추는 메서드(옵션)
