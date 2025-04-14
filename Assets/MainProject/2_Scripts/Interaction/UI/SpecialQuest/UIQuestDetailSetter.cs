@@ -5,6 +5,7 @@ public class UIQuestDetailSetter : MonoBehaviour
     public RectTransform backgroundRect;
     public GameObject currentPageDetailDisplayInstance;
     public RectTransform closeButtonRect;
+    public UIQuestSetter uiQuestSetter;
 
     public void SetQuestDetail(GameObject prefab)
     {
@@ -15,6 +16,12 @@ public class UIQuestDetailSetter : MonoBehaviour
 
         currentPageDetailDisplayInstance = Instantiate(prefab, backgroundRect);
         ResizeImageAndBackground(currentPageDetailDisplayInstance.GetComponent<RectTransform>());
+
+        if (currentPageDetailDisplayInstance.GetComponent<RLSlider>() != null)
+        {
+            int currentIndex = uiQuestSetter.currentPageDisplayInstance.GetComponent<RLSlider>().currentIndex;
+            currentPageDetailDisplayInstance.GetComponent<RLSlider>().currentIndex = currentIndex;
+        }
     }
 
     private void ResizeImageAndBackground(RectTransform contentRect)

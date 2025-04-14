@@ -24,12 +24,11 @@ public class UIQuestSetter : MonoBehaviour
     public GameObject dark_Obj;
     
     public Transform pageDisplayParent;
-    private GameObject currentPageDisplayInstance;
+    public GameObject currentPageDisplayInstance;
 
     public Text donePlayerCount;
     public Text doneAnswer;
     public string currentObjCode;
-
 
     public void SetQuestBg(string currentObjCode)
     {

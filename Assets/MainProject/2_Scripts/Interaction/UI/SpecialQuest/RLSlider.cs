@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageSwitcher : MonoBehaviour
+public class RLSlider : MonoBehaviour
 {
     public Sprite[] images;
     public Image displayImage;
-    private int currentIndex = 0;
+    public int currentIndex = 0;
 
     public Text indexDisplay;
 
