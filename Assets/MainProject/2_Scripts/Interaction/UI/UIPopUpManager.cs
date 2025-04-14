@@ -1,11 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using UnityEngine.UI;
 
 public abstract class UIPopUpManager : UIContentsManager
 {
+    public SoundContainer soundContainer;
     public Button backBtn;
     public Button nextBtn;
     public event Action<int, int> OnPageChanged;
@@ -43,6 +41,10 @@ public abstract class UIPopUpManager : UIContentsManager
         if (currentDataPage < totalDataPage)
         {
             currentDataPage++;
+            if(soundContainer != null)
+            {
+                soundContainer.soundManager.Play("Enter_Sound");
+            }
             DisplayPage();
         }
     }
@@ -52,6 +54,10 @@ public abstract class UIPopUpManager : UIContentsManager
         if (currentDataPage > 1)
         {
             currentDataPage--;
+            if (soundContainer != null)
+            {
+                soundContainer.soundManager.Play("Enter_Sound");
+            }
             DisplayPage();
         }
     }
