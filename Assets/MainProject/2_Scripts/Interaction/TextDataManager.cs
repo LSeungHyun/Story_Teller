@@ -392,8 +392,15 @@ public class TextDataManager : MonoBehaviour
     }
 
     //로딩페이지2초 켜주고 끄기 기능
-    public void ActiveLoadingUI()
+    public IEnumerator ActiveLoadingUI()
     {
-
+        // 로딩 UI를 활성화합니다.
+        //loadingUI.SetActive(true);
+        Debug.Log("로딩씬 키는 코루틴 ㄱㄱ");
+        // 최소 표시 시간 동안 대기합니다.
+        yield return new WaitForSeconds(2f);
+        Debug.Log("로딩씬 키는 코루틴 ㄴㄴ");
+        // 대기 후 로딩 UI를 비활성화합니다.
+        loadingUI.SetActive(false);
     }
 }
