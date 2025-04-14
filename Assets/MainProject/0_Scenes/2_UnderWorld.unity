@@ -1528,6 +1528,7 @@ MonoBehaviour:
   answerInput: {fileID: 852497465}
   dark_Obj: {fileID: 220100312}
   pageDisplayParent: {fileID: 1777512500}
+  currentPageDisplayInstance: {fileID: 0}
   donePlayerCount: {fileID: 2001374210}
   doneAnswer: {fileID: 2115339921}
   currentObjCode: 
@@ -1587,6 +1588,7 @@ MonoBehaviour:
   backgroundRect: {fileID: 6502074548903324701}
   currentPageDetailDisplayInstance: {fileID: 6502074548903324700}
   closeButtonRect: {fileID: 6502074548903324699}
+  uiQuestSetter: {fileID: 62861757}
 --- !u!1 &69041611
 GameObject:
   m_ObjectHideFlags: 0

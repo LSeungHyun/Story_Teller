@@ -62,9 +62,9 @@ public class UIQuestSetter : MonoBehaviour
                 Destroy(currentPageDisplayInstance);
             }
 
-            uiQuestDetailSetter.SetQuestDetail(prefab);
 
             currentPageDisplayInstance = Instantiate(prefab, pageDisplayParent);
+            uiQuestDetailSetter.SetQuestDetail(prefab);
 
             RectTransform rect = currentPageDisplayInstance.GetComponent<RectTransform>();
             if (rect != null)
