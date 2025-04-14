@@ -48,7 +48,7 @@ public class SingleSession : AbsctractGameSession
                 portalSetter.portalManager.spawnAt = Vector3.zero;
             }
             portalSetter.SetPortalObjects(true, false, false);
-            if (portalSetter.portalManager.gameObject.activeSelf)
+            if (portalSetter.portalManager.gameObject.activeSelf && portalSetter.portalManager.gameObject != null)
             {
                 portalSetter.portalManager.gameObject.SetActive(false);
             }
