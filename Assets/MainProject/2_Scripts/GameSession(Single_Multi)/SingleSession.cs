@@ -162,9 +162,9 @@ public class SingleSession : AbsctractGameSession
         base.SortingLayerName(layer);
     }
 
-    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision)
+    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision, string prefabCode)
     {
-        onOffPrefabs.uIManager.OpenPopUp("Help_PopUp");
+        onOffPrefabs.uIManager.OpenPopUp(prefabCode);
         OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
     }
     #endregion

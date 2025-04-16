@@ -217,7 +217,7 @@ public abstract class AbsctractGameSession
         layer.SetLayerName(layer.basicLayer);
     }
 
-    public abstract void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision);
+    public abstract void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision, string prefabCode);
     #endregion
 
     #region UI On Off

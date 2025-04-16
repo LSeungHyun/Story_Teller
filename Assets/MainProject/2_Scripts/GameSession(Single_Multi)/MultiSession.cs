@@ -192,12 +192,12 @@ public class MultiSession : AbsctractGameSession
         }
     }
 
-    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision)
+    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision, string prefabCode)
     {
         PhotonView pv = collision.transform.GetComponent<PhotonView>();
         if (pv.IsMine)
         {
-            onOffPrefabs.uIManager.OpenPopUp("Help_PopUp");
+            onOffPrefabs.uIManager.OpenPopUp(prefabCode);
             OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
         }
     }

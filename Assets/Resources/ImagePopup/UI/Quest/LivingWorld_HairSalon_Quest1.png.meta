@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 6ebe54314f30732429fbc6fa849a22e5
+guid: aa7ac6dc7cf1d8d46944b08b72bd4b0c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2832043609162384439
-    second: "OBJECT_\uB2EC\uB825_0"
+      213: 3726696883636100880
+    second: LivingWorld_HairSalon_Quest1 1_0
   - first:
-      213: -1700241481295232560
-    second: "OBJECT_\uB2EC\uB825_1"
+      213: 8946042250590378306
+    second: LivingWorld_HairSalon_Quest1 1_1
   - first:
-      213: -1347673525962109126
-    second: "OBJECT_\uB2EC\uB825_2"
+      213: 8692131244362248730
+    second: LivingWorld_HairSalon_Quest1 1_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -141,24 +141,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "OBJECT_\uB2EC\uB825_0"
+      name: LivingWorld_HairSalon_Quest1 1_0
       rect:
         serializedVersion: 2
         x: 369
@@ -166,15 +153,59 @@ TextureImporter:
         width: 1356
         height: 1868
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7340a8068a07d4720800000000000000
-      internalID: 2832043609162384439
+      spriteID: 01f5fae1213e7b330800000000000000
+      internalID: 3726696883636100880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivingWorld_HairSalon_Quest1 1_1
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 130
+        width: 287
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 249531c570ab62c70800000000000000
+      internalID: 8946042250590378306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LivingWorld_HairSalon_Quest1 1_2
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 129
+        width: 500
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1239495057a0a870800000000000000
+      internalID: 8692131244362248730
       vertices: []
       indices: 
       edges: []
@@ -183,8 +214,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -193,9 +224,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "OBJECT_\uB2EC\uB825_0": 2832043609162384439
-      "OBJECT_\uB2EC\uB825_1": -1700241481295232560
-      "OBJECT_\uB2EC\uB825_2": -1347673525962109126
+      LivingWorld_HairSalon_Quest1 1_0: 3726696883636100880
+      LivingWorld_HairSalon_Quest1 1_1: 8946042250590378306
+      LivingWorld_HairSalon_Quest1 1_2: 8692131244362248730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
