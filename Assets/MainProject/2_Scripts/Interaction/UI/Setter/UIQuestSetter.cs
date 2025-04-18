@@ -10,6 +10,7 @@ public class UIQuestSetter : MonoBehaviour
     public UIPopUpOnOffManager uiPopUpOnOffManager;
     public QuestDictionary questDictionary;
     public UIQuestDetailSetter uiQuestDetailSetter;
+    public UIManager uiManager;
 
     public QuestData targetRow;
 
@@ -140,6 +141,7 @@ public class UIQuestSetter : MonoBehaviour
         }
         else
         {
+            uiManager.ClickAnim();
             CurrentObjectManager.Instance.SetCurrentObjData("Wrong_Answer");
             answerInput.text = "";
         }
