@@ -2110,6 +2110,7 @@ MonoBehaviour:
   uiPopUpOnOffManager: {fileID: 1769707345}
   questDictionary: {fileID: 62861758}
   uiQuestDetailSetter: {fileID: 62861759}
+  uiManager: {fileID: 336051549}
   targetRow:
     objCode: 
     name: 
@@ -15499,7 +15500,7 @@ Transform:
   m_GameObject: {fileID: 992003487}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35500002, y: -1.469, z: 0}
+  m_LocalPosition: {x: 1.5, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28395,7 +28396,7 @@ Transform:
   m_GameObject: {fileID: 1851276731}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35500002, y: -1.469, z: 0}
+  m_LocalPosition: {x: 1.5, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34477,7 +34478,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -34496,8 +34497,16 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: onConfirmBtn
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: ClickAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UIQuestSetter, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1530791953821852155, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
