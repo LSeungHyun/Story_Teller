@@ -1551,7 +1551,6 @@ GameObject:
   - component: {fileID: 91529740}
   - component: {fileID: 91529743}
   - component: {fileID: 91529742}
-  - component: {fileID: 91529741}
   m_Layer: 0
   m_Name: ArrivePopUp
   m_TagString: Interaction
@@ -1574,21 +1573,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 871976066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &91529741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91529739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847234d413683564fa5157a24ebed292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objCode: Ending_Road_In
-  isPassiveObject: 0
-  isTouchObject: 1
 --- !u!114 &91529742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23428,7 +23412,7 @@ Transform:
   m_GameObject: {fileID: 1277505752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.8630066, y: -2.53, z: 0}
+  m_LocalPosition: {x: 3.2, y: -2.53, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25224,7 +25208,7 @@ Transform:
   m_GameObject: {fileID: 1395562930}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.909363, y: -4.095833, z: 0.082107164}
+  m_LocalPosition: {x: 5.246357, y: -4.095833, z: 0.082107164}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36514,7 +36498,7 @@ Transform:
   m_GameObject: {fileID: 1938754919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3359985, y: -2.532, z: 0}
+  m_LocalPosition: {x: 2.6729927, y: -2.532, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
