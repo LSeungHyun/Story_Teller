@@ -853,10 +853,10 @@ PrefabInstance:
     - target: {fileID: 2661072924064145356, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: camBound
       value: 
-      objectReference: {fileID: 1937947410}
+      objectReference: {fileID: 587591771}
     - target: {fileID: 2661072924064145356, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: curLensSize
-      value: 2.5
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 4035737046941720022, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: m_IsActive
@@ -2885,6 +2885,7 @@ GameObject:
   - component: {fileID: 177769060}
   - component: {fileID: 177769063}
   - component: {fileID: 177769062}
+  - component: {fileID: 177769064}
   m_Layer: 0
   m_Name: Board
   m_TagString: Interaction
@@ -2933,8 +2934,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1274686295
+  m_SortingLayer: -1
   m_SortingOrder: 10
   m_Sprite: {fileID: 8271616306074456801, guid: 3cb1d4d2542ee5f4cae6dad40fde51c9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -3011,7 +3012,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.009689331, y: -0.40704584}
+  m_Offset: {x: 0.019874573, y: 0.021829844}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3021,8 +3022,29 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.594696, y: 0.7637005}
+  m_Size: {x: 1.496109, y: 1.2862382}
   m_EdgeRadius: 0
+--- !u!114 &177769064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177769059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  thePlayer: {fileID: 0}
+  spriteRenderer: {fileID: 177769060}
+  childSpriteGroup: []
+  basicLayer: 
+  currentSortingLayer: 
+  underObjectLayer: UnderObject
+  aboveObjectLayer: AboveObject
+  isColliding: 0
 --- !u!1 &181068355
 GameObject:
   m_ObjectHideFlags: 0
@@ -10894,6 +10916,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1316869575143791873, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
   m_PrefabInstance: {fileID: 587591769}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &587591771 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6750984227825645562, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
+  m_PrefabInstance: {fileID: 587591769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &589906267
 GameObject:
   m_ObjectHideFlags: 0
@@ -17649,11 +17676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8150881418284860496, guid: 4c966e72485a40e41878a159e0c6bad9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8150881418284860496, guid: 4c966e72485a40e41878a159e0c6bad9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.48
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8150881418284860496, guid: 4c966e72485a40e41878a159e0c6bad9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30342,7 +30369,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8621072024170991800, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       insertIndex: -1
       addedObject: {fileID: 748725579}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7727797901449105335, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1684437099}
   m_SourcePrefab: {fileID: 100100000, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
 --- !u!4 &1684437097 stripped
 Transform:
@@ -30354,6 +30384,49 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7727797901449105335, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
   m_PrefabInstance: {fileID: 1684437096}
   m_PrefabAsset: {fileID: 0}
+--- !u!68 &1684437099
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1684437098}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0.9}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5, y: 0}
+  - {x: 0.5, y: 0}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1684697556
 GameObject:
   m_ObjectHideFlags: 0
