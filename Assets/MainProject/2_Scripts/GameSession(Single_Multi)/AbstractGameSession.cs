@@ -274,6 +274,12 @@ public abstract class AbsctractGameSession
                 currentObjectManager.uiImageSetter.currentObjCode = currentObjCode;
                 break;
 
+            case "prefab":
+                if (currentObjectManager.uiDialogueSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
+                OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
+                currentObjectManager.onOffPrefabs.HandlePrefabInteraction(currentObjCode);
+                break;
+
             case "quest":
                 if (currentObjectManager.hintStateManager == null || currentObjectManager.uiQuestSetter == null || currentObjectManager.uiPopUpOnOffManager == null) return;
                 OnOffPlayerBtnGroup(currentObjectManager.managerConnector, false);
@@ -297,7 +303,11 @@ public abstract class AbsctractGameSession
         layer.SetLayerName(layer.basicLayer);
     }
 
-    public abstract void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision, string prefabCode);
+    public virtual void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, string prefabCode)
+    {
+        onOffPrefabs.uIManager.OpenPopUp(prefabCode);
+        OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
+    }
     #endregion
 
     #region UI On Off

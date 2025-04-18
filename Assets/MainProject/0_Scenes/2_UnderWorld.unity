@@ -10677,6 +10677,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objDataTypeContainer: {fileID: 11400000, guid: 8016a47747ee1f74ab9c7c196e1e0d1a, type: 2}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  onOffPrefabs: {fileID: 1769707351}
   uiContentsManager: {fileID: 0}
   uiPopUpOnOffManager: {fileID: 1769707345}
   uiPopUpManager: {fileID: 1769707346}
@@ -15048,10 +15049,10 @@ GameObject:
   m_Component:
   - component: {fileID: 965903949}
   - component: {fileID: 965903950}
-  - component: {fileID: 965903951}
+  - component: {fileID: 965903952}
   m_Layer: 0
   m_Name: Tutorial_Menual
-  m_TagString: Menual
+  m_TagString: Interaction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15117,7 +15118,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &965903951
+--- !u!114 &965903952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -15126,14 +15127,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 965903948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 928558e8102c52e4ebf0f95863a79235, type: 3}
+  m_Script: {fileID: 11500000, guid: 847234d413683564fa5157a24ebed292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uIManager: {fileID: 336051549}
-  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  isClickTrigger: 0
-  prefabCode: Help_PopUp
-  currentCollision: {fileID: 0}
+  objCode: Help_PopUp
+  isPassiveObject: 0
+  isTouchObject: 1
 --- !u!1 &969141953
 GameObject:
   m_ObjectHideFlags: 0
@@ -26945,6 +26944,7 @@ GameObject:
   - component: {fileID: 1769707346}
   - component: {fileID: 1769707348}
   - component: {fileID: 1769707350}
+  - component: {fileID: 1769707351}
   m_Layer: 5
   m_Name: PopUp_Manager
   m_TagString: Untagged
@@ -27090,6 +27090,20 @@ MonoBehaviour:
   - key: centerlabel
     value: 
     playersIsDone: []
+--- !u!114 &1769707351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769707343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 928558e8102c52e4ebf0f95863a79235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uIManager: {fileID: 336051549}
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
 --- !u!224 &1777512500 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9199201737040332289, guid: 028c3420a527aa2448af6843e43e2faf, type: 3}

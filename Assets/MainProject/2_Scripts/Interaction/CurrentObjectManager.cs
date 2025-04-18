@@ -7,7 +7,7 @@ public class CurrentObjectManager : MonoBehaviour
 
     [SerializeField] public ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
-
+    public OnOffPrefabs onOffPrefabs;
     public UIContentsManager uiContentsManager;
 
     public UIPopUpOnOffManager uiPopUpOnOffManager;

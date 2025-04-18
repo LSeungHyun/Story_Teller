@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Linq;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SingleSession : AbsctractGameSession
 {
@@ -162,10 +163,9 @@ public class SingleSession : AbsctractGameSession
         base.SortingLayerName(layer);
     }
 
-    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, Collider2D collision, string prefabCode)
+    public override void OnOffPrefabsPopUp(OnOffPrefabs onOffPrefabs, string prefabCode)
     {
-        onOffPrefabs.uIManager.OpenPopUp(prefabCode);
-        OnOffPlayerBtnGroup(onOffPrefabs.managerConnector, false);
+        base.OnOffPrefabsPopUp(onOffPrefabs, prefabCode);
     }
     #endregion
 
