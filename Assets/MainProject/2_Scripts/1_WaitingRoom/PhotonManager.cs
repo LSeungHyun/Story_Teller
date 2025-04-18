@@ -173,16 +173,19 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom()
     {
-        room_Code_Input.text.Trim();
+        // 1) 공백 제거 후 대문자 변환
+        string code = room_Code_Input.text.Trim().ToUpperInvariant();
+        room_Code_Input.text = code;
 
-        if (room_Code_Input.text == "")
+        // 2) 빈 문자열이면 에러 팝업
+        if (string.IsNullOrEmpty(code))
         {
             RoomCodeIsNull();
-
             return;
         }
 
-        PhotonNetwork.JoinRoom(room_Code_Input.text);
+        // 3) 정상적으로 방 참여
+        PhotonNetwork.JoinRoom(code);
     }
 
     /// <summary>
@@ -410,6 +413,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     public override void OnDisconnected(DisconnectCause cause)
     {
+        room_Code_Input.text = "";
         roomUIManager.popupDict["Title_Btn_Group"].SetActive(true);
         roomUIManager.ClosePopUp("Lobby_Group");
 
