@@ -60,11 +60,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   images:
-  - {fileID: 3080893221928130819, guid: bd854b9496c51164e92231a23f542c3b, type: 3}
   - {fileID: 4526629218525900979, guid: 182c922cde0366f478df2ef20d4a99a3, type: 3}
-  - {fileID: 5976950526850716370, guid: 6fa7de1843c3ee142b11421cb7adf4ef, type: 3}
   - {fileID: -6623523875815132342, guid: c6c62d89f463bc84b92388c4c641e1e2, type: 3}
+  - {fileID: 5976950526850716370, guid: 6fa7de1843c3ee142b11421cb7adf4ef, type: 3}
+  - {fileID: 3080893221928130819, guid: bd854b9496c51164e92231a23f542c3b, type: 3}
   displayImage: {fileID: 3728758532659847646}
+  currentIndex: 0
   indexDisplay: {fileID: 7827560456284341074}
 --- !u!1 &2289522066959022275
 GameObject:
@@ -101,7 +102,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 550}
-  m_SizeDelta: {x: 300, y: 300}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4575429687608394371
 CanvasRenderer:
