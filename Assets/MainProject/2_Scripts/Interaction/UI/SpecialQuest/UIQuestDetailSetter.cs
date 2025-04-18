@@ -63,7 +63,7 @@ public class UIQuestDetailSetter : MonoBehaviour
             closeButtonRect.SetParent(backgroundRect);
             closeButtonRect.anchorMin = closeButtonRect.anchorMax = new Vector2(1f, 1f);
             closeButtonRect.pivot = new Vector2(1f, 1f);
-            closeButtonRect.anchoredPosition = new Vector2(-20f, -20f);
+            closeButtonRect.anchoredPosition = new Vector2(-25f, -30f);
         }
     }
 }
