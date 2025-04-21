@@ -154,6 +154,14 @@ public class RoomUIManager : DoTweenManager
         blurAble = OnOff;
     }
 
+    public void ChatBool()
+    {
+        if (chatOn)
+        {
+            ChatUIStatus();
+        }
+    }
+
     public void ChatUIStatus()
     {
         if (!chatOn)
