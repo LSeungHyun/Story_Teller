@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class DynamicSortingLayer : MonoBehaviour
 {
@@ -48,18 +49,35 @@ public class DynamicSortingLayer : MonoBehaviour
         }
     }
 
+    // 유효한 충돌인지 판별해 주는 헬퍼
+    private bool IsValidCollision(Collider2D collision)
+    {
+        if (!GameManager.Instance.isType)
+        {
+            // isType==false 면 항상 허용
+            return true;
+        }
+
+        // isType==true 면, PlayerManager가 있고 내 PV인 경우만 허용
+        var player = collision.GetComponent<PlayerManager>();
+        return (player != null && player.PV.IsMine);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        session.SortingLayerIsCollision(this,true);
+        if (IsValidCollision(collision))
+        {
+            session.SortingLayerIsCollision(this, true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        session.SortingLayerIsCollision(this, false);
-
-        session.SortingLayerName(this);
-        //spriteRenderer.sortingLayerName = basicLayer;
-        //SetLayerName(basicLayer);
+        if (IsValidCollision(collision))
+        {
+            session.SortingLayerIsCollision(this, false);
+            session.SortingLayerName(this);
+        }
     }
 
     public void SetLayerName(string layerName)
