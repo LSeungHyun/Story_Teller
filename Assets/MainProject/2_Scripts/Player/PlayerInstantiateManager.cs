@@ -46,10 +46,10 @@ public class PlayerInstantiateManager : MonoBehaviour
                     prefabName = "GuestPlayer_Blue";
                     break;
                 case 2:
-                    prefabName = "GuestPlayer_Green";
+                    prefabName = "GuestPlayer_RedGuestPlayer_Green";
                     break;
                 case 3:
-                    prefabName = "GuestPlayer_Red";
+                    prefabName = "GuestPlayer_Green";
                     break;
                 default:
                     // 혹시 범위를 벗어나면 안전장치
