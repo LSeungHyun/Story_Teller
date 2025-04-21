@@ -179,11 +179,10 @@ public class MultiSession : AbsctractGameSession
 
     public override void SortingLayerIsCollision(DynamicSortingLayer layer, bool isCol)
     {
-        base.SortingLayerIsCollision(layer, isCol);
-        //if (layer.managerConnector.playerManager.PV.IsMine)
-        //{
-            
-        //}
+        if (layer.managerConnector.playerManager.PV.IsMine)
+        {
+            base.SortingLayerIsCollision(layer, isCol);
+        }
     }
     public override void SortingLayerName(DynamicSortingLayer layer)
     {
