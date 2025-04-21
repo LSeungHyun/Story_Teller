@@ -21,6 +21,7 @@ public class ScenePortalManager : MonoBehaviour
     {
         uiManager.RapidCloseAllUI();
 
+        managerConnector.portalManager.isNextMap = true;
         session.MovedPlayerScene(this, worldName);
     }
 }
