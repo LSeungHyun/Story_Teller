@@ -64,7 +64,18 @@ public class RoomUIManager : DoTweenManager
     {
         if (popupDict.ContainsKey(popupName))
         {
+            if (popupName == "Chat_PopUp_Group" && chatOn)
+            {
+                ClosePopUp(popupName);
+                chatOn = false;
+                return;
+            }
+
             ShowUI(popupDict[popupName]);
+            if (popupName == "Chat_PopUp_Group")
+            {
+                chatOn = true;
+            }
         }
         else
         {
@@ -80,6 +91,11 @@ public class RoomUIManager : DoTweenManager
         if (popupDict.ContainsKey(popupName))
         {
             HideUI(popupDict[popupName]);
+
+            if(popupName == "Chat_PopUp_Group")
+            {
+                chatOn = false;
+            }
         }
         else
         {
@@ -136,15 +152,6 @@ public class RoomUIManager : DoTweenManager
     public void BlurBoolStatus(bool OnOff)
     {
         blurAble = OnOff;
-    }
-
-    public void ChatBool(bool chatStatus)
-    {
-        chatOn = chatStatus;
-        if (chatOn)
-        {
-            ChatUIStatus();
-        }
     }
 
     public void ChatUIStatus()
