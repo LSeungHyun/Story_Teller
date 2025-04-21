@@ -1,28 +1,47 @@
 using UnityEngine;
 
 [ExecuteAlways]
-[RequireComponent(typeof(SpriteRenderer))]
 public class YSort : MonoBehaviour
 {
-    [Tooltip("기본 레이어 이름. 보통 'Default' 같은 걸 씁니다.")]
+    [Tooltip("공통으로 사용할 Sorting Layer 이름")]
     public string sortingLayerName = "Default";
 
-    [Tooltip("정렬 민감도: 100으로 놓으면 y=1.23 → order = -123")]
+    [Tooltip("정렬 민감도: 클수록 Y값 변화에 따른 order 변화가 큽니다.")]
     public int sortOrderFactor = 100;
 
-    SpriteRenderer sr;
+    [Tooltip("수동 할당을 우선시할 SpriteRenderer")]
+    public SpriteRenderer spriteRenderer;
 
     void Awake()
     {
-        sr = GetComponent<SpriteRenderer>();
-        // 레이어는 한 번만 세팅
-        sr.sortingLayerName = sortingLayerName;
+        // 인스펙터에 할당된 게 없으면, 우선 자기 자신에서 찾고
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+        // 그래도 없으면 부모에서 찾아보고
+        if (spriteRenderer == null)
+        {
+            spriteRenderer = GetComponentInParent<SpriteRenderer>();
+        }
+        // 그래도 없으면 에러 로그
+        if (spriteRenderer == null)
+        {
+            Debug.LogError($"[YSort] SpriteRenderer를 찾을 수 없습니다: {name}", this);
+            enabled = false;
+            return;
+        }
+
+        // 레이어 이름은 한 번만 세팅
+        spriteRenderer.sortingLayerName = sortingLayerName;
     }
 
     void LateUpdate()
     {
-        // y 좌표가 낮을수록(화면 아래일수록) order가 높아져서 앞에 그려집니다.
+        if (spriteRenderer == null) return;
+
+        // y가 낮을수록 앞에 그려지도록 order 계산
         int order = Mathf.RoundToInt(-transform.position.y * sortOrderFactor);
-        sr.sortingOrder = order;
+        spriteRenderer.sortingOrder = order;
     }
 }
