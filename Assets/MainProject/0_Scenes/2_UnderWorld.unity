@@ -2164,7 +2164,7 @@ MonoBehaviour:
   - objCode: UnderWorld_Bakery_Quest
     preFab: {fileID: 6599759867723365242, guid: 7fe5fbe9ecbc0f640abc5bd30b71c89b, type: 3}
   - objCode: UnderWorld_JungCafe_Quest
-    preFab: {fileID: 7890609040135389111, guid: 8bc9d5c034f856240be86b8bce540933, type: 3}
+    preFab: {fileID: 7890609040135389111, guid: a45de99d1434cac43913c5bb3981814b, type: 3}
   - objCode: UnderWorld_HairSalon_Quest
     preFab: {fileID: 2113135084285788230, guid: ccb30240fbd27ce4fa06d9f5cb71575c, type: 3}
   - objCode: UnderWorld_2ndFloor_Quest
@@ -11112,6 +11112,9 @@ MonoBehaviour:
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
   spawnAt: {x: 0, y: 0, z: 0}
   camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
+  CutScene_Fade: {fileID: 220100314}
+  fadeDuration: 1
+  fadeEase: 1
   isNextMap: 0
   uiManager: {fileID: 336051549}
 --- !u!114 &697344675
