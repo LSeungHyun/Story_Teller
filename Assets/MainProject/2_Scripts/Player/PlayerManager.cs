@@ -151,16 +151,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.CutSceneEnter(this, collision);
         }
-
-        //// "Back" 태그인지 확인
-        //if (collision.CompareTag("Back"))
-        //{
-        //    // 카운트 증가
-        //    backTriggerCount++;
-
-        //    // 첫 번째 Back 트리거에 들어간 시점 혹은 이미 들어있는 상황에서도 계속 "BackPlayer" 유지
-        //    sprite.sortingLayerName = "BackPlayer";
-        //}
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -168,21 +158,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.TriggerExitBasic(this, collision);
         }
-        //if (collision.CompareTag("Back"))
-        //{
-        //    // 카운트 감소
-        //    backTriggerCount--;
-
-        //    // 혹시나 예기치 않게 음수가 되지 않도록 0으로 클램프
-        //    if (backTriggerCount < 0)
-        //        backTriggerCount = 0;
-
-        //    // 더 이상 어떤 Back 트리거에도 들어있지 않다면 Default로 복귀
-        //    if (backTriggerCount == 0)
-        //    {
-        //        sprite.sortingLayerName = "Default";
-        //    }
-        //}
     }
 
 
