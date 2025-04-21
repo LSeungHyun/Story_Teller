@@ -1,10 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
-using DG.Tweening;
 using System.Collections;
 using UnityEngine.SceneManagement;
-using UnityEditor;
-using Unity.VisualScripting;
+
 
 public class UIManager : DoTweenManager
 {
