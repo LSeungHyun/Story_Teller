@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Text.RegularExpressions;
+using UnityEditor.PackageManager.Requests;
 
 public class ValidationManager : MonoBehaviour
 {
@@ -33,6 +34,10 @@ public class ValidationManager : MonoBehaviour
 
     #region LifeCycle Methods
 
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         if (isCheckingVerification)
@@ -62,7 +67,9 @@ public class ValidationManager : MonoBehaviour
 
         string noWhitespaceEmail = Regex.Replace(emailInput, @"\s+", "");
         StartCoroutine(SendEmailValidationRequest("sendEmail", noWhitespaceEmail));
+        //StartCoroutine(GetOutPost(noWhitespaceEmail));
         loggedInEmail = noWhitespaceEmail;
+        
     }
 
     public void OnValidateCode()
@@ -123,6 +130,25 @@ public class ValidationManager : MonoBehaviour
     #endregion
 
     #region Response Handling
+    private IEnumerator GetOutPost(string email)
+    {
+        string url = $"{AuthConstants.REDIRECT_URI}?action=getOut&email={UnityWebRequest.EscapeURL(email)}";
+
+        using (UnityWebRequest request = UnityWebRequest.Get(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                lastResponse = JsonUtility.FromJson<ValidationResponse>(request.downloadHandler.text);
+                Debug.Log(" 나 나가라고?? : " + lastResponse.status + lastResponse.message);
+                HandleServerResponse(lastResponse);
+            }
+        }
+
+        yield return new WaitForSeconds(10f);
+    }
+
     private IEnumerator CheckVerificationStatus(string email)
     {
         string url = $"{AuthConstants.REDIRECT_URI}?action=checkVerificationStatus&email={UnityWebRequest.EscapeURL(email)}";
@@ -137,6 +163,10 @@ public class ValidationManager : MonoBehaviour
                 Debug.Log(" 서버 응답 확인: " + lastResponse.status + lastResponse.message);
                 HandleServerResponse(lastResponse);
             }
+            else
+            {
+                Debug.Log("아직 게임해도돼");
+            }
         }
     }
 
@@ -150,6 +180,7 @@ public class ValidationManager : MonoBehaviour
 
             case "SendEmail":
                 StopAllCoroutines();
+                //StartCoroutine(GetOutPost(loggedInEmail));
                 break;
 
             //이메일 인증 완료
@@ -171,7 +202,12 @@ public class ValidationManager : MonoBehaviour
             case "ERROR":
                 loginUIManager.ActiveCodeErrorGroup();
                 break;
-           
+            case "GetOut":
+                //Debug.Log("씨ㅃㅁㄴ읾ㄴㅇㄻㄴㅇㄻㄴㄹㅇ");
+                break;
+            case "Continue":
+                Debug.Log("계속하세요");
+                break;
             default:
                 //resultText.text = $" 알 수 없는 응답: {response.message}";
                 break;
