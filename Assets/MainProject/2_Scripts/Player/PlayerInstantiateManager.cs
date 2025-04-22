@@ -46,7 +46,7 @@ public class PlayerInstantiateManager : MonoBehaviour
                     prefabName = "GuestPlayer_Blue";
                     break;
                 case 2:
-                    prefabName = "GuestPlayer_RedGuestPlayer_Green";
+                    prefabName = "GuestPlayer_Red";
                     break;
                 case 3:
                     prefabName = "GuestPlayer_Green";

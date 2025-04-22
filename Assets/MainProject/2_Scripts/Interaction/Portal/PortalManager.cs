@@ -5,20 +5,23 @@ using UnityEngine.UI;
 
 public class PortalManager : MonoBehaviour
 {
-    //public PortalSetter portalSetter;
+    public AbsctractGameSession session;
 
-    public ManagerConnector managerConnector;
-    public Vector3 spawnAt;
+    public UIManager uiManager;
+
+    public ManagerConnector managerConnector;  
     public CamBoundContainer camBoundContainer;
 
+    public GameObject centerLabelGroup;
     public Image CutScene_Fade;
     public float fadeDuration = 1f;
     public Ease fadeEase = Ease.Linear;
-    public AbsctractGameSession session;
+
+    public Vector3 spawnAt;
+
     public bool isNextMap;
 
-
-    public UIManager uiManager;
+    
     private void Awake()
     {
         session = GameManager.Instance.Session;
@@ -52,6 +55,12 @@ public class PortalManager : MonoBehaviour
                                   .SetEase(fadeEase)
                                   .WaitForCompletion();
 
+        if(centerLabelGroup != null)
+        {
+            centerLabelGroup.SetActive(true);
+            managerConnector.uiCenterLabelSetter.SetData("Arrive");
+        }
+        
         CutScene_Fade.gameObject.SetActive(false);
     }
 }

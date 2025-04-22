@@ -464,8 +464,8 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     {
         //RoomUpdate();
         RoomInfoUpdate();
-        
-        //Debug.Log("누군가 나갔다!");
+
+        Debug.Log("누군가 나갔다!");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

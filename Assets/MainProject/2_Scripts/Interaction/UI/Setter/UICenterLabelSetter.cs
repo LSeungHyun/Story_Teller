@@ -17,6 +17,10 @@ public class UICenterLabelSetter : UIContentsManager
     public int closeTime = 0;
     public string currentObjCode;
 
+    private void Awake()
+    {
+        managerConnector.uiCenterLabelSetter = this;
+    }
     public override void SetData(string currentObjCode)
     {
         centerLabelList = centerLabelContainer.centerLabelDatas.FirstOrDefault(r => r.objCode == currentObjCode).dataList;

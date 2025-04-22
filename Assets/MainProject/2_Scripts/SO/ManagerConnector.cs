@@ -8,6 +8,7 @@ public class ManagerConnector : ScriptableObject
 
     public UINextSetter uiNextSetter;
     public UIManager uiManager;
+    public UICenterLabelSetter uiCenterLabelSetter;
     public PortalManager portalManager;
     public ScenePortalManager scenePortalManager;
     public HintStateManager hintStateManager;

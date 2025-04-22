@@ -11074,7 +11074,6 @@ GameObject:
   m_Component:
   - component: {fileID: 697344673}
   - component: {fileID: 697344674}
-  - component: {fileID: 697344675}
   m_Layer: 0
   m_Name: Portal_Manager
   m_TagString: Untagged
@@ -11109,29 +11108,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d4382448bac5d40b4a80897b0df62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 336051549}
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  spawnAt: {x: 0, y: 0, z: 0}
   camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
+  centerLabelGroup: {fileID: 2127122735}
   CutScene_Fade: {fileID: 426889891}
   fadeDuration: 1
   fadeEase: 1
+  spawnAt: {x: 0, y: 0, z: 0}
   isNextMap: 0
-  uiManager: {fileID: 336051549}
---- !u!114 &697344675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 697344672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 847234d413683564fa5157a24ebed292, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objCode: Arrive
-  isPassiveObject: 1
-  isTouchObject: 0
 --- !u!1001 &700773623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35858,6 +35843,7 @@ GameObject:
   - component: {fileID: 7245595300413405650}
   - component: {fileID: 7245595300413405651}
   - component: {fileID: 7245595300413405652}
+  - component: {fileID: 7245595300413405653}
   m_Layer: 0
   m_Name: ArrivePopUp
   m_TagString: Interaction
@@ -38596,6 +38582,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objCode: UnderWorld_Road_In
+  isPassiveObject: 0
+  isTouchObject: 1
+--- !u!114 &7245595300413405653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4955286839357707416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847234d413683564fa5157a24ebed292, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objCode: Correct_Answer
   isPassiveObject: 0
   isTouchObject: 1
 --- !u!1 &7383275435785059493
