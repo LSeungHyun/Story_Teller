@@ -6,7 +6,7 @@ using System.Collections;
 
 public class PlayerManager : MonoBehaviour
 {
-    public float testSpeed = 3f;
+    public float playerSpeed = 1.5f;
     [SerializeField] private ObjDataTypeContainer objDataTypeContainer;
     public ManagerConnector managerConnector;
     public PhotonView PV;
@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
 
     void Awake()
     {
-        testSpeed = 3f;
+        playerSpeed = 1.5f;
         isMove = false;
         if (!GameManager.Instance.isType)
         {
@@ -72,7 +72,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.AnimControllerBasic(this);
         }
-        //Move();
     }
 
     void FixedUpdate()
@@ -88,18 +87,9 @@ public class PlayerManager : MonoBehaviour
                 session.MoveBasic(this);
             }
         }
-        //Move();
     }
     #endregion
 
-    public void Move()
-    {
-        inputVec.x = Input.GetAxisRaw("Horizontal");
-        inputVec.y = Input.GetAxisRaw("Vertical");
-
-        Vector2 nextVec = inputVec.normalized * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec * 3);
-    }
 
     #region KeyCode Input
     /// <summary>

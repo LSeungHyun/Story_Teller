@@ -51,7 +51,7 @@ public abstract class AbsctractGameSession
         playerManager.inputVec.y = Input.GetAxisRaw("Vertical");
 
         Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
-        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * playerManager.playerSpeed);
     }
 
     public virtual void JoystickMoveBasic(PlayerManager playerManager)
@@ -61,7 +61,7 @@ public abstract class AbsctractGameSession
 
         Vector2 nextVec = playerManager.inputVec.normalized * Time.fixedDeltaTime;
 
-        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * 3f);
+        playerManager.rigid.MovePosition(playerManager.rigid.position + nextVec * playerManager.playerSpeed);
     }
     protected enum Direction { None, Left, Right, Up, Down }
 

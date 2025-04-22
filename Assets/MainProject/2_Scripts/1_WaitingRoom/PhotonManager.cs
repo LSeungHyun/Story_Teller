@@ -28,7 +28,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     private const string characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     // 현재 서버 상태를 알려주는 텍스트 및 방 코드를 입력 받는 오브젝트
-    public Text StatusText;
+    //public Text StatusText;
     public InputField room_Code_Input;
     public Text room_Code_Text;
 
@@ -382,7 +382,6 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
     private void RoomCodeIsNull()
     {
-        //Debug.Log("코드에러창 띄우기");
         roomUIManager.OpenPopUp("Room_Code_Error");
     }
 
@@ -390,11 +389,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// <summary>
     /// 게임 상태 Log로 확인
     /// </summary>
-    private void LogUpdate()
-    {
-        //메서드로 분리 후 모든 Title씬 버튼 기능에 할당하기
-        StatusText.text = "Log : " + PhotonNetwork.NetworkClientState.ToString();
-    }
+    //private void LogUpdate()
+    //{
+    //    //메서드로 분리 후 모든 Title씬 버튼 기능에 할당하기
+    //    StatusText.text = "Log : " + PhotonNetwork.NetworkClientState.ToString();
+    //}
 
     #endregion
 
@@ -408,7 +407,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.OpenPopUp("Lobby_Group");
 
-        LogUpdate();
+        //LogUpdate();
     }
 
     public override void OnDisconnected(DisconnectCause cause)
@@ -419,53 +418,42 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         roomUIManager.BlurBoolStatus(true);
 
-        LogUpdate();
+        //LogUpdate();
     }
 
     public override void OnJoinedRoom()
     {
-        //Debug.Log("방 참가 콜백 완료");
-
         roomUIManager.CloseAllPopUps();
         roomUIManager.OpenPopUp("Waiting_Room");
         roomUIManager.OpenPopUp("UI_Btn_Group");
 
         room_Code_Text.text = PhotonNetwork.CurrentRoom.Name;
 
-        //MasterStartBtnOnOff();
         RoomInfoUpdate();
 
-        LogUpdate();
+        //LogUpdate();
 
         ClearChatMessage();
     }
 
     public override void OnLeftRoom()
     {
-        //Debug.Log("방 나가기 콜백 완료");
-
         roomUIManager.ClosePopUp("Waiting_Room");
         roomUIManager.ClosePopUp("UI_Btn_Group");
 
-        LogUpdate();
+        //LogUpdate();
 
         ClearChatMessage();
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        //RoomUpdate();
         RoomInfoUpdate();
-        
-        //Debug.Log("누군가 들어왔다!");
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        //RoomUpdate();
         RoomInfoUpdate();
-
-        Debug.Log("누군가 나갔다!");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
