@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -54,6 +55,7 @@ public class UIManager : DoTweenManager
     [Header("Blur Object")]
     public GameObject DarkObject;
     public GameObject BlurObject;
+    public Image Fade_BlackObject;
 
     [Header("UI Button Group")]
     public GameObject UI_Button_Group;
@@ -75,6 +77,7 @@ public class UIManager : DoTweenManager
     void Awake()
     {
         managerConnector.uiManager = this;
+        managerConnector.FadeImage = Fade_BlackObject;
         SetPopUpDict();
         SetPanelDict();
     }

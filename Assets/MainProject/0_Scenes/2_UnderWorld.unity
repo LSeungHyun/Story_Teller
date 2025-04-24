@@ -5702,7 +5702,6 @@ Transform:
   - {fileID: 810537328}
   - {fileID: 1769707347}
   - {fileID: 1148156095}
-  - {fileID: 1995057776}
   m_Father: {fileID: 150928734}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &336051549
@@ -5778,6 +5777,7 @@ MonoBehaviour:
     IconObj: {fileID: 990149569}
   DarkObject: {fileID: 220100312}
   BlurObject: {fileID: 1533339714}
+  Fade_BlackObject: {fileID: 426889891}
   UI_Button_Group: {fileID: 1289076335}
   blurAble: 1
   chatOn: 0
@@ -17804,7 +17804,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1995057776}
   m_Father: {fileID: 336051548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157169672
@@ -19940,7 +19941,6 @@ Transform:
   m_Children:
   - {fileID: 697344673}
   - {fileID: 183681313}
-  - {fileID: 1253358730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1245198105
@@ -20271,12 +20271,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1253358729}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1245198104}
+  m_Father: {fileID: 1658486978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1253358731
 MonoBehaviour:
@@ -26811,6 +26811,7 @@ Transform:
   - {fileID: 596635045}
   - {fileID: 369574308}
   - {fileID: 1760851789}
+  - {fileID: 1253358730}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1661699769
@@ -32556,12 +32557,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995057775}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 336051548}
+  m_Father: {fileID: 1148156095}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1995057777
 MonoBehaviour:

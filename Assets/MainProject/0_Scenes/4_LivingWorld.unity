@@ -883,7 +883,7 @@ PrefabInstance:
       objectReference: {fileID: 587591771}
     - target: {fileID: 2661072924064145356, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: curLensSize
-      value: 1.8
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4035737046941720022, guid: dca4dfc53bfa22540a627b615043bc05, type: 3}
       propertyPath: m_IsActive
@@ -11026,6 +11026,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1316869575143791873, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3980664558524868120, guid: 6ba6256fb838bcb4094f2b8f0d2771cc, type: 3}
@@ -33416,7 +33420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1755378346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33444,11 +33448,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d4382448bac5d40b4a80897b0df62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  spawnAt: {x: 0, y: 0, z: 0}
-  camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
-  isNextMap: 0
   uiManager: {fileID: 0}
+  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  camBoundContainer: {fileID: 11400000, guid: e1ae89b5b9d7ed54e906a0be949dcffe, type: 2}
+  centerLabelGroup: {fileID: 0}
+  CutScene_Fade: {fileID: 0}
+  fadeDuration: 1
+  fadeEase: 1
+  spawnAt: {x: 0, y: 0, z: 0}
+  isNextMap: 0
+  firstSet: 0
 --- !u!4 &1755378348
 Transform:
   m_ObjectHideFlags: 0

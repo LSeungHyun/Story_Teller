@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "ManagerConnector", menuName = "Scriptable Objects/ManagerConnector")]
 public class ManagerConnector : ScriptableObject
@@ -18,6 +19,7 @@ public class ManagerConnector : ScriptableObject
     public Transform cutSceneTransform;
     public FloatingJoystick joystick;
     public GameObject webglBtn;
+    public Image FadeImage;
 
     public TextDataManager textDataManager;
     public bool isMobile = false;
