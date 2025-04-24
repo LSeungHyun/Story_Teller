@@ -13,6 +13,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public static PhotonManager instance;
 
     public ManagerConnector managerConnector;
+    public SoundContainer soundContainer;
     public float inactivityLimit = 30f; // 비활성 시간 제한 (초)
     public float inactivityTimer = 0f;
 
@@ -511,6 +512,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     /// <param name="isTrue"> 활용하지 않는 대기실을 ON/OFF 할지 선택 가능  </param>
     public void RefreshPlayerUI()
     {
+
         // 1) 현재 방 인원 정보
         int currentCount = PhotonNetwork.CurrentRoom.PlayerCount;
         int maxCount = PhotonNetwork.CurrentRoom.MaxPlayers;
@@ -560,6 +562,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
                 else
                 {
                     NameTextList[i].color = Color.white;
+                    if (soundContainer != null)
+                    {
+                        soundContainer.soundManager.Play("Join_Sound");
+                    }
                 }
             }
             else

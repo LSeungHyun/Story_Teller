@@ -7,7 +7,6 @@ public class UIPopUpOnOffManager : MonoBehaviour
     public ManagerConnector managerConnector;
     public UIPopUpStructure uiPopupStructure;
     public UIPopUpManager uiPopUpManager;
-    public SoundContainer soundContainer;
     //포탈세터에 있는 isCutScene받아와서 조이스틱 처리 추가
 
     public void OpenWindow(bool isQuest, bool isDial)
@@ -18,11 +17,6 @@ public class UIPopUpOnOffManager : MonoBehaviour
         session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
 
         session.OnOffPlayerBtnGroup(managerConnector, false);
-
-        if(soundContainer != null )
-        {
-            soundContainer.soundManager.Play("Enter_Sound");
-        }
     }
     public void ClosePopUpWindow()
     {

@@ -21,6 +21,16 @@ public class DoTweenManager : MonoBehaviour
     // 모든 버튼 OnClick에서 이 메서드를 호출
     public void ClickAnim()
     {
+        SoundContainer.soundManager.Play("button_sound");
+
+        BtnAnim();
+    }
+    public void ClickAnimWithoutSound()
+    {
+        BtnAnim();
+    }
+    public void BtnAnim()
+    {
         GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
         if (clickedObj == null)
         {
@@ -36,8 +46,6 @@ public class DoTweenManager : MonoBehaviour
             return;
         }
 
-        SoundContainer.soundManager.Play("button_sound");
-
         // 3) 이전 트위닝 중단
         rect.DOKill();
 
@@ -50,7 +58,6 @@ public class DoTweenManager : MonoBehaviour
 
         //Debug.Log("클릭애니메이션 완료 for " + clickedObj.name);
     }
-
     /// <summary>
     /// 팝업(패널) 보여줄 때 (스케일 0→1)
     /// </summary>

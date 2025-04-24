@@ -43,6 +43,11 @@ public class UIDialogueSetter : UIPopUpManager
                 dialogueList = dialogueData.dataList;
                 totalDataPage = dialogueList.Length;
             }
+
+            if (soundContainer != null && !currentObjCode.Contains("Answer"))
+            {
+                soundContainer.soundManager.Play("Enter_Sound");
+            }
         }
         currentDataPage = 1;
         DisplayPage();

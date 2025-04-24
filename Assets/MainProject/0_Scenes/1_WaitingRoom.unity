@@ -11163,6 +11163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
+  soundContainer: {fileID: 11400000, guid: 8fbd0b02513bd20488f8935eb2fbbc38, type: 2}
   inactivityLimit: 3600
   inactivityTimer: 0
   roomUIManager: {fileID: 1701386609}
@@ -14547,6 +14548,15 @@ MonoBehaviour:
     loop: 0
   - soundName: Enter_Sound
     clip: {fileID: 8300000, guid: 04f4a2d8b8637ba4591afd4b6c3ab35f, type: 3}
+    loop: 0
+  - soundName: Wrong_Sound
+    clip: {fileID: 8300000, guid: a7e7bca608a80ad4791578aae3bea66a, type: 3}
+    loop: 0
+  - soundName: Correct_Sound
+    clip: {fileID: 8300000, guid: b6a382b23e01851499dfc1f351dcc543, type: 3}
+    loop: 0
+  - soundName: Join_Sound
+    clip: {fileID: 8300000, guid: 423423ba38f13fd4c948173ed5dad58b, type: 3}
     loop: 0
   crossfadeDuration: 1
 --- !u!4 &2036225045

@@ -11,6 +11,7 @@ public class UIQuestSetter : MonoBehaviour
     public QuestDictionary questDictionary;
     public UIQuestDetailSetter uiQuestDetailSetter;
     public UIManager uiManager;
+    public SoundContainer soundContainer;
 
     public QuestData targetRow;
 
@@ -39,6 +40,10 @@ public class UIQuestSetter : MonoBehaviour
             targetRow = questContainer.questDatas.FirstOrDefault(r => r.objCode == currentObjCode);
             if (targetRow != null)
             {
+                if (soundContainer != null)
+                {
+                    soundContainer.soundManager.Play("Enter_Sound");
+                }
                 nameDisplay.text = targetRow.name;
                 answer = targetRow.answer;
                 isDone = targetRow.isDone;
@@ -133,6 +138,10 @@ public class UIQuestSetter : MonoBehaviour
     {
         if(answerInput.text == answer)
         {
+            if (soundContainer != null)
+            {
+                soundContainer.soundManager.Play("Correct_Sound");
+            }
             targetRow.isDone = true;
             dark_Obj.SetActive(false);
             uiPopUpOnOffManager.ClosePopUpWindow();
@@ -141,7 +150,11 @@ public class UIQuestSetter : MonoBehaviour
         }
         else
         {
-            uiManager.ClickAnim();
+            if (soundContainer != null)
+            {
+                soundContainer.soundManager.Play("Wrong_Sound");
+            }
+            uiManager.ClickAnimWithoutSound();
             CurrentObjectManager.Instance.SetCurrentObjData("Wrong_Answer");
             answerInput.text = "";
         }

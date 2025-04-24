@@ -16,6 +16,10 @@ public class UIImageSetter : UIPopUpManager
     public override void SetData(string currentObjCode)
     {
         imageLists = imageContainer?.imageDatas?.FirstOrDefault(data => data.objCode == currentObjCode)?.dataList;
+        if (soundContainer != null)
+        {
+            soundContainer.soundManager.Play("Enter_Sound");
+        }
         currentDataPage = 1;
         totalDataPage = imageLists?.Length ?? 0;
         DisplayPage();
