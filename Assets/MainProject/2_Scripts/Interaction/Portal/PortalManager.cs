@@ -32,7 +32,11 @@ public class PortalManager : MonoBehaviour
 
     public void OnEnable()
     {
-        uiManager.RapidCloseAllUI();
+        uiManager.RapidCloseAllUI(); 
+        if (centerLabelGroup == null)
+        {
+            centerLabelGroup = managerConnector.uiCenterLabelSetter.uiCenterLabelOnOffManager.centerLabelGroup;
+        }
         if (CutScene_Fade == null)
         {
             CutScene_Fade = managerConnector.FadeImage;

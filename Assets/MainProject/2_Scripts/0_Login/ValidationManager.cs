@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Text.RegularExpressions;
-using UnityEditor.PackageManager.Requests;
 
 public class ValidationManager : MonoBehaviour
 {
     #region Constants
     private static class AuthConstants
     {
-        public const string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec";
+        public const string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbw4xz3SKz7Fvz6XMty8lZbf7jVq5fio1VSW6ghOP8x0fX1hy6aL7o4nGaFlEJZUCrLn/exec";
     }
 
     public LoginUIManager loginUIManager;

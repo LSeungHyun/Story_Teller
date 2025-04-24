@@ -166,7 +166,7 @@ public class TextDataManager : MonoBehaviour
     public PhotonView PV;
 
     [SerializeField]
-    private string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbz_7LAdgvaWfHCwPY3Qiih4dwNTON3eFVALTmlpEX865xrpjXDJSekvtdT4NR01Cm1Z/exec";
+    private string REDIRECT_URI = "https://script.google.com/macros/s/AKfycbw4xz3SKz7Fvz6XMty8lZbf7jVq5fio1VSW6ghOP8x0fX1hy6aL7o4nGaFlEJZUCrLn/exec";
 
     // SO 레퍼런스
     [SerializeField]

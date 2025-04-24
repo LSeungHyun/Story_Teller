@@ -22,7 +22,7 @@ public class CurrentObjectManager : MonoBehaviour
     public HintStateManager hintStateManager;
     public BubbleSetter bubbleSetter;
 
-    string[] validCodes = { "Enter_Wait", "Enter_Move", "Enter_Wait_Scene", "Enter_Move_Scene" };
+    string[] validCodes = { "Enter_Wait", "Enter_Move", "Enter_Wait_Scene", "Enter_Move_Scene", "Enter_Wait_CutScene", "UnderWorld_Ending" };
     string[] moveCodes = { "Enter_Move", "Enter_Move_Scene" };
 
     public string newObjCode;
