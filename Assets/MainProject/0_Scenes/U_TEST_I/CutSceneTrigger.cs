@@ -19,7 +19,6 @@ public class CutsceneTrigger : DoTweenManager
     private void OnEnable()
     {
         managerConnector.cutSceneTransform = this.gameObject.transform;
-        managerConnector.FadeImage = CutScene_Fade;
         session = GameManager.Instance.Session;
         UIManager = managerConnector.uiManager;
         UIManager.RapidCloseAllUI();

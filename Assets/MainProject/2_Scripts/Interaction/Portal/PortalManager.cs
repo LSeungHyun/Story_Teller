@@ -28,13 +28,15 @@ public class PortalManager : MonoBehaviour
         managerConnector.portalManager = this;
         if (uiManager != null) return;
         uiManager = managerConnector.uiManager;
-        CutScene_Fade = managerConnector.FadeImage;
     }
 
     public void OnEnable()
     {
         uiManager.RapidCloseAllUI();
-
+        if (CutScene_Fade == null)
+        {
+            CutScene_Fade = managerConnector.FadeImage;
+        }
         StartCoroutine(FadeInOut());
     }
 
