@@ -53,7 +53,6 @@ public class UINextSetter : MonoBehaviour
     }
     public void SetNextCode(string currentObjCode)
     {
-        Debug.Log("SetNextCode"+currentObjCode);
         if (string.IsNullOrEmpty(currentObjCode)) return;
 
         var matchingDataList = nextDataContainer?.nextDatas?.Where(data => data.objCode == currentObjCode);
@@ -85,7 +84,6 @@ public class UINextSetter : MonoBehaviour
 
     public void ProcessNextCode(string currentObjCode)
     {
-        Debug.Log("2 : ProcessNextCode : " + currentObjCode);
         var foundItem = currentObjCodeDict.Find(x => x.value == currentObjCode);
         if (foundItem == null || string.IsNullOrEmpty(foundItem.value))
             return;

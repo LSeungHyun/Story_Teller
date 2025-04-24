@@ -5,6 +5,7 @@ using System.Linq;
 public class BubbleSetter : UIContentsManager
 {
     [SerializeField] public BubbleContainer bubbleContainer;
+    public SoundContainer soundContainer;
 
     public BubbleData targetRow;
     public string textData;
@@ -51,6 +52,11 @@ public class BubbleSetter : UIContentsManager
     {
         if (balloonPrefab != null && isBubble == false)
         {
+            if (soundContainer != null)
+            {
+                soundContainer.soundManager.Play("Bubble_Sound");
+            }
+
             currentBalloon = Instantiate(balloonPrefab, currentObjOffset, Quaternion.identity);
             textDisplay = currentBalloon.GetComponentInChildren<Text>();
             textDisplay.text = textData;

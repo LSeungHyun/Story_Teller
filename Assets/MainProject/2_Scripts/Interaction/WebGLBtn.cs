@@ -7,6 +7,7 @@ public class WebGLBtn : MonoBehaviour
     public Image image;
     public Sprite buttonDefaultImage;
     public Sprite buttonActiontImage;
+    public SoundContainer soundContainer;
 
     private void Awake()
     {
@@ -20,7 +21,11 @@ public class WebGLBtn : MonoBehaviour
 
     public void PressBtnF()
     {
-        isClick = true;
+        isClick = true; 
+        if (soundContainer != null)
+        {
+            soundContainer.soundManager.Play("Click_Sound");
+        }
         image.sprite = buttonActiontImage;
         Invoke(nameof(ResetClick), 0.1f);
     }
