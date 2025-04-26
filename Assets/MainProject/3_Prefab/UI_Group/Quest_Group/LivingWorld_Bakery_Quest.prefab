@@ -180,6 +180,85 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpImage: {fileID: 6990027952552929588}
   hoverSprite: {fileID: 21300000, guid: ef0b044608b0c1843b6bb6572a49ea3f, type: 3}
+--- !u!1 &2113160952311185704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8943552573293591203}
+  - component: {fileID: 3981743654694755392}
+  - component: {fileID: 8015425373269821774}
+  m_Layer: 5
+  m_Name: Text (Legacy)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8943552573293591203
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113160952311185704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7777393286730358631}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -33.687683, y: -362}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3981743654694755392
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113160952311185704}
+  m_CullTransparentMesh: 1
+--- !u!114 &8015425373269821774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113160952311185704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 7b51f0c7141a0be45b4871c65e8f38fd, type: 3}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "\uCF00\uC774\uD06C\uB97C \uD130\uCE58\uD574 \uC774\uB984\uC744 \uD655\uC778\uD558\uC138\uC694."
 --- !u!1 &4472220014915434614
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   popUpImage: {fileID: 6990027952552929588}
   hoverSprite: {fileID: 21300000, guid: bb8c8c1e35220ce43a2e8131594c1179, type: 3}
---- !u!1 &5171760499215550303
+--- !u!1 &4847017207593114854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -278,56 +357,50 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7777393286730358631}
-  - component: {fileID: 1150775808909137695}
-  - component: {fileID: 6275843725722092093}
+  - component: {fileID: 5358857187307577642}
+  - component: {fileID: 4448442352733000315}
+  - component: {fileID: 5079523459869733903}
   m_Layer: 0
-  m_Name: LivingWorld_Bakery_Quest
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7777393286730358631
+--- !u!224 &5358857187307577642
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5171760499215550303}
+  m_GameObject: {fileID: 4847017207593114854}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 4452607433695404978}
-  - {fileID: 2704621657808060938}
-  - {fileID: 5313101238198713080}
-  - {fileID: 1914057673748201467}
-  - {fileID: 9186353317408248934}
-  - {fileID: 8415773173348105845}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 7777393286730358631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1262, y: 572}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1150775808909137695
+--- !u!222 &4448442352733000315
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5171760499215550303}
+  m_GameObject: {fileID: 4847017207593114854}
   m_CullTransparentMesh: 1
---- !u!114 &6275843725722092093
+--- !u!114 &5079523459869733903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5171760499215550303}
+  m_GameObject: {fileID: 4847017207593114854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -351,6 +424,58 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5171760499215550303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7777393286730358631}
+  - component: {fileID: 1150775808909137695}
+  m_Layer: 0
+  m_Name: LivingWorld_Bakery_Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7777393286730358631
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171760499215550303}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 5358857187307577642}
+  - {fileID: 4452607433695404978}
+  - {fileID: 2704621657808060938}
+  - {fileID: 5313101238198713080}
+  - {fileID: 1914057673748201467}
+  - {fileID: 9186353317408248934}
+  - {fileID: 8415773173348105845}
+  - {fileID: 8943552573293591203}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 33.687683, y: -155.48169}
+  m_SizeDelta: {x: 1329.3755, y: 882.9634}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1150775808909137695
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5171760499215550303}
+  m_CullTransparentMesh: 1
 --- !u!1 &5172470251669200535
 GameObject:
   m_ObjectHideFlags: 0

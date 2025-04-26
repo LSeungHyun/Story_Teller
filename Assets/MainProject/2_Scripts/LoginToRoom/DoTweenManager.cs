@@ -21,15 +21,37 @@ public class DoTweenManager : MonoBehaviour
     // 모든 버튼 OnClick에서 이 메서드를 호출
     public void ClickAnim()
     {
+
+        GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
+        if (clickedObj == null)
+        {
+            Debug.LogWarning("No currentSelectedGameObject found.");
+            return;
+        }
+
+        // 2) RectTransform 가져오기
+        RectTransform rect = clickedObj.GetComponent<RectTransform>();
+        if (rect == null)
+        {
+            Debug.LogWarning("Clicked object has no RectTransform.");
+            return;
+        }
+
         SoundContainer.soundManager.Play("button_sound");
 
-        BtnAnim();
+        // 3) 이전 트위닝 중단
+        rect.DOKill();
+
+        // 4) 축소 후 다시 확대
+        rect.DOScale(shrinkScale, tweenDuration).SetEase(easeType)
+            .OnComplete(() =>
+            {
+                rect.DOScale(1f, tweenDuration).SetEase(easeType);
+            });
+
+        //Debug.Log("클릭애니메이션 완료 for " + clickedObj.name);
     }
     public void ClickAnimWithoutSound()
-    {
-        BtnAnim();
-    }
-    public void BtnAnim()
     {
         GameObject clickedObj = EventSystem.current.currentSelectedGameObject;
         if (clickedObj == null)
