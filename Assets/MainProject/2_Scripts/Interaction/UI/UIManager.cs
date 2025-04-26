@@ -403,6 +403,31 @@ public class UIManager : DoTweenManager
         }
     }
 
+    public void DeactivateAllSpecialPopUps()
+    {
+        // 비활성화할 팝업 이름들
+        string[] keys = {
+            "Hint_PopUp_Group",    // 힌트
+            "Chat_PopUp_Group",    // 채팅
+            "Help_PopUp",    // 도움말
+            "Audio_Setting_PopUp",    // 오디오
+        };
+
+        foreach (var key in keys)
+        {
+            if (popUpDict.TryGetValue(key, out PopUp_Group popup))
+            {
+                popup.PopUp_Obj.SetActive(false);
+                popup.isActive = false;
+            }
+        }
+
+        DarkObject.SetActive(false);
+        BlurObject.SetActive(false);
+
+        // 채팅 상태도 초기화
+        chatOn = false;
+    }
     public void SceneMove(string sceneName)
     {
         //ExitGame();

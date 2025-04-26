@@ -88,6 +88,7 @@ public class UINextSetter : MonoBehaviour
         if (foundItem == null || string.IsNullOrEmpty(foundItem.value))
             return;
 
+        managerConnector.uiManager.DeactivateAllSpecialPopUps();
         var matchedDataList = nextDataContainer.nextDatas.Where(data => data.objCode == currentObjCode);
 
         curObjCode = currentObjCode;
