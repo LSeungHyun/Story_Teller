@@ -23,7 +23,7 @@ public class CurrentObjectManager : MonoBehaviour
     public BubbleSetter bubbleSetter;
 
     string[] validCodes = { "Enter_Wait", "Enter_Move", "Enter_Wait_Scene", "Enter_Move_Scene", "Enter_Wait_CutScene", "UnderWorld_Ending" };
-    string[] moveCodes = { "Enter_Move", "Enter_Move_Scene" };
+    string[] moveCodes = { "Enter_Move", "Enter_Move_Scene"};
 
     public string newObjCode;
 
@@ -48,6 +48,10 @@ public class CurrentObjectManager : MonoBehaviour
             session.ChangePlayerisMoved(managerConnector.playerManager, false, false);
         }
 
+        if( currentObjCode == "LivingWorld_HairSalon_Answer1")
+        {
+            session.ChangePlayerisMoved(managerConnector.playerManager, true, false);
+        }
         // newObjCode가 validCodes에 속하지만 currentObjCode가 validCodes에 속하지 않는 경우 return
         if (validCodes.Contains(newObjCode) && !validCodes.Contains(currentObjCode))
         {
