@@ -35,7 +35,7 @@ public class CamDontDes : MonoBehaviour
 #endif
         // WebGL이면서 모바일일때
         if (Application.isMobilePlatform)
-            virtualCam.Lens.OrthographicSize = 3.7f;
+            virtualCam.Lens.OrthographicSize = 2.5f;
 
         //WebGL이면서 컴퓨터일때
         else
