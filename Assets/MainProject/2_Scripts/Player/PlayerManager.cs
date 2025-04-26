@@ -229,14 +229,20 @@ public class PlayerManager : MonoBehaviour
         {
             sprite.enabled = false;
             playerNickname.SetActive(false);
+            
             isMove = false;
             session.OnOffPlayerBtnGroup(managerConnector, false);
+
+            managerConnector.isCutScenePlaying = true;
         }
         else
         {
             sprite.enabled = true;
             playerNickname.SetActive(true);
+            
             isMove = true;
+            managerConnector.isCutScenePlaying = false;
+
             session.OnOffPlayerBtnGroup(managerConnector, true);
         }
     }

@@ -93,7 +93,7 @@ public class ValidationManager : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 lastResponse = JsonUtility.FromJson<ValidationResponse>(request.downloadHandler.text);
-                Debug.Log($" 서버 응답: {request.downloadHandler.text}");
+                //Debug.Log($" 서버 응답: {request.downloadHandler.text}");
                 HandleServerResponse(lastResponse);
 
                 if (lastResponse.status == "SendEmail")
@@ -103,7 +103,7 @@ public class ValidationManager : MonoBehaviour
             }
             else
             {
-                Debug.LogError($" 오류 발생: {request.error}");
+                //Debug.LogError($" 오류 발생: {request.error}");
                 //resultText.text = $"Validation failed: {request.error}";
             }
         }
@@ -140,7 +140,7 @@ public class ValidationManager : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 lastResponse = JsonUtility.FromJson<ValidationResponse>(request.downloadHandler.text);
-                Debug.Log(" 나 나가라고?? : " + lastResponse.status + lastResponse.message);
+                //Debug.Log(" 나 나가라고?? : " + lastResponse.status + lastResponse.message);
                 HandleServerResponse(lastResponse);
             }
         }
@@ -159,12 +159,12 @@ public class ValidationManager : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 lastResponse = JsonUtility.FromJson<ValidationResponse>(request.downloadHandler.text);
-                Debug.Log(" 서버 응답 확인: " + lastResponse.status + lastResponse.message);
+                //Debug.Log(" 서버 응답 확인: " + lastResponse.status + lastResponse.message);
                 HandleServerResponse(lastResponse);
             }
             else
             {
-                Debug.Log("아직 게임해도돼");
+                //Debug.Log("아직 게임해도돼");
             }
         }
     }
@@ -205,7 +205,7 @@ public class ValidationManager : MonoBehaviour
                 //Debug.Log("씨ㅃㅁㄴ읾ㄴㅇㄻㄴㅇㄻㄴㄹㅇ");
                 break;
             case "Continue":
-                Debug.Log("계속하세요");
+                //Debug.Log("계속하세요");
                 break;
             default:
                 //resultText.text = $" 알 수 없는 응답: {response.message}";

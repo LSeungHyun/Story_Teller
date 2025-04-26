@@ -71,101 +71,43 @@ public abstract class AbsctractGameSession
 
     public virtual void AnimControllerBasic(PlayerManager playerManager)
     {
-        // 1) KeyDown/KeyUp 으로 heldDirections 관리
-        if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        bool isMoving = playerManager.inputVec.x != 0 || playerManager.inputVec.y != 0;
+        if (isMoving || playerManager.joystick != null && (playerManager.joystick.Horizontal != 0 || playerManager.joystick.Vertical != 0))
         {
-            lastKeyPressed = Direction.Left;
-            heldDirections.Add(Direction.Left);
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-        {
-            lastKeyPressed = Direction.Right;
-            heldDirections.Add(Direction.Right);
-        }
-        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-        {
-            lastKeyPressed = Direction.Up;
-            heldDirections.Add(Direction.Up);
-        }
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-            lastKeyPressed = Direction.Down;
-            heldDirections.Add(Direction.Down);
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A)) heldDirections.Remove(Direction.Left);
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D)) heldDirections.Remove(Direction.Right);
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W)) heldDirections.Remove(Direction.Up);
-        if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) heldDirections.Remove(Direction.Down);
-
-        // 2) 조이스틱 입력 처리 (deadZone 기준)
-        if (playerManager.joystick != null)
-        {
-            float jH = playerManager.joystick.Horizontal;
-            float jV = playerManager.joystick.Vertical;
-            const float deadZone = 0.2f;
-
-            if (jH > deadZone)
+            playerManager.anim.SetBool("Walking", true);
+            if (Application.isMobilePlatform)
             {
-                lastKeyPressed = Direction.Right;
-                heldDirections.Add(Direction.Right);
-            }
-            else if (jH < -deadZone)
-            {
-                lastKeyPressed = Direction.Left;
-                heldDirections.Add(Direction.Left);
+                if (playerManager.inputVec.x != 0)
+                {
+                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                }
+                if (playerManager.inputVec.y != 0)
+                {
+                    playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+                }
             }
             else
             {
-                heldDirections.Remove(Direction.Left);
-                heldDirections.Remove(Direction.Right);
-            }
-
-            if (jV > deadZone)
-            {
-                lastKeyPressed = Direction.Up;
-                heldDirections.Add(Direction.Up);
-            }
-            else if (jV < -deadZone)
-            {
-                lastKeyPressed = Direction.Down;
-                heldDirections.Add(Direction.Down);
-            }
-            else
-            {
-                heldDirections.Remove(Direction.Up);
-                heldDirections.Remove(Direction.Down);
+                if (playerManager.inputVec.x != 0)
+                {
+                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                    playerManager.anim.SetFloat("DirY", 0);
+                }
+                if (playerManager.inputVec.y != 0)
+                {
+                    playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
+                    playerManager.anim.SetFloat("DirX", 0);
+                }
             }
         }
-
-        // 3) 이동 여부에 따라 Walking bool 설정
-        bool isMoving = playerManager.inputVec.sqrMagnitude > 0f
-                      || (playerManager.joystick != null
-                          && (Mathf.Abs(playerManager.joystick.Horizontal) > 0f
-                              || Mathf.Abs(playerManager.joystick.Vertical) > 0f));
-        playerManager.anim.SetBool("Walking", isMoving);
-
-        // 4) 방향 갱신: heldDirections가 1개 이상일 때만 DirX/DirY 업데이트
-        if (heldDirections.Count > 0)
+        else
         {
-            Vector2 dir = Vector2.zero;
-            if (heldDirections.Count >= 2)
-            {
-                dir = DirectionToVector(lastKeyPressed);
-            }
-            else // Exactly 1
-            {
-                dir = DirectionToVector(heldDirections.First());
-            }
-
-            playerManager.anim.SetFloat("DirX", dir.x);
-            playerManager.anim.SetFloat("DirY", dir.y);
+            playerManager.anim.SetBool("Walking", false);
         }
-        // heldDirections.Count == 0 이면 DirX/DirY를 그대로 유지
 
-        // 5) 기존 키업 리셋 호출
         playerManager.ResetInputOnKeyUp();
     }
+
 
 
     // Direction → Vector2 매핑 헬퍼
@@ -347,7 +289,7 @@ public abstract class AbsctractGameSession
 
     public virtual void OnOffPlayerBtnGroup(ManagerConnector managerConnector, bool isActive)
     {
-        if (managerConnector.isMobile)
+        if (managerConnector.isMobile && !managerConnector.isCutScenePlaying)
         {
             managerConnector.joystick.gameObject.SetActive(isActive);
             managerConnector.webglBtn.gameObject.SetActive(isActive);

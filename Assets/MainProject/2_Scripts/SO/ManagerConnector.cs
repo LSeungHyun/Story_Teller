@@ -23,4 +23,5 @@ public class ManagerConnector : ScriptableObject
 
     public TextDataManager textDataManager;
     public bool isMobile = false;
+    public bool isCutScenePlaying = false;
 }
