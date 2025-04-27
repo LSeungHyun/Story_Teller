@@ -136,7 +136,9 @@ public class UIQuestSetter : MonoBehaviour
 
     public void onConfirmBtn()
     {
-        if(answerInput.text == answer)
+        string trimmedInput = answerInput.text.Trim();
+
+        if (trimmedInput == answer)
         {
             if (soundContainer != null)
             {
