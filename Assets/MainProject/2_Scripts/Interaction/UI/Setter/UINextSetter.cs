@@ -115,7 +115,7 @@ public class UINextSetter : MonoBehaviour
 
     public void AddPlayerToDoneList(string currentObjCode)
     {
-        if (currentObjCode == "LivingWorld_Road_Dial" || currentObjCode == "LivingWorld_HairSalon_Quest1" || currentObjCode == "LivingWorld_HairSalon_Sara")
+        if (currentObjCode == "LivingWorld_Road_Dial" || currentObjCode == "LivingWorld_HairSalon_Sara")
         {
             UINextSetter.Instance.ProcessNextCode(currentObjCode);
             return;
