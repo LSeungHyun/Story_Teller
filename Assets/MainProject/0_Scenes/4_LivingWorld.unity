@@ -28569,9 +28569,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8482125132940422536, guid: dded1cbe206e508438a2c8a0c35f496a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1757092415}
-    - targetCorrespondingSourceObject: {fileID: 8482125132940422536, guid: dded1cbe206e508438a2c8a0c35f496a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 1757092416}
     - targetCorrespondingSourceObject: {fileID: 8482125132940422536, guid: dded1cbe206e508438a2c8a0c35f496a, type: 3}
       insertIndex: -1
@@ -33654,27 +33651,6 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5834547971128795661, guid: dded1cbe206e508438a2c8a0c35f496a, type: 3}
   m_PrefabInstance: {fileID: 1516725609}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1757092415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757092413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae201bd8f05cc440a44f67af78d519f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  managerConnector: {fileID: 11400000, guid: c69cf2517557e5a47980e22ede062382, type: 2}
-  thePlayer: {fileID: 0}
-  spriteRenderer: {fileID: 1757092414}
-  childSpriteGroup: []
-  basicLayer: 
-  currentSortingLayer: 
-  underObjectLayer: UnderObject
-  aboveObjectLayer: AboveObject
-  isColliding: 0
 --- !u!61 &1757092416
 BoxCollider2D:
   m_ObjectHideFlags: 0
