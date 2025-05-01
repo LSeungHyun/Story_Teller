@@ -45,7 +45,7 @@ public class Blur_Detail_Controller : MonoBehaviour
         {
             dof.focalLength.Override(FocalLength_Slider.value);
             FocalLength_Text.text = Math.Round(FocalLength_Slider.value, 2).ToString();
-            Debug.Log("DepthOfField Max Radius set to: " + FocalLength_Slider.value);
+            //Debug.Log("DepthOfField Max Radius set to: " + FocalLength_Slider.value);
         }
     }
 
@@ -66,7 +66,7 @@ public class Blur_Detail_Controller : MonoBehaviour
 
             material.color = newColor;
 
-            Debug.Log("패널의 RGB가 " + hexRGB + "로 변경되었습니다.");
+            //Debug.Log("패널의 RGB가 " + hexRGB + "로 변경되었습니다.");
         }
         else
         {

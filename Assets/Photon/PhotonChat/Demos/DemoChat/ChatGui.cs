@@ -162,7 +162,7 @@ namespace Photon.Chat.Demo
             this.chatClient.ConnectUsingSettings(this.chatAppSettings);
 
             this.ChannelToggleToInstantiate.gameObject.SetActive(false);
-            Debug.Log("Connecting as: " + this.UserName);
+            //Debug.Log("Connecting as: " + this.UserName);
 
             this.ConnectingLabel.SetActive(true);
         }
@@ -366,15 +366,15 @@ namespace Photon.Chat.Demo
         {
             if (level == ExitGames.Client.Photon.DebugLevel.ERROR)
             {
-                Debug.LogError(message);
+                //Debug.LogError(message);
             }
             else if (level == ExitGames.Client.Photon.DebugLevel.WARNING)
             {
-                Debug.LogWarning(message);
+                //Debug.LogWarning(message);
             }
             else
             {
-                Debug.Log(message);
+                //Debug.Log(message);
             }
         }
 
@@ -555,7 +555,7 @@ namespace Photon.Chat.Demo
             byte[] msgBytes = message as byte[];
             if (msgBytes != null)
             {
-                Debug.Log("Message with byte[].Length: "+ msgBytes.Length);
+                //Debug.Log("Message with byte[].Length: "+ msgBytes.Length);
             }
             if (this.selectedChannelName.Equals(channelName))
             {
@@ -616,7 +616,7 @@ namespace Photon.Chat.Demo
             bool found = this.chatClient.TryGetChannel(this.selectedChannelName, out channel);
             if (!found)
             {
-                Debug.Log("AddMessageToSelectedChannel failed to find channel: " + this.selectedChannelName);
+                //Debug.Log("AddMessageToSelectedChannel failed to find channel: " + this.selectedChannelName);
                 return;
             }
 

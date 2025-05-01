@@ -136,11 +136,6 @@ public class PlayerManager : MonoBehaviour
         {
             session.TriggerEnterBasic(this, collision);
         }
-
-        if (collision.CompareTag("CutScene"))
-        {
-            session.CutSceneEnter(this, collision);
-        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -211,7 +206,7 @@ public class PlayerManager : MonoBehaviour
     {
         isCutScene = able;
 
-        CutSceneOnOff();
+        CutSceneOnOff(able);
     }
 
     [PunRPC]
@@ -223,7 +218,7 @@ public class PlayerManager : MonoBehaviour
         anim.SetBool("Walking", isCutScene);
     }
 
-    public void CutSceneOnOff()
+    public void CutSceneOnOff(bool isCutScene)
     {
         if (isCutScene)
         {
@@ -292,7 +287,7 @@ public class PlayerManager : MonoBehaviour
     [PunRPC]
     public void RPC_AddPlayerToDoneList(string currentObjCode, string playerID)
     {
-        Debug.Log("1 : 플레이어 추가 RPC");
+        //Debug.Log("1 : 플레이어 추가 RPC");
         UINextSetter.Instance.SetNextCode(currentObjCode);
         var currentObj = UINextSetter.Instance.currentObjCodeDict.Find(x => x.value == currentObjCode);
         if (!currentObj.playersIsDone.Contains(playerID))
@@ -301,7 +296,7 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            Debug.Log($"플레이어 {playerID}는 이미 추가되어 있습니다.");
+            //Debug.Log($"플레이어 {playerID}는 이미 추가되어 있습니다.");
         }
 
         if (!UINextSetter.Instance.CheckEveryoneIsDone(currentObjCode)) return;

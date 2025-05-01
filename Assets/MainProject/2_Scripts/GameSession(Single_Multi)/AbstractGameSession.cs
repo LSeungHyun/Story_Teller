@@ -88,15 +88,15 @@ public abstract class AbsctractGameSession
             }
             else
             {
-                if (playerManager.inputVec.x != 0)
-                {
-                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
-                    playerManager.anim.SetFloat("DirY", 0);
-                }
                 if (playerManager.inputVec.y != 0)
                 {
                     playerManager.anim.SetFloat("DirY", playerManager.inputVec.y);
                     playerManager.anim.SetFloat("DirX", 0);
+                }
+                if (playerManager.inputVec.x != 0)
+                {
+                    playerManager.anim.SetFloat("DirX", playerManager.inputVec.x);
+                    playerManager.anim.SetFloat("DirY", 0);
                 }
             }
         }

@@ -205,7 +205,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
         if (string.IsNullOrEmpty(trimmedMessage))
         {
-            Debug.Log("공백 메시지는 전송되지 않습니다.");
+            //Debug.Log("공백 메시지는 전송되지 않습니다.");
             return;
         }
 

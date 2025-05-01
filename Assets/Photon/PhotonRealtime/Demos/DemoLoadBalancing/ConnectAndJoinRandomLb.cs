@@ -62,7 +62,7 @@ namespace Photon.Realtime.Demo
 
         public void OnConnectedToMaster()
         {
-            Debug.Log("OnConnectedToMaster");
+            //Debug.Log("OnConnectedToMaster");
             this.lbc.OpJoinRandomRoom();    // joins any open room (no filter)
         }
 

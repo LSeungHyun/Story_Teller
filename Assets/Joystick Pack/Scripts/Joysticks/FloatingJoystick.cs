@@ -29,7 +29,7 @@ public class FloatingJoystick : Joystick
     {
         if(eventData2 != null)
         {
-            Debug.Log("조이스틱 켜짐");
+            //Debug.Log("조이스틱 켜짐");
             background.anchoredPosition = new Vector2(300, 242);
             base.OnPointerUp(eventData2);
         }

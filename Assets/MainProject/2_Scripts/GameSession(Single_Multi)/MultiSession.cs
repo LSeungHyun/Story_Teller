@@ -112,7 +112,7 @@ public class MultiSession : AbsctractGameSession
 
     public override void ChangePlayerisMovedAll(PlayerManager playerManager, bool isMove, bool isAnim)
     {
-        Debug.Log("다켜라제발");
+        //Debug.Log("다켜라제발");
         playerManager.PV.RPC("ChangePlayerisMove", RpcTarget.AllBuffered, isMove, isAnim);
     }
     public override void MoveBasic(PlayerManager playerManager)

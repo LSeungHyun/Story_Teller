@@ -11,7 +11,7 @@ public class HintStateManager : MonoBehaviour
     [ContextMenu("targetRow")]
     private void ShowProperties()
     {
-        Debug.Log(JsonUtility.ToJson(targetRow, true));
+        //Debug.Log(JsonUtility.ToJson(targetRow, true));
     }
 
     void Awake()

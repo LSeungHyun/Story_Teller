@@ -10,9 +10,17 @@ public class CutScenePlayer : MonoBehaviour
     {
         var session = GameManager.Instance.Session;
         SoundManager.Instance.Play("50meru-constellations");
-        //player.CutSceneUseAble(false);
 
-        session.CutSceneEnter(player, false);
+        if (player != null)
+        {
+            session.CutSceneEnter(player, false);
+        }
+        else
+        {
+            player = UIManager.managerConnector.playerManager;
+            session.CutSceneEnter(player, false);
+        }
+        
         UIManager.CutSceneOnOff(true);
         this.gameObject.SetActive(false);
     }
